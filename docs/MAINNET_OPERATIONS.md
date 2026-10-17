@@ -100,3 +100,17 @@ bash scripts/deploy-mainnet.sh --deploy \
 ```
 
 The explicit amendment sends no transaction. It requires settled existing reservations and checks that every historical entry remains valid under the tighter ceiling. It appends a second reference to the same physical signer ledger and existing RC.3 journal. The original 4 gwei policy and completed amendment record remain byte-for-byte intact; the second record binds the first record's digest and reference. All signed bytes, hashes, nonces, historical fees, the RC.2 journal, snapshot metadata and plan ID remain unchanged. Normal signing and recovery reject incomplete amendments; rerun the same explicit amendment to finish an interrupted write. A leftover process lock still requires manual investigation and is never automatically removed.
+
+## Dedicated mainnet operating-wallet funding
+
+The optional `scripts/fund-mainnet-services.sh` command funds the independent relay
+with 0.007 ETH and the registry-bound ASP provider with 0.003 ETH, using the local
+`lincoln-deployer` account. This is separately approved operating principal and
+is not a reset of the deployment gas budget. Supply the independently verified
+cloud relay address as `--relay ADDRESS`; add `--send` to execute in a local TTY.
+Without `--send` it prints an offline plan. It prompts once locally, retains
+0.003 ETH in the deployer, uses legacy 21,000-gas transfers at 0.1 gwei, and keeps
+a separate durable funding journal under `~/.local/state/lincoln/` across checkouts.
+It never automatically resends an ambiguous transfer; known hashes can be
+reconciled with `--status`, and `--record-hash relay:HASH` / `asp:HASH` validates
+canonical transaction/receipt identity before recording an unknown outcome.

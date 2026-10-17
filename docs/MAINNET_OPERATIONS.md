@@ -36,6 +36,26 @@ The command installs the snapshot's locked dependencies with lifecycle scripts d
 
 The account-wide signer ledger and canonical receipt checks support resuming an interrupted deployment with the same limits. An unknown broadcast is not blindly resent. Changing limits or resolving an ambiguous transaction requires reviewing the existing journal.
 
+## An unknown broadcast
+
+`MAINNET_BROADCAST_UNKNOWN` means that the transaction was signed and its hash was saved, but the broadcaster did not receive an acceptable response. It does not prove success or failure. Keep the original snapshot, signer ledger and deployment journal; do not switch directories, reset nonces, remove locks or delete records.
+
+Inspect the saved transaction without sending it:
+
+```sh
+node scripts/operations/recover-mainnet-broadcast.mjs --hash <transaction-hash>
+```
+
+This command verifies the frozen inputs, original signature, chain, intent, limits and canonical receipts. Receipt reconciliation may update local accounting. If already confirmed, resume the original deployment command with exactly the same limits. The deployment engine verifies and reuses that contract before continuing.
+
+If the node knows neither the transaction nor its receipt, explicit recovery can submit the **identical signed bytes once**:
+
+```sh
+node scripts/operations/recover-mainnet-broadcast.mjs --hash <transaction-hash> --rebroadcast
+```
+
+Recovery requires the saved sender nonce, original reserve and original budget to remain valid. It acquires the original deployment and signer locks, signs nothing, cannot change gas price or nonce, and disables HTTP retries. A known pending transaction is not rebroadcast. Any ambiguous response keeps the original hash in `unknown` and reports a sanitized RPC reason; it never creates a replacement transaction. If a gas-price or network constraint rejects those signed bytes, review the evidence before choosing a separate recovery action.
+
 ## Remaining launch work
 
 A completed core deployment is not the completed product launch. Fee-adapter deployment and route activation, stock raw-cap valuation, real two-way DEX acceptance, mainnet signer/ASP/relayer operations, and independent A/B acceptance remain separate steps. The current registration file keeps its persistent signing flag off; the local `--deploy` command provides explicit limits for that one operator-run process. Existing testnet services and EC2 are unchanged.

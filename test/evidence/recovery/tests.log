@@ -1,0 +1,24 @@
+✔ read-only recovery status never sends and keeps the original unknown reservation (147.42625ms)
+✔ one explicit rebroadcast submits exactly the original bytes once without signing or changing nonce (98.136833ms)
+✔ a known pending original hash is never rebroadcast even with the explicit flag (65.09325ms)
+✔ changed or externally pending nonce prevents sending the original bytes (146.580333ms)
+✔ RPC rejection retains unknown plus the original hash and provides only a sanitized diagnostic (92.535583ms)
+✔ mismatching deployment journal cannot authorize rebroadcast of a signer entry (76.935292ms)
+✔ a canonical confirmed original transaction reconciles its actual fee and returns without sending (63.771042ms)
+✔ a receipt in a noncanonical block cannot release the reservation or cause a new send (53.277875ms)
+✔ historical confirmation without a currently available receipt fails closed and never sends (75.448291ms)
+✔ verifies the original signed transaction and returns metadata without signed bytes or calldata (19.867959ms)
+✔ hash, valid signature sender and chain identity must all match (7.925875ms)
+✔ nonce, recipient, input and zero value are bound to the signed transaction (14.21625ms)
+✔ gas, price and ceiling must agree, respect explicit limits and use legacy fees (11.354209ms)
+✔ settled, cancelled and unsigned reservations cannot be recovered as open broadcasts (6.871334ms)
+✔ broadcast diagnostics retain an RPC reason but strip hex, credentials, URLs, body and stack (1.786042ms)
+✔ diagnostic sanitization bounds output and avoids getters, recursive objects and arbitrary error fields (0.287334ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1208.7275

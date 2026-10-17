@@ -1,0 +1,19 @@
+{
+  "schema": "lincoln-broadcast-recovery-validation/v1",
+  "validatedAtUTC": "2026-10-17T03:44:59.059490+00:00",
+  "passed": true,
+  "tests": 16,
+  "failed": 0,
+  "logSHA256": "de0bb437e8e77938359652bb754c4920439450e72e629fc1bd4cefc569939282",
+  "testScope": "Synthetic signatures, temporary ServiceStores and mocked RPC only.",
+  "coverage": [
+    "Exact original signed bytes/hash/sender/chain/intent/fee validation",
+    "One explicit request, no new signing, nonce or gas-price change",
+    "Known pending hash never resubmitted",
+    "Canonical confirmation and receipt disappearance/reorg refusal",
+    "RPC error sanitization and unknown outcome retention",
+    "Original journal/ledger/nonce/budget/reserve gates"
+  ],
+  "publicTransactionsInTests": 0,
+  "frozenReleaseModified": false
+}

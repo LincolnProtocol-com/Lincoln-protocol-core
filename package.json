@@ -4,7 +4,7 @@
   "private": true,
   "description": "Lincoln privacy contracts, zero-knowledge circuits and verifiable public review sources.",
   "type": "module",
-  "license": "SEE LICENSE IN THIRD_PARTY_NOTICES.md",
+  "license": "BUSL-1.1",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/LincolnProtocol-com/Lincoln-protocol-core.git"

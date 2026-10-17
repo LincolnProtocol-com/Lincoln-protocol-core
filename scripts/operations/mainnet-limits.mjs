@@ -229,7 +229,9 @@ const manager=createMainnetLimitsManager();
 export const readMainnetGasPolicy=manager.readPolicy,verifyMainnetLimitsState=manager.verifyState,
   amendMainnetLimits=manager.amend,verifyMainnetRecoveryLimits=manager.verifyRecoveryContext;
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
-  try{const args=process.argv.slice(2);need(args.length===1&&['--status','--apply'].includes(args[0]),'USAGE_MAINNET_LIMITS');
+  // Finish module evaluation before the lazy snapshot checker imports this
+  // module again. Top-level await here creates an ESM evaluation deadlock.
+  async function main(){const args=process.argv.slice(2);need(args.length===1&&['--status','--apply'].includes(args[0]),'USAGE_MAINNET_LIMITS');
     console.log(JSON.stringify(await amendMainnetLimits({apply:args[0]==='--apply'}),null,2));}
-  catch(error){console.error(JSON.stringify({error:error.code??'MAINNET_LIMITS_FAILED',transactionsSigned:0,transactionsBroadcast:0}));process.exitCode=1;}
+  main().catch(error=>{console.error(JSON.stringify({error:error.code??'MAINNET_LIMITS_FAILED',transactionsSigned:0,transactionsBroadcast:0}));process.exitCode=1;});
 }

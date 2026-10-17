@@ -6,6 +6,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {isDeepStrictEqual} from 'node:util';
 import {getAddress} from 'viem';
@@ -78,6 +79,24 @@ test('approved policy is fixed to user-authorized 100x, 0.065 ETH cumulative bud
   const result=await readMainnetGasPolicy({root:ROOT});
   assert.deepEqual(result.gasPrice,{multiplierNumerator:'100',multiplierDenominator:'1',maxFeePerGasWei:'4000000000'});
   assert.deepEqual(result.effectiveLimits,{budgetWei:'65000000000000000',maxFeePerGasWei:'4000000000',reserveWei:'3000000000000000'});
+});
+test('actual CLI status completes its default cyclic module imports instead of exiting with unsettled top-level await',async()=>{
+  const root=await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(),'lincoln-limits-cli-import-')));
+  try{
+    // Copy real operational/checker/source modules, without any private data or
+    // a fake checker. Missing public artifacts should produce structured failure.
+    for(const relative of ['scripts/operations','releases/rc3/scripts','releases/rc3/src']){
+      const target=path.join(root,relative);await fs.mkdir(path.dirname(target),{recursive:true});
+      await fs.cp(path.join(ROOT,relative),target,{recursive:true});
+    }
+    await fs.symlink(path.join(ROOT,'node_modules'),path.join(root,'node_modules'),'dir');
+    const result=spawnSync(process.execPath,[path.join(root,'scripts/operations/mainnet-limits.mjs'),'--status'],
+      {cwd:root,encoding:'utf8',timeout:15000,maxBuffer:1024*1024});
+    assert.equal(result.error,undefined);assert.equal(result.status,1);assert.doesNotMatch(result.stderr,/unsettled top-level await/);
+    const failure=JSON.parse(result.stderr.trim());assert.equal(typeof failure.error,'string');
+    assert.equal(failure.transactionsSigned,0);assert.equal(failure.transactionsBroadcast,0);
+    assert.equal(result.stdout,'');await assert.rejects(fs.access(path.join(root,'.phase1-private')),{code:'ENOENT'});
+  }finally{await fs.rm(root,{recursive:true,force:true});}
 });
 test('status is read-only and leaves the original ledger, both journals and snapshot untouched',()=>use(async f=>{
   const before=await Promise.all([f.signerFile,f.sourceFile,f.journalFile,f.metadataFile].map(file=>fs.readFile(file)));

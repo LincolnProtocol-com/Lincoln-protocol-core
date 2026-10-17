@@ -1,0 +1,40 @@
+{
+  "schema": "lincoln-operational-regression-validation/v1",
+  "supplemental": true,
+  "baseCommit": "e5411b617ac86e440509500474b6814e2d945a33",
+  "scope": "Root operational CLI module-evaluation fix; original RC.3 proofs, artifacts and historical logs unchanged.",
+  "change": "Start mainnet-limits CLI in async main().catch after module evaluation, avoiding circular top-level await with the default snapshot checker.",
+  "evidence": {
+    "rootNodeTests": {
+      "passed": 107,
+      "failed": 0,
+      "log": "audit/acceptance/rc3-limits-cli-import/root-node.log",
+      "sha256": "c9ccdb6f383674abfaf5920d408ee3b573ff339d9848f3d0437550d2dac85bd4"
+    },
+    "actualChildProcessCLI": {
+      "command": "node scripts/operations/mainnet-limits.mjs --status",
+      "isolatedTemporaryRoot": true,
+      "actualDefaultChecker": true,
+      "dependencyInjection": false,
+      "privateFilesCopied": false,
+      "expectedMissingPublicArtifactExitCode": 1,
+      "unsettledTopLevelAwaitExit13": false
+    },
+    "publicReview": {
+      "command": "npm run check",
+      "passed": true,
+      "managedReviewChanges": 0,
+      "frozenFiles": 115,
+      "releaseManifestSHA256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d",
+      "reviewManifestSHA256": "a62bb50f41156efb39705bdf91aaccf1bc4a3a96e94ee22928d2f515e8b49678"
+    }
+  },
+  "sources": {
+    "scripts/operations/mainnet-limits.mjs": "d4d4ea3e27f3181a27613e7520fd099a4597f118fcdb65b66f714ede64ada112",
+    "test/operations/mainnet-limits.test.mjs": "a1501bb065b53e95f92c9d4d620d1de0661682f5d4086a11262a8d905d351908"
+  },
+  "realPrivateLedgerAccessed": false,
+  "realWalletAccessed": false,
+  "networkRequests": 0,
+  "publicTransactions": 0
+}

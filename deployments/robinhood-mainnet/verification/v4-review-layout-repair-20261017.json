@@ -1,0 +1,71 @@
+{
+  "schema": "lincoln-v4-review-layout-repair/v1",
+  "checkedAt": "2026-10-17T20:50:33.838Z",
+  "chainId": 4663,
+  "oldPlanId": "f2625560ed140ccb953f93947dfa42393b059ed2b7189267c8628d6da0c73f3a",
+  "planId": "e027124eb2c9bb9864a49768ade5e76b4c6df45c97c365992bb5a7fe21ae285a",
+  "oldApprovalSHA256": "fafd8a8527baacab4e680c8fc5a0bf1c819309a451cbe39cde44351b4b3efb5a",
+  "approvalPath": "config/v4-mainnet-deployment-approval-20261017-r2.json",
+  "approvalSHA256": "8855e21f60b0c047160720cb86ddecd286542ca4ba8b21e039ba3f33e0f3ed35",
+  "originalApprovalTimePreserved": "2026-10-17T20:43:58.887Z",
+  "originalExpiryPreserved": "2026-10-18T20:43:58.887Z",
+  "reason": "The separately compiled typed V4 source was missing from the frozen-layout extension allowlist.",
+  "repair": "Exact optional source path and SHA-256; all other unexpected paths remain rejected. Public review runs before local keystore password entry.",
+  "onchainIntentUnchanged": true,
+  "frozenRC3ManifestUnchanged": true,
+  "budgetsUnchanged": true,
+  "reviewCodePins": {
+    "scripts/review/layout.mjs": "dd27c4a06e3a4363806494f1ade96a1fdeb37d4ae2da5c1ae91b7208db397c24",
+    "scripts/review/run.mjs": "a1f3ad10f365bbcece6fc790331f75dc8bd7e1173532e2d6f6ed877bf7e665d7"
+  },
+  "physicalLedger": {
+    "entries": 42,
+    "oldPlanEntries": 0,
+    "unknownBroadcasts": [],
+    "oldV4FamilyExists": false
+  },
+  "publicReview": {
+    "passed": true,
+    "layout": {
+      "passed": true,
+      "checkOnly": true,
+      "baseCommit": "abe000c7acd9c26931a17961e1b4bdda083df84e",
+      "candidateTag": "v0.1.0-rc.3",
+      "releaseDirectory": "releases/rc3",
+      "releaseSHA256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d",
+      "copiedFiles": 59,
+      "generatedFiles": 1,
+      "changedFiles": 0,
+      "manifest": "review-manifest.json",
+      "manifestSHA256": "a62bb50f41156efb39705bdf91aaccf1bc4a3a96e94ee22928d2f515e8b49678",
+      "contracts": 10,
+      "sourceBytes": 88512510,
+      "extensions": [
+        {
+          "path": "contracts/adapters/HedgeFunV4Adapter.candidate.sol",
+          "sha256": "edc4de2de41e3daadb9d86b0d8d2fe026afcca1d624c3e6745fee3ca84cb8490",
+          "scope": "typed-v4-candidate-outside-frozen-rc3",
+          "bytes": 21428
+        }
+      ],
+      "networkRequests": 0,
+      "publicTransactions": 0
+    },
+    "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
+    "releaseManifestSHA256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d",
+    "preservedUpstreamFiles": 74,
+    "documentedR3Changes": 32,
+    "frozenFiles": 115,
+    "contracts": 10,
+    "chainId": 4663,
+    "mainnetDeployed": false,
+    "publicTransactions": 0,
+    "dependencySourceSnapshots": 9,
+    "documentedTestAdaptations": 2
+  },
+  "testsRun": false,
+  "proofsGenerated": false,
+  "keysAccessed": false,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0
+}

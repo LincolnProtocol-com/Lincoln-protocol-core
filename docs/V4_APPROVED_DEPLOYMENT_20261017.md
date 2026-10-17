@@ -5,10 +5,10 @@ on 2026-10-17. This supersedes the earlier deployment deferral; it does not
 authorize replacing the current thirteen pools, changing their caps, repricing
 unknown transactions or silently enabling a new backend route.
 
-The public approval is `config/v4-mainnet-deployment-approval-20261017.json`.
-Its SHA-256 is `fafd8a8527baacab4e680c8fc5a0bf1c819309a451cbe39cde44351b4b3efb5a`.
+The current public approval is `config/v4-mainnet-deployment-approval-20261017-r2.json`.
+Its SHA-256 is `8855e21f60b0c047160720cb86ddecd286542ca4ba8b21e039ba3f33e0f3ed35`.
 The approval binds plan
-`f2625560ed140ccb953f93947dfa42393b059ed2b7189267c8628d6da0c73f3a`,
+`e027124eb2c9bb9864a49768ade5e76b4c6df45c97c365992bb5a7fe21ae285a`,
 the existing reviewed source/build/ABI, and these ordered CREATEs:
 
 1. LINCOLN RC.3 privacy pool.
@@ -36,13 +36,23 @@ Authorization does not establish successful deployment or end-to-end readiness.
 
 ## Exact local command
 
+The dated launcher supplies the exact bindings below. Use it instead of the
+earlier command, whose plan does not include the repaired review gate:
+
+```sh
+cd /Users/leo/Lincoln-protocol-core
+bash scripts/deploy-v4-approved-20261017-r2.sh
+```
+
+Equivalent explicit command:
+
 ```sh
 cd /Users/leo/Lincoln-protocol-core
 bash scripts/deploy-v4-mainnet.sh --deploy \
   --review deployments/robinhood-mainnet/verification/v4-typed-router-20261017.json \
-  --approval config/v4-mainnet-deployment-approval-20261017.json \
-  --approval-sha256 fafd8a8527baacab4e680c8fc5a0bf1c819309a451cbe39cde44351b4b3efb5a \
-  --plan-id f2625560ed140ccb953f93947dfa42393b059ed2b7189267c8628d6da0c73f3a \
+  --approval config/v4-mainnet-deployment-approval-20261017-r2.json \
+  --approval-sha256 8855e21f60b0c047160720cb86ddecd286542ca4ba8b21e039ba3f33e0f3ed35 \
+  --plan-id e027124eb2c9bb9864a49768ade5e76b4c6df45c97c365992bb5a7fe21ae285a \
   --policy-sha256 b09a8692a6a0ddde7b262e846bba968a048c1672f2373d3d6e0d2b1db345f271 \
   --review-sha256 d126b5b47b5ba591b5f3f376e40416ac4949011679f54b77d3c19734e511fb30 \
   --accept-issuer-controls spcx \
@@ -65,3 +75,25 @@ After all four are verified it writes the two LINCOLN/SPCX deployment manifests.
 Backend V4 dispatch, fifteen-pool indexing/ASP/Access and both-direction funded
 execution/recovery remain distinct integration work. See the backend research
 record for those requirements.
+
+## Review-layout repair
+
+The first attempt stopped with `REVIEW_UNEXPECTED_FILE` before signer creation.
+The independently compiled `contracts/adapters/HedgeFunV4Adapter.candidate.sol`
+was outside the immutable RC.3 review inventory. Revision 2 accepts only this
+exact additional path with SHA-256
+`edc4de2de41e3daadb9d86b0d8d2fe026afcca1d624c3e6745fee3ca84cb8490`.
+All other unexpected files and symlinks remain rejected, and the frozen RC.3
+manifest and ten-contract catalog are unchanged. Extensions are reported
+separately. This public integrity gate now runs before password entry as well
+as before deployment.
+
+Revision 2 also pins the actual review layout and runner modules in the V4
+intent. Therefore its plan and approval hashes differ from the original; the
+four onchain intents, bytecode, source pins, risk acceptance, budgets, approval
+time and expiration are unchanged. The original approval/plan and live
+preflight remain historical records. The
+[repair evidence](../deployments/robinhood-mainnet/verification/v4-review-layout-repair-20261017.json)
+records the exact relation and confirms that the old plan had no physical
+ledger entries or family journal. No lock, nonce, signature or ledger history
+was reset. Integrity checks passed; tests and proofs were not rerun.

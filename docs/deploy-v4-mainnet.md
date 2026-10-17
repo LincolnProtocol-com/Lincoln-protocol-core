@@ -23,10 +23,12 @@ bash scripts/deploy-v4-mainnet.sh --plan
 Plan mode reads only regular public repository files. It does not load signing
 modules, use RPC, read a password/keystore, inspect the physical signer ledger,
 reserve a nonce or create business state. Its public `approvalTemplate` is
-`pending-human-approval`; no approved file is shipped with this runner.
+`pending-human-approval`. A separately recorded human-approved scope and its
+current exact command are documented in
+[the dated deployment authorization](V4_APPROVED_DEPLOYMENT_20261017.md).
 
 The plan pins the policy, public review, frozen artifacts/proof manifests,
-compiler-produced V4 build/ABI/source set, runner/wrapper code and four exact
+compiler-produced V4 build/ABI/source set, runner/wrapper and public-review code and four exact
 constructor intents. Any change invalidates the old plan and approval hashes.
 The executable V4 adapter has a distinct ABI/domain; the older dedicated-callback
 proposal is not used by this runner.

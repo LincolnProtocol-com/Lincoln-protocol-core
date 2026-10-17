@@ -16,6 +16,13 @@ export const CURRENT_RELEASE_SHA256='dea4a351f51a78e773ed37543b533bf7d0fdac31b81
 export const CURRENT_CANDIDATE_TAG='v0.1.0-rc.3';
 export const REVIEW_MANIFEST='review-manifest.json';
 export const REVIEW_MANAGED_DIRECTORIES=Object.freeze(['contracts','zk','abi','test/contracts','test/evidence/rc3']);
+// Separately reviewed additions do not become part of the frozen RC.3 capsule.
+// Match an exact path AND digest; never allow an entire candidate directory.
+const REVIEW_EXTENSIONS=Object.freeze([
+  Object.freeze({path:'contracts/adapters/HedgeFunV4Adapter.candidate.sol',
+    sha256:'edc4de2de41e3daadb9d86b0d8d2fe026afcca1d624c3e6745fee3ca84cb8490',
+    scope:'typed-v4-candidate-outside-frozen-rc3'}),
+]);
 const CORE_ARTIFACT='artifacts/phase2-mainnet/contracts.json',FEE_ARTIFACT='artifacts/phase2-fees-mainnet/contracts.json';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const need=(ok,code)=>{if(!ok)throw Object.assign(new Error(code),{code});};
@@ -192,13 +199,20 @@ async function prepareLayout(root){
 }
 
 /** No target is changed if any nonempty target differs or a managed directory
- * contains an unlisted file. README.md is the only optional extra in these trees.
+ * contains an unlisted file. README.md and exact hash-pinned extensions are the
+ * only optional extras; extensions are reported separately from frozen files.
  */
 export async function syncReviewLayout({root=ROOT,checkOnly=false}={}){
   need(typeof root==='string'&&typeof checkOnly==='boolean','REVIEW_LAYOUT_OPTIONS_INVALID');root=await fs.realpath(root);
-  const {capsule,files,manifest}=await prepareLayout(root),known=new Set(files.keys());
-  for(const directory of REVIEW_MANAGED_DIRECTORIES)for(const filename of await managedFiles(root,directory))
-    need(known.has(filename)||path.basename(filename)==='README.md','REVIEW_UNEXPECTED_FILE');
+  const {capsule,files,manifest}=await prepareLayout(root),known=new Set(files.keys()),extensions=[];
+  for(const directory of REVIEW_MANAGED_DIRECTORIES)for(const filename of await managedFiles(root,directory)){
+    if(known.has(filename)||path.basename(filename)==='README.md')continue;
+    const extension=REVIEW_EXTENSIONS.find(item=>item.path===filename);
+    need(extension,'REVIEW_UNEXPECTED_FILE');
+    const bytes=await regular(root,filename);
+    need(sha(bytes)===extension.sha256,'REVIEW_EXTENSION_SOURCE_CHANGED');
+    extensions.push({...extension,bytes:bytes.length});
+  }
   const missing=[];
   for(const [filename,bytes]of files){
     const existing=await regular(root,filename,{missing:true});
@@ -213,7 +227,7 @@ export async function syncReviewLayout({root=ROOT,checkOnly=false}={}){
   return {passed:true,checkOnly,baseCommit:CURRENT_PARENT_COMMIT,candidateTag:CURRENT_CANDIDATE_TAG,releaseDirectory:CURRENT_RELEASE_DIRECTORY,releaseSHA256:CURRENT_RELEASE_SHA256,
     copiedFiles:manifest.files.length,generatedFiles:manifest.generatedFiles.length,changedFiles:missing.length,
     manifest:REVIEW_MANIFEST,manifestSHA256:sha(files.get(REVIEW_MANIFEST)),contracts:10,
-    sourceBytes:manifest.files.reduce((sum,item)=>sum+item.bytes,0),networkRequests:0,publicTransactions:0};
+    sourceBytes:manifest.files.reduce((sum,item)=>sum+item.bytes,0),extensions,networkRequests:0,publicTransactions:0};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   try{need(process.argv.length===2||process.argv.length===3&&process.argv[2]==='--check','USAGE_REVIEW_LAYOUT_CHECK');

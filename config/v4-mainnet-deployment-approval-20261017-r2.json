@@ -1,0 +1,62 @@
+{
+  "schema": "lincoln-mainnet-typed-v4-approval/v1",
+  "status": "approved",
+  "chainId": 4663,
+  "genesisHash": "0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c",
+  "deployer": "0x555998Ba2B2723C97d91FB20Da0ddb896749797e",
+  "account": "lincoln-deployer",
+  "planId": "e027124eb2c9bb9864a49768ade5e76b4c6df45c97c365992bb5a7fe21ae285a",
+  "policySHA256": "b09a8692a6a0ddde7b262e846bba968a048c1672f2373d3d6e0d2b1db345f271",
+  "reviewSHA256": "d126b5b47b5ba591b5f3f376e40416ac4949011679f54b77d3c19734e511fb30",
+  "candidateBuildSHA256": "36fb4b20a05f8a67a85fa897b04f5a162b05b1bd5ad8a16b449c7e63592be3c1",
+  "approvedAt": "2026-10-17T20:43:58.887Z",
+  "expiresAt": "2026-10-18T20:43:58.887Z",
+  "scope": "two-lincoln-spcx-pools-and-two-fixed-typed-v4-adapters-only",
+  "capsMode": "protocol-uint128-maximum-no-additional-business-cap",
+  "caps": [
+    {
+      "id": "lincoln",
+      "maxDepositUnits": "340282366920938463463374607431768211455",
+      "maxTotalUnits": "340282366920938463463374607431768211455"
+    },
+    {
+      "id": "spcx",
+      "maxDepositUnits": "340282366920938463463374607431768211455",
+      "maxTotalUnits": "340282366920938463463374607431768211455"
+    }
+  ],
+  "steps": [
+    {
+      "id": "pool:lincoln",
+      "contract": "Phase2ASPPool",
+      "gasCap": "5500000"
+    },
+    {
+      "id": "pool:spcx",
+      "contract": "Phase2ASPPool",
+      "gasCap": "5500000"
+    },
+    {
+      "id": "route:hedgefun-lincoln-to-spcx",
+      "contract": "Phase2FeeHedgeFunV4Adapter",
+      "gasCap": "5500000"
+    },
+    {
+      "id": "route:hedgefun-spcx-to-lincoln",
+      "contract": "Phase2FeeHedgeFunV4Adapter",
+      "gasCap": "5500000"
+    }
+  ],
+  "acceptedRisks": [
+    "spcx-issuer-controls",
+    "new-v4-adapter-untested-unaudited"
+  ],
+  "limits": {
+    "budgetWei": "65000000000000000",
+    "maxFeePerGasWei": "2800000000",
+    "reserveWei": "3000000000000000"
+  },
+  "scopeBudgetWei": "2200000000000000",
+  "newTransactionPriceCapWei": "100000000",
+  "maximumNewGasWei": "2200000000000000"
+}

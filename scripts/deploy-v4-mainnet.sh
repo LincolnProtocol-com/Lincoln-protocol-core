@@ -19,6 +19,11 @@ try { validateV4BindingFlags(parseV4Arguments(['--deploy',...process.argv.slice(
 catch(error) { console.error(JSON.stringify({error:error.code??'V4_DEPLOY_PREFLIGHT_FAILED',automaticResend:false})); process.exitCode=1; }
 JS
 node scripts/operations/deploy-v4-mainnet.mjs --plan "$@" >/dev/null
+node --input-type=module <<'JS'
+import {checkPublicReview} from './scripts/review/run.mjs';
+try { const checked=await checkPublicReview(); console.error(JSON.stringify({stage:'public-review-verified',passed:checked.passed,extensions:checked.layout.extensions})); }
+catch(error) { console.error(JSON.stringify({error:error.code??'V4_PUBLIC_REVIEW_FAILED',automaticResend:false})); process.exitCode=1; }
+JS
 [[ -t 0 && -t 2 ]] || { echo 'Run in your own interactive terminal to enter the local keystore password.' >&2; exit 1; }
 echo 'Robinhood mainnet 4663; lincoln-deployer 0x555998Ba2B2723C97d91FB20Da0ddb896749797e.' >&2
 echo 'Only LINCOLN/SPCX pools and two fixed typed V4 adapters; caps use uint128 maximum; Safe output fee 30 bps.' >&2

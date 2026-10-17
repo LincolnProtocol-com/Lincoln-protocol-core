@@ -86,7 +86,7 @@ export async function createV4DeploymentPlan({root=ROOT,reviewPath=V4_REVIEW,inc
       contract:'Phase2ASPPool',gasCap:'5500000',constructorArguments:args.map(String),dataSHA256:sha256(Buffer.from(data.slice(2),'hex')),...(includeCalldata?{data}:{})};});
   const adapters=[{id:'route:hedgefun-lincoln-to-spcx',source:'lincoln',target:'spcx',isBuy:false},{id:'route:hedgefun-spcx-to-lincoln',source:'spcx',target:'lincoln',isBuy:true}]
     .map(r=>({...r,contract:'Phase2FeeHedgeFunV4Adapter',gasCap:'5500000',constructorArguments:['created:pool:'+r.source,'created:pool:'+r.target]}));
-  const codePins={};for(const ref of ['scripts/operations/deploy-v4-mainnet.mjs','scripts/operations/v4-mainnet-deployment-plan.mjs','scripts/operations/hedgefun-v4-candidate-plan.mjs','scripts/operations/deploy-new-pools-mainnet.mjs','scripts/deploy-v4-mainnet.sh'])codePins[ref]=sha256(await v4PublicFile(root,ref));
+  const codePins={};for(const ref of ['scripts/operations/deploy-v4-mainnet.mjs','scripts/operations/v4-mainnet-deployment-plan.mjs','scripts/operations/hedgefun-v4-candidate-plan.mjs','scripts/operations/deploy-new-pools-mainnet.mjs','scripts/deploy-v4-mainnet.sh','scripts/review/layout.mjs','scripts/review/run.mjs'])codePins[ref]=sha256(await v4PublicFile(root,ref));
   const identity={schema:'lincoln-mainnet-typed-v4-intent/v1',chainId:4663,genesisHash:GENESIS,deployer:DEPLOYER,
     policy:{path:V4_POLICY,sha256:sha256(policyBytes)},review:{path:reviewPath,sha256:sha256(reviewBytes)},pinnedInputs:V4_CORE_PINS,
     candidate:{path:V4_BUILD,sha256:V4_BUILD_SHA,abi:{path:V4_ABI,sha256:sha256(abiBytes)},sourceSHA256:V4_SOURCE_SHA,sourceSetSHA256:adapterBuild.sourceSetSHA256},

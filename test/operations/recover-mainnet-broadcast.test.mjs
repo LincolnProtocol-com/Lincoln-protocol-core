@@ -57,7 +57,8 @@ async function fixture({continuation=false}={}){
     async getBalance(){return state.balance;},
     async request(request){calls.requests.push(structuredClone(request));if(state.sendError)throw state.sendError;return state.sendResult;},
   };
-  const options={root,hash,client,validateSnapshot:async({root:received})=>{assert.equal(received,root);return {directory:snapshot,address};}};
+  const options={root,hash,client,validateSnapshot:async({root:received})=>{assert.equal(received,root);return {directory:snapshot,address};},
+    validateLimits:async({root:received,state:current})=>{assert.equal(received,root);return {limits:{budgetWei:current.budgetWei,maxFeePerGasWei:current.maxFeePerGasWei,reserveWei:current.reserveWei},originalLimits:{...limits}};}};
   if(continuation)options.validateContinuationSnapshot=async({root:received})=>{assert.equal(received,root);calls.continuation++;return continuationSnapshot;};
   return {options,state,calls,ledger,journal,hash,rawTransaction,address,continuationSnapshot,deploymentRoot,signerDirectory,
     readLedger:()=>read(signerDirectory,signerIdentity,'signer.json'),
@@ -147,6 +148,36 @@ test('historical confirmation without a currently available receipt fails closed
     await assert.rejects(()=>recoverMainnetBroadcast({...f.options,rebroadcast:true}),{code:'RECOVERY_CONFIRMED_RECEIPT_UNAVAILABLE'});
     assert.equal(f.calls.requests.length,0);assert.equal(f.calls.receipt,2);
     assert.equal((await f.readLedger()).entries[0].status,'confirmed');
+  }finally{await f.cleanup();}
+});
+test('an approved applied amendment preserves original-parent journal limits while recovery uses current account limits',async()=>{
+  const f=await fixture();try{
+    const beforeJournal=structuredClone(f.journal),originalRaw=f.rawTransaction;
+    Object.assign(f.ledger,{budgetWei:'2000000',maxFeePerGasWei:'8'});await f.writeLedger();
+    const result=await recoverMainnetBroadcast(f.options);
+    assert.equal(result.status,'not-found-at-node');assert.equal(result.budgetWei,'2000000');assert.equal(result.maxFeePerGasWei,'8');
+    assert.deepEqual(f.journal,beforeJournal);assert.equal((await f.readLedger()).entries[0].rawTransaction,originalRaw);assert.equal(f.calls.requests.length,0);
+    Object.assign(f.journal.pins,{budgetWei:'2000000',maxFeePerGasWei:'8'});await f.writeJournal();
+    await assert.rejects(()=>recoverMainnetBroadcast(f.options),{code:'RECOVERY_JOURNAL_MISMATCH'});
+  }finally{await f.cleanup();}
+});
+test('an approved applied amendment requires the existing RC.3 journal pins to use the amended limits',async()=>{
+  const f=await fixture({continuation:true});try{
+    const effective={budgetWei:'2000000',maxFeePerGasWei:'8',reserveWei:'0'};
+    Object.assign(f.ledger,effective);Object.assign(f.continuationSnapshot.limits,effective);await f.writeLedger();
+    await assert.rejects(()=>recoverMainnetBroadcast(f.options),{code:'RECOVERY_JOURNAL_MISMATCH'});
+    Object.assign(f.journal.pins,effective);await f.writeJournal();
+    const result=await recoverMainnetBroadcast(f.options);assert.equal(result.status,'not-found-at-node');assert.equal(result.budgetWei,effective.budgetWei);
+    assert.equal(f.calls.requests.length,0);assert.equal((await f.readLedger()).entries[0].rawTransaction,f.rawTransaction);
+  }finally{await f.cleanup();}
+});
+test('partial or unproved limits reject recovery before receipt reconciliation or broadcast',async()=>{
+  const f=await fixture();try{
+    const before=await f.readLedger();
+    await assert.rejects(()=>recoverMainnetBroadcast({...f.options,rebroadcast:true,validateLimits:async()=>{
+      throw Object.assign(new Error('MAINNET_LIMITS_AMENDMENT_INCOMPLETE'),{code:'MAINNET_LIMITS_AMENDMENT_INCOMPLETE'});
+    }}),{code:'MAINNET_LIMITS_AMENDMENT_INCOMPLETE'});
+    assert.equal(f.calls.receipt,0);assert.equal(f.calls.transaction,0);assert.equal(f.calls.requests.length,0);assert.deepEqual(await f.readLedger(),before);
   }finally{await f.cleanup();}
 });
 test('a new RC.3 journal is checked in its own snapshot while status reads the original physical signer ledger',async()=>{

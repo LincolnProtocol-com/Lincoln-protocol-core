@@ -11,6 +11,7 @@ import {fileURLToPath} from 'node:url';
 import {getAddress,isAddress,getContractAddress,encodeDeployData} from 'viem';
 import {checkCore} from '../../releases/rc3/scripts/core/check.mjs';
 import {deploymentSpecs,linkMainnetBytecode,normalizeAdoptedDeployments} from '../../releases/rc3/scripts/phase2-mainnet/deploy.mjs';
+import {verifyMainnetLimitsState} from './mainnet-limits.mjs';
 
 const ROOT=fileURLToPath(new URL('../../',import.meta.url)),run=promisify(execFile);
 export const RC3_CANDIDATE_TAG='v0.1.0-rc.3';
@@ -84,7 +85,7 @@ export function configureRC3Operations({config,operations,releaseSHA256=RC3_RELE
 }
 
 /** No lock is created and no journal is rewritten. Never return signed bytes. */
-export async function inspectRC3Continuation({root=ROOT,operations}={}){
+export async function inspectRC3Continuation({root=ROOT,operations,verifyLimitsState=verifyMainnetLimitsState,allowPendingAmendment=false}={}){
   root=await fs.realpath(root);const c=operations.continuation,address=operations.deployer.address;
   const signerDirectory=await directory(path.join(root,c.sharedSignerRelativePath)),signerStat=await fs.lstat(signerDirectory);
   need((signerStat.mode&0o077)===0&&(typeof process.getuid!=='function'||signerStat.uid===process.getuid()),'RC3_PRIVATE_DIRECTORY_PERMISSIONS_INVALID');
@@ -97,7 +98,8 @@ export async function inspectRC3Continuation({root=ROOT,operations}={}){
   need(state?.schema==='phase2-mainnet-signer/v1'&&state.chainId===4663&&same(state.address,address)
     &&state.genesisHash===c.genesisHash&&journal.value.schema==='phase2-mainnet-deployment/v1'&&pins?.planId===c.planId
     &&same(pins.deployer,address)&&pins.genesisHash===c.genesisHash,'RC3_SOURCE_IDENTITY_MISMATCH');
-  for(const [key,value]of Object.entries(c.limits))need(state[key]===value&&pins[key]===value,'RC3_SOURCE_LIMITS_MISMATCH');
+  const limitState=await verifyLimitsState({root,operations,ledger:state,sourceJournal:journal.value,
+    ledgerDigest:ledger.digest,sourceJournalDigest:journal.digest,allowPending:allowPendingAmendment});
   need(Array.isArray(state.entries)&&new Set(state.entries.map(e=>e.id)).size===state.entries.length&&Array.isArray(journal.value.steps)
     &&new Set(journal.value.steps.map(e=>e.id)).size===journal.value.steps.length
     &&new Set(journal.value.steps.map(e=>e.reservationId)).size===journal.value.steps.length,'RC3_SOURCE_ENTRIES_INVALID');
@@ -113,9 +115,10 @@ export async function inspectRC3Continuation({root=ROOT,operations}={}){
   }
   const unresolved=state.entries.filter(e=>['unknown','broadcasting','signed','submitted'].includes(e.status)
     ||!['confirmed','reverted','cancelled'].includes(e.status));
-  return {sharedSignerDirectory:signerDirectory,adoptedDeployments:structuredClone(c.adoptedDeployments),limits:structuredClone(c.limits),
+  return {sharedSignerDirectory:signerDirectory,adoptedDeployments:structuredClone(c.adoptedDeployments),limits:limitState.limits,
+    originalLimits:structuredClone(c.limits),limitsAmendment:limitState.amendment,pendingLimitsAmendment:limitState.pending,
     sourceLedgerDigest:ledger.digest,sourceJournalDigest:journal.digest,
-    readiness:{blocked:unresolved.length>0,code:unresolved.length?'ACCOUNT_UNKNOWN_BROADCAST':null,
+    readiness:{blocked:limitState.pending||unresolved.length>0,code:limitState.pending?'MAINNET_LIMITS_AMENDMENT_INCOMPLETE':unresolved.length?'ACCOUNT_UNKNOWN_BROADCAST':null,
       unresolved:unresolved.map(e=>({hash:e.hash??null,nonce:e.nonce,status:e.status}))}};
 }
 
@@ -124,6 +127,7 @@ export async function inspectRC3Continuation({root=ROOT,operations}={}){
  * every hash-bearing or foreign reservation remains blocked. No state changes.
  */
 async function unsignedPreparedReadiness({root,output,operations,effective,continuation}){
+  if(continuation.pendingLimitsAmendment)return continuation.readiness;
   if(!continuation.readiness.blocked)return continuation.readiness;
   try{
     const state=parseStore(await regular(path.join(continuation.sharedSignerDirectory,'signer.json'),{privateFile:true}),
@@ -206,7 +210,7 @@ export async function readRC3Archive({root=ROOT}={}){
 /** Injected archive/check dependencies are for isolated synthetic-file tests.
  * The CLI below always constructs this with the fixed production defaults. */
 export function createMainnetRC3Operator({verifyCandidate=async({root})=>checkCore({root:path.join(root,RC3_RELEASE_DIRECTORY)}),
-  archiveProvider=readRC3Archive,releaseSHA256=RC3_RELEASE_SHA256}={}){
+  archiveProvider=readRC3Archive,releaseSHA256=RC3_RELEASE_SHA256,verifyLimitsState=verifyMainnetLimitsState}={}){
   async function inputs(root){
     root=await fs.realpath(root);await verifyCandidate({root});
     const operationsBytes=await regular(path.join(root,RC3_OPERATIONS_FILE)),operations=JSON.parse(operationsBytes);
@@ -228,7 +232,7 @@ export function createMainnetRC3Operator({verifyCandidate=async({root})=>checkCo
     filesSHA256:sha(JSON.stringify(input.files)),releaseManifest:RC3_RELEASE_MANIFEST,releaseManifestSHA256:releaseSHA256});
   async function prepare({root=ROOT}={}){
     const value=await inputs(root);root=value.root;const {operations,operationsBytes,originalConfig,effective}=value;
-    const continuation=await inspectRC3Continuation({root,operations}),source=await archive(root);
+    const continuation=await inspectRC3Continuation({root,operations,verifyLimitsState}),source=await archive(root);
     await ensureDirectory(path.join(root,'.phase1-private'));await ensureDirectory(path.join(root,'.phase1-private/mainnet-deployments'));
     const output=path.join(root,DEFAULT_RC3_DEPLOYMENT_DIRECTORY);
     try{await fs.mkdir(output,{mode:0o700});}catch(error){if(error.code==='EEXIST')throw Object.assign(new Error('RC3_SNAPSHOT_ALREADY_EXISTS'),{code:'RC3_SNAPSHOT_ALREADY_EXISTS'});throw error;}
@@ -241,23 +245,23 @@ export function createMainnetRC3Operator({verifyCandidate=async({root})=>checkCo
       configBeforeSHA256:sha(originalConfig),configAfterSHA256:sha(effectiveBytes),archivedPublicFiles:source.files.length,
       derivedOperationsSnapshot:true,verbatimFrozenRelease:false,signingEnabled:false,keystoreOwnershipVerified:false,
       deployer:operations.deployer,sharedSignerDirectory:continuation.sharedSignerDirectory,adoptedDeployments:continuation.adoptedDeployments,
-      limits:continuation.limits,sourceLedgerDigestAtPreparation:continuation.sourceLedgerDigest,
+      limits:continuation.originalLimits,sourceLedgerDigestAtPreparation:continuation.sourceLedgerDigest,
       sourceJournalDigestAtPreparation:continuation.sourceJournalDigest,preparedWithUnknownBroadcast:continuation.readiness.blocked,
       originalLedgerCopied:false,rawSignedTransactionsCopied:false,keysAccessed:false,transactionsSigned:0,transactionsBroadcast:0,
       routesDeployed:false,stocksDeployed:false,mainnetDeployed:false};
     await fs.writeFile(path.join(output,METADATA),encode(snapshot),{flag:'wx',mode:0o600});
     await verifyCandidate({root});return {directory:output,...snapshot,readiness:continuation.readiness};
   }
-  async function check({root=ROOT,limits}={}){
+  async function check({root=ROOT,limits,allowPendingAmendment=false}={}){
     const value=await inputs(root);root=value.root;const {operations,operationsBytes,originalConfig,effective}=value;
-    const continuation=await inspectRC3Continuation({root,operations}),source=await archive(root),output=await directory(path.join(root,DEFAULT_RC3_DEPLOYMENT_DIRECTORY));
+    const continuation=await inspectRC3Continuation({root,operations,verifyLimitsState,allowPendingAmendment}),source=await archive(root),output=await directory(path.join(root,DEFAULT_RC3_DEPLOYMENT_DIRECTORY));
     const snapshot=JSON.parse(await regular(path.join(output,METADATA),{privateFile:true}));
     need(snapshot.schema==='lincoln-mainnet-operations-snapshot/v2'&&snapshot.chainId===4663
       &&isDeepStrictEqual(snapshot.base,archiveIdentity(source))&&snapshot.operationsSHA256===sha(operationsBytes)
       &&snapshot.configBeforeSHA256===sha(originalConfig)&&snapshot.configAfterSHA256===sha(encode(effective))
       &&snapshot.archivedPublicFiles===source.files.length&&snapshot.derivedOperationsSnapshot===true&&snapshot.verbatimFrozenRelease===false
       &&snapshot.signingEnabled===false&&snapshot.sharedSignerDirectory===continuation.sharedSignerDirectory
-      &&isDeepStrictEqual(snapshot.adoptedDeployments,continuation.adoptedDeployments)&&isDeepStrictEqual(snapshot.limits,continuation.limits)
+      &&isDeepStrictEqual(snapshot.adoptedDeployments,continuation.adoptedDeployments)&&isDeepStrictEqual(snapshot.limits,continuation.originalLimits)
       &&snapshot.originalLedgerCopied===false&&snapshot.rawSignedTransactionsCopied===false&&snapshot.keysAccessed===false
       &&snapshot.transactionsSigned===0&&snapshot.transactionsBroadcast===0,'RC3_SNAPSHOT_METADATA_MISMATCH');
     for(const entry of source.files){
@@ -268,7 +272,8 @@ export function createMainnetRC3Operator({verifyCandidate=async({root})=>checkCo
     const readiness=await unsignedPreparedReadiness({root,output,operations,effective,continuation});
     return {directory:output,account:operations.deployer.signingAccount,checkedPublicFiles:source.files.length,
       sharedSignerDirectory:continuation.sharedSignerDirectory,adoptedDeployments:continuation.adoptedDeployments,
-      limits:continuation.limits,readiness,keysAccessed:false,transactionsBroadcast:0};
+      limits:continuation.limits,originalLimits:continuation.originalLimits,limitsAmendment:continuation.limitsAmendment,
+      readiness,keysAccessed:false,transactionsBroadcast:0};
   }
   async function plan({root=ROOT}={}){
     const {operations}=await inputs(root);

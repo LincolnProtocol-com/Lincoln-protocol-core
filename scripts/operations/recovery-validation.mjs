@@ -102,10 +102,17 @@ export function sanitizeBroadcastError(error){
   if(code===undefined)for(const item of chain){
     const value=ownValue(item,'code');if(typeof value==='string'&&/^[A-Z][A-Z0-9_-]{0,63}$/.test(value)){code=value;break;}
   }
-  // Generic viem wrappers must not hide a nested node reason such as nonce too
-  // low. Never inspect `details` or a request object to find that reason.
-  const generic=/^(?:an? (?:unknown|internal) (?:RPC )?error (?:occurred|was received)|RPC request failed|HTTP request failed|request failed|unknown error)[.!]?$/i;
-  const candidates=[...chain.map(item=>safeMessage(ownValue(item,'shortMessage'))),
+  // viem maps all -32000 replies to one generic InvalidInputRpcError. The
+  // deepest literal RPC cause retains the node's own code/message without the
+  // signed request bytes found in wrapper details/body. Never inspect those
+  // fields or invoke accessors to recover the node reason.
+  const literalMessages=chain.slice(1).reverse().filter(item=>{
+    const value=ownValue(item,'code');
+    return ownValue(item,'shortMessage')===undefined&&(typeof value==='number'&&Number.isSafeInteger(value)
+      ||typeof value==='string'&&/^-?[0-9]{1,10}$/.test(value));
+  }).map(item=>safeMessage(ownValue(item,'message')));
+  const generic=/^(?:an? (?:unknown|internal) (?:RPC )?error (?:occurred|was received)|RPC request failed|HTTP request failed|request failed|unknown error|Missing or invalid parameters|Invalid parameters were provided to the RPC method)[.!]?$/i;
+  const candidates=[...literalMessages,...chain.map(item=>safeMessage(ownValue(item,'shortMessage'))),
     ...chain.slice(1).map(item=>safeMessage(ownValue(item,'message'))),safeMessage(ownValue(error,'message'))].filter(Boolean);
   const shortMessage=candidates.find(message=>!generic.test(message))??candidates[0]??'Broadcast RPC failed; outcome is unknown.';
   return {...(code===undefined?{}:{code}),shortMessage};

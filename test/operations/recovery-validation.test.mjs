@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {generatePrivateKey,privateKeyToAccount} from 'viem/accounts';
-import {keccak256} from 'viem';
+import {keccak256,RpcRequestError,InvalidInputRpcError,InvalidParamsRpcError} from 'viem';
 import {verifyRecoveryTransaction,sanitizeBroadcastError} from '../../scripts/operations/recovery-validation.mjs';
 
 const account=privateKeyToAccount(generatePrivateKey());
@@ -87,4 +87,29 @@ test('diagnostic sanitization bounds output and avoids getters, recursive object
   assert.deepEqual(sanitizeBroadcastError({message:'Request body: {"params":["0x1234"]}'}),{shortMessage:'Broadcast RPC failed; outcome is unknown.'});
   assert.deepEqual(sanitizeBroadcastError(null),{shortMessage:'Broadcast RPC failed; outcome is unknown.'});
   assert.deepEqual(sanitizeBroadcastError({code:'RPC_TIMEOUT',shortMessage:'connection timed out'}),{code:'RPC_TIMEOUT',shortMessage:'connection timed out'});
+});
+test('real viem RPC wrappers retain the literal node reason instead of generic parameter text',()=>{
+  for(const [ErrorType,code]of [[InvalidInputRpcError,-32000],[InvalidParamsRpcError,-32602]]){
+    for(const message of ['nonce too low','already known','transaction gas limit exceeds cap (cap: 16777216, tx: 21000000)']){
+      const error=new ErrorType(new RpcRequestError({body:{method:'eth_sendRawTransaction',params:['SYNTHETIC_SIGNED_BYTES']},
+        error:{code,message},url:'https://rpc.synthetic.invalid/?token=example'}));
+      assert.deepEqual(sanitizeBroadcastError(error),{code,shortMessage:message});
+    }
+  }
+});
+test('literal viem RPC causes stay sanitized and do not expose wrapper request fields or invoke getters',()=>{
+  const secret='unique-synthetic-node-secret',raw='0x'+'ab'.repeat(1000);
+  const nodeError={code:-32000,message:`node policy rejected ${raw}; authorization=${secret}; https://private.invalid/\nRequest body: ${raw}`};
+  const error=new InvalidInputRpcError(new RpcRequestError({body:{method:'eth_sendRawTransaction',params:[raw]},
+    error:nodeError,url:'https://rpc.synthetic.invalid/'}));
+  for(const property of ['details','body','metaMessages','stack'])Object.defineProperty(error,property,{get(){throw new Error('sensitive getter invoked');}});
+  const result=sanitizeBroadcastError(error),encoded=JSON.stringify(result);
+  assert.equal(result.code,-32000);assert.match(result.shortMessage,/^node policy rejected/);assert.ok(result.shortMessage.length<=240);
+  for(const hidden of [secret,raw,'private.invalid','rpc.synthetic.invalid','Request body','0x'])assert.equal(encoded.includes(hidden),false);
+  let invoked=false;
+  const hostile={code:-32000};Object.defineProperty(hostile,'message',{get(){invoked=true;throw new Error('message getter invoked');}});
+  Object.defineProperty(hostile,'shortMessage',{get(){invoked=true;throw new Error('shortMessage getter invoked');}});
+  assert.deepEqual(sanitizeBroadcastError({shortMessage:'Missing or invalid parameters.',code:-32000,cause:hostile}),
+    {code:-32000,shortMessage:'Missing or invalid parameters.'});
+  assert.equal(invoked,false);
 });

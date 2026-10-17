@@ -12,6 +12,7 @@ import {checkPublicReview} from '../review/run.mjs';
 import {openServiceStore} from '../../releases/rc2/src/phase1-service/store.mjs';
 import {createMainnetSigner,mainnetSignerDirectory,MAINNET_RPC} from '../../releases/rc2/src/phase2-mainnet/signer.mjs';
 import {verifyRecoveryTransaction,sanitizeBroadcastError} from './recovery-validation.mjs';
+import {verifyMainnetRecoveryLimits} from './mainnet-limits.mjs';
 const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 const need=(ok,code)=>{if(!ok)throw Object.assign(new Error(code),{code});};
 const same=(a,b)=>typeof a==='string'&&typeof b==='string'&&a.toLowerCase()===b.toLowerCase();
@@ -46,12 +47,16 @@ async function continuationJournal({root,planId,directory,address,initial,valida
  return {directory:path.join(checked.directory,'.phase1-private/phase2-mainnet/deployments',planId),artifactSHA256:release.coreArtifactSHA256};
 }
 export async function recoverMainnetBroadcast({root=ROOT,hash,rebroadcast=false,client,
- validateSnapshot=checkDeploymentSnapshot,validateContinuationSnapshot=checkRC3Deployment}={}){
+ validateSnapshot=checkDeploymentSnapshot,validateContinuationSnapshot=checkRC3Deployment,validateLimits=verifyMainnetRecoveryLimits}={}){
  need(/^0x[0-9a-fA-F]{64}$/.test(hash??'')&&typeof rebroadcast==='boolean','USAGE_RECOVER_MAINNET_BROADCAST');
  hash=hash.toLowerCase();
  root=await fs.realpath(root);
  const snapshot=await validateSnapshot({root}),address=snapshot.address,directory=mainnetSignerDirectory({root:snapshot.directory,address});
  const initial=await readSigner(directory,address),matching=initial?.entries?.filter(entry=>same(entry.hash,hash));
+ // A pending amendment must finish explicitly before receipt reconciliation can
+ // change its preimage. New limits require the applied approved-policy proof.
+ const limitState=await validateLimits({root,state:initial});
+ need(limitState&&['budgetWei','maxFeePerGasWei','reserveWei'].every(key=>limitState.limits?.[key]===initial[key]),'RECOVERY_LIMITS_MISMATCH');
  need(matching?.length===1,'RECOVERY_HASH_NOT_IN_LEDGER');
  const original=matching[0],match=/^deploy:([0-9a-f]{64}):(.+)$/.exec(original.id);
  need(match,'RECOVERY_DEPLOYMENT_INTENT_REQUIRED');
@@ -75,13 +80,14 @@ export async function recoverMainnetBroadcast({root=ROOT,hash,rebroadcast=false,
  try{
   store=await openServiceStore({directory,identity:`lincoln-mainnet-signer:4663:${address.toLowerCase()}`,filename:'signer.json'});
   const state=await store.read(),journal=await deploymentStore.read(),entry=state.entries.find(e=>same(e.hash,hash));
+  const journalLimits=planId===PARENT_PLAN_ID?limitState.originalLimits:limitState.limits;
   need(state.schema==='phase2-mainnet-signer/v1'&&state.chainId===4663&&same(state.address,address)
    &&state.genesisHash===initial.genesisHash&&state.budgetWei===initial.budgetWei
    &&state.maxFeePerGasWei===initial.maxFeePerGasWei&&state.reserveWei===initial.reserveWei,'RECOVERY_LEDGER_CHANGED');
   need(entry&&journal?.schema==='phase2-mainnet-deployment/v1'&&journal.pins?.planId===planId
    &&same(journal.pins.deployer,address)&&journal.pins.genesisHash===state.genesisHash
-   &&journal.pins.budgetWei===state.budgetWei&&journal.pins.maxFeePerGasWei===state.maxFeePerGasWei
-   &&journal.pins.reserveWei===state.reserveWei,'RECOVERY_JOURNAL_MISMATCH');
+   &&journal.pins.budgetWei===journalLimits.budgetWei&&journal.pins.maxFeePerGasWei===journalLimits.maxFeePerGasWei
+   &&journal.pins.reserveWei===journalLimits.reserveWei,'RECOVERY_JOURNAL_MISMATCH');
   if(continuation)need(journal.pins.artifactSHA256===continuation.artifactSHA256
    &&journal.pins.signerDirectory===directory,'RECOVERY_CONTINUATION_JOURNAL_MISMATCH');
   const step=journal.steps.find(s=>s.reservationId===entry.id);

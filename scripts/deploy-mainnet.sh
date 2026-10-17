@@ -68,6 +68,6 @@ IFS= read -r -s -p 'Keystore password (local only): ' wallet_password
 printf '\n'
 printf '%s' "$wallet_password" > "$password_file"
 unset wallet_password
-node "$snapshot/scripts/phase2-mainnet/deploy.mjs" --deploy \
+node "$root_dir/scripts/operations/deploy-mainnet.mjs" --deploy \
   --account "$account" --password-file "$password_file" \
   --budget-wei "$budget" --max-fee-per-gas-wei "$price" --reserve-wei "$reserve"

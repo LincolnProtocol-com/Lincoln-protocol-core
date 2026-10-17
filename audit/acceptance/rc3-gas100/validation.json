@@ -1,0 +1,107 @@
+{
+  "schema": "lincoln-mainnet-gas-policy-validation/v1",
+  "recordedAt": "2026-10-17T05:22:19.543139+00:00",
+  "passed": true,
+  "scope": "root operational tooling tests only",
+  "rootTests": {
+    "passed": 106,
+    "failed": 0,
+    "skipped": 0,
+    "log": {
+      "path": "audit/acceptance/rc3-gas100/root-tests.log",
+      "sha256": "236721ece185ce7d6191ae84704bc243bde3d2fdb625b1e79ba7e2db2aa98659"
+    }
+  },
+  "inputs": [
+    {
+      "path": "config/mainnet-gas-policy-20261017.json",
+      "sha256": "bf0401b295da43e7fda411c86b056246ca944e8ca2be92eff73932580c8bb770"
+    },
+    {
+      "path": "scripts/deploy-mainnet.sh",
+      "sha256": "cb4e5cd1dfe14ccb7096d2086522144537c8825af89a0750fd782ca60833118a"
+    },
+    {
+      "path": "scripts/operations/deploy-mainnet.mjs",
+      "sha256": "2459d6175e081aa8ccdf95b50777d30464f0f4c988fd5d708ed62b58c3b0013a"
+    },
+    {
+      "path": "scripts/operations/mainnet-limits.mjs",
+      "sha256": "40c9367022b105f77058653177a232e9c8befd80deb47152b2e36792b48cb273"
+    },
+    {
+      "path": "scripts/operations/mainnet-rc3.mjs",
+      "sha256": "b534d9ac448425705be8f361058606e43dfadc3444b53bf08533b36ca7c154dd"
+    },
+    {
+      "path": "scripts/operations/recover-mainnet-broadcast.mjs",
+      "sha256": "d48c2b88ba4ab0a1de9cdc67bdff26f8b16916d11804600ebcaee89101f530c7"
+    },
+    {
+      "path": "scripts/operations/recovery-validation.mjs",
+      "sha256": "2c10fa3f9ded52aed2b273a74cfd61caa3c72b8a3e1c606d91de466fdb0d573d"
+    },
+    {
+      "path": "test/operations/deploy-mainnet.test.mjs",
+      "sha256": "df638521c4022f72d34bf7af6a4500c4c32a40f496663bfe1549d1a34250e040"
+    },
+    {
+      "path": "test/operations/mainnet-limits.test.mjs",
+      "sha256": "b928c90bd964dc0db527df65fb6cc82d41a7dcd10cffb4194cc85bbcf5cee7f7"
+    },
+    {
+      "path": "test/operations/recovery-validation.test.mjs",
+      "sha256": "e78f3d98e02cadd3e8e65295f9e3f71aeb681c36e315c0794acffcf0c202e9da"
+    },
+    {
+      "path": "test/operations/recover-mainnet-broadcast.test.mjs",
+      "sha256": "2131e62f149b9561a0b3ae61b843538406c50105e8bd0195212690bfb51c9775"
+    }
+  ],
+  "policy": {
+    "path": "config/mainnet-gas-policy-20261017.json",
+    "sha256": "bf0401b295da43e7fda411c86b056246ca944e8ca2be92eff73932580c8bb770"
+  },
+  "policyMultiplier": "100",
+  "cumulativeBudgetWei": "65000000000000000",
+  "maxFeePerGasWei": "4000000000",
+  "reserveWei": "3000000000000000",
+  "amendment": {
+    "testsPassed": 12,
+    "interruptionWindowsVerified": 6,
+    "originalSignerEntriesPreserved": true,
+    "originalRC2JournalPreserved": true,
+    "pendingAmendmentsFailClosed": true,
+    "explicitApplyRequired": true,
+    "idempotent": true
+  },
+  "broadcast": {
+    "actualViemWrapperLiteralTested": true,
+    "sensitivePayloadsRedacted": true,
+    "httpRetryCount": 0,
+    "singleSendPerInvocation": true,
+    "existingPreparedAndSignedIntentsNotRepriced": true
+  },
+  "frozenCandidate": {
+    "path": "releases/rc3/artifacts/phase2-mainnet/release-candidate-20261017-r3.json",
+    "sha256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d"
+  },
+  "reviewManifest": {
+    "path": "review-manifest.json",
+    "sha256": "a62bb50f41156efb39705bdf91aaccf1bc4a3a96e94ee22928d2f515e8b49678"
+  },
+  "frozenScopesUnchanged": [
+    "releases/rc2",
+    "releases/rc3",
+    "contracts",
+    "zk",
+    "abi",
+    "review-manifest.json"
+  ],
+  "publicTransactionsInTests": 0,
+  "productionKeysUsedInTests": false,
+  "limitations": [
+    "No new proof or Foundry claim is made for this root-only tooling change; unchanged candidate evidence remains separately identified.",
+    "Production receipt recovery and user deployment are separate from the synthetic test counts."
+  ]
+}

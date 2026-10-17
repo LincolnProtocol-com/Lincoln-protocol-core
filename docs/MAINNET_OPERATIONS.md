@@ -1,6 +1,6 @@
 # Local mainnet deployment
 
-**Mainnet core deployment is incomplete.** Both original Poseidon library transactions are now confirmed in the shared signer ledger, including the explicitly recovered RC.2 PoseidonT4 transaction. The RC.3 verifiers, registry and ETH/USDG pools remain to be deployed. Do not resume the old `scripts/deploy.sh --deploy`: that snapshot would deploy pools with the superseded 24-hour cap-increase delay. A new directory must never bypass an outstanding nonce or gas reservation.
+**Mainnet core deployment is incomplete.** Both original Poseidon library transactions are now confirmed in the shared signer ledger, including the explicitly recovered RC.2 PoseidonT4 transaction. The first RC.3 JoinSplit verifier is also confirmed. The exit verifier, registry and ETH/USDG pools remain to be deployed. Do not resume the old `scripts/deploy.sh --deploy`: that snapshot would deploy pools with the superseded 24-hour cap-increase delay. A new directory must never bypass an outstanding nonce or gas reservation.
 
 The current candidate is **`v0.1.0-rc.3`**. It changes `CAP_INCREASE_DELAY` to **12 hours**, leaving immediate reductions and exit availability unchanged. The original tag and `releases/rc2/` remain untouched. The final circuits, proving keys and verifier identities are retained; the pool bytecode is newly compiled and needs its own acceptance evidence.
 
@@ -29,16 +29,29 @@ The base deployment comprises two Poseidon libraries, two final verifiers, one a
 
 The user approved [seven stock-token caps](STOCK_CAPS.md), and `releases/rc3/config/phase2-mainnet.json` binds the same dataset by path and SHA-256. Values are configured; per-asset mainnet fork and two-way DEX checks remain pending. `stockPoolsEnabled` stays false and `stocksRouteActivationPending` stays true. Approved caps must not silently expand the default deployment.
 
+Apply the approved local limit amendment once before using the new limits (it signs and broadcasts nothing):
+
+```sh
+node scripts/operations/mainnet-limits.mjs --status
+node scripts/operations/mainnet-limits.mjs --apply
+```
+
+The original RC.2 journal, prepared public snapshot and all prior transaction entries remain intact. A private write-ahead amendment record retains the original limits and store digests; interruptions fail closed until explicit recovery with the same command. Applying the same completed amendment again is idempotent.
+
 The new explicit command is `bash scripts/deploy-mainnet.sh --deploy`, with all spending limits supplied by the local operator. For example, when the local operator resumes after reconciliation/preparation pass:
 
 ```sh
 bash scripts/deploy-mainnet.sh --deploy \
-  --budget-wei 1100000000000000 \
-  --max-fee-per-gas-wei 40000000 \
+  --budget-wei 65000000000000000 \
+  --max-fee-per-gas-wei 4000000000 \
   --reserve-wei 3000000000000000
 ```
 
-This example is a **cumulative** gas budget of 0.0011 ETH, gas-price ceiling of 0.04 gwei and reserve of 0.003 ETH; previous confirmed costs and unresolved reservations remain counted. It is not a new allowance, current-price assertion or agent spending authorization. The prepared snapshot must be checked with the current receipt and ledger state before the operator chooses final limits. Incorrect chain/dependencies, changed source or recovered sender, insufficient budget/balance and unknown prior broadcasts must fail closed.
+This example uses the separately approved **cumulative** gas budget of 0.065 ETH, gas-price ceiling of 4 gwei and reserve of 0.003 ETH; previous confirmed costs and unresolved reservations remain counted. The amended limits do not reset the budget ledger or assert a current market price. The prepared snapshot must be checked with the current receipt and ledger state before the operator chooses final limits. Incorrect chain/dependencies, changed source or recovered sender, insufficient budget/balance and unknown prior broadcasts must fail closed.
+
+The current root runner loads the verified tagged snapshot and retains the same frozen deployment engine and shared signer ledger. For a **new reservation**, the separately approved gas policy multiplies the fresh RPC gas-price quote by **100**, capped at **4 gwei**. The approved cumulative deployment budget is **0.065 ETH**, including all historical costs, and the retained reserve remains **0.003 ETH**. The policy and explicit CLI limits must match an applied, auditable limit amendment in the original shared ledger. If the quote itself exceeds that cap, it refuses to sign. The cumulative budget and retained reserve are checked as before. Previously prepared or signed reservations are not repriced, and unknown transactions remain blocked.
+
+The HTTP transport sends a signed transaction once with retries disabled. Its error boundary extracts and sanitizes the node's literal reason before the frozen signer records it. In viem, `-32000` alone maps to the generic text `Missing or invalid parameters`; that text does not establish a malformed local command or the actual rejection reason. No transaction is automatically replaced or resent.
 
 The command prompts for the keystore password only in the operator's interactive terminal. An owner-only temporary password file is removed on normal exit or handled signals; a crash or `SIGKILL` can leave it for local cleanup. No password belongs in chat, command arguments or Git. Existing testnet EC2 services are not changed by local core deployment.
 

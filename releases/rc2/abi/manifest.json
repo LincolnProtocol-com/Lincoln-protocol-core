@@ -1,0 +1,2262 @@
+{
+  "bytecodeHashEncoding": "SHA256 of the artifact UTF-8 hex/template string, including its 0x prefix when present.",
+  "chainId": 4663,
+  "contracts": [
+    {
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 17440,
+        "bytecodeTemplateSHA256": "32b7f06693ca28f16b5c877869931ad2fbd3451014b3d89adadb46591bb1ac94",
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "coreRelease": {
+          "build": {
+            "path": "artifacts/phase2-mainnet/contracts.json",
+            "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+          },
+          "manifests": {
+            "holder-exit": {
+              "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+              "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+              "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+            },
+            "joinsplit": {
+              "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+              "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+              "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+            }
+          },
+          "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9"
+        },
+        "deployedBytecodeTemplateBytes": 13970,
+        "deployedBytecodeTemplateSHA256": "9796028bb6f91b0d7a4f36dd64ac2d99d248e50979c8705c1c10b0f23555f6ab",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "experimental": false,
+        "feeModel": {
+          "denominator": 10000,
+          "immutableRateAndTreasury": true,
+          "maxServiceFee": "proof-bound absolute maximum in TOKEN_OUT base units",
+          "maxServiceFeeBps": 100,
+          "minAmountOut": "net amount deposited into the target privacy pool",
+          "nativeOutputServiceFeeAsset": "wrapped native",
+          "serviceFee": "floor(measuredGrossOutput * FEE_BPS / 10000)"
+        },
+        "immutableReferences": {
+          "830": [
+            {
+              "length": 32,
+              "start": 36
+            },
+            {
+              "length": 32,
+              "start": 1681
+            },
+            {
+              "length": 32,
+              "start": 2063
+            },
+            {
+              "length": 32,
+              "start": 4294
+            },
+            {
+              "length": 32,
+              "start": 9699
+            },
+            {
+              "length": 32,
+              "start": 11717
+            }
+          ],
+          "833": [
+            {
+              "length": 32,
+              "start": 3679
+            },
+            {
+              "length": 32,
+              "start": 4215
+            },
+            {
+              "length": 32,
+              "start": 4430
+            },
+            {
+              "length": 32,
+              "start": 5963
+            },
+            {
+              "length": 32,
+              "start": 6071
+            },
+            {
+              "length": 32,
+              "start": 6134
+            },
+            {
+              "length": 32,
+              "start": 10706
+            },
+            {
+              "length": 32,
+              "start": 11756
+            },
+            {
+              "length": 32,
+              "start": 13362
+            },
+            {
+              "length": 32,
+              "start": 13421
+            }
+          ],
+          "835": [
+            {
+              "length": 32,
+              "start": 1462
+            },
+            {
+              "length": 32,
+              "start": 1522
+            },
+            {
+              "length": 32,
+              "start": 2200
+            },
+            {
+              "length": 32,
+              "start": 2525
+            },
+            {
+              "length": 32,
+              "start": 2576
+            },
+            {
+              "length": 32,
+              "start": 3843
+            },
+            {
+              "length": 32,
+              "start": 4868
+            },
+            {
+              "length": 32,
+              "start": 5359
+            },
+            {
+              "length": 32,
+              "start": 5526
+            },
+            {
+              "length": 32,
+              "start": 8111
+            },
+            {
+              "length": 32,
+              "start": 10420
+            },
+            {
+              "length": 32,
+              "start": 11796
+            }
+          ],
+          "838": [
+            {
+              "length": 32,
+              "start": 134
+            },
+            {
+              "length": 32,
+              "start": 1263
+            },
+            {
+              "length": 32,
+              "start": 1575
+            },
+            {
+              "length": 32,
+              "start": 3236
+            },
+            {
+              "length": 32,
+              "start": 3353
+            },
+            {
+              "length": 32,
+              "start": 5412
+            },
+            {
+              "length": 32,
+              "start": 5606
+            },
+            {
+              "length": 32,
+              "start": 7425
+            },
+            {
+              "length": 32,
+              "start": 7519
+            },
+            {
+              "length": 32,
+              "start": 9335
+            },
+            {
+              "length": 32,
+              "start": 11836
+            }
+          ],
+          "840": [
+            {
+              "length": 32,
+              "start": 10545
+            },
+            {
+              "length": 32,
+              "start": 11876
+            }
+          ],
+          "842": [
+            {
+              "length": 32,
+              "start": 625
+            }
+          ],
+          "844": [
+            {
+              "length": 32,
+              "start": 10838
+            }
+          ],
+          "846": [
+            {
+              "length": 32,
+              "start": 2111
+            },
+            {
+              "length": 32,
+              "start": 10203
+            }
+          ],
+          "848": [
+            {
+              "length": 32,
+              "start": 3190
+            },
+            {
+              "length": 32,
+              "start": 9516
+            },
+            {
+              "length": 32,
+              "start": 13316
+            }
+          ],
+          "851": [
+            {
+              "length": 32,
+              "start": 554
+            },
+            {
+              "length": 32,
+              "start": 2233
+            },
+            {
+              "length": 32,
+              "start": 2609
+            },
+            {
+              "length": 32,
+              "start": 2680
+            },
+            {
+              "length": 32,
+              "start": 3902
+            },
+            {
+              "length": 32,
+              "start": 7171
+            },
+            {
+              "length": 32,
+              "start": 7632
+            }
+          ],
+          "854": [
+            {
+              "length": 32,
+              "start": 1406
+            },
+            {
+              "length": 32,
+              "start": 2832
+            },
+            {
+              "length": 32,
+              "start": 3114
+            },
+            {
+              "length": 32,
+              "start": 3435
+            },
+            {
+              "length": 32,
+              "start": 4000
+            },
+            {
+              "length": 32,
+              "start": 4495
+            },
+            {
+              "length": 32,
+              "start": 5200
+            },
+            {
+              "length": 32,
+              "start": 5997
+            },
+            {
+              "length": 32,
+              "start": 6168
+            },
+            {
+              "length": 32,
+              "start": 6336
+            },
+            {
+              "length": 32,
+              "start": 6635
+            },
+            {
+              "length": 32,
+              "start": 10773
+            },
+            {
+              "length": 32,
+              "start": 13474
+            }
+          ],
+          "856": [
+            {
+              "length": 32,
+              "start": 9760
+            },
+            {
+              "length": 32,
+              "start": 11918
+            }
+          ],
+          "858": [
+            {
+              "length": 32,
+              "start": 2758
+            },
+            {
+              "length": 32,
+              "start": 3489
+            },
+            {
+              "length": 32,
+              "start": 9980
+            }
+          ],
+          "860": [
+            {
+              "length": 32,
+              "start": 9394
+            },
+            {
+              "length": 32,
+              "start": 11958
+            }
+          ],
+          "862": [
+            {
+              "length": 32,
+              "start": 2926
+            },
+            {
+              "length": 32,
+              "start": 9606
+            },
+            {
+              "length": 32,
+              "start": 12000
+            },
+            {
+              "length": 32,
+              "start": 12365
+            }
+          ],
+          "864": [
+            {
+              "length": 32,
+              "start": 1353
+            },
+            {
+              "length": 32,
+              "start": 4078
+            },
+            {
+              "length": 32,
+              "start": 5147
+            },
+            {
+              "length": 32,
+              "start": 6283
+            },
+            {
+              "length": 32,
+              "start": 6557
+            },
+            {
+              "length": 32,
+              "start": 10639
+            },
+            {
+              "length": 32,
+              "start": 12041
+            }
+          ]
+        },
+        "inputSHA256": "830c69e987619cf5c2fa382c50e0100fab3eb3fe3461b48296c27be530297f16",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-fees-production-build/v1",
+        "sourceDerivation": {
+          "changes": [
+            "mainnet-only-chain-guard",
+            "final-core-interface-imports"
+          ],
+          "derivedSourceSHA256": "cf718c0a4b34a03c7beda661400d6cff4a0acaddac4bbbdc1b03e8ce87c66244",
+          "source": "protocol/phase2-fees/contracts/Phase2FeeRouteAdapter.sol",
+          "sourceSHA256": "9ffd41f9140295343225f2d9c4995a33c515e409460a4ec9ed5bbd7a05e7bfbd",
+          "target": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol"
+        },
+        "sourceSetSHA256": "0dd2fe9242978a3b4ae1b65a0dd31aa3344dae1017e120546d51b4c47d2a4253",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2FeeRouteAdapter",
+      "coverage": "complete-compiled-contract",
+      "entries": 54,
+      "group": "phase2-fees-mainnet",
+      "path": "abi/phase2-fees-mainnet/Phase2FeeRouteAdapter.json",
+      "source": {
+        "artifactKey": "Phase2FeeRouteAdapter",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-fees-mainnet/contracts.json",
+        "sha256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a",
+        "sourceName": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol"
+      }
+    },
+    {
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 17423,
+        "bytecodeTemplateSHA256": "e458d49f22ff916ef7d42077dd8b2acb0db87529971a71ce90ad1cc76493e57c",
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "coreRelease": {
+          "build": {
+            "path": "artifacts/phase2-mainnet/contracts.json",
+            "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+          },
+          "manifests": {
+            "holder-exit": {
+              "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+              "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+              "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+            },
+            "joinsplit": {
+              "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+              "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+              "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+            }
+          },
+          "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9"
+        },
+        "deployedBytecodeTemplateBytes": 13951,
+        "deployedBytecodeTemplateSHA256": "b42761075d64c51cb9ac7bd124fe8dd50a8baf417a9ef7c98937eac8ca874dfd",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "experimental": false,
+        "feeModel": {
+          "denominator": 10000,
+          "immutableRateAndTreasury": true,
+          "maxServiceFee": "proof-bound absolute maximum in TOKEN_OUT base units",
+          "maxServiceFeeBps": 100,
+          "minAmountOut": "net amount deposited into the target privacy pool",
+          "nativeOutputServiceFeeAsset": "wrapped native",
+          "serviceFee": "floor(measuredGrossOutput * FEE_BPS / 10000)"
+        },
+        "immutableReferences": {
+          "830": [
+            {
+              "length": 32,
+              "start": 36
+            },
+            {
+              "length": 32,
+              "start": 1681
+            },
+            {
+              "length": 32,
+              "start": 2063
+            },
+            {
+              "length": 32,
+              "start": 4275
+            },
+            {
+              "length": 32,
+              "start": 9680
+            },
+            {
+              "length": 32,
+              "start": 11698
+            }
+          ],
+          "833": [
+            {
+              "length": 32,
+              "start": 3660
+            },
+            {
+              "length": 32,
+              "start": 4196
+            },
+            {
+              "length": 32,
+              "start": 4411
+            },
+            {
+              "length": 32,
+              "start": 5944
+            },
+            {
+              "length": 32,
+              "start": 6052
+            },
+            {
+              "length": 32,
+              "start": 6115
+            },
+            {
+              "length": 32,
+              "start": 10687
+            },
+            {
+              "length": 32,
+              "start": 11737
+            },
+            {
+              "length": 32,
+              "start": 13343
+            },
+            {
+              "length": 32,
+              "start": 13402
+            }
+          ],
+          "835": [
+            {
+              "length": 32,
+              "start": 1462
+            },
+            {
+              "length": 32,
+              "start": 1522
+            },
+            {
+              "length": 32,
+              "start": 2200
+            },
+            {
+              "length": 32,
+              "start": 2506
+            },
+            {
+              "length": 32,
+              "start": 2557
+            },
+            {
+              "length": 32,
+              "start": 3824
+            },
+            {
+              "length": 32,
+              "start": 4849
+            },
+            {
+              "length": 32,
+              "start": 5340
+            },
+            {
+              "length": 32,
+              "start": 5507
+            },
+            {
+              "length": 32,
+              "start": 8092
+            },
+            {
+              "length": 32,
+              "start": 10401
+            },
+            {
+              "length": 32,
+              "start": 11777
+            }
+          ],
+          "838": [
+            {
+              "length": 32,
+              "start": 134
+            },
+            {
+              "length": 32,
+              "start": 1263
+            },
+            {
+              "length": 32,
+              "start": 1575
+            },
+            {
+              "length": 32,
+              "start": 3217
+            },
+            {
+              "length": 32,
+              "start": 3334
+            },
+            {
+              "length": 32,
+              "start": 5393
+            },
+            {
+              "length": 32,
+              "start": 5587
+            },
+            {
+              "length": 32,
+              "start": 7406
+            },
+            {
+              "length": 32,
+              "start": 7500
+            },
+            {
+              "length": 32,
+              "start": 9316
+            },
+            {
+              "length": 32,
+              "start": 11817
+            }
+          ],
+          "840": [
+            {
+              "length": 32,
+              "start": 10526
+            },
+            {
+              "length": 32,
+              "start": 11857
+            }
+          ],
+          "842": [
+            {
+              "length": 32,
+              "start": 625
+            }
+          ],
+          "844": [
+            {
+              "length": 32,
+              "start": 10819
+            }
+          ],
+          "846": [
+            {
+              "length": 32,
+              "start": 2111
+            },
+            {
+              "length": 32,
+              "start": 10184
+            }
+          ],
+          "848": [
+            {
+              "length": 32,
+              "start": 3171
+            },
+            {
+              "length": 32,
+              "start": 9497
+            },
+            {
+              "length": 32,
+              "start": 13297
+            }
+          ],
+          "851": [
+            {
+              "length": 32,
+              "start": 554
+            },
+            {
+              "length": 32,
+              "start": 2233
+            },
+            {
+              "length": 32,
+              "start": 2590
+            },
+            {
+              "length": 32,
+              "start": 2661
+            },
+            {
+              "length": 32,
+              "start": 3883
+            },
+            {
+              "length": 32,
+              "start": 7152
+            },
+            {
+              "length": 32,
+              "start": 7613
+            }
+          ],
+          "854": [
+            {
+              "length": 32,
+              "start": 1406
+            },
+            {
+              "length": 32,
+              "start": 2813
+            },
+            {
+              "length": 32,
+              "start": 3095
+            },
+            {
+              "length": 32,
+              "start": 3416
+            },
+            {
+              "length": 32,
+              "start": 3981
+            },
+            {
+              "length": 32,
+              "start": 4476
+            },
+            {
+              "length": 32,
+              "start": 5181
+            },
+            {
+              "length": 32,
+              "start": 5978
+            },
+            {
+              "length": 32,
+              "start": 6149
+            },
+            {
+              "length": 32,
+              "start": 6317
+            },
+            {
+              "length": 32,
+              "start": 6616
+            },
+            {
+              "length": 32,
+              "start": 10754
+            },
+            {
+              "length": 32,
+              "start": 13455
+            }
+          ],
+          "856": [
+            {
+              "length": 32,
+              "start": 9741
+            },
+            {
+              "length": 32,
+              "start": 11899
+            }
+          ],
+          "858": [
+            {
+              "length": 32,
+              "start": 2739
+            },
+            {
+              "length": 32,
+              "start": 3470
+            },
+            {
+              "length": 32,
+              "start": 9961
+            }
+          ],
+          "860": [
+            {
+              "length": 32,
+              "start": 9375
+            },
+            {
+              "length": 32,
+              "start": 11939
+            }
+          ],
+          "862": [
+            {
+              "length": 32,
+              "start": 2907
+            },
+            {
+              "length": 32,
+              "start": 9587
+            },
+            {
+              "length": 32,
+              "start": 11981
+            },
+            {
+              "length": 32,
+              "start": 12346
+            }
+          ],
+          "864": [
+            {
+              "length": 32,
+              "start": 1353
+            },
+            {
+              "length": 32,
+              "start": 4059
+            },
+            {
+              "length": 32,
+              "start": 5128
+            },
+            {
+              "length": 32,
+              "start": 6264
+            },
+            {
+              "length": 32,
+              "start": 6538
+            },
+            {
+              "length": 32,
+              "start": 10620
+            },
+            {
+              "length": 32,
+              "start": 12022
+            }
+          ]
+        },
+        "inputSHA256": "830c69e987619cf5c2fa382c50e0100fab3eb3fe3461b48296c27be530297f16",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-fees-production-build/v1",
+        "sourceDerivation": {
+          "changes": [
+            "mainnet-only-chain-guard",
+            "final-core-interface-imports"
+          ],
+          "derivedSourceSHA256": "cf718c0a4b34a03c7beda661400d6cff4a0acaddac4bbbdc1b03e8ce87c66244",
+          "source": "protocol/phase2-fees/contracts/Phase2FeeRouteAdapter.sol",
+          "sourceSHA256": "9ffd41f9140295343225f2d9c4995a33c515e409460a4ec9ed5bbd7a05e7bfbd",
+          "target": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol"
+        },
+        "sourceSetSHA256": "0dd2fe9242978a3b4ae1b65a0dd31aa3344dae1017e120546d51b4c47d2a4253",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2FeeRouter02Adapter",
+      "coverage": "complete-compiled-contract",
+      "entries": 54,
+      "group": "phase2-fees-mainnet",
+      "path": "abi/phase2-fees-mainnet/Phase2FeeRouter02Adapter.json",
+      "source": {
+        "artifactKey": "Phase2FeeRouter02Adapter",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-fees-mainnet/contracts.json",
+        "sha256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a",
+        "sourceName": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol"
+      }
+    },
+    {
+      "abiSHA256": "4fad9212460f2528b274bbdf5c1911e4690569227a8ea1e9737f991f4fb30f41",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 1808,
+        "bytecodeTemplateSHA256": "4598065f1d78642e5ad49bba441e68c3218c0de540116c4503c325fc6b56f384",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 1782,
+        "deployedBytecodeTemplateSHA256": "28d3161de07a0018609cff356eb79e8e5c7104ea7207b4700f6c4d692b051660",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "immutableReferences": {},
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2ASPExitVerifier",
+      "coverage": "complete-compiled-contract",
+      "entries": 1,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/Phase2ASPExitVerifier.json",
+      "source": {
+        "artifactKey": "Phase2ASPExitVerifier",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol"
+      }
+    },
+    {
+      "abiSHA256": "b48de91bf3da1ab0e4c9033a6d92dd4579c0f11336d2ba100a89a23fc5430e12",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 2490,
+        "bytecodeTemplateSHA256": "6731f6f3ec4dd72ad946c5c5c8a5725ab8b6deb9d8ea4688af28a78726622fbb",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 2464,
+        "deployedBytecodeTemplateSHA256": "c09ed6f7fa46bc0b25a62444fb1db642d720b39ce8f46e0f98d869ca14f34080",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "immutableReferences": {},
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2ASPJoinSplitVerifier",
+      "coverage": "complete-compiled-contract",
+      "entries": 1,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/Phase2ASPJoinSplitVerifier.json",
+      "source": {
+        "artifactKey": "Phase2ASPJoinSplitVerifier",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol"
+      }
+    },
+    {
+      "abiSHA256": "0b710998d83533b48f9e27e22338223f8d8af0ba038557519fcf5e6f7c8d0d67",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 16260,
+        "bytecodeTemplateSHA256": "c89fcfe91810c004009e6c887cf892242d81cfe5db10f1a243e344d0f56733b0",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 14756,
+        "deployedBytecodeTemplateSHA256": "c5d1136c8310c1fbaf99e9899dee5db34c028c9fe3a80da3aedcf83f70fb53d5",
+        "deployedLinkReferences": {
+          "poseidon-solidity/PoseidonT3.sol": {
+            "PoseidonT3": [
+              {
+                "length": 20,
+                "start": 963
+              },
+              {
+                "length": 20,
+                "start": 11758
+              },
+              {
+                "length": 20,
+                "start": 12726
+              },
+              {
+                "length": 20,
+                "start": 12958
+              }
+            ]
+          },
+          "poseidon-solidity/PoseidonT4.sol": {
+            "PoseidonT4": [
+              {
+                "length": 20,
+                "start": 11641
+              }
+            ]
+          }
+        },
+        "evmVersion": "cancun",
+        "immutableReferences": {
+          "126": [
+            {
+              "length": 32,
+              "start": 6463
+            },
+            {
+              "length": 32,
+              "start": 13187
+            },
+            {
+              "length": 32,
+              "start": 13690
+            }
+          ],
+          "129": [
+            {
+              "length": 32,
+              "start": 2383
+            },
+            {
+              "length": 32,
+              "start": 7841
+            }
+          ],
+          "131": [
+            {
+              "length": 32,
+              "start": 3517
+            },
+            {
+              "length": 32,
+              "start": 4508
+            },
+            {
+              "length": 32,
+              "start": 7369
+            },
+            {
+              "length": 32,
+              "start": 9494
+            },
+            {
+              "length": 32,
+              "start": 10488
+            },
+            {
+              "length": 32,
+              "start": 11198
+            }
+          ],
+          "134": [
+            {
+              "length": 32,
+              "start": 7310
+            },
+            {
+              "length": 32,
+              "start": 10686
+            }
+          ],
+          "137": [
+            {
+              "length": 32,
+              "start": 4000
+            },
+            {
+              "length": 32,
+              "start": 4860
+            },
+            {
+              "length": 32,
+              "start": 5225
+            },
+            {
+              "length": 32,
+              "start": 5515
+            },
+            {
+              "length": 32,
+              "start": 6192
+            },
+            {
+              "length": 32,
+              "start": 6586
+            },
+            {
+              "length": 32,
+              "start": 7561
+            },
+            {
+              "length": 32,
+              "start": 7944
+            },
+            {
+              "length": 32,
+              "start": 9211
+            },
+            {
+              "length": 32,
+              "start": 11477
+            },
+            {
+              "length": 32,
+              "start": 12050
+            }
+          ]
+        },
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {
+          "poseidon-solidity/PoseidonT3.sol": {
+            "PoseidonT3": [
+              {
+                "length": 20,
+                "start": 498
+              },
+              {
+                "length": 20,
+                "start": 2467
+              },
+              {
+                "length": 20,
+                "start": 13262
+              },
+              {
+                "length": 20,
+                "start": 14230
+              },
+              {
+                "length": 20,
+                "start": 14462
+              }
+            ]
+          },
+          "poseidon-solidity/PoseidonT4.sol": {
+            "PoseidonT4": [
+              {
+                "length": 20,
+                "start": 13145
+              }
+            ]
+          }
+        },
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2ASPPool",
+      "coverage": "complete-compiled-contract",
+      "entries": 87,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/Phase2ASPPool.json",
+      "source": {
+        "artifactKey": "Phase2ASPPool",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol"
+      }
+    },
+    {
+      "abiSHA256": "26bcff3c56fe5c261b0f8f69e2f49b87c942e5336f938add0bdc134a3a072be7",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 4082,
+        "bytecodeTemplateSHA256": "7c4996c3e06105bf1aa0125539137375ab823dd37365007142eb21a07287f3b1",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 3773,
+        "deployedBytecodeTemplateSHA256": "a2d71e967637acde1a6aa3d6b60847902e077617a6fb9fac0e22f980f68c9eb7",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "immutableReferences": {
+          "2414": [
+            {
+              "length": 32,
+              "start": 428
+            },
+            {
+              "length": 32,
+              "start": 831
+            },
+            {
+              "length": 32,
+              "start": 1119
+            },
+            {
+              "length": 32,
+              "start": 2534
+            },
+            {
+              "length": 32,
+              "start": 2609
+            }
+          ]
+        },
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2ASPRegistry",
+      "coverage": "complete-compiled-contract",
+      "entries": 41,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/Phase2ASPRegistry.json",
+      "source": {
+        "artifactKey": "Phase2ASPRegistry",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol"
+      }
+    },
+    {
+      "abiSHA256": "79308abdac61eaebd902e6bb2fdc58236829168650cc1fee4089d28a9fe253cb",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 14865,
+        "bytecodeTemplateSHA256": "7b30b66e72693852776733d9499fac5a3252070a074ace4e0686b047a176dc44",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 11903,
+        "deployedBytecodeTemplateSHA256": "4edbee19379bc2a5e12137646e4e65f40a285c0c15ae6bb1555ffa3979394ac5",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "immutableReferences": {
+          "3215": [
+            {
+              "length": 32,
+              "start": 36
+            },
+            {
+              "length": 32,
+              "start": 1365
+            },
+            {
+              "length": 32,
+              "start": 1747
+            },
+            {
+              "length": 32,
+              "start": 3622
+            },
+            {
+              "length": 32,
+              "start": 8341
+            },
+            {
+              "length": 32,
+              "start": 10303
+            }
+          ],
+          "3218": [
+            {
+              "length": 32,
+              "start": 3155
+            },
+            {
+              "length": 32,
+              "start": 3543
+            },
+            {
+              "length": 32,
+              "start": 3759
+            },
+            {
+              "length": 32,
+              "start": 5106
+            },
+            {
+              "length": 32,
+              "start": 5214
+            },
+            {
+              "length": 32,
+              "start": 5277
+            },
+            {
+              "length": 32,
+              "start": 9181
+            },
+            {
+              "length": 32,
+              "start": 10342
+            },
+            {
+              "length": 32,
+              "start": 11295
+            },
+            {
+              "length": 32,
+              "start": 11354
+            }
+          ],
+          "3221": [
+            {
+              "length": 32,
+              "start": 1145
+            },
+            {
+              "length": 32,
+              "start": 1206
+            },
+            {
+              "length": 32,
+              "start": 1892
+            },
+            {
+              "length": 32,
+              "start": 2229
+            },
+            {
+              "length": 32,
+              "start": 2288
+            },
+            {
+              "length": 32,
+              "start": 3304
+            },
+            {
+              "length": 32,
+              "start": 4197
+            },
+            {
+              "length": 32,
+              "start": 4478
+            },
+            {
+              "length": 32,
+              "start": 4664
+            },
+            {
+              "length": 32,
+              "start": 6746
+            },
+            {
+              "length": 32,
+              "start": 8962
+            },
+            {
+              "length": 32,
+              "start": 10382
+            }
+          ],
+          "3224": [
+            {
+              "length": 32,
+              "start": 134
+            },
+            {
+              "length": 32,
+              "start": 1068
+            },
+            {
+              "length": 32,
+              "start": 1259
+            },
+            {
+              "length": 32,
+              "start": 2706
+            },
+            {
+              "length": 32,
+              "start": 2825
+            },
+            {
+              "length": 32,
+              "start": 4531
+            },
+            {
+              "length": 32,
+              "start": 4745
+            },
+            {
+              "length": 32,
+              "start": 6060
+            },
+            {
+              "length": 32,
+              "start": 6154
+            },
+            {
+              "length": 32,
+              "start": 8054
+            },
+            {
+              "length": 32,
+              "start": 10422
+            }
+          ],
+          "3226": [
+            {
+              "length": 32,
+              "start": 9087
+            },
+            {
+              "length": 32,
+              "start": 10462
+            }
+          ],
+          "3228": [
+            {
+              "length": 32,
+              "start": 7987
+            }
+          ],
+          "3230": [
+            {
+              "length": 32,
+              "start": 9313
+            }
+          ],
+          "3232": [
+            {
+              "length": 32,
+              "start": 1795
+            },
+            {
+              "length": 32,
+              "start": 8769
+            }
+          ],
+          "3234": [
+            {
+              "length": 32,
+              "start": 2660
+            },
+            {
+              "length": 32,
+              "start": 8171
+            },
+            {
+              "length": 32,
+              "start": 11249
+            }
+          ],
+          "3237": [
+            {
+              "length": 32,
+              "start": 1926
+            },
+            {
+              "length": 32,
+              "start": 2322
+            },
+            {
+              "length": 32,
+              "start": 2393
+            },
+            {
+              "length": 32,
+              "start": 3371
+            },
+            {
+              "length": 32,
+              "start": 5806
+            },
+            {
+              "length": 32,
+              "start": 6267
+            },
+            {
+              "length": 32,
+              "start": 7920
+            }
+          ],
+          "3240": [
+            {
+              "length": 32,
+              "start": 2546
+            },
+            {
+              "length": 32,
+              "start": 2907
+            },
+            {
+              "length": 32,
+              "start": 3824
+            },
+            {
+              "length": 32,
+              "start": 5140
+            },
+            {
+              "length": 32,
+              "start": 5311
+            },
+            {
+              "length": 32,
+              "start": 9248
+            },
+            {
+              "length": 32,
+              "start": 11407
+            }
+          ],
+          "3242": [
+            {
+              "length": 32,
+              "start": 8402
+            },
+            {
+              "length": 32,
+              "start": 10504
+            }
+          ],
+          "3244": [
+            {
+              "length": 32,
+              "start": 2471
+            },
+            {
+              "length": 32,
+              "start": 2961
+            },
+            {
+              "length": 32,
+              "start": 8546
+            }
+          ],
+          "3246": [
+            {
+              "length": 32,
+              "start": 8113
+            },
+            {
+              "length": 32,
+              "start": 10544
+            }
+          ]
+        },
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2RouteAdapter",
+      "coverage": "complete-compiled-contract",
+      "entries": 46,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/Phase2RouteAdapter.json",
+      "source": {
+        "artifactKey": "Phase2RouteAdapter",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol"
+      }
+    },
+    {
+      "abiSHA256": "7aa5fa3d3d110989ccb1116e648e2cf1a244608ea8417eb4d206af903864b6c2",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 14527,
+        "bytecodeTemplateSHA256": "d5c5476b9589a36e487b0cd196e69434f701883317b711e8c194799625d9173e",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 11787,
+        "deployedBytecodeTemplateSHA256": "a47ab5126a7915b7dd7863de44fd891f093e919b6ec17a6926600c03bae723de",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "immutableReferences": {
+          "4891": [
+            {
+              "length": 32,
+              "start": 36
+            },
+            {
+              "length": 32,
+              "start": 1344
+            },
+            {
+              "length": 32,
+              "start": 1691
+            },
+            {
+              "length": 32,
+              "start": 3547
+            },
+            {
+              "length": 32,
+              "start": 8225
+            },
+            {
+              "length": 32,
+              "start": 10187
+            }
+          ],
+          "4894": [
+            {
+              "length": 32,
+              "start": 3080
+            },
+            {
+              "length": 32,
+              "start": 3468
+            },
+            {
+              "length": 32,
+              "start": 3684
+            },
+            {
+              "length": 32,
+              "start": 5031
+            },
+            {
+              "length": 32,
+              "start": 5139
+            },
+            {
+              "length": 32,
+              "start": 5202
+            },
+            {
+              "length": 32,
+              "start": 9065
+            },
+            {
+              "length": 32,
+              "start": 10226
+            },
+            {
+              "length": 32,
+              "start": 11179
+            },
+            {
+              "length": 32,
+              "start": 11238
+            }
+          ],
+          "4897": [
+            {
+              "length": 32,
+              "start": 1124
+            },
+            {
+              "length": 32,
+              "start": 1185
+            },
+            {
+              "length": 32,
+              "start": 1836
+            },
+            {
+              "length": 32,
+              "start": 2154
+            },
+            {
+              "length": 32,
+              "start": 2213
+            },
+            {
+              "length": 32,
+              "start": 3229
+            },
+            {
+              "length": 32,
+              "start": 4122
+            },
+            {
+              "length": 32,
+              "start": 4403
+            },
+            {
+              "length": 32,
+              "start": 4589
+            },
+            {
+              "length": 32,
+              "start": 6671
+            },
+            {
+              "length": 32,
+              "start": 8846
+            },
+            {
+              "length": 32,
+              "start": 10266
+            }
+          ],
+          "4900": [
+            {
+              "length": 32,
+              "start": 134
+            },
+            {
+              "length": 32,
+              "start": 1047
+            },
+            {
+              "length": 32,
+              "start": 1238
+            },
+            {
+              "length": 32,
+              "start": 2631
+            },
+            {
+              "length": 32,
+              "start": 2750
+            },
+            {
+              "length": 32,
+              "start": 4456
+            },
+            {
+              "length": 32,
+              "start": 4670
+            },
+            {
+              "length": 32,
+              "start": 5985
+            },
+            {
+              "length": 32,
+              "start": 6079
+            },
+            {
+              "length": 32,
+              "start": 7965
+            },
+            {
+              "length": 32,
+              "start": 10306
+            }
+          ],
+          "4902": [
+            {
+              "length": 32,
+              "start": 8971
+            },
+            {
+              "length": 32,
+              "start": 10346
+            }
+          ],
+          "4904": [
+            {
+              "length": 32,
+              "start": 7898
+            }
+          ],
+          "4906": [
+            {
+              "length": 32,
+              "start": 9197
+            }
+          ],
+          "4908": [
+            {
+              "length": 32,
+              "start": 1739
+            },
+            {
+              "length": 32,
+              "start": 8653
+            }
+          ],
+          "4910": [
+            {
+              "length": 32,
+              "start": 2585
+            },
+            {
+              "length": 32,
+              "start": 8082
+            },
+            {
+              "length": 32,
+              "start": 11133
+            }
+          ],
+          "4913": [
+            {
+              "length": 32,
+              "start": 1870
+            },
+            {
+              "length": 32,
+              "start": 2247
+            },
+            {
+              "length": 32,
+              "start": 2318
+            },
+            {
+              "length": 32,
+              "start": 3296
+            },
+            {
+              "length": 32,
+              "start": 5731
+            },
+            {
+              "length": 32,
+              "start": 6192
+            },
+            {
+              "length": 32,
+              "start": 7831
+            }
+          ],
+          "4916": [
+            {
+              "length": 32,
+              "start": 2471
+            },
+            {
+              "length": 32,
+              "start": 2832
+            },
+            {
+              "length": 32,
+              "start": 3749
+            },
+            {
+              "length": 32,
+              "start": 5065
+            },
+            {
+              "length": 32,
+              "start": 5236
+            },
+            {
+              "length": 32,
+              "start": 9132
+            },
+            {
+              "length": 32,
+              "start": 11291
+            }
+          ],
+          "4918": [
+            {
+              "length": 32,
+              "start": 8286
+            },
+            {
+              "length": 32,
+              "start": 10388
+            }
+          ],
+          "4920": [
+            {
+              "length": 32,
+              "start": 2396
+            },
+            {
+              "length": 32,
+              "start": 2886
+            },
+            {
+              "length": 32,
+              "start": 8430
+            }
+          ],
+          "4922": [
+            {
+              "length": 32,
+              "start": 8024
+            },
+            {
+              "length": 32,
+              "start": 10428
+            }
+          ]
+        },
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "Phase2Router02Adapter",
+      "coverage": "complete-compiled-contract",
+      "entries": 45,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/Phase2Router02Adapter.json",
+      "source": {
+        "artifactKey": "Phase2Router02Adapter",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol"
+      }
+    },
+    {
+      "abiSHA256": "604d68e02f21308d1dd3f4d079eec44481bcdd7942015f98824e62f916e6a0d0",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 23628,
+        "bytecodeTemplateSHA256": "af28f1065921d4cbed966bb8f702403ad25668471fa4253a05872352617ccc8c",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 23576,
+        "deployedBytecodeTemplateSHA256": "b66af03b0387be231608df4e60e09b43c11001ad69a20263e1fa93af2b1b2f0c",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "immutableReferences": {},
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "PoseidonT3",
+      "coverage": "complete-compiled-contract",
+      "entries": 1,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/PoseidonT3.json",
+      "source": {
+        "artifactKey": "PoseidonT3",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "poseidon-solidity/PoseidonT3.sol"
+      }
+    },
+    {
+      "abiSHA256": "ceb0cbb415a74f7f7633336b128e54490ec077937bf3172fd66ddafeb84e19c3",
+      "build": {
+        "allowedChainIds": [
+          4663
+        ],
+        "bytecodeTemplateBytes": 12689,
+        "bytecodeTemplateSHA256": "174f75ee6f3df355672c32794eaf5b3c6f1d730169dd7c4f10922f2172f1b451",
+        "circuits": {
+          "holder-exit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+            "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "joinsplit": {
+            "embeddedContributionCount": 3,
+            "finalBeacon": true,
+            "independentOperatorIdentityAuthenticated": false,
+            "manifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+            "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+            "nonBeaconContributors": 2,
+            "solidityVerifierBound": true,
+            "transcriptBound": true,
+            "verificationKeyBound": true,
+            "verifyFromR1cs": true,
+            "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          }
+        },
+        "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+        "deployedBytecodeTemplateBytes": 12637,
+        "deployedBytecodeTemplateSHA256": "8140f259b9c645ea282e1644f7d2a6e45dc5e87a35598106244b5256d0094ffb",
+        "deployedLinkReferences": {},
+        "evmVersion": "cancun",
+        "immutableReferences": {},
+        "inputSHA256": "e1cfb5c4f71a91f2c16206514174caf065293eed74ab0893bc4ba12813eb50cb",
+        "linkReferences": {},
+        "optimizerRuns": 10000,
+        "policyMode": "asp",
+        "productionReady": false,
+        "releaseCandidate": true,
+        "schema": "phase2-asp-production-build/v1",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "testOnly": false,
+        "viaIR": true
+      },
+      "contract": "PoseidonT4",
+      "coverage": "complete-compiled-contract",
+      "entries": 1,
+      "group": "phase2-mainnet",
+      "path": "abi/phase2-mainnet/PoseidonT4.json",
+      "source": {
+        "artifactKey": "PoseidonT4",
+        "kind": "project-compiled-artifact",
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceName": "poseidon-solidity/PoseidonT4.sol"
+      }
+    }
+  ],
+  "deploymentScope": "Compiled build metadata only; no live deployment addresses, runtime state or network calls.",
+  "generator": "scripts/core/sync-abi.mjs",
+  "limitations": [
+    "This standalone catalog contains only the eight production core contracts and two production fee adapters.",
+    "Metadata and ABI export do not replace final-parameter verification, bytecode reproduction, independent audit or live deployment verification.",
+    "No proving-key bytes, witnesses, wallet backups, credentials, runtime profiles or transaction journals are exported."
+  ],
+  "schema": "lincoln-core-abi-catalog/v1",
+  "sources": [
+    {
+      "kind": "project-compiled-artifact",
+      "path": "artifacts/phase2-fees-mainnet/contracts.json",
+      "sha256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a"
+    },
+    {
+      "kind": "project-compiled-artifact",
+      "path": "artifacts/phase2-mainnet/contracts.json",
+      "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+    }
+  ]
+}

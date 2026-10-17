@@ -15,8 +15,8 @@ invented contributor names or copyright years, and it does not infer a license
 for an unmarked file.
 
 The generated verification contracts in
-`protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol` and
-`protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol` retain the
+`contracts/verifiers/JoinSplitVerifier.sol` and
+`contracts/verifiers/HolderExitVerifier.sol` retain the
 `GPL-3.0` SPDX identifier from the SnarkJS Groth16 Solidity template. Their
 deterministic Solidity pragma and contract-name transformations do not remove
 that notice. See the preserved [SnarkJS COPYING](LICENSES/snarkjs-GPL-3.0-COPYING.txt).

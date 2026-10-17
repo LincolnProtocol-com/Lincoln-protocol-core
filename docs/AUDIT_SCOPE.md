@@ -1,74 +1,63 @@
 # Audit scope
 
-This repository packages the Robinhood Chain mainnet core candidate originally extracted from upstream commit `99e0be62475ac95bb5f8030659c782d5275475a1`. The pushed **`v0.1.0-rc.1`** is a historical snapshot. **RC.2** changes caps and fee policy and has passed fresh real-proof native/fee acceptance; the exact inventory and standalone reproduction checks have also passed. It is not evidence of a mainnet deployment or a completed independent audit. Target chain ID: **4663**.
+Review the regular files under [`contracts/`](../contracts/README.md), [`zk/`](../zk/README.md), [abi/](../abi/) and [`test/`](../test/README.md). The target chain is **Robinhood Chain, ID 4663**. The contracts are a locally verified release candidate; no Lincoln mainnet deployment or completed independent audit is asserted.
 
-The RC.2 release-inventory path is `artifacts/phase2-mainnet/release-candidate-20261016-r2.json`. Its frozen SHA256 is `abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3`. Review the tag and inventory together; the candidate is not a live deployment. RC.1 extraction provenance and historical acceptance remain separately identifiable; they are not blanket authorization to accept changed files. Review the exact candidate commit and inventory together. See [RC.2 reconciliation](PLAN_RECONCILIATION_R2.md).
+[review-manifest.json](../review-manifest.json) maps the readable review files to their exact RC.2 originals in [releases/rc2/](../releases/rc2/). The check command verifies byte identity and the preserved release binding. Contract identifiers, source bytes, final keys and the `v0.1.0-rc.2` tag are unchanged by this layout. Review-copy equality and successful tests do not establish security against every attack.
 
-## Deployment contract scope
+## Production contracts
 
-The inventory contains **10 deployable contract/library types**, not ten already deployed addresses. Pools and fixed-route adapters may have several instances.
+There are **ten deployable contract/library types in nine source files**, not ten deployed addresses. Pools and fixed routes may have multiple instances.
 
-| Contract or library | Authoritative source | Review focus |
+| Review file | Solidity identifier | Review focus |
 | --- | --- | --- |
-| `Phase2ASPPool` | `protocol/phase2-mainnet/contracts/Phase2ASPPool.sol` | Custody, raw-unit deposit/accounted-reserve caps, donation surplus, Guardian cap changes and deposit-only pause, append-only tree, nullifiers, proof/context binding, exits and solvency |
-| `Phase2ASPRegistry` | `protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol` | Policy publication, 16-epoch acceptance, expiry/grace, suspension and delayed provider rotation |
-| `Phase2RouteAdapter` | `protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol` | Typed exact-input UP/Uniswap V3 routes, authorization, balance deltas and reshielding |
-| `Phase2Router02Adapter` | `protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol` | Router02 ABI, the same route and accounting boundaries |
-| `Phase2ASPJoinSplitVerifier` | `protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol` | Generated Groth16 verifier, nine public inputs, final-key binding |
-| `Phase2ASPExitVerifier` | `protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol` | Generated Groth16 verifier, five public inputs, final-key binding |
-| `PoseidonT3` | Pinned `poseidon-solidity/PoseidonT3.sol` npm dependency; exact source digest in the frozen core artifact | Hash implementation, linked runtime, field and compiler compatibility |
-| `PoseidonT4` | Pinned `poseidon-solidity/PoseidonT4.sol` npm dependency; exact source digest in the frozen core artifact | The same checks for the three-element hash |
-| `Phase2FeeRouteAdapter` | `protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol` | Measured output fee, net minimum, fee cap, treasury and action binding |
-| `Phase2FeeRouter02Adapter` | `protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol` | Router02 execution with the same fee/accounting boundaries |
+| [contracts/PrivacyPool.sol](../contracts/PrivacyPool.sol) | `Phase2ASPPool` | Custody, deposits, accounted reserve, cap/pause governance, append-only tree, nullifiers, proof/context binding, public exits and solvency |
+| [contracts/AssociationSetRegistry.sol](../contracts/AssociationSetRegistry.sol) | `Phase2ASPRegistry` | Publication, 16-epoch acceptance, expiry/grace, suspension and delayed provider rotation |
+| [contracts/adapters/V3RouteAdapter.sol](../contracts/adapters/V3RouteAdapter.sol) | `Phase2RouteAdapter` | Typed V3/UP routes, exact input, balance deltas, action authorization and reshielding |
+| [contracts/adapters/Router02Adapter.sol](../contracts/adapters/Router02Adapter.sol) | `Phase2Router02Adapter` | Router02 execution with the same route/accounting boundaries |
+| [contracts/adapters/FeeAdapters.sol](../contracts/adapters/FeeAdapters.sol) | `Phase2FeeRouteAdapter`, `Phase2FeeRouter02Adapter` | Measured output, net minimum, fee cap, treasury and action binding |
+| [contracts/verifiers/JoinSplitVerifier.sol](../contracts/verifiers/JoinSplitVerifier.sol) | `Phase2ASPJoinSplitVerifier` | Final Groth16 verifier, nine public inputs and final-key binding |
+| [contracts/verifiers/HolderExitVerifier.sol](../contracts/verifiers/HolderExitVerifier.sol) | `Phase2ASPExitVerifier` | Final Groth16 verifier, five public inputs and final-key binding |
+| [contracts/libraries/PoseidonT3.sol](../contracts/libraries/PoseidonT3.sol) | `PoseidonT3` | Linked two-element hash implementation, field/compiler compatibility |
+| [contracts/libraries/PoseidonT4.sol](../contracts/libraries/PoseidonT4.sol) | `PoseidonT4` | Linked three-element hash implementation, field/compiler compatibility |
 
-`Phase2FeeRouteBase` and interface declarations are supporting audit code; they are not additional deployable types in the ten-type count. OpenZeppelin and Poseidon dependencies, Solidity settings, library links, constructor immutables and complete compilation inputs are part of the reproducibility boundary.
+The fee base and interfaces are supporting code, not additional deployable types. OpenZeppelin dependencies, Poseidon source identity, compiler settings, constructor values, library links and full runtime/immutable verification are part of the review boundary. Ten ABI exports under [abi/](../abi/) retain the real contract names even where display filenames are shorter.
 
-The core artifact is `artifacts/phase2-mainnet/contracts.json`. The fee artifact is `artifacts/phase2-fees-mainnet/contracts.json`, with portable input `contracts/phase2-fees-mainnet.standard-input.json`. ABI exports live in `abi/phase2-mainnet/` and `abi/phase2-fees-mainnet/`. RC.2 requires regenerated artifacts and ABIs: the pool constructor now includes two uint128 cap arguments, and the fee component must bind the changed core even if its adapter runtime logic is unchanged.
+## Circuits and final keys
 
-The selected new-adapter rate is 30 bps with the Safe treasury. The core pool does not enforce a universal 30-bps tax; its fee amounts remain proof-authenticated. Review the separate v2 commercial policy described below without attributing its live deployment or service availability to these contracts.
+Review [zk/circuits/joinsplit/](../zk/circuits/joinsplit/) and [zk/circuits/holder-exit/](../zk/circuits/holder-exit/), with the final materials under [zk/parameters/](../zk/parameters/). Obligations include ownership, value ranges/conservation, dummy notes, pool scope, nullifier construction, pool and association Merkle paths, and binding public actions to encrypted output hashes. Holder exit must consume the same nullifier as normal spending.
 
-## Circuits and proving-material scope
+JoinSplit supports two inputs/two outputs at depth 20 with nine public inputs. Holder exit has five public inputs and does not require ASP membership. Exact field ordering comes from the circuit and parameter manifests. Caps and selected fees retain these statements and final keys; changing the source filename does not define a new circuit.
 
-Review the circuits under `protocol/phase2-asp/circuits/`: the two-input/two-output JoinSplit circuit and the holder-exit circuit. Those circuit paths retain their upstream names; the finalized production keys, WASM, R1CS, verification keys and manifests are under `protocol/phase2-mainnet/build/joinsplit/` and `protocol/phase2-mainnet/build/holder-exit/`.
+Review contribution-chain verification, public beacon evidence, parameter hashes and generated-verifier derivation. Recorded labels do not authenticate independent contributors, honest entropy, destruction of toxic waste or publication timing. Initial setup keys must never be substituted for final keys. See [parameter provenance](PARAMETER_PROVENANCE.md).
 
-Key obligations include note ownership, value ranges and conservation, dummy inputs/outputs, pool scope, nullifier construction, both pool and association Merkle paths, and binding public actions to encrypted outputs. Holder exit must consume the same note nullifier as normal spending.
+## Contract obligations and trust boundaries
 
-RC.2 retains the note structure, two-input/two-output statements and exact final proving keys. Deposit caps and pause do not inherently require another contribution ceremony, but unchanged keys must be tested against the changed deployed pool and context bindings.
+- **Accounting and caps:** `publicOut` already includes its fee. Deduct it once, deduct full note value on public exit, and leave accounted liabilities unchanged by donations. Verify actual custody covers accounted reserve. Cap increases wait 24 hours; replacements reset the delay and applied changes clear old proposals. Reductions below reserve and deposit pause must never gate withdrawal or ownership-based exits. A failed target deposit must roll back the complete DEX transaction.
+- **ASP and Guardian:** only approved positive input notes may spend normally. Approval is current-note membership, not inherited source lineage. Review expiry, the latest-plus-15-epochs count, one-hour superseded grace, immediate revocation on suspension, resume behavior and the three-day provider rotation. The Guardian can control admission and pause new deposits but cannot publish roots or withdraw users' funds.
+- **Public exits:** holder exit reveals commitment/value and pays the proof-bound holder recipient. Ragequit additionally pays the recorded original depositor and requires zero fee. DEX-created deposits record the adapter as original depositor; ragequit to that adapter can strand proceeds because it has no sweep. Holder exit is the supported recipient escape path.
+- **DEX and fees:** routes are typed, immutable exact-input routes, with no generic arbitrary-calldata executor. Review 1–4 hops, wrap/unwrap, exact transfers, allowance cleanup, residual balances, actual rather than reported output, net minimum and proof-bound absolute fee cap. Selected new-adapter fees are 30 bps to an immutable Safe treasury; native-output fees settle as WETH.
+- **Commercial policy:** official relay withdrawal/holder-exit pricing is separate from an enforced core-pool percentage tax. Review integer 30-bps quotes plus fixed, prequoted pool-asset gas; free launch transfer/ragequit; zero-fee deposits; immutable swap rate/treasury checks; uint128 limits; and preserved legacy job semantics. Existing proved, signed, submitted or recovering jobs must not be repriced. Including a pure validator does not activate a live service.
 
-The final keys include two recorded non-beacon contributions followed by the committed future-block beacon. Review contribution-chain verification, public commitment evidence, manifest/file hashing and generated verifier derivation. The records do not authenticate contributor identity, independent machine control or destruction of secret contribution randomness. Historical initial `0000.zkey` files are not included in this subset and must never be deployed as final keys.
+The [security model](SECURITY_MODEL.md) expands these limits, including finite tree capacity, dust deposits, issuer-controlled stock tokens, network/timing correlation and current-note policy censorship.
 
-## SDK and build boundary
+## Reproducibility boundary
 
-The included JavaScript subset supports artifact validation, pure fee-policy validation, state reconciliation and proof acceptance; it is not a claim that the complete wallet, relayer, indexer or cloud deployment is part of this repository.
+Use the root `npm run check`, `build`, `check:circuits`, `test:contracts` and `test:proofs` commands. They verify the regular review files and invoke preserved tooling in `releases/rc2/` at its original logical paths. Those paths are compiler/manifest identities, not extra production targets. Compiling renamed root paths directly can alter metadata and library links; it must not be substituted for the frozen build.
 
-Relevant code includes `src/phase2-mainnet/sdk.mjs`, `src/phase2-mainnet/artifacts.mjs`, `src/phase2-mainnet/release.mjs` and their included shared dependencies. Review production-profile rejection of development materials, exact final artifact loading, parameter hashes, witness preparation and correspondence between SDK hashing/encryption and circuit/contract context fields. Wallet secrets and witness data are intended to remain on the client. Compromise of a wallet, recovery seed or proof-building environment is outside the protection supplied by the on-chain contracts.
+The capsule also includes build/SDK/state-validation helpers needed for artifact rejection, witness preparation, context hashing, encryption and acceptance. This is a scoped reproduction dependency, not a claim that the complete wallet, relay, indexer or hosted product is included in the audit target. Review the helper closure and exact source/input bindings through the preserved inventories. User keys and witnesses are intended to remain client-side.
 
-The mainnet builder derives release-specific sources from earlier development implementations. `protocol/phase2-asp/`, `protocol/phase2-routes/`, `protocol/phase2-router02/` and `protocol/phase2-fees/contracts/` may therefore appear as required derivation/reference inputs. Their testnet/local chain allowances and development verifiers are **not the mainnet deployment target**. Verify the derivation and use the mainnet sources, final artifacts and source hashes as the deployed-code review boundary.
+## Recorded evidence
 
-RC.2 adds `src/phase2-fees/policy.mjs`: versioned v1/v2 normalization, exact integer quotes and new-job fee validation. Review withdrawal/holder-exit percentage plus prequoted fixed gas; zero-fee deposit/ragequit; launch free private transfer and gas subsidy; immutable swap rate/treasury checks; uint128/rounding limits; and preservation of old v1 job semantics. Existing proved or recovering jobs must not be repriced. This component performs no RPC quote, signing or live runtime activation. See [fee policy v2](FEE_POLICY_V2.md).
-
-For caps, review the Guardian authorization source, 24-hour increase delay, pending-proposal replacement and clearing, immediate reductions, pause scope and constructor requirements. Check `publicOut` is deducted only once, public exits deduct the entire note, donations leave accounted liabilities unchanged, and target-cap failures roll back the entire DEX route. Where state helpers are included, event-derived reserve must reconcile with on-chain accounted balance and actual custody at one canonical block.
-
-Mainnet deployer fields remain null. ETH/USDG raw caps are selected, while each stock's raw caps and fixed-block valuation/liquidity evidence remain unresolved. A planner must reject an unresolved deployment selection rather than invent a key/address or select unlimited caps. These are unresolved operations inputs, not evidence of a contract deployment.
-
-## What the evidence does and does not cover
-
-| Evidence | What it demonstrates | What it does not demonstrate |
+| Evidence in `test/evidence/rc2/` | Recorded result | Limits |
 | --- | --- | --- |
-| Updated RC.2 `protocol/phase2-mainnet/fuzz/` | **68 passing tests**, 1,000 runs per fuzz case; invariant campaign 128 × 40 = 5,120 calls, zero reverts. Contract accounting/caps, donation surplus, pause and exit liveness, policy-window/time models, adversarial routers and rollback | Verifier mocks accept proofs; these tests do not establish circuit soundness, actual final-proof acceptance or live DEX liquidity |
-| RC.2 native report, `audit/acceptance/standalone-20261016-r2/native.json` | **43 checks, 11 actual final Groth16 proofs and 48 local transactions** on the changed pool, including continued real-proof spends/exits with deposits paused and caps lowered below reserve | Public mainnet execution, independent audit or measured anonymity |
-| RC.2 fee report, `audit/acceptance/standalone-20261016-r2/fees.json` | **22 checks, four actual final proofs and 73 local transactions**; both router ABIs, two-hop wrap/unwrap, 30-bps net recovery and subsequent withdrawal | Routers/tokens/factories/liquidity are explicit mocks; no actual market prices or mainnet fills |
-| Historical RC.1 reports/builds, `audit/baselines/v0.1.0-rc.1/` | Their recorded RC.1 build only; preserved with the original tag | Changed RC.2 bytecode; they cannot replace current acceptance |
-| Governance report and Safe report in `artifacts/phase2-mainnet/` | Recorded local governance acceptance and separately observed RH mainnet Safe identity/configuration | A deployed Lincoln mainnet registry, future Safe ownership or continuous operational monitoring |
+| [foundry.json](../test/evidence/rc2/foundry.json) | 68 passing results, 1,000 runs per fuzz case; invariant campaign 128 × 40 = 5,120 calls, zero reverts | Mock verifiers; contract accounting/authorization/rollback evidence, not proof soundness |
+| [native.json](../test/evidence/rc2/native.json) | 43 checks, 11 actual final proofs, 48 local transactions; includes real-proof spending/exits while deposits are paused and caps lowered below reserve | Isolated local chain; no live mainnet execution, independent audit or anonymity measurement |
+| [fees.json](../test/evidence/rc2/fees.json) | 22 checks, four actual final proofs, 73 local transactions; two-hop wrap/unwrap, fee-bound recovery and withdrawal | Actual production pool/verifier/adapter, but routers/tokens/factories/liquidity are mocks |
 
-The RC.2 native run is `d2172cda-01bc-4b26-8d43-95b1d0e241c3`; the fee run is `e7cf5b6d-36ec-41cc-9e68-2dcde9f48d3d`. Together they executed **15 actual proofs and 121 local transactions**, with zero public-chain transactions. They bind core SHA256 `6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e` and fee SHA256 `52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a`.
+Actual-proof reports total **15 proofs and 121 local transactions**, with zero public transactions. They bind the preserved RC.2 core/fee artifacts. Some adapter fuzz tests use retained derivation baselines; production fee acceptance is a separate actual-proof run. Scenario gas totals are not single relay-transaction estimates. Recorded runs must not be described as fresh execution for every later layout commit.
 
-The fee fixture produces gross output 10,000, charges 30, recovers B's 9,970-unit note and withdraws gross 9,970 once with fee 32 (29 percentage units plus three **synthetic fixed-gas fixture units**), net 9,938. The three-unit quote is not the mainnet ETH preset. Mock-verifier Foundry evidence remains distinct from these actual Groth16 runs.
+## Exclusions and open review areas
 
-Some Foundry adapter tests import the earlier adapter implementation as behavioral regression coverage, including the fee implementation in `protocol/phase2-fees/contracts/`. They do not replace review and final-proof testing of the derived mainnet fee artifact. See `protocol/phase2-mainnet/fuzz/README.md` for the exact suite assumptions. Running a test suite now produces new evidence; the included historical reports only describe their recorded runs.
+The scope excludes frontend presentation, hosted availability, production key custody, Cloudflare/AWS operation, third-party DEX implementations, bridges, lending, TVL investment and new DEX adapter types. Integration assumptions still require review. Live fee-route activation, stock raw-cap valuation/liquidity acceptance, operational funding and public-chain A/B acceptance are unresolved launch work.
 
-## Explicit exclusions and open review areas
-
-The extracted audit scope excludes frontend presentation, hosted infrastructure, API availability, production key custody, Cloudflare/AWS configuration, external DEX implementations, bridges, lending, TVL investment and new DEX adapter types. External contract integration assumptions still need review even though those third-party implementations are not Lincoln-owned audit targets.
-
-Assess cap/pause governance and delayed increases, donation/accounted-reserve reconciliation, atomic cap failure during reshielding, finite tree capacity and dust-deposit denial of service, current-note approval limitations, old-policy acceptance after note removal, publisher/set-data availability, privacy leakage and small anonymity sets, exact-transfer token assumptions, issuer-controlled stock tokens and permanent immutable-contract failure modes. An entry in this list is a stated boundary or review topic, not a claim that the independent audit has already resolved it.
+Assess permanent immutable-contract failures, tree exhaustion/dust, old-policy spendability after exclusion, public set-data availability, practical anonymity under small sets, exact-transfer/issuer assumptions and cap/pause governance. An identified review topic is not a claim that an audit has resolved it. Independent audit is deferred under the current launch decision.

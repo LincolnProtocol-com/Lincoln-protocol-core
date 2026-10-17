@@ -1,0 +1,75 @@
+
+> @lincolnprotocol/core@0.1.0-rc.2 test:proofs
+> node scripts/review/run.mjs proofs
+
+Passed: final-release-cryptography-and-reproducible-bytecode-verified
+Passed: independent-synthetic-EOAs-and-private-note-seeds
+Passed: deployer-cannot-use-guardian-authority
+Passed: production-loader-accepts-actual-final-parameters-and-recompiled-build
+Passed: real-pool-constructor-binds-explicit-raw-unit-deposit-caps
+Passed: public-deposits-and-canonical-note-recovery
+Passed: full-accounted-pool-rejects-another-public-deposit
+Passed: non-guardian-cannot-pause-new-deposits
+Passed: paused-pool-rejects-new-deposits
+Passed: paused-and-lowered-caps-do-not-restrict-the-following-real-proof-spends-and-exits
+Passed: normal-spending-fails-without-ASP
+Passed: superseded-epoch-proof-accepted-within-grace
+Passed: oldest-of-sixteen-epochs-accepts-real-proof-under-relay-gas-cap
+Passed: seventeenth-policy-evicts-original-proof-within-time-grace
+Passed: recent-proof-remains-valid-before-time-grace
+Passed: superseded-epoch-proof-rejected-after-grace
+Passed: reject-joinsplit-proof-mutation
+Passed: reject-joinsplit-recipient-mutation
+Passed: reject-joinsplit-processor-mutation
+Passed: reject-joinsplit-ciphertext-mutation
+Passed: reject-joinsplit-scope-mutation
+Passed: two-note-merge-private-payment-with-real-final-joinsplit-proof
+Passed: private-payment-proof-replay-rejected
+Passed: spent-original-note-ragequit-rejected
+Passed: B-encrypted-backup-only-recovery-without-input-note-identifiers
+Passed: B-recovered-note-private-respend
+Passed: approved-public-withdrawal-exact-payout
+Passed: excluded-note-proof-accepted-within-grace
+Passed: revoked-current-note-normal-proof-rejected
+Passed: suspension-revocation-survives-resume
+Passed: reject-holder-exit-proof-mutation
+Passed: reject-holder-exit-recipient-mutation
+Passed: reject-holder-exit-value-mutation
+Passed: reject-holder-exit-context-mutation
+Passed: received-private-output-cannot-ragequit
+Passed: excluded-holder-exit-with-real-final-exit-proof
+Passed: holder-exit-proof-replay-rejected
+Passed: excluded-original-depositor-full-refund
+Passed: all-private-wallet-balances-and-native-pool-reserve-zero
+Passed: cap-increase-cannot-be-accepted-before-24-hours
+Passed: independent-guardian-delayed-cap-increase-preserves-exit-accounting
+Passed: new-provider-cannot-claim-before-delay
+Passed: rotated-out-provider-cannot-publish
+Passed: independent-guardian-delayed-provider-rotation
+{"passed":true,"localOnly":true,"publicTransactions":0,"checks":43,"proofs":11,"transactions":48,"report":"artifacts/phase2-mainnet/final-parameter-acceptance.json"}
+{"passed":true,"mode":"native","report":"audit/runs/2026-10-17T03-27-36-724Z-native.json","localOnly":true,"publicTransactions":0}
+Passed: final-core-and-production-fee-component-cryptographically-bound
+Passed: independent-ephemeral-A-B-processor-provider-and-guardian
+Passed: real-final-core-runtime-bytecode-and-independent-guardian-verified
+Passed: up-native-in:fee-proof-is-oldest-still-accepted-of-16-epochs
+Passed: up-native-in:original-envelope-rejects-fee-cap-tampering
+Passed: up-native-in:original-proof-rejects-rebound-fee-cap
+Passed: up-native-in:original-envelope-rejects-action-deadline-tampering
+Passed: up-native-in:original-proof-rejects-treasury-and-adapter-substitution
+Passed: up-native-in:measured-output-fee-above-cap-reverts-atomically
+Passed: up-native-in:real-fee-swap-estimate-and-relay-padding-fit-cap
+Passed: up-native-in:two-hop-measured-30bps-fee-and-net-private-output
+Passed: up-native-in:B-backup-only-recovery-and-pending-current-note-ASP
+Passed: up-native-in:B-final-proof-withdrawal-and-zero-private-reserves-allowances
+Passed: router02-native-out:original-envelope-rejects-fee-cap-tampering
+Passed: router02-native-out:original-proof-rejects-rebound-fee-cap
+Passed: router02-native-out:original-envelope-rejects-action-deadline-tampering
+Passed: router02-native-out:original-proof-rejects-treasury-and-adapter-substitution
+Passed: router02-native-out:measured-output-fee-above-cap-reverts-atomically
+Passed: router02-native-out:real-fee-swap-estimate-and-relay-padding-fit-cap
+Passed: router02-native-out:two-hop-measured-30bps-fee-and-net-private-output
+Passed: router02-native-out:B-backup-only-recovery-and-pending-current-note-ASP
+Passed: router02-native-out:B-final-proof-withdrawal-and-zero-private-reserves-allowances
+Passed: all-four-production-private-pools-reconcile-to-zero-reserves
+{"passed":true,"publicTransactions":0,"checks":22,"proofs":4,"transactions":73,"report":"artifacts/phase2-mainnet/final-fee-parameter-acceptance.json"}
+{"passed":true,"mode":"fees","report":"audit/runs/2026-10-17T03-30-48-426Z-fees.json","localOnly":true,"publicTransactions":0}

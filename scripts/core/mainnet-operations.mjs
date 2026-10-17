@@ -5,9 +5,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {getAddress,isAddress} from 'viem';
-import {checkCore,RELEASE,EXPECTED_RELEASE_SHA256} from './check.mjs';
-import {readPublicFile} from '../../src/phase2-mainnet/release.mjs';
-import {buildMainnetPlan} from '../phase2-mainnet/plan.mjs';
+import {checkCore,RELEASE,EXPECTED_RELEASE_SHA256} from '../../releases/rc2/scripts/core/check.mjs';
+import {readPublicFile} from '../../releases/rc2/src/phase2-mainnet/release.mjs';
+import {buildMainnetPlan} from '../../releases/rc2/scripts/phase2-mainnet/plan.mjs';
 const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 const need=(ok,code)=>{if(!ok)throw Object.assign(new Error(code),{code});};
 function exact(value,keys){
@@ -36,9 +36,9 @@ export function configureMainnetOperations({config,operations}={}){
   return effective;
 }
 export async function mainnetOperationsPlan({root=ROOT}={}){
-  root=await fs.realpath(root);await checkCore({root});
-  const json=async relative=>JSON.parse(await readPublicFile(root,relative));
-  const operations=await json('config/phase2-mainnet-operations.json');
+  root=await fs.realpath(root);const capsuleRoot=path.join(root,'releases/rc2');await checkCore({root:capsuleRoot});
+  const json=async relative=>JSON.parse(await readPublicFile(capsuleRoot,relative));
+  const operations=JSON.parse(await readPublicFile(root,'config/mainnet-operations.json'));
   const config=configureMainnetOperations({config:await json('config/phase2-mainnet.json'),operations});
   const paths=config.productionArtifacts;
   const plan=buildMainnetPlan({config,productionBuild:await json(paths.build),joinManifest:await json(paths.joinsplitManifest),exitManifest:await json(paths.holderExitManifest)});
@@ -47,7 +47,9 @@ export async function mainnetOperationsPlan({root=ROOT}={}){
     unresolvedStockCaps:config.assets.filter(asset=>asset.depositCaps?.status==='valuation-required').map(asset=>asset.symbol),
     limits:operations.limits,readOnly:true,offline:true,filesWritten:0,keysAccessed:false,transactionsSigned:0,transactionsBroadcast:0,
     frozenConfigurationUnchanged:true,deploymentExecutorEnabled:false,
-    next:'Prepare a separately reviewed operations/deployment snapshot and explicit budget before any signing; the original RC.2 deploy CLI still reads its frozen unset-deployer config.'};
+    localCoreDeploymentEntry:{path:'scripts/deploy.sh',prepare:'bash scripts/deploy.sh --prepare',scope:['ETH','USDG'],
+      routes:false,stocks:false,interactiveOperatorRequired:true,explicitSpendingLimitsRequired:true},
+    next:'Run bash scripts/deploy.sh --prepare. A local operator can then use --deploy with explicit gas budget, price ceiling and reserve; fee routes, stocks and live services remain separate.'};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   try{need(process.argv.length===2||process.argv.length===3&&process.argv[2]==='--plan','USAGE_MAINNET_OPERATIONS_PLAN');

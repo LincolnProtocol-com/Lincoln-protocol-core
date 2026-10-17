@@ -1,0 +1,136 @@
+{
+  "schema": "phase2-asp-production-circuits/v1",
+  "protocol": "groth16",
+  "curve": "bn128",
+  "testOnly": false,
+  "productionReady": false,
+  "allowedChainIds": [
+    4663
+  ],
+  "inputs": {
+    "sources": [
+      {
+        "path": "protocol/phase2-asp/circuits/joinsplit/joinsplit.circom",
+        "bytes": 7972,
+        "sha256": "1e08fe7552092bc186fc28128b9a4650a14f56b562e49849cff2e0a00bd01a3e"
+      },
+      {
+        "path": "protocol/phase2-asp/circuits/joinsplit/main.circom",
+        "bytes": 214,
+        "sha256": "dae1a04201ecf4b33f70906e1d0cf92e965ec55e1edbe172f55ee42dc7205dc6"
+      }
+    ],
+    "sourceSetSHA256": "8de5e0c4eb72aee1a3a0f56c5ca60385f89dfdb6d81cc0f002afdc593ca781a7",
+    "circomlibVersion": "2.0.5",
+    "circomlibSourceSetSHA256": "783ea25b4e1f0a19181ad83a91511c75091a3a98ee8d79dc8a36bc0d2a7a5612",
+    "compilerPackageVersion": "0.2.22",
+    "compilerVersion": "circom2 npm package 0.2.22\ncircom compiler 2.2.2",
+    "compilerEntrypointSHA256": "5e36c6153c416e17b1fa822411b1fb9e4ab9b5cd4a0249cc3b5be3259315f5ad",
+    "compilerWasmSHA256": "91fa82b3621c4f4aa4fe51cb7507a296a8332432e79cc49772bce98963f9e2fe",
+    "dependencyLockSHA256": "da570567d77761a94a2f56ad17c601e9e7acfb91f7a484fab97ed4ebb3ae4f6e",
+    "snarkjsVersion": "0.7.5",
+    "optimization": "O2",
+    "circuit": "joinsplit",
+    "maxTreeDepth": 20,
+    "noteModel": "factorized-v1",
+    "publicSignalNames": [
+      "root",
+      "publicIn",
+      "publicOut",
+      "context",
+      "scope",
+      "inputNullifiers[0]",
+      "inputNullifiers[1]",
+      "outputCommitments[0]",
+      "outputCommitments[1]"
+    ],
+    "policyMode": "asp"
+  },
+  "counts": {
+    "constraints": 24221,
+    "wires": 24305,
+    "publicInputs": 9,
+    "outputs": 0,
+    "privateInputs": 100
+  },
+  "phase1": {
+    "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+    "bytes": 37831832,
+    "power": 15,
+    "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+    "blake2b512": "982372c867d229c236091f767e703253249a9b432c1710b4f326306bfa2428a17b06240359606cfe4d580b10a5a1f63fbed499527069c18ae17060472969ae6e",
+    "publishedChecksumMatches": true
+  },
+  "setup": {
+    "kind": "multi-party-phase2",
+    "verifyFromR1cs": true,
+    "embeddedContributionCount": 3,
+    "nonBeaconContributors": 2,
+    "finalBeacon": true,
+    "transcriptBound": true,
+    "independentOperatorIdentityAuthenticated": false
+  },
+  "beaconEvidence": {
+    "schema": "phase2-production-beacon-binding/v1",
+    "application": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.applied.json",
+      "sha256": "acab415decdb47ddf681ad0e62c8196504f8d2c69dd6088860145c14974f134f",
+      "bytes": 5225
+    },
+    "commitment": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.json",
+      "sha256": "9fec88e4aabf6522f2a0f648e72cde8b1725691f2b643d8a1153d56f09fd99b0",
+      "bytes": 6908
+    },
+    "publication": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.publication.json",
+      "sha256": "35f3f2e166796b6a77762f91b161fc2555fceddebe41ff0fa0a6437ec2995277",
+      "bytes": 2719
+    },
+    "observation": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.observation.json",
+      "sha256": "dedfc10cf0d6284d4062fb9fc63971ec10472e7d3dfdb85a4f1f9ff3eeb3c2a4",
+      "bytes": 2474
+    },
+    "beaconHash": "0x5b9e2e64568bf74f5892c0d26211590d3159ddcca3b6c3a922abbc940ed48ed1",
+    "iterations": 20,
+    "independentOperatorIdentityAuthenticated": false,
+    "publicPrecommitTimingCryptographicallyAuthenticated": false
+  },
+  "artifacts": {
+    "r1cs": {
+      "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+      "bytes": 11210792,
+      "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+    },
+    "wasm": {
+      "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+      "bytes": 2559210,
+      "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+    },
+    "zkey": {
+      "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+      "bytes": 14169690,
+      "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+    },
+    "vkey": {
+      "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+      "bytes": 4721,
+      "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+    },
+    "verifier": {
+      "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+      "bytes": 10172,
+      "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+    },
+    "ceremonyTranscript": {
+      "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+      "bytes": 2358,
+      "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+    }
+  },
+  "limitations": [
+    "The embedded contribution chain was verified. Operator identities, independence and secret destruction are not authenticated by this exporter.",
+    "This parameter manifest does not attest an independent audit, a deployment, or an end-to-end mainnet test."
+  ]
+}

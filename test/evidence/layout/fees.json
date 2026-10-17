@@ -1,0 +1,1867 @@
+{
+  "schema": "phase2-final-fee-parameter-acceptance/v1",
+  "runId": "8253e4b9-6ce9-4083-98ee-9350cb4de933",
+  "passed": true,
+  "localOnly": true,
+  "chainId": 4663,
+  "publicTransactions": 0,
+  "publicChainTransactions": 0,
+  "mainnetDeployed": false,
+  "productionReady": false,
+  "actualDEX": false,
+  "mockRouter": true,
+  "mockSourcePool": false,
+  "mockTargetPool": false,
+  "realGroth16": true,
+  "finalProductionParameterAcceptance": true,
+  "usesKeystore": false,
+  "usesFork": false,
+  "provingParameterKind": "final-production",
+  "artifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+  "feeArtifactSHA256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a",
+  "coreSourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+  "feeSourceSetSHA256": "0dd2fe9242978a3b4ae1b65a0dd31aa3344dae1017e120546d51b4c47d2a4253",
+  "production": {
+    "build": {
+      "path": "artifacts/phase2-mainnet/contracts.json",
+      "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+    },
+    "manifests": {
+      "joinsplit": {
+        "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+        "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+      },
+      "holder-exit": {
+        "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+        "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+      }
+    },
+    "parameters": {
+      "joinsplit": {
+        "r1cs": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+          "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+        },
+        "wasm": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+          "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+        },
+        "zkey": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+          "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+        },
+        "vkey": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+          "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+        },
+        "verifier": {
+          "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+          "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+        },
+        "ceremonyTranscript": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+          "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+        }
+      },
+      "holder-exit": {
+        "r1cs": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+          "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+        },
+        "wasm": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+          "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+        },
+        "zkey": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+          "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+        },
+        "vkey": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+          "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+        },
+        "verifier": {
+          "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+          "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+        },
+        "ceremonyTranscript": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+          "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+        }
+      }
+    },
+    "releaseId": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+  },
+  "fixtureSourceSHA256": "28a8b7c016d86e7ac0336fd9776258dc62901868ad9001740df36377667f3989",
+  "clientVersion": "anvil/v1.8.4",
+  "checks": [
+    {
+      "name": "independent-ephemeral-A-B-processor-provider-and-guardian",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "real-final-core-runtime-bytecode-and-independent-guardian-verified",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "up-native-in:fee-proof-is-oldest-still-accepted-of-16-epochs",
+      "passed": true,
+      "detail": {
+        "proofEpoch": "1",
+        "latestEpoch": "16",
+        "window": 16
+      }
+    },
+    {
+      "name": "up-native-in:original-envelope-rejects-fee-cap-tampering",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ActionMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "up-native-in:original-proof-rejects-rebound-fee-cap",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ContextMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "up-native-in:original-envelope-rejects-action-deadline-tampering",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ActionMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "up-native-in:original-proof-rejects-treasury-and-adapter-substitution",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ContextMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "up-native-in:measured-output-fee-above-cap-reverts-atomically",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ServiceFeeAboveLimit()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "up-native-in:real-fee-swap-estimate-and-relay-padding-fit-cap",
+      "passed": true,
+      "detail": {
+        "estimate": "3138781",
+        "paddedGas": "3776537",
+        "padding": "estimate * 12 / 10 + 10000",
+        "relayMaxGas": "5000000",
+        "actualGasUsed": "3023907",
+        "oldestWindowProof": true
+      }
+    },
+    {
+      "name": "up-native-in:two-hop-measured-30bps-fee-and-net-private-output",
+      "passed": true,
+      "detail": {
+        "gross": "10000",
+        "fee": "30",
+        "net": "9970",
+        "routerReported": "99999",
+        "wrapNative": true,
+        "unwrapNative": false,
+        "feeAsset": "output-ERC20"
+      }
+    },
+    {
+      "name": "up-native-in:B-backup-only-recovery-and-pending-current-note-ASP",
+      "passed": true,
+      "detail": {
+        "recoveredNet": "9970",
+        "savedNotesBeforeRecovery": 0
+      }
+    },
+    {
+      "name": "up-native-in:B-final-proof-withdrawal-and-zero-private-reserves-allowances",
+      "passed": true,
+      "detail": {
+        "withdrawalGross": "9970",
+        "withdrawal": "9938",
+        "withdrawalFee": "32",
+        "withdrawalPercentageFee": "29",
+        "syntheticQuotedGasFee": "3",
+        "feeRecipient": "0x06e730d447E407E719223cecaD8B83CcbC11be58",
+        "accountedBalance": "0",
+        "privateReserves": "0",
+        "adapterAndRouterBalances": "0",
+        "allowances": "0"
+      }
+    },
+    {
+      "name": "router02-native-out:original-envelope-rejects-fee-cap-tampering",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ActionMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "router02-native-out:original-proof-rejects-rebound-fee-cap",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ContextMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "router02-native-out:original-envelope-rejects-action-deadline-tampering",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ActionMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "router02-native-out:original-proof-rejects-treasury-and-adapter-substitution",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ContextMismatch()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "router02-native-out:measured-output-fee-above-cap-reverts-atomically",
+      "passed": true,
+      "detail": {
+        "executionRevert": "ServiceFeeAboveLimit()",
+        "sourceUnspent": true,
+        "privateReservesAndTreasuriesUnchanged": true
+      }
+    },
+    {
+      "name": "router02-native-out:real-fee-swap-estimate-and-relay-padding-fit-cap",
+      "passed": true,
+      "detail": {
+        "estimate": "1614099",
+        "paddedGas": "1946918",
+        "padding": "estimate * 12 / 10 + 10000",
+        "relayMaxGas": "5000000",
+        "actualGasUsed": "1514325",
+        "oldestWindowProof": false
+      }
+    },
+    {
+      "name": "router02-native-out:two-hop-measured-30bps-fee-and-net-private-output",
+      "passed": true,
+      "detail": {
+        "gross": "10000",
+        "fee": "30",
+        "net": "9970",
+        "routerReported": "99999",
+        "wrapNative": false,
+        "unwrapNative": true,
+        "feeAsset": "wrapped-native"
+      }
+    },
+    {
+      "name": "router02-native-out:B-backup-only-recovery-and-pending-current-note-ASP",
+      "passed": true,
+      "detail": {
+        "recoveredNet": "9970",
+        "savedNotesBeforeRecovery": 0
+      }
+    },
+    {
+      "name": "router02-native-out:B-final-proof-withdrawal-and-zero-private-reserves-allowances",
+      "passed": true,
+      "detail": {
+        "withdrawalGross": "9970",
+        "withdrawal": "9938",
+        "withdrawalFee": "32",
+        "withdrawalPercentageFee": "29",
+        "syntheticQuotedGasFee": "3",
+        "feeRecipient": "0x06e730d447E407E719223cecaD8B83CcbC11be58",
+        "accountedBalance": "0",
+        "privateReserves": "0",
+        "adapterAndRouterBalances": "0",
+        "allowances": "0"
+      }
+    },
+    {
+      "name": "all-four-production-private-pools-reconcile-to-zero-reserves",
+      "passed": true,
+      "detail": {}
+    }
+  ],
+  "transactions": [
+    {
+      "name": "deploy-PoseidonT3",
+      "hash": "0x6db3a5e4b080579268c1359c980ca4c755ae63faa50e70c6bba9010fea02271c",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0xb2c22b4a0ecdc447d5ddf379532c91e877062391",
+      "status": "success",
+      "blockNumber": "1",
+      "gasLimit": "6192793",
+      "gasUsed": "5152328",
+      "feeWei": "10304656000000000"
+    },
+    {
+      "name": "deploy-PoseidonT4",
+      "hash": "0x8bbcb682c35035f2c32b5bc0578afd6d59661abe444e32114fe4f2f5a7d4db56",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x7eafc4dee893c61078b07a0942bf3a861c24be31",
+      "status": "success",
+      "blockNumber": "2",
+      "gasLimit": "3352147",
+      "gasUsed": "2785123",
+      "feeWei": "5341687852731241"
+    },
+    {
+      "name": "deploy-final-JoinSplit-verifier",
+      "hash": "0x3a54b7a77bfd9553e4699976401dfb3ebd68418e60d8fe444a93645662f085bf",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x5decbefe22b77c7b6c47d40f87f64c8e18e8a87f",
+      "status": "success",
+      "blockNumber": "3",
+      "gasLimit": "713117",
+      "gasUsed": "585931",
+      "feeWei": "1069030386461146"
+    },
+    {
+      "name": "deploy-final-holder-exit-verifier",
+      "hash": "0xdfdf4654ab62a22fc175c873cfc23f02bac58a42df72f412041515cc2fce06a3",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x4ae07cc96a0b3e041d97696db8c7bd82cc7ec8a8",
+      "status": "success",
+      "blockNumber": "4",
+      "gasLimit": "536207",
+      "gasUsed": "438506",
+      "feeWei": "756625548959994"
+    },
+    {
+      "name": "deploy-final-guardian-registry",
+      "hash": "0xaeae7193f9bf1153b7762230de7f5487bbc545a58fefd3da72f2ec7baac29c31",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "status": "success",
+      "blockNumber": "5",
+      "gasLimit": "1075812",
+      "gasUsed": "888177",
+      "feeWei": "1454328078112305"
+    },
+    {
+      "name": "deploy-up-native-in:wrapped-native",
+      "hash": "0x3d2edc83c83270ef8f3295d83c382de0b6addc5010fa6282721c1fdba3944779",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x15c687920eca7e279ebea93874c47c57f20563d5",
+      "status": "success",
+      "blockNumber": "6",
+      "gasLimit": "696034",
+      "gasUsed": "571695",
+      "feeWei": "893256048253185"
+    },
+    {
+      "name": "deploy-up-native-in:intermediate-token-B",
+      "hash": "0x8de5e575d38dbe5db8e7199fd87a4b855cc54337011cf76aac66334a0bd5e547",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x01225a2606c40ae84e4b3e33b97397d17bbbd040",
+      "status": "success",
+      "blockNumber": "7",
+      "gasLimit": "688571",
+      "gasUsed": "565476",
+      "feeWei": "845296461072036"
+    },
+    {
+      "name": "deploy-up-native-in:token-C",
+      "hash": "0x465cfa9e9193aaaa37bc218a713c72eddcaef8689144e779542bcbf33c5fd2a5",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x3263732f8ed6863a4218636ffaceb2fc4db97fca",
+      "status": "success",
+      "blockNumber": "8",
+      "gasLimit": "688571",
+      "gasUsed": "565476",
+      "feeWei": "811637501933604"
+    },
+    {
+      "name": "deploy-up-native-in:real-source-pool",
+      "hash": "0xbf253ccb650f3464b4e632a9bd9a11326c0181928bfc5e2a97dfdce7c6760ff0",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x8d00d5d21228f6b43b8ef90cd65fa5de852d552f",
+      "status": "success",
+      "blockNumber": "9",
+      "gasLimit": "5520479",
+      "gasUsed": "4592066",
+      "feeWei": "6350616084292594"
+    },
+    {
+      "name": "deploy-up-native-in:real-target-pool",
+      "hash": "0xb056bfbbaebedb5db241ad9ca34b489794f6bc9c4997e6fd73c42a16e3385104",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x27915cca0387183af594b06ddacbbb3af6b2ceed",
+      "status": "success",
+      "blockNumber": "10",
+      "gasLimit": "5523911",
+      "gasUsed": "4594926",
+      "feeWei": "6201952395778692"
+    },
+    {
+      "name": "deploy-up-native-in:first-hop",
+      "hash": "0x45708231aa0e89e6c664ff2f40f2a837144fbd127f430166106191378419b23f",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x0faae51adb5127e57506ef2ae0110989f3320d34",
+      "status": "success",
+      "blockNumber": "11",
+      "gasLimit": "171730",
+      "gasUsed": "134775",
+      "feeWei": "177823996377525"
+    },
+    {
+      "name": "deploy-up-native-in:second-hop",
+      "hash": "0xd440c2e605427de800c41d24aabaed58e994cbcce74a3da8fa9ca9b25529bed7",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x99d240fd951f8394d3be1ecc07f1b1dbb2640b4c",
+      "status": "success",
+      "blockNumber": "12",
+      "gasLimit": "171730",
+      "gasUsed": "134775",
+      "feeWei": "172491221333925"
+    },
+    {
+      "name": "deploy-up-native-in:mock-factory",
+      "hash": "0xddeb5e51d0a70df41b5a63c61734b6a6126a9f4212f9d0e6ebdbdc124f102e0d",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x4d2853f10cf59502264ec0245ce2dfb4ae4dcc90",
+      "status": "success",
+      "blockNumber": "13",
+      "gasLimit": "383663",
+      "gasUsed": "311386",
+      "feeWei": "387731432959786"
+    },
+    {
+      "name": "deploy-up-native-in:mock-router",
+      "hash": "0xa098894d9503855b711a8e792893f43d20449c30df92d89f5397216369d6c5a5",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x3629ba74ded70ae0714e1e6bb5a161d1c29b0542",
+      "status": "success",
+      "blockNumber": "14",
+      "gasLimit": "796705",
+      "gasUsed": "655588",
+      "feeWei": "796649682034544"
+    },
+    {
+      "name": "deploy-up-native-in:production-fee-adapter",
+      "hash": "0x7ea25b2ba52c7677d0776eea9c3d51b16f51639f96fbc4e9e0b3798141b9f99c",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x06cedf53ad654c5f07b642e5e32851fe6a454afa",
+      "status": "success",
+      "blockNumber": "15",
+      "gasLimit": "4082417",
+      "gasUsed": "3393681",
+      "feeWei": "4036605988716399"
+    },
+    {
+      "name": "deploy-up-native-in:different-treasury-adapter",
+      "hash": "0xb0affdc0cb54208891d1cae9bde1679760a846cd5a9b4cb4d8a4f518cb9d8920",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x927311453e509c0d85379f2891b3dc35f73da9e0",
+      "status": "success",
+      "blockNumber": "16",
+      "gasLimit": "4082417",
+      "gasUsed": "3393681",
+      "feeWei": "3974422719939468"
+    },
+    {
+      "name": "up-native-in:fund-mock-output-liquidity",
+      "hash": "0x5bcce8edfae5fab1feb4d5964281f2f21893c069807e987de2adc25720fb4337",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x3263732f8ed6863a4218636ffaceb2fc4db97fca",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "17",
+      "gasLimit": "94897",
+      "gasUsed": "70748",
+      "feeWei": "81683758124972"
+    },
+    {
+      "name": "up-native-in:A-public-deposit",
+      "hash": "0x9ea86041134bf1edcd5b3d7e81122165c83578b03c4f11ca3d99c7b12dfe7222",
+      "from": "0xC206E4DdDd27c4ef86DC07d6e0839Dada3DA087D",
+      "to": "0x8d00d5d21228f6b43b8ef90cd65fa5de852d552f",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "18",
+      "gasLimit": "934693",
+      "gasUsed": "765592",
+      "feeWei": "869209400920424"
+    },
+    {
+      "name": "up-native-in:ASP-approves-A",
+      "hash": "0x6381bbbe6022da05fa629fa4a4a687694fead0499daa76c5fa137544c62e9d5b",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "19",
+      "gasLimit": "151889",
+      "gasUsed": "118241",
+      "feeWei": "132345787981270"
+    },
+    {
+      "name": "up-native-in:configure-mock-output",
+      "hash": "0xe18d469c817fc1f4bb81d2d10103b9878def35400c99b7b1da56363235d21e22",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x3629ba74ded70ae0714e1e6bb5a161d1c29b0542",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "20",
+      "gasLimit": "97637",
+      "gasUsed": "70839",
+      "feeWei": "78241317904728"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-1",
+      "hash": "0x26438e6c8b1df91e609ed902215b4b05df47df2232e82e62ef675b31a1d71bc0",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "21",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "94282226651451"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-2",
+      "hash": "0x545954adbfc30a9715589dfadc63c1888c07aa411236b09ce6dc833b96ac4e25",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "22",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "93300012338136"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-3",
+      "hash": "0x0bbdcff55668890a592051625eb933f1177c341b1da224c8022953c7abdf410f",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "23",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "92439867791073"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-4",
+      "hash": "0x023ff44edd486070eb8e22b3387a0eb056d28b65ed0c1e5d5306292da6b1d438",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "24",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "91686622093734"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-5",
+      "hash": "0x96d0441f7d473e927011ba83737cbbc8c39ba0a1d30a2f877f4904fd5d1f0dbb",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "25",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "91026989896782"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-6",
+      "hash": "0x02a13790bcc48c986f51c7cfb6ea7e823ccc20029fd004b2a646e051d14046a1",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "26",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "90449336899086"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-7",
+      "hash": "0x2420cbf13fd30dbd84be0fed603d06eae101f2f1fd1013a3173a58445428ea32",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "27",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "89943474783975"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-8",
+      "hash": "0x3bae10e571a22d39a038d50e2a79c232ca76d5cd76adc98b19805277af6c6cfc",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "28",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "89500481291781"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-9",
+      "hash": "0xdaa11dfb7036603cc33df9e34f69172b7cfd504b7d12dd0d52d75e19ab76a41a",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "29",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "89112543096438"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-10",
+      "hash": "0x84bf3b8374c7e912608b702d7bc029b61ab91a083cb04fc47ebaa916e1a58f58",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "30",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "88772817944598"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-11",
+      "hash": "0xdd7e2b211a43bd667301e6916d55adbaa0fe79896c3702af81d1d22834f833d1",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "31",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "88475313897789"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-12",
+      "hash": "0xcdad72fd899adc2e4fa092ffbe5e6169a4da9e503bf006859680c92396d36f53",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "32",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "88214783690898"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-13",
+      "hash": "0x57dc64e6ed958b90b4f2d92482ffd4877d90f09d6168880d586fb06e97595913",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "33",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "87986632220262"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-14",
+      "hash": "0xf7928c34981d093acd90357ca271527a74fb0c53adfe6fe73554d3bd0b436d92",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "34",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "87786835433787"
+    },
+    {
+      "name": "up-native-in:advance-identical-set-15",
+      "hash": "0xf29d8cdfba6e329f0ed0cb44818c1e64f064632a5ec6e6204c3161d5ff35941c",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "35",
+      "gasLimit": "113654",
+      "gasUsed": "86379",
+      "feeWei": "87611869413789"
+    },
+    {
+      "name": "up-native-in:original-envelope-rejects-fee-cap-tampering",
+      "hash": "0x4b49fe7e3d221ae24cc7c440d9810f029d141a0c6ac04441405d1e1ce58ab70b",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0x06cedf53ad654c5f07b642e5e32851fe6a454afa",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "36",
+      "gasLimit": "5000000",
+      "gasUsed": "72810",
+      "feeWei": "73720049787270"
+    },
+    {
+      "name": "up-native-in:original-proof-rejects-rebound-fee-cap",
+      "hash": "0x89fbe471aeb7e89068f302995719dabd504dc530b2a40196961e0eb0698aa090",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0x06cedf53ad654c5f07b642e5e32851fe6a454afa",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "37",
+      "gasLimit": "5000000",
+      "gasUsed": "1690819",
+      "feeWei": "1709323627483420"
+    },
+    {
+      "name": "up-native-in:original-envelope-rejects-action-deadline-tampering",
+      "hash": "0x3ca539592863b863cdf439a9f8c53ffe5d5404b1a70c0433b7642553c785af9a",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0x06cedf53ad654c5f07b642e5e32851fe6a454afa",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "38",
+      "gasLimit": "5000000",
+      "gasUsed": "72810",
+      "feeWei": "73518467730030"
+    },
+    {
+      "name": "up-native-in:original-proof-rejects-treasury-and-adapter-substitution",
+      "hash": "0x297e078e803d9f08fa824d464668ca361129d3759002e689b5022c854d1db8ef",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0x927311453e509c0d85379f2891b3dc35f73da9e0",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "39",
+      "gasLimit": "5000000",
+      "gasUsed": "1690831",
+      "feeWei": "1705236832776732"
+    },
+    {
+      "name": "up-native-in:configure-output-over-proof-bound-cap",
+      "hash": "0x2918bdceae7d92044b720add14a56c709d012f78cfedc4925288d08c2a83c3d1",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x3629ba74ded70ae0714e1e6bb5a161d1c29b0542",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "40",
+      "gasLimit": "53237",
+      "gasUsed": "33839",
+      "feeWei": "34095331270975"
+    },
+    {
+      "name": "up-native-in:measured-output-fee-above-cap-reverts-atomically",
+      "hash": "0x0dabb65b24a34c5e84aafa56fec99bc03cec8587b144652359162955d5372201",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0x06cedf53ad654c5f07b642e5e32851fe6a454afa",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "41",
+      "gasLimit": "5000000",
+      "gasUsed": "2288219",
+      "feeWei": "2303390539535977"
+    },
+    {
+      "name": "up-native-in:restore-normal-mock-output",
+      "hash": "0x24e4361b05e2f932dfe3f330536dbd563433351cfbd51ed74113aec8c80c4d64",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x3629ba74ded70ae0714e1e6bb5a161d1c29b0542",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "42",
+      "gasLimit": "53237",
+      "gasUsed": "33839",
+      "feeWei": "34039595155592"
+    },
+    {
+      "name": "up-native-in:A-private-fee-swap-to-B",
+      "hash": "0xfd8302aa63c1de949863a541d1cf7f1609358b6cc72e3dd7c7390320fffa8c9a",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0x06cedf53ad654c5f07b642e5e32851fe6a454afa",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "43",
+      "gasLimit": "3776537",
+      "gasUsed": "3023907",
+      "feeWei": "3039596871075363"
+    },
+    {
+      "name": "up-native-in:ASP-approves-B-recovered-note",
+      "hash": "0x6d6d2a6728e08e814ab5653653d5a4110d483b73ee726cded19d2d0df9b70e56",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "44",
+      "gasLimit": "117043",
+      "gasUsed": "89203",
+      "feeWei": "89619647766746"
+    },
+    {
+      "name": "up-native-in:B-restored-note-normal-withdrawal",
+      "hash": "0x3f7c242cffdd88adf65152d4974406fff02e4f6ead51c90ca9b0bc34f8f582e5",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0x27915cca0387183af594b06ddacbbb3af6b2ceed",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "45",
+      "gasLimit": "661937",
+      "gasUsed": "528680",
+      "feeWei": "530842516372760"
+    },
+    {
+      "name": "deploy-router02-native-out:wrapped-native",
+      "hash": "0x666649ac9a830a278d2d72689c52090b0fb1b24efb43e546146a64c00fb4e55a",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0xb0837ca711c8515430b8178c082ab5be9a0ebe2f",
+      "status": "success",
+      "blockNumber": "46",
+      "gasLimit": "696034",
+      "gasUsed": "571695",
+      "feeWei": "573751460091960"
+    },
+    {
+      "name": "deploy-router02-native-out:token-A",
+      "hash": "0x5a1529e2c7b5197eeede911561c40f8d67b5e42ddadfb8fe923b474bb5b7ad77",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x5eaf64e6adbd574437c915f583dd0c7bc337e911",
+      "status": "success",
+      "blockNumber": "47",
+      "gasLimit": "688571",
+      "gasUsed": "565476",
+      "feeWei": "567265519486500"
+    },
+    {
+      "name": "deploy-router02-native-out:intermediate-token-B",
+      "hash": "0x64df21edbadb3b953656fa4aa8424ecf2e9fce76eab8ef6062775b1d002e026e",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x8be7078505aa66a70ee70dfa3d7515cdfc77db98",
+      "status": "success",
+      "blockNumber": "48",
+      "gasLimit": "688571",
+      "gasUsed": "565476",
+      "feeWei": "567050262564960"
+    },
+    {
+      "name": "deploy-router02-native-out:real-source-pool",
+      "hash": "0xbacdef38cf5e37f04ea3230ce26c077e864a10fcaf84681190f842d8aecade91",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x58f6026c80e39ce4bf21e5133dbfaf9799cc3cd9",
+      "status": "success",
+      "blockNumber": "49",
+      "gasLimit": "5523911",
+      "gasUsed": "4594926",
+      "feeWei": "4606179359747784"
+    },
+    {
+      "name": "deploy-router02-native-out:real-target-pool",
+      "hash": "0x03f9a2c3e7bd1eee1ad412b2f53a6419b546df686ce02b858f06d290b42ff8e0",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0xd04b09cb34b911d38e5423c8399696a5d2a5b6b6",
+      "status": "success",
+      "blockNumber": "50",
+      "gasLimit": "5520479",
+      "gasUsed": "4592066",
+      "feeWei": "4602337198007982"
+    },
+    {
+      "name": "deploy-router02-native-out:first-hop",
+      "hash": "0x95a6b186ad7582a25b7bc4bfde4f85cb649cd8bd0014f5939b01a5e5d41f52ed",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x7fc57fa68cd6fc4c99ac767257e3c2ebdce12bf1",
+      "status": "success",
+      "blockNumber": "51",
+      "gasLimit": "171730",
+      "gasUsed": "134775",
+      "feeWei": "135050308935750"
+    },
+    {
+      "name": "deploy-router02-native-out:second-hop",
+      "hash": "0xbe30b5402aef7996571a78ddd909d5ab25888a604fa386b3c78352d068f39e56",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x15084cc3ef0b480a2c8b005462833710e2e1acf3",
+      "status": "success",
+      "blockNumber": "52",
+      "gasLimit": "171730",
+      "gasUsed": "134775",
+      "feeWei": "135016204526325"
+    },
+    {
+      "name": "deploy-router02-native-out:mock-factory",
+      "hash": "0x2ba7eb57d9d46fac01c031d9ecb3d6d8e61d933c837d6ec840003af91c0dc6a6",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x6eafc8e6d9778391fa8f3e211b38d0a0f40044d8",
+      "status": "success",
+      "blockNumber": "53",
+      "gasLimit": "383648",
+      "gasUsed": "311374",
+      "feeWei": "311862229138642"
+    },
+    {
+      "name": "deploy-router02-native-out:mock-router",
+      "hash": "0xfb79785034800d68a4aeba5ccb33c92b2f31cfc719b75dd31b27f8fd6ab95759",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0x84a1bd9e9ca2adc6f849cc9bc840fe8676cc51a9",
+      "status": "success",
+      "blockNumber": "54",
+      "gasLimit": "796676",
+      "gasUsed": "655564",
+      "feeWei": "656466091464456"
+    },
+    {
+      "name": "deploy-router02-native-out:production-fee-adapter",
+      "hash": "0xc6ad90e670d8dcc7b3c1203e090ab4a20251a86b7bb1e6baa452f6db7528631e",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0xf4dc11fb5c06712c703b098a4f9ec80844160af3",
+      "status": "success",
+      "blockNumber": "55",
+      "gasLimit": "4077325",
+      "gasUsed": "3389438",
+      "feeWei": "3393544524450470"
+    },
+    {
+      "name": "deploy-router02-native-out:different-treasury-adapter",
+      "hash": "0xa70bfd90db78a2a705308effcd53df0aea0841da24eb12fe53f967861b7ffb6b",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": null,
+      "contractAddress": "0xd9ecd0de5c5833e0e96a32e12f19321a95452fb4",
+      "status": "success",
+      "blockNumber": "56",
+      "gasLimit": "4077325",
+      "gasUsed": "3389438",
+      "feeWei": "3393147200970358"
+    },
+    {
+      "name": "router02-native-out:back-wrapped-output",
+      "hash": "0x40570a390f04052cca0ac18d74895f89fb01b4833859b9c229ee90ad8c851134",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0xb0837ca711c8515430b8178c082ab5be9a0ebe2f",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "57",
+      "gasLimit": "91273",
+      "gasUsed": "67728",
+      "feeWei": "67794946351152"
+    },
+    {
+      "name": "router02-native-out:fund-mock-output-liquidity",
+      "hash": "0xdbe8a350f96297baa9881b5b660fc3b827feab6b9133640a1fadbae341d86a4e",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0xb0837ca711c8515430b8178c082ab5be9a0ebe2f",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "58",
+      "gasLimit": "71863",
+      "gasUsed": "46753",
+      "feeWei": "46793462851380"
+    },
+    {
+      "name": "router02-native-out:fund-A-token",
+      "hash": "0x5df14ac07589babf4e5b9a917add4168dd28730551df63a27d812c8a00dcb4ee",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x5eaf64e6adbd574437c915f583dd0c7bc337e911",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "59",
+      "gasLimit": "94897",
+      "gasUsed": "70748",
+      "feeWei": "70801599746020"
+    },
+    {
+      "name": "router02-native-out:A-approve-public-deposit",
+      "hash": "0xddc2956ca3aea1d7f70b551559c895817769394bdda97a7b7ba0161e17946715",
+      "from": "0xC206E4DdDd27c4ef86DC07d6e0839Dada3DA087D",
+      "to": "0x5eaf64e6adbd574437c915f583dd0c7bc337e911",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "60",
+      "gasLimit": "65581",
+      "gasUsed": "46318",
+      "feeWei": "46348725508480"
+    },
+    {
+      "name": "router02-native-out:A-public-deposit",
+      "hash": "0xb7c4bad3fd9964f954b7c474a6a04ddedbc10304ebeef4c06af931b050416e6b",
+      "from": "0xC206E4DdDd27c4ef86DC07d6e0839Dada3DA087D",
+      "to": "0x58f6026c80e39ce4bf21e5133dbfaf9799cc3cd9",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "61",
+      "gasLimit": "986585",
+      "gasUsed": "799235",
+      "feeWei": "799699113366795"
+    },
+    {
+      "name": "router02-native-out:ASP-approves-A",
+      "hash": "0xeae132a9640020a9109e4c4c558857d96b90b1a25d57a5cc8da9b73b5353a894",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "62",
+      "gasLimit": "117043",
+      "gasUsed": "89203",
+      "feeWei": "89248669973534"
+    },
+    {
+      "name": "router02-native-out:configure-mock-output",
+      "hash": "0x94f898c0ddb230634959173a0537c14fef8b944906424bd2b8d385f738d94e50",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x84a1bd9e9ca2adc6f849cc9bc840fe8676cc51a9",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "63",
+      "gasLimit": "97637",
+      "gasUsed": "70839",
+      "feeWei": "70870761515718"
+    },
+    {
+      "name": "router02-native-out:original-envelope-rejects-fee-cap-tampering",
+      "hash": "0x542b224bf8fadb38a44894c2862a1d1fde75a8cf46d3c7ddb304f4a104ac1bed",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0xf4dc11fb5c06712c703b098a4f9ec80844160af3",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "64",
+      "gasLimit": "5000000",
+      "gasUsed": "72840",
+      "feeWei": "72868595672880"
+    },
+    {
+      "name": "router02-native-out:original-proof-rejects-rebound-fee-cap",
+      "hash": "0xb6de5bcb17cc1c69c831480cd03d2678a56f2ac10b16e8ea2063ed35d7519737",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0xf4dc11fb5c06712c703b098a4f9ec80844160af3",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "65",
+      "gasLimit": "5000000",
+      "gasUsed": "1690563",
+      "feeWei": "1691144127650124"
+    },
+    {
+      "name": "router02-native-out:original-envelope-rejects-action-deadline-tampering",
+      "hash": "0x2273ae8ef5f0db156b1b1da1d5c18f0cc0e777552f48e803ef4a4855158ed513",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0xf4dc11fb5c06712c703b098a4f9ec80844160af3",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "66",
+      "gasLimit": "5000000",
+      "gasUsed": "72840",
+      "feeWei": "72862261579320"
+    },
+    {
+      "name": "router02-native-out:original-proof-rejects-treasury-and-adapter-substitution",
+      "hash": "0x9ab53c44e7e8b4287f385d5d1dc8ea7f52337c430d2527bf6d841281359c30e1",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0xd9ecd0de5c5833e0e96a32e12f19321a95452fb4",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "67",
+      "gasLimit": "5000000",
+      "gasUsed": "1690551",
+      "feeWei": "1691003401590906"
+    },
+    {
+      "name": "router02-native-out:configure-output-over-proof-bound-cap",
+      "hash": "0x4a765ae9b2b08201e90e0f47050f6d4e702d1f0e959b89a345900be60e658a99",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x84a1bd9e9ca2adc6f849cc9bc840fe8676cc51a9",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "68",
+      "gasLimit": "53237",
+      "gasUsed": "33839",
+      "feeWei": "33847051177914"
+    },
+    {
+      "name": "router02-native-out:measured-output-fee-above-cap-reverts-atomically",
+      "hash": "0xe2be16023394375b20d7b476a8f01ec2d64dceb5c458b6080daae75135a5625a",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0xf4dc11fb5c06712c703b098a4f9ec80844160af3",
+      "contractAddress": null,
+      "status": "reverted",
+      "blockNumber": "69",
+      "gasLimit": "5000000",
+      "gasUsed": "798562",
+      "feeWei": "798728302932186"
+    },
+    {
+      "name": "router02-native-out:restore-normal-mock-output",
+      "hash": "0x34ac1f0ceb3aa7295f9923220e274a718984a672825c4fda2369485e9542935f",
+      "from": "0x26af3B564B4e64223de964239157efAD9508E055",
+      "to": "0x84a1bd9e9ca2adc6f849cc9bc840fe8676cc51a9",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "70",
+      "gasLimit": "53237",
+      "gasUsed": "33839",
+      "feeWei": "33845213111112"
+    },
+    {
+      "name": "router02-native-out:A-private-fee-swap-to-B",
+      "hash": "0x57b4c63dde0dde7cc80ee9c87c547969c563667fb189b640e9ff9c0200ad7e9d",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0xf4dc11fb5c06712c703b098a4f9ec80844160af3",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "71",
+      "gasLimit": "1946918",
+      "gasUsed": "1514325",
+      "feeWei": "1514568365656425"
+    },
+    {
+      "name": "router02-native-out:ASP-approves-B-recovered-note",
+      "hash": "0xed637d42fcdf17e815392adbae9c267b2f7164aec375db1b4e8cb2d948e0a447",
+      "from": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+      "to": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "72",
+      "gasLimit": "117043",
+      "gasUsed": "89203",
+      "feeWei": "89215724718747"
+    },
+    {
+      "name": "router02-native-out:B-restored-note-normal-withdrawal",
+      "hash": "0x0d11db40d633fd7cc3940e9c389a53f058b72db3d1582265668cd7b1b7d2e0ff",
+      "from": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+      "to": "0xd04b09cb34b911d38e5423c8399696a5d2a5b6b6",
+      "contractAddress": null,
+      "status": "success",
+      "blockNumber": "73",
+      "gasLimit": "600650",
+      "gasUsed": "482408",
+      "feeWei": "482468264336992"
+    }
+  ],
+  "proofs": [
+    {
+      "name": "up-native-in:A-final-fee-swap-proof",
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 1
+    },
+    {
+      "name": "up-native-in:B-final-normal-withdrawal-proof",
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 1
+    },
+    {
+      "name": "router02-native-out:A-final-fee-swap-proof",
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 1
+    },
+    {
+      "name": "router02-native-out:B-final-normal-withdrawal-proof",
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 1
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "up-native-in",
+      "adapterType": "Phase2FeeRouteAdapter",
+      "protocol": 1,
+      "nativeIn": true,
+      "nativeOut": false,
+      "feeBps": 30,
+      "sourceProfile": {
+        "schema": "phase2-asp-production-profile/v1",
+        "releaseCandidate": true,
+        "testOnly": false,
+        "productionReady": false,
+        "chain": {
+          "id": 4663,
+          "rpcUrl": "http://127.0.0.1:64598"
+        },
+        "genesisHash": "0xa53e4f6831452159a2e1ba191ac5f105b5128a2e9db2b2ce669dabe1d1f833f2",
+        "artifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "production": {
+          "build": {
+            "path": "artifacts/phase2-mainnet/contracts.json",
+            "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+          },
+          "manifests": {
+            "joinsplit": {
+              "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+              "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+            },
+            "holder-exit": {
+              "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+              "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+            }
+          },
+          "parameters": {
+            "joinsplit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+                "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+                "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+                "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+                "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+                "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+                "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+              }
+            },
+            "holder-exit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+                "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+                "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+                "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+                "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+                "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+                "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+              }
+            }
+          },
+          "releaseId": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        },
+        "relayer": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+        "pool": {
+          "address": "0x8d00d5d21228f6b43b8ef90cd65fa5de852d552f",
+          "runtimeCodeHash": "0xb9f73b0b7b2397d447f8eb1142aea9cd4f7ff8f8c9c533d70069254eb89c30e9",
+          "asset": "0x0000000000000000000000000000000000000000",
+          "noteModel": "factorized-asp-v1",
+          "treeDepth": 20,
+          "startBlock": "9",
+          "scope": "1590974593668929788368632527838434324970738571582203112409753317224744353024"
+        },
+        "verifier": {
+          "address": "0x5decbefe22b77c7b6c47d40f87f64c8e18e8a87f",
+          "runtimeCodeHash": "0x53b6c748afbdf537440036d238752a874e918bb8128aa11d2df65926b271fb4a"
+        },
+        "exitVerifier": {
+          "address": "0x4ae07cc96a0b3e041d97696db8c7bd82cc7ec8a8",
+          "runtimeCodeHash": "0x25611eb4723ceab2d49339495042c2899d45e04de6fd503c5d07efe7f9015a60"
+        },
+        "registry": {
+          "address": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+          "runtimeCodeHash": "0x45d5e4b12fb674dc2002c215eed52014b7f6324e1696d5c9797743c79e41ea6b",
+          "provider": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+          "guardian": "0xb1849c8E4a17f3bFD3111Bfa009eB4B22570cb26",
+          "startBlock": "5"
+        }
+      },
+      "targetProfile": {
+        "schema": "phase2-asp-production-profile/v1",
+        "releaseCandidate": true,
+        "testOnly": false,
+        "productionReady": false,
+        "chain": {
+          "id": 4663,
+          "rpcUrl": "http://127.0.0.1:64598"
+        },
+        "genesisHash": "0xa53e4f6831452159a2e1ba191ac5f105b5128a2e9db2b2ce669dabe1d1f833f2",
+        "artifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "production": {
+          "build": {
+            "path": "artifacts/phase2-mainnet/contracts.json",
+            "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+          },
+          "manifests": {
+            "joinsplit": {
+              "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+              "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+            },
+            "holder-exit": {
+              "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+              "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+            }
+          },
+          "parameters": {
+            "joinsplit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+                "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+                "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+                "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+                "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+                "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+                "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+              }
+            },
+            "holder-exit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+                "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+                "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+                "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+                "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+                "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+                "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+              }
+            }
+          },
+          "releaseId": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        },
+        "relayer": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+        "pool": {
+          "address": "0x27915cca0387183af594b06ddacbbb3af6b2ceed",
+          "runtimeCodeHash": "0x6e27ad19c17110de6c631c095a4cbecced3e3fbf0acf50d218db3cffc690d0ae",
+          "asset": "0x3263732f8ed6863a4218636ffaceb2fc4db97fca",
+          "noteModel": "factorized-asp-v1",
+          "treeDepth": 20,
+          "startBlock": "10",
+          "scope": "3555355701999702529713821619159893534939969911518152374463376224447813091538"
+        },
+        "verifier": {
+          "address": "0x5decbefe22b77c7b6c47d40f87f64c8e18e8a87f",
+          "runtimeCodeHash": "0x53b6c748afbdf537440036d238752a874e918bb8128aa11d2df65926b271fb4a"
+        },
+        "exitVerifier": {
+          "address": "0x4ae07cc96a0b3e041d97696db8c7bd82cc7ec8a8",
+          "runtimeCodeHash": "0x25611eb4723ceab2d49339495042c2899d45e04de6fd503c5d07efe7f9015a60"
+        },
+        "registry": {
+          "address": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+          "runtimeCodeHash": "0x45d5e4b12fb674dc2002c215eed52014b7f6324e1696d5c9797743c79e41ea6b",
+          "provider": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+          "guardian": "0xb1849c8E4a17f3bFD3111Bfa009eB4B22570cb26",
+          "startBlock": "5"
+        }
+      },
+      "route": {
+        "adapter": "0x06cedf53ad654c5f07b642e5e32851fe6a454afa",
+        "adapterType": "Phase2FeeRouteAdapter",
+        "router": "0x3629ba74ded70ae0714e1e6bb5a161d1c29b0542",
+        "wrappedNative": "0x15c687920eca7e279ebea93874c47c57f20563d5",
+        "factory": "0x4d2853f10cf59502264ec0245ce2dfb4ae4dcc90",
+        "protocol": 1,
+        "path": "0x15c687920eca7e279ebea93874c47c57f20563d5000bb801225a2606c40ae84e4b3e33b97397d17bbbd040000bb83263732f8ed6863a4218636ffaceb2fc4db97fca",
+        "feeBps": 30,
+        "treasury": "0xDaDEc66404969aaa726841Ba6b54fF375e31e9F8"
+      },
+      "adapterRuntimeCodeHash": "0x8cf564fdefbefec2ad321dddb885de2a2c98e3b3997b158c4d57bc5650ef5196",
+      "sourceReserve": "0",
+      "targetReserve": "0",
+      "BRecoveredAmount": "9970",
+      "BWithdrawnAmount": "9938",
+      "withdrawalGross": "9970",
+      "withdrawalFee": "32",
+      "withdrawalPolicy": {
+        "schema": "lincoln-service-fees/v2",
+        "id": "synthetic-fee-acceptance-v2",
+        "feeAsset": "current-pool-asset",
+        "gasFeeUnits": "3",
+        "withdrawal": {
+          "bps": 30,
+          "includesGas": true
+        },
+        "holderExit": {
+          "bps": 30,
+          "includesGas": true
+        },
+        "ragequit": {
+          "bps": 0,
+          "includesGas": false
+        },
+        "privateTransfer": {
+          "fixedUnits": "0",
+          "includesGas": false
+        },
+        "swap": {
+          "bps": 30,
+          "treasury": "0xdadec66404969aaa726841ba6b54ff375e31e9f8",
+          "immutable": true,
+          "includesGas": false
+        },
+        "deposit": {
+          "bps": 0,
+          "includesGas": false
+        }
+      },
+      "withdrawalQuote": {
+        "schema": "lincoln-service-fee-quote/v2",
+        "policyId": "synthetic-fee-acceptance-v2",
+        "kind": "withdrawal",
+        "serviceFeeBps": 30,
+        "grossAmount": "9970",
+        "percentageServiceFee": "29",
+        "fixedServiceFee": "0",
+        "quotedGasFee": "3",
+        "totalFee": "32",
+        "netRecipientAmount": "9938",
+        "feeAsset": "current-pool-asset",
+        "gasQuoteKind": "operator-configured-fixed-asset-units",
+        "protocolFeeMandatory": false,
+        "transactionsSent": false
+      },
+      "withdrawalFeeRecipient": "0x06e730d447E407E719223cecaD8B83CcbC11be58",
+      "withdrawalAccountedBalance": "0",
+      "serviceFee": "30",
+      "gas": {
+        "estimate": "3138781",
+        "paddedGas": "3776537",
+        "actualGasUsed": "3023907",
+        "relayMaxGas": "5000000",
+        "oldestWindowProof": true
+      },
+      "passed": true
+    },
+    {
+      "id": "router02-native-out",
+      "adapterType": "Phase2FeeRouter02Adapter",
+      "protocol": 0,
+      "nativeIn": false,
+      "nativeOut": true,
+      "feeBps": 30,
+      "sourceProfile": {
+        "schema": "phase2-asp-production-profile/v1",
+        "releaseCandidate": true,
+        "testOnly": false,
+        "productionReady": false,
+        "chain": {
+          "id": 4663,
+          "rpcUrl": "http://127.0.0.1:64598"
+        },
+        "genesisHash": "0xa53e4f6831452159a2e1ba191ac5f105b5128a2e9db2b2ce669dabe1d1f833f2",
+        "artifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "production": {
+          "build": {
+            "path": "artifacts/phase2-mainnet/contracts.json",
+            "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+          },
+          "manifests": {
+            "joinsplit": {
+              "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+              "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+            },
+            "holder-exit": {
+              "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+              "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+            }
+          },
+          "parameters": {
+            "joinsplit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+                "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+                "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+                "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+                "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+                "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+                "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+              }
+            },
+            "holder-exit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+                "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+                "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+                "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+                "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+                "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+                "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+              }
+            }
+          },
+          "releaseId": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        },
+        "relayer": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+        "pool": {
+          "address": "0x58f6026c80e39ce4bf21e5133dbfaf9799cc3cd9",
+          "runtimeCodeHash": "0x707613006a91c6c30205421c9e6c96d39d4a4ccf66b8504082468e79f7d42072",
+          "asset": "0x5eaf64e6adbd574437c915f583dd0c7bc337e911",
+          "noteModel": "factorized-asp-v1",
+          "treeDepth": 20,
+          "startBlock": "49",
+          "scope": "1126253889250840853463366678953758854269999215516282528799647774528045609970"
+        },
+        "verifier": {
+          "address": "0x5decbefe22b77c7b6c47d40f87f64c8e18e8a87f",
+          "runtimeCodeHash": "0x53b6c748afbdf537440036d238752a874e918bb8128aa11d2df65926b271fb4a"
+        },
+        "exitVerifier": {
+          "address": "0x4ae07cc96a0b3e041d97696db8c7bd82cc7ec8a8",
+          "runtimeCodeHash": "0x25611eb4723ceab2d49339495042c2899d45e04de6fd503c5d07efe7f9015a60"
+        },
+        "registry": {
+          "address": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+          "runtimeCodeHash": "0x45d5e4b12fb674dc2002c215eed52014b7f6324e1696d5c9797743c79e41ea6b",
+          "provider": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+          "guardian": "0xb1849c8E4a17f3bFD3111Bfa009eB4B22570cb26",
+          "startBlock": "5"
+        }
+      },
+      "targetProfile": {
+        "schema": "phase2-asp-production-profile/v1",
+        "releaseCandidate": true,
+        "testOnly": false,
+        "productionReady": false,
+        "chain": {
+          "id": 4663,
+          "rpcUrl": "http://127.0.0.1:64598"
+        },
+        "genesisHash": "0xa53e4f6831452159a2e1ba191ac5f105b5128a2e9db2b2ce669dabe1d1f833f2",
+        "artifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+        "production": {
+          "build": {
+            "path": "artifacts/phase2-mainnet/contracts.json",
+            "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+          },
+          "manifests": {
+            "joinsplit": {
+              "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+              "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+            },
+            "holder-exit": {
+              "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+              "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+            }
+          },
+          "parameters": {
+            "joinsplit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+                "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+                "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+                "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+                "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+                "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+                "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+              }
+            },
+            "holder-exit": {
+              "r1cs": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+                "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+              },
+              "wasm": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+                "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+              },
+              "zkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+                "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+              },
+              "vkey": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+                "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+              },
+              "verifier": {
+                "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+                "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+              },
+              "ceremonyTranscript": {
+                "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+                "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+              }
+            }
+          },
+          "releaseId": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        },
+        "relayer": "0x815f9182c8e00ABa3Ca3F1d8CDE75aDB5ae26092",
+        "pool": {
+          "address": "0xd04b09cb34b911d38e5423c8399696a5d2a5b6b6",
+          "runtimeCodeHash": "0x54089305349745787e2e10f06b9b773903a9732f1a7f867c853c0d30bbd24c43",
+          "asset": "0x0000000000000000000000000000000000000000",
+          "noteModel": "factorized-asp-v1",
+          "treeDepth": 20,
+          "startBlock": "50",
+          "scope": "6363858710949131437760178824083066871859947504731922743248658965172733967525"
+        },
+        "verifier": {
+          "address": "0x5decbefe22b77c7b6c47d40f87f64c8e18e8a87f",
+          "runtimeCodeHash": "0x53b6c748afbdf537440036d238752a874e918bb8128aa11d2df65926b271fb4a"
+        },
+        "exitVerifier": {
+          "address": "0x4ae07cc96a0b3e041d97696db8c7bd82cc7ec8a8",
+          "runtimeCodeHash": "0x25611eb4723ceab2d49339495042c2899d45e04de6fd503c5d07efe7f9015a60"
+        },
+        "registry": {
+          "address": "0xbfa216f45da535090f25f9384648e9692ca03d7c",
+          "runtimeCodeHash": "0x45d5e4b12fb674dc2002c215eed52014b7f6324e1696d5c9797743c79e41ea6b",
+          "provider": "0x8d2B288A9dbCeC89256e4361225e656BF66f4E7d",
+          "guardian": "0xb1849c8E4a17f3bFD3111Bfa009eB4B22570cb26",
+          "startBlock": "5"
+        }
+      },
+      "route": {
+        "adapter": "0xf4dc11fb5c06712c703b098a4f9ec80844160af3",
+        "adapterType": "Phase2FeeRouter02Adapter",
+        "router": "0x84a1bd9e9ca2adc6f849cc9bc840fe8676cc51a9",
+        "wrappedNative": "0xb0837ca711c8515430b8178c082ab5be9a0ebe2f",
+        "factory": "0x6eafc8e6d9778391fa8f3e211b38d0a0f40044d8",
+        "protocol": 0,
+        "path": "0x5eaf64e6adbd574437c915f583dd0c7bc337e911000bb88be7078505aa66a70ee70dfa3d7515cdfc77db98000bb8b0837ca711c8515430b8178c082ab5be9a0ebe2f",
+        "feeBps": 30,
+        "treasury": "0xDaDEc66404969aaa726841Ba6b54fF375e31e9F8"
+      },
+      "adapterRuntimeCodeHash": "0x25fa6d179126dde5b395bc824b99f4bd1fbc1b10d71ee20b93f1674b2a5dc2c7",
+      "sourceReserve": "0",
+      "targetReserve": "0",
+      "BRecoveredAmount": "9970",
+      "BWithdrawnAmount": "9938",
+      "withdrawalGross": "9970",
+      "withdrawalFee": "32",
+      "withdrawalPolicy": {
+        "schema": "lincoln-service-fees/v2",
+        "id": "synthetic-fee-acceptance-v2",
+        "feeAsset": "current-pool-asset",
+        "gasFeeUnits": "3",
+        "withdrawal": {
+          "bps": 30,
+          "includesGas": true
+        },
+        "holderExit": {
+          "bps": 30,
+          "includesGas": true
+        },
+        "ragequit": {
+          "bps": 0,
+          "includesGas": false
+        },
+        "privateTransfer": {
+          "fixedUnits": "0",
+          "includesGas": false
+        },
+        "swap": {
+          "bps": 30,
+          "treasury": "0xdadec66404969aaa726841ba6b54ff375e31e9f8",
+          "immutable": true,
+          "includesGas": false
+        },
+        "deposit": {
+          "bps": 0,
+          "includesGas": false
+        }
+      },
+      "withdrawalQuote": {
+        "schema": "lincoln-service-fee-quote/v2",
+        "policyId": "synthetic-fee-acceptance-v2",
+        "kind": "withdrawal",
+        "serviceFeeBps": 30,
+        "grossAmount": "9970",
+        "percentageServiceFee": "29",
+        "fixedServiceFee": "0",
+        "quotedGasFee": "3",
+        "totalFee": "32",
+        "netRecipientAmount": "9938",
+        "feeAsset": "current-pool-asset",
+        "gasQuoteKind": "operator-configured-fixed-asset-units",
+        "protocolFeeMandatory": false,
+        "transactionsSent": false
+      },
+      "withdrawalFeeRecipient": "0x06e730d447E407E719223cecaD8B83CcbC11be58",
+      "withdrawalAccountedBalance": "0",
+      "serviceFee": "30",
+      "gas": {
+        "estimate": "1614099",
+        "paddedGas": "1946918",
+        "actualGasUsed": "1514325",
+        "relayMaxGas": "5000000",
+        "oldestWindowProof": false
+      },
+      "passed": true
+    }
+  ],
+  "gasChecks": [
+    {
+      "scenario": "up-native-in",
+      "estimate": "3138781",
+      "paddedGas": "3776537",
+      "padding": "estimate * 12 / 10 + 10000",
+      "relayMaxGas": "5000000",
+      "oldestWindowProof": true,
+      "positiveInputNoteCount": 1,
+      "noSourceChange": true,
+      "exceedsPrevious3MCap": true
+    },
+    {
+      "scenario": "router02-native-out",
+      "estimate": "1614099",
+      "paddedGas": "1946918",
+      "padding": "estimate * 12 / 10 + 10000",
+      "relayMaxGas": "5000000",
+      "oldestWindowProof": false,
+      "positiveInputNoteCount": 1,
+      "noSourceChange": true,
+      "exceedsPrevious3MCap": false
+    }
+  ],
+  "relayMaxGas": "5000000",
+  "limitations": [
+    "Only a freshly spawned isolated local Anvil chain with ID 4663 is used; no public-chain transaction or keystore is involved.",
+    "Actual final production verifiers/pools and production fee adapters are deployed; router, tokens, factory and liquidity are explicit mock DEX fixtures.",
+    "UP/Router02 ABI compatibility, wrapping, accounting and proof binding are exercised; no real market prices, deployed DEX or production liquidity is validated.",
+    "The independent synthetic guardian tests separation of roles; the configured mainnet Safe is verified separately.",
+    "Each fee gas sample spends one positive input note plus a dummy and has no source change; it does not establish the gas maximum for every two-real-input or two-output shape.",
+    "The v2 withdrawal uses a synthetic fixed gas quote of 3 raw asset units, not the mainnet ETH preset or a deployed relayer configuration: gross 9970, percentage 29, quoted gas 3, fee 32, net 9938.",
+    "This is integration acceptance, not independent audit or an anonymity measurement."
+  ],
+  "transactionCount": 73,
+  "proofCount": 4
+}

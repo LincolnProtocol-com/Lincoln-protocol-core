@@ -12,3 +12,6 @@
 *.wasm binary
 # Preserve exact SnarkJS template bytes, including its whitespace-only lines.
 protocol/phase2-mainnet/generated/*.sol whitespace=-blank-at-eol
+
+# Byte-identical generated verifier review copies.
+contracts/verifiers/*.sol whitespace=-blank-at-eol

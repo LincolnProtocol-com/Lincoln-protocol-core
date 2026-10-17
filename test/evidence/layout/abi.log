@@ -1,0 +1,18 @@
+
+> @lincolnprotocol/core@0.1.0-rc.2 check:abi
+> node scripts/review/run.mjs abi
+
+{
+  "passed": true,
+  "checkOnly": true,
+  "contracts": 10,
+  "groups": 2,
+  "files": 11,
+  "changedFiles": 0,
+  "manifest": "abi/manifest.json",
+  "manifestSHA256": "a7f26fbccbeab40adff0ee6259a51fb84012f21ef20f98ecbab24973fed7b724",
+  "coreArtifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+  "feeArtifactSHA256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a",
+  "networkRequests": 0,
+  "transactionsBroadcast": 0
+}

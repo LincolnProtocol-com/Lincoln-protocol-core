@@ -2,7 +2,7 @@
   "name": "@lincolnprotocol/core",
   "version": "0.1.0-rc.2",
   "private": true,
-  "description": "Frozen Robinhood Chain contract and circuit candidate, with reproducible audit tooling.",
+  "description": "Lincoln privacy contracts, zero-knowledge circuits and verifiable public review sources.",
   "type": "module",
   "license": "SEE LICENSE IN THIRD_PARTY_NOTICES.md",
   "repository": {
@@ -13,18 +13,21 @@
     "node": ">=22"
   },
   "scripts": {
-    "check": "node scripts/core/check.mjs",
-    "build": "node scripts/core/build.mjs",
-    "check:circuits": "node scripts/core/check-circuits.mjs",
-    "test": "node --test tests/*.test.mjs",
-    "test:foundry": "forge test --root protocol/phase2-mainnet",
-    "test:acceptance": "node scripts/core/acceptance.mjs all",
-    "test:acceptance:native": "node scripts/core/acceptance.mjs native",
-    "test:acceptance:fees": "node scripts/core/acceptance.mjs fees",
-    "test:all": "npm run check && npm run check:abi && npm run build && npm run check:circuits && npm test && npm run test:foundry && npm run test:acceptance",
-    "plan": "node scripts/phase2-mainnet/plan.mjs",
-    "sync:abi": "node scripts/core/sync-abi.mjs",
-    "check:abi": "node scripts/core/sync-abi.mjs --check"
+    "check": "node scripts/review/run.mjs check",
+    "build": "node scripts/review/run.mjs build",
+    "check:circuits": "node scripts/review/run.mjs circuits",
+    "check:abi": "node scripts/review/run.mjs abi",
+    "test": "node scripts/review/run.mjs node",
+    "test:contracts": "node scripts/review/run.mjs contracts",
+    "test:foundry": "npm run test:contracts",
+    "test:proofs": "node scripts/review/run.mjs proofs",
+    "test:acceptance": "npm run test:proofs",
+    "test:acceptance:native": "node test/proofs/native.mjs",
+    "test:acceptance:fees": "node test/proofs/fees.mjs",
+    "test:all": "npm run check && npm run check:abi && npm run build && npm run check:circuits && npm test && npm run test:contracts && npm run test:proofs",
+    "plan": "node scripts/review/run.mjs plan",
+    "sync:review": "node scripts/review/layout.mjs",
+    "check:review": "node scripts/review/layout.mjs --check"
   },
   "dependencies": {
     "@iden3/binfileutils": "0.0.12",

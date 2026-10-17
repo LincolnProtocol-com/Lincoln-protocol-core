@@ -1,0 +1,54 @@
+{
+  "schema": "phase2-asp-ceremony-transcript/v1",
+  "circuit": "joinsplit",
+  "r1csSHA256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d",
+  "ptauSHA256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+  "finalZkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed",
+  "contributions": [
+    {
+      "type": 0,
+      "name": "lincoln-local-20261016",
+      "transcriptHex": "0xb22986a2b8394bd6818878c6e9dc4a10dfb3bc0b1cfa7dc1f5c5e7b7eb5764a14492f4d0c67c75aef2c986df3a576a29a52be0bc6af427468f4a29ab9b4b86b6"
+    },
+    {
+      "type": 0,
+      "name": "leo-independent-20261016",
+      "transcriptHex": "0x3800a14b820c2c8632d5f18822399726ff11490844e9251e9197f0c1d9a39d041c543408ba7608f0ad6524185dda78cce3123fe0d02518e16f239bc83746327e"
+    },
+    {
+      "type": 1,
+      "name": "Ethereum future block final beacon",
+      "transcriptHex": "0xa1b20e5c43e619956441dbb8e7ff701a068c0cc53e1ce63df64167db6aaa3aba2c1b901cfda5dafa7fc9656405b48ed08bf748325e20b0842901678436b99429",
+      "beaconHash": "0x5b9e2e64568bf74f5892c0d26211590d3159ddcca3b6c3a922abbc940ed48ed1",
+      "numIterationsExp": 20
+    }
+  ],
+  "beaconEvidence": {
+    "schema": "phase2-production-beacon-binding/v1",
+    "application": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.applied.json",
+      "sha256": "acab415decdb47ddf681ad0e62c8196504f8d2c69dd6088860145c14974f134f",
+      "bytes": 5225
+    },
+    "commitment": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.json",
+      "sha256": "9fec88e4aabf6522f2a0f648e72cde8b1725691f2b643d8a1153d56f09fd99b0",
+      "bytes": 6908
+    },
+    "publication": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.publication.json",
+      "sha256": "35f3f2e166796b6a77762f91b161fc2555fceddebe41ff0fa0a6437ec2995277",
+      "bytes": 2719
+    },
+    "observation": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.observation.json",
+      "sha256": "dedfc10cf0d6284d4062fb9fc63971ec10472e7d3dfdb85a4f1f9ff3eeb3c2a4",
+      "bytes": 2474
+    },
+    "beaconHash": "0x5b9e2e64568bf74f5892c0d26211590d3159ddcca3b6c3a922abbc940ed48ed1",
+    "iterations": 20,
+    "independentOperatorIdentityAuthenticated": false,
+    "publicPrecommitTimingCryptographicallyAuthenticated": false
+  },
+  "independentOperatorIdentityAuthenticated": false
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "phase2-future-beacon-observation/v1",
+  "chainId": 1,
+  "genesisHash": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3",
+  "rpcHosts": [
+    "rpc.mevblocker.io",
+    "eth.drpc.org"
+  ],
+  "finalizedHeaders": [
+    {
+      "number": "0x18fd4c0",
+      "hash": "0x86a36a8ae60199dab967503ffdaca9ed0dcab257badb027ffe72833c8929104d",
+      "parentHash": "0x62deca7214cf8445ad83a31bba4fc9b0b35971cc8e1315c85b615727815dda4b",
+      "timestamp": "0x6ad1c557",
+      "stateRoot": "0x0981eb839c8ec8b0bc31f228aab772b578edeb707677a26f3ad9c091365fd226",
+      "receiptsRoot": "0x6937418c7028f97b1ceb26d7e7ea041295d188818165060e43fc5a36ead2e18d",
+      "transactionsRoot": "0xa818eafa2b840332e96c7bdf40decc2db9384f6c08a929fc24e30159f30a874b"
+    },
+    {
+      "number": "0x18fd4c0",
+      "hash": "0x86a36a8ae60199dab967503ffdaca9ed0dcab257badb027ffe72833c8929104d",
+      "parentHash": "0x62deca7214cf8445ad83a31bba4fc9b0b35971cc8e1315c85b615727815dda4b",
+      "timestamp": "0x6ad1c557",
+      "stateRoot": "0x0981eb839c8ec8b0bc31f228aab772b578edeb707677a26f3ad9c091365fd226",
+      "receiptsRoot": "0x6937418c7028f97b1ceb26d7e7ea041295d188818165060e43fc5a36ead2e18d",
+      "transactionsRoot": "0xa818eafa2b840332e96c7bdf40decc2db9384f6c08a929fc24e30159f30a874b"
+    }
+  ],
+  "beaconHeader": {
+    "number": "0x18fd4ae",
+    "hash": "0x5b9e2e64568bf74f5892c0d26211590d3159ddcca3b6c3a922abbc940ed48ed1",
+    "parentHash": "0x1c0c2acb763d3db81af559fe03417e7ab7dd169b096bd7cc93da680e9e30e7cc",
+    "timestamp": "0x6ad1c47f",
+    "stateRoot": "0xeeade491fd7b9a29791b8ee5aefc059923149077a95e762cc9c78da1266dc516",
+    "receiptsRoot": "0xdefe9e2975c8bcee1b3865c6c1bd672055528dde381e428ff43eefcab0667afa",
+    "transactionsRoot": "0x775c1b533d0d0de5ebf097b61d0963e5e00b69e14c43db571c3997d87487d18e"
+  },
+  "beaconHash": "0x5b9e2e64568bf74f5892c0d26211590d3159ddcca3b6c3a922abbc940ed48ed1",
+  "publicationObservationSHA256": "39b2900cc53ca0e53f1781295f2dfa2bb68eb0f1269f2c84657c304e1d2b8b0d",
+  "commitmentSHA256": "c232d2b5b42f9a34a615e21dc2c9cbc9f6d365c2a55b75ed48192c858fabe01c",
+  "independentRPCOperatorsAuthenticated": false,
+  "publicPrecommitTimingCryptographicallyAuthenticated": false,
+  "trust": "Publication was observed via immutable GitHub bytes while two distinct HTTPS RPC hosts reported a future target. The local observation is not a cryptographic timestamp; Ethereum finality is RPC-reported, not verified by a consensus light client."
+}

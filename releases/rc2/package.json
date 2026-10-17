@@ -1,0 +1,42 @@
+{
+  "name": "@lincolnprotocol/core",
+  "version": "0.1.0-rc.2",
+  "private": true,
+  "description": "Frozen Robinhood Chain contract and circuit candidate, with reproducible audit tooling.",
+  "type": "module",
+  "license": "SEE LICENSE IN THIRD_PARTY_NOTICES.md",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LincolnProtocol-com/Lincoln-protocol-core.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/core/check.mjs",
+    "build": "node scripts/core/build.mjs",
+    "check:circuits": "node scripts/core/check-circuits.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:foundry": "forge test --root protocol/phase2-mainnet",
+    "test:acceptance": "node scripts/core/acceptance.mjs all",
+    "test:acceptance:native": "node scripts/core/acceptance.mjs native",
+    "test:acceptance:fees": "node scripts/core/acceptance.mjs fees",
+    "test:all": "npm run check && npm run check:abi && npm run build && npm run check:circuits && npm test && npm run test:foundry && npm run test:acceptance",
+    "plan": "node scripts/phase2-mainnet/plan.mjs",
+    "sync:abi": "node scripts/core/sync-abi.mjs",
+    "check:abi": "node scripts/core/sync-abi.mjs --check"
+  },
+  "dependencies": {
+    "@iden3/binfileutils": "0.0.12",
+    "@openzeppelin/contracts": "5.0.2",
+    "blake2b-wasm": "2.4.0",
+    "circom2": "0.2.22",
+    "circomlib": "2.0.5",
+    "ethers": "6.17.0",
+    "maci-crypto": "2.5.0",
+    "poseidon-solidity": "0.0.5",
+    "snarkjs": "0.7.5",
+    "solc": "0.8.28",
+    "viem": "2.22.14"
+  }
+}

@@ -2,9 +2,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {configureMainnetOperations} from '../scripts/core/mainnet-operations.mjs';
-const config=JSON.parse(await fs.readFile(new URL('../config/phase2-mainnet.json',import.meta.url)));
-const operations=JSON.parse(await fs.readFile(new URL('../config/phase2-mainnet-operations.json',import.meta.url)));
+import {configureMainnetOperations,mainnetOperationsPlan} from '../../scripts/core/mainnet-operations.mjs';
+const config=JSON.parse(await fs.readFile(new URL('../../releases/rc2/config/phase2-mainnet.json',import.meta.url)));
+const operations=JSON.parse(await fs.readFile(new URL('../../config/mainnet-operations.json',import.meta.url)));
 const clone=value=>structuredClone(value);
 test('registers the public account without changing frozen config or enabling spending',()=>{
   const before=clone(config),result=configureMainnetOperations({config,operations});
@@ -28,4 +28,16 @@ test('rejects invalid deployer identities, role collisions and replacing a confi
   }
   const c=clone(config);c.deployer.address=operations.deployer.address;assert.throws(()=>configureMainnetOperations({config:c,operations}),{code:'MAINNET_OPERATIONS_FROZEN_DEPLOYER_REQUIRED'});
   const o=clone(operations);o.deployer.signingAccount='../other';assert.throws(()=>configureMainnetOperations({config,operations:o}));
+});
+test('operations plan reads the frozen capsule and separate root target without changing either',async()=>{
+  const candidateURL=new URL('../../releases/rc2/config/phase2-mainnet.json',import.meta.url);
+  const operationsURL=new URL('../../config/mainnet-operations.json',import.meta.url);
+  const candidateBefore=await fs.readFile(candidateURL),operationsBefore=await fs.readFile(operationsURL);
+  const plan=await mainnetOperationsPlan();
+  assert.equal(plan.deployer.address,operations.deployer.address);assert.equal(plan.deployer.signingAccount,'lincoln-deployer');
+  assert.equal(plan.signingEnabled,false);assert.equal(plan.offline,true);assert.equal(plan.filesWritten,0);
+  assert.equal(plan.keysAccessed,false);assert.equal(plan.transactionsSigned,0);assert.equal(plan.transactionsBroadcast,0);
+  assert.deepEqual(plan.candidate,operations.candidate);assert.deepEqual(plan.limits,operations.limits);
+  assert.deepEqual(await fs.readFile(candidateURL),candidateBefore);assert.deepEqual(await fs.readFile(operationsURL),operationsBefore);
+  assert.equal(JSON.parse(candidateBefore).deployer.address,null);
 });

@@ -1,0 +1,33 @@
+
+> @lincolnprotocol/core@0.1.0-rc.2 check
+> node scripts/review/run.mjs check
+
+{
+  "passed": true,
+  "layout": {
+    "passed": true,
+    "checkOnly": true,
+    "baseCommit": "abe000c7acd9c26931a17961e1b4bdda083df84e",
+    "releaseSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
+    "copiedFiles": 58,
+    "generatedFiles": 1,
+    "changedFiles": 0,
+    "manifest": "review-manifest.json",
+    "manifestSHA256": "3bf5fee77cafd1b46a90abc235d530d41065fb9d95bb6cdfcfc2d051eca6565c",
+    "contracts": 10,
+    "sourceBytes": 86561995,
+    "networkRequests": 0,
+    "publicTransactions": 0
+  },
+  "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
+  "releaseManifestSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
+  "preservedUpstreamFiles": 76,
+  "documentedR2Changes": 30,
+  "frozenFiles": 105,
+  "contracts": 10,
+  "chainId": 4663,
+  "mainnetDeployed": false,
+  "publicTransactions": 0,
+  "dependencySourceSnapshots": 9,
+  "documentedTestAdaptations": 2
+}

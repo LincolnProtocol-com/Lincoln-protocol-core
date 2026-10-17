@@ -1,0 +1,90 @@
+{
+  "schema": "lincoln-public-review-layout-validation/v1",
+  "validatedAtUTC": "2026-10-17T03:31:33.881577+00:00",
+  "passed": true,
+  "preservedRelease": {
+    "tag": "v0.1.0-rc.2",
+    "commit": "abe000c7acd9c26931a17961e1b4bdda083df84e",
+    "verbatimCapsuleFiles": 182,
+    "releaseSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3"
+  },
+  "reviewManifestSHA256": "3bf5fee77cafd1b46a90abc235d530d41065fb9d95bb6cdfcfc2d051eca6565c",
+  "copiedReviewFiles": 58,
+  "abiExports": 10,
+  "checks": {
+    "node": {
+      "preserved": 96,
+      "newTooling": 20,
+      "total": 116,
+      "failed": 0
+    },
+    "foundry": {
+      "passed": 68,
+      "failed": 0,
+      "fuzzRunsPerCase": 1000,
+      "invariantRuns": 128,
+      "invariantCalls": 5120,
+      "invariantReverts": 0
+    },
+    "circuitsRecompiled": 2,
+    "buildArtifactsUnchanged": true,
+    "deploymentPreparationPublicFilesChecked": 182
+  },
+  "proofAcceptance": {
+    "native": {
+      "path": "test/evidence/layout/native.json",
+      "sha256": "b9919d21d7120725ff4f76a2f885655415d8ad90d5b8c82136771caf6f26142b",
+      "runId": "2656b38d-3b42-46b4-bd00-5eef44ac9c22",
+      "checks": 43,
+      "proofs": 11,
+      "transactions": 48
+    },
+    "fees": {
+      "path": "test/evidence/layout/fees.json",
+      "sha256": "fc41abd26e27db8dae4c20b9af032a9476b667fbf9b6765b93d24c569eac2adf",
+      "runId": "8253e4b9-6ce9-4083-98ee-9350cb4de933",
+      "checks": 22,
+      "proofs": 4,
+      "transactions": 73
+    }
+  },
+  "logs": {
+    "build": {
+      "path": "test/evidence/layout/build.log",
+      "sha256": "1a1eba0a271394d2b42370a1d4773097e763af27ba1d5314c07d298aaf1306f9"
+    },
+    "circuits": {
+      "path": "test/evidence/layout/circuits.log",
+      "sha256": "1637798fd763c9d3cbac9c6da0e5053ba0449460a50f38d38baf4a418fa982e7"
+    },
+    "node": {
+      "path": "test/evidence/layout/node.log",
+      "sha256": "dea7e0ee16d3cd7b47ea4ed6123813ae6b64f749f69b7eb0f6e31c6ceabe7ddf"
+    },
+    "foundry": {
+      "path": "test/evidence/layout/foundry.log",
+      "sha256": "1c5dbc085a9dc0838127eecff3cf26a416fe3ae4c1870af4a0d7727c144cff4e"
+    },
+    "proofs": {
+      "path": "test/evidence/layout/proofs.log",
+      "sha256": "e1e9d3b7214de840ca08d221c29d1737b5eed58fee29e2ce176f86be02021f6a"
+    },
+    "abi": {
+      "path": "test/evidence/layout/abi.log",
+      "sha256": "42cdb8ed5a1f8ac5a43b90cdeebd075017eeffa3a748286d4e2e804d6b8018bf"
+    },
+    "check": {
+      "path": "test/evidence/layout/check.log",
+      "sha256": "acd0e8e48c069eb5d078c07a213781af4c904ef5a41baca303dfa2ccba8029f2"
+    }
+  },
+  "publicTransactions": 0,
+  "mainnetDeployed": false,
+  "cloudServicesChanged": false,
+  "limitations": [
+    "Local Anvil only; explicit mock DEX liquidity.",
+    "Foundry verifier mocks are separate from actual-proof acceptance.",
+    "No independent audit or mainnet launch is asserted.",
+    "The operator-run deployment entry was prepared and validated, not executed."
+  ]
+}

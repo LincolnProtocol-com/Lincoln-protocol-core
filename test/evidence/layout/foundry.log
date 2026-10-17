@@ -1,0 +1,154 @@
+
+> @lincolnprotocol/core@0.1.0-rc.2 test:contracts
+> node scripts/review/run.mjs contracts
+
+Compiling 26 files with Solc 0.8.28
+Solc 0.8.28 finished in 33.68s
+Compiler run successful with warnings:
+Warning (5159): "selfdestruct" has been deprecated. Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code and data associated with an account and only transfers its Ether to the beneficiary, unless executed in the same transaction in which the contract was created (see EIP-6780). Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.
+  --> fuzz/test/Caps.t.sol:11:54:
+   |
+11 |     constructor(address payable recipient) payable { selfdestruct(recipient); }
+   |                                                      ^^^^^^^^^^^^
+
+Warning (2018): Function state mutability can be restricted to view
+  --> fuzz/test/Registry.t.sol:14:5:
+   |
+14 |     function test_releasePolicyBounds() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+2026-10-17T03:22:27.118561Z  WARN forge::test: failed calling "targetArtifactSelectors()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119407Z  WARN forge::test: failed calling "targetArtifacts()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119420Z  WARN forge::test: failed calling "excludeArtifacts()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119445Z  WARN forge::test: failed calling "targetSenders()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119454Z  WARN forge::test: failed calling "excludeSenders()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119932Z  WARN forge::test: failed calling "excludeContracts()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119971Z  WARN forge::test: failed calling "targetInterfaces()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119981Z  WARN forge::test: failed calling "targetSelectors()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.119990Z  WARN forge::test: failed calling "excludeSelectors()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.131634Z  WARN forge::test: failed calling "targetArtifactSelectors()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.131683Z  WARN forge::test: failed calling "targetArtifacts()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.131695Z  WARN forge::test: failed calling "excludeArtifacts()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.131777Z  WARN forge::test: failed calling "targetSenders()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.131833Z  WARN forge::test: failed calling "excludeSenders()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.131883Z  WARN forge::test: failed calling "excludeContracts()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.132035Z  WARN forge::test: failed calling "targetInterfaces()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.132077Z  WARN forge::test: failed calling "targetSelectors()": execution reverted: EvmError: Revert (gas: 21243)
+2026-10-17T03:22:27.132102Z  WARN forge::test: failed calling "excludeSelectors()": execution reverted: EvmError: Revert (gas: 21243)
+
+Ran 1 test for fuzz/test/Invariant.t.sol:PoolInvariantTest
+[PASS]
+PoolInvariantTest invariants:
+[PASS] invariant_custodyEqualsUnspentNotes
+[PASS] invariant_noDoubleSpend
+[PASS] invariant_treeAccounting
+ PoolInvariantTest invariants (runs: 128, calls: 5120, reverts: 0)
+
+╭-------------+---------------+-------+---------+----------╮
+| Contract    | Selector      | Calls | Reverts | Discards |
++==========================================================+
+| PoolHandler | deposit       | 572   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | donate        | 580   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | exit          | 563   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | manageCaps    | 565   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | publishPolicy | 557   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | replaySpent   | 563   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | transfer      | 552   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | warp          | 536   | 0       | 0        |
+|-------------+---------------+-------+---------+----------|
+| PoolHandler | withdraw      | 632   | 0       | 0        |
+╰-------------+---------------+-------+---------+----------╯
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 20.83s (20.82s CPU time)
+
+Ran 17 tests for fuzz/test/Caps.t.sol:CapsTest
+[PASS] testFuzz_capsEnforceBothDimensions(uint128,uint128,uint128,uint128) (runs: 1000, μ: 1864608, ~: 1349043)
+[PASS] testFuzz_constructorRejectsInvalidCaps(uint128,uint128) (runs: 1000, μ: 11284, ~: 11289)
+[PASS] testFuzz_erc20DonationDoesNotConsumeCap(uint128) (runs: 1000, μ: 4471540, ~: 4471527)
+[PASS] testFuzz_holderExitDeductsFullValueWithFee(uint128) (runs: 1000, μ: 1445773, ~: 1446638)
+[PASS] testFuzz_increaseWaitsFullDelay(uint256) (runs: 1000, μ: 134351, ~: 127434)
+[PASS] testFuzz_nativeDonationDoesNotConsumeCap(uint128) (runs: 1000, μ: 3768483, ~: 3768483)
+[PASS] testFuzz_onlyGuardianMayManageCapsAndPause(address,uint8) (runs: 1000, μ: 34406, ~: 34524)
+[PASS] testFuzz_publicOutIncludesFeeAccounting(uint128,uint128) (runs: 1000, μ: 1701301, ~: 1704532)
+[PASS] test_cancelledProposalCannotBeAccepted() (gas: 143961)
+[PASS] test_capsBoundariesAndFailedDepositHasNoEffects() (gas: 3789260)
+[PASS] test_loweringCapsClearsOldProposalAndNewIncreaseWaitsAgain() (gas: 292955)
+[PASS] test_noopSetCapsAlsoClearsProposal() (gas: 146317)
+[PASS] test_pauseAndLoweredTotalNeverBlockSpendsOrPublicExits() (gas: 4481387)
+[PASS] test_privateTransferLeavesAccountingUnchanged() (gas: 2688395)
+[PASS] test_replacementProposalResetsDelay() (gas: 194372)
+[PASS] test_setCapsCannotIncreaseEitherComponent() (gas: 123997)
+[PASS] test_unpauseRestoresDepositsButKeepsCaps() (gas: 1418419)
+Suite result: ok. 17 passed; 0 failed; 0 skipped; finished in 175.01s (868.89s CPU time)
+
+Ran 12 tests for fuzz/test/Registry.t.sol:RegistryTest
+[PASS] testFuzz_acceptedPolicyMatchesModel(uint256,uint8,uint32) (runs: 1000, μ: 1397995, ~: 1011938)
+[PASS] testFuzz_lifetimeBounds(uint64) (runs: 1000, μ: 35667, ~: 35473)
+[PASS] testFuzz_onlyGuardianControlsRotation(address,address) (runs: 1000, μ: 98949, ~: 99025)
+[PASS] testFuzz_onlyPendingProviderAccepts(address) (runs: 1000, μ: 82432, ~: 82432)
+[PASS] testFuzz_onlyProviderPublishes(address,uint256) (runs: 1000, μ: 33865, ~: 33818)
+[PASS] testFuzz_rotationRequiresFullDelay(uint256,address) (runs: 1000, μ: 163580, ~: 90975)
+[PASS] test_cancelledRotationCannotBeAccepted() (gas: 130324)
+[PASS] test_constructorRejectsMissingOrSharedGuardian() (gas: 4086)
+[PASS] test_proposalRejectsSelfOrGuardian() (gas: 80666)
+[PASS] test_releasePolicyBounds() (gas: 12521)
+[PASS] test_resumeKeepsRevocation() (gas: 315951)
+[PASS] test_suspendRevokesAllAndRotationRestores() (gas: 492635)
+Suite result: ok. 12 passed; 0 failed; 0 skipped; finished in 175.01s (205.90s CPU time)
+
+Ran 10 tests for fuzz/test/FeeAdapter.t.sol:FeeAdapterTest
+[PASS] testFuzz_F1_capWithSlippageHeadroom(uint256) (runs: 1000, μ: 4031055, ~: 4226534)
+[PASS] testFuzz_feeSwapExactOrReverts(uint128,uint128,uint256,uint128,uint128,uint8) (runs: 1000, μ: 3218058, ~: 3061446)
+[PASS] testFuzz_feeTermsCannotChangeAfterProving(uint8,uint256) (runs: 1000, μ: 1487702, ~: 1487707)
+[PASS] testFuzz_minimumGrossOutputIsTight(uint16,uint128) (runs: 1000, μ: 3367813, ~: 3367821)
+[PASS] testFuzz_nativeTargetPaysFeeInWrapped(uint128,uint256) (runs: 1000, μ: 7264213, ~: 7264098)
+[PASS] test_F1_quotedFeeCapRejectsFavourableFill() (gas: 3004576)
+[PASS] test_PoC_L1_ragequitStrandsFeeAdapterNote() (gas: 4325155)
+[PASS] test_envelopeIsBoundToOneAdapter() (gas: 4882957)
+[PASS] test_inFlightSwapSurvivesPolicyUpdate() (gas: 4377380)
+[PASS] test_targetCapRestoresSourceAndTreasuryAtomically() (gas: 4568762)
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 190.45s (356.45s CPU time)
+
+Ran 8 tests for fuzz/test/Adapter.t.sol:AdapterTest
+[PASS] testFuzz_actionCannotBeSwappedAfterProving(uint8,uint256) (runs: 1000, μ: 1485240, ~: 1485173)
+[PASS] testFuzz_onlyActionProcessor(address) (runs: 1000, μ: 1472570, ~: 1472570)
+[PASS] testFuzz_swapIsExactOrReverts(uint128,uint128,uint256,uint128,uint8) (runs: 1000, μ: 3321447, ~: 3049981)
+[PASS] test_PoC_L1_ragequitStrandsAdapterNote() (gas: 4290205)
+[PASS] test_pausedSourceDoesNotPreventSwapOut() (gas: 4223496)
+[PASS] test_pausedTargetRevertsEntireSwap() (gas: 3075964)
+[PASS] test_proofCannotBypassAdapter() (gas: 1470836)
+[PASS] test_targetCapRevertsEntireSwap() (gas: 4494138)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 190.45s (62.42s CPU time)
+
+Ran 20 tests for fuzz/test/Pool.t.sol:PoolTest
+[PASS] testFuzz_M2_supersededGraceIsBounded(uint256) (runs: 1000, μ: 1751998, ~: 1664062)
+[PASS] testFuzz_M3_dustDepositsCannotEvictRoots(uint8) (runs: 1000, μ: 137730884, ~: 129662347)
+[PASS] testFuzz_depositBindsMeasuredValue(uint128,uint256) (runs: 1000, μ: 1318182, ~: 1318156)
+[PASS] testFuzz_depositRejectsOutOfFieldPrecommitment(uint256) (runs: 1000, μ: 47563, ~: 47571)
+[PASS] testFuzz_depositRejectsValueMismatch(uint128,uint128) (runs: 1000, μ: 101381, ~: 101469)
+[PASS] testFuzz_exitRejectsUnknownCommitment(uint256) (runs: 1000, μ: 54548, ~: 54491)
+[PASS] testFuzz_feeSplit(uint128,uint128) (runs: 1000, μ: 1684372, ~: 1686844)
+[PASS] testFuzz_holderExitFee(uint128,uint128) (runs: 1000, μ: 1397796, ~: 1340543)
+[PASS] testFuzz_incrementalTreeMatchesReference(uint256,uint8) (runs: 1000, μ: 14928277, ~: 10893180)
+[PASS] testFuzz_onlyProcessorSubmits(address) (runs: 1000, μ: 1452615, ~: 1452615)
+[PASS] testFuzz_ragequitOnlyToDepositor(address) (runs: 1000, μ: 1339743, ~: 1339818)
+[PASS] testFuzz_signalsMustBeInField(uint8,uint256) (runs: 1000, μ: 1450899, ~: 1450906)
+[PASS] testFuzz_transactRejectsTamperedExtData(uint8,address) (runs: 1000, μ: 1556759, ~: 1556686)
+[PASS] testFuzz_transactRejectsTamperedSignals(uint8,uint256) (runs: 1000, μ: 1470804, ~: 1452145)
+[PASS] test_M1_rotationRebindsContext() (gas: 1641868)
+[PASS] test_M1_suspensionHaltsSpendsButNotExits() (gas: 1662624)
+[PASS] test_M2_inFlightProofSurvivesPolicyUpdate() (gas: 1835977)
+[PASS] test_M2_windowCapsOlderEpochs() (gas: 5970211)
+[PASS] test_expiredPolicyStillReportsExpired() (gas: 1382602)
+[PASS] test_nullifierCannotBeReused() (gas: 1915785)
+Suite result: ok. 20 passed; 0 failed; 0 skipped; finished in 190.45s (727.48s CPU time)
+
+Ran 6 test suites in 190.46s (942.21s CPU time): 68 tests passed, 0 failed, 0 skipped (68 total tests)
+2026-10-17T03:25:37.559312Z  WARN evm::traces: failed to flush signature cache err=failed to create file "/Users/leo/.foundry/cache/signatures": Operation not permitted (os error 1)

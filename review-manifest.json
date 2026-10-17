@@ -1,0 +1,532 @@
+{
+  "baseCommit": "abe000c7acd9c26931a17961e1b4bdda083df84e",
+  "files": [
+    {
+      "bytes": 9204,
+      "contractNames": [
+        "Phase2ASPRegistry"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/AssociationSetRegistry.json",
+      "sha256": "26bcff3c56fe5c261b0f8f69e2f49b87c942e5336f938add0bdc134a3a072be7",
+      "sourcePath": "abi/phase2-mainnet/Phase2ASPRegistry.json"
+    },
+    {
+      "bytes": 17296,
+      "contractNames": [
+        "Phase2FeeRouter02Adapter"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/FeeRouter02Adapter.json",
+      "sha256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "sourcePath": "abi/phase2-fees-mainnet/Phase2FeeRouter02Adapter.json"
+    },
+    {
+      "bytes": 17296,
+      "contractNames": [
+        "Phase2FeeRouteAdapter"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/FeeV3RouteAdapter.json",
+      "sha256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "sourcePath": "abi/phase2-fees-mainnet/Phase2FeeRouteAdapter.json"
+    },
+    {
+      "bytes": 672,
+      "contractNames": [
+        "Phase2ASPExitVerifier"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/HolderExitVerifier.json",
+      "sha256": "4fad9212460f2528b274bbdf5c1911e4690569227a8ea1e9737f991f4fb30f41",
+      "sourcePath": "abi/phase2-mainnet/Phase2ASPExitVerifier.json"
+    },
+    {
+      "bytes": 672,
+      "contractNames": [
+        "Phase2ASPJoinSplitVerifier"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/JoinSplitVerifier.json",
+      "sha256": "b48de91bf3da1ab0e4c9033a6d92dd4579c0f11336d2ba100a89a23fc5430e12",
+      "sourcePath": "abi/phase2-mainnet/Phase2ASPJoinSplitVerifier.json"
+    },
+    {
+      "bytes": 333,
+      "contractNames": [
+        "PoseidonT3"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/PoseidonT3.json",
+      "sha256": "604d68e02f21308d1dd3f4d079eec44481bcdd7942015f98824e62f916e6a0d0",
+      "sourcePath": "abi/phase2-mainnet/PoseidonT3.json"
+    },
+    {
+      "bytes": 333,
+      "contractNames": [
+        "PoseidonT4"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/PoseidonT4.json",
+      "sha256": "ceb0cbb415a74f7f7633336b128e54490ec077937bf3172fd66ddafeb84e19c3",
+      "sourcePath": "abi/phase2-mainnet/PoseidonT4.json"
+    },
+    {
+      "bytes": 28218,
+      "contractNames": [
+        "Phase2ASPPool"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/PrivacyPool.json",
+      "sha256": "0b710998d83533b48f9e27e22338223f8d8af0ba038557519fcf5e6f7c8d0d67",
+      "sourcePath": "abi/phase2-mainnet/Phase2ASPPool.json"
+    },
+    {
+      "bytes": 14349,
+      "contractNames": [
+        "Phase2Router02Adapter"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/Router02Adapter.json",
+      "sha256": "7aa5fa3d3d110989ccb1116e648e2cf1a244608ea8417eb4d206af903864b6c2",
+      "sourcePath": "abi/phase2-mainnet/Phase2Router02Adapter.json"
+    },
+    {
+      "bytes": 14524,
+      "contractNames": [
+        "Phase2RouteAdapter"
+      ],
+      "kind": "contract-abi",
+      "reviewPath": "abi/V3RouteAdapter.json",
+      "sha256": "79308abdac61eaebd902e6bb2fdc58236829168650cc1fee4089d28a9fe253cb",
+      "sourcePath": "abi/phase2-mainnet/Phase2RouteAdapter.json"
+    },
+    {
+      "bytes": 7431,
+      "contractNames": [
+        "Phase2ASPRegistry"
+      ],
+      "kind": "solidity-source",
+      "reviewPath": "contracts/AssociationSetRegistry.sol",
+      "sha256": "5d7367d6b4addf0823339cf3a636dfa9632e752e22538e3dcc152d4cb78539eb",
+      "sourcePath": "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol",
+      "virtualCompilerSourcePath": "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol"
+    },
+    {
+      "bytes": 22730,
+      "contractNames": [
+        "Phase2ASPPool"
+      ],
+      "kind": "solidity-source",
+      "reviewPath": "contracts/PrivacyPool.sol",
+      "sha256": "cfaafe4e0fa20178d658bff1198ccda110f6d1420c92e155ea78eeaf6c6d2d92",
+      "sourcePath": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol",
+      "virtualCompilerSourcePath": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol"
+    },
+    {
+      "bytes": 18353,
+      "contractNames": [
+        "Phase2FeeRouteAdapter",
+        "Phase2FeeRouter02Adapter"
+      ],
+      "kind": "solidity-source",
+      "reviewPath": "contracts/adapters/FeeAdapters.sol",
+      "sha256": "cf718c0a4b34a03c7beda661400d6cff4a0acaddac4bbbdc1b03e8ce87c66244",
+      "sourcePath": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol",
+      "virtualCompilerSourcePath": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol"
+    },
+    {
+      "bytes": 15960,
+      "contractNames": [
+        "Phase2Router02Adapter"
+      ],
+      "kind": "solidity-source",
+      "reviewPath": "contracts/adapters/Router02Adapter.sol",
+      "sha256": "e48d4a2cda65c016c10beefcb0ced1bce27e2702a70430d455542652ea0b6f5d",
+      "sourcePath": "protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol",
+      "virtualCompilerSourcePath": "protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol"
+    },
+    {
+      "bytes": 16243,
+      "contractNames": [
+        "Phase2RouteAdapter"
+      ],
+      "kind": "solidity-source",
+      "reviewPath": "contracts/adapters/V3RouteAdapter.sol",
+      "sha256": "d4b7d0c2e0585223d3f5890438ba3c0f43117f2fe853c5e3b083ebca27434719",
+      "sourcePath": "protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol",
+      "virtualCompilerSourcePath": "protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol"
+    },
+    {
+      "bytes": 44165,
+      "contractNames": [
+        "PoseidonT3"
+      ],
+      "frozenReferencePath": "node_modules/poseidon-solidity/PoseidonT3.sol",
+      "kind": "solidity-source",
+      "reviewPath": "contracts/libraries/PoseidonT3.sol",
+      "sha256": "08a7493be37838166954af6c77d583d797cc17d37673196498fc70cbf557831c",
+      "sourcePath": "vendor/solidity/poseidon-solidity/PoseidonT3.sol",
+      "virtualCompilerSourcePath": "poseidon-solidity/PoseidonT3.sol"
+    },
+    {
+      "bytes": 27353,
+      "contractNames": [
+        "PoseidonT4"
+      ],
+      "frozenReferencePath": "node_modules/poseidon-solidity/PoseidonT4.sol",
+      "kind": "solidity-source",
+      "reviewPath": "contracts/libraries/PoseidonT4.sol",
+      "sha256": "289e22a19a20bcec7519e29d172b8c1624b65ac6140d1982fe029254e1600a8f",
+      "sourcePath": "vendor/solidity/poseidon-solidity/PoseidonT4.sol",
+      "virtualCompilerSourcePath": "poseidon-solidity/PoseidonT4.sol"
+    },
+    {
+      "bytes": 786,
+      "frozenReferencePath": "node_modules/@openzeppelin/contracts/package.json",
+      "kind": "dependency-metadata",
+      "reviewPath": "contracts/vendor/openzeppelin/package.json",
+      "sha256": "7e5965609fbc7c48253296f94dde1d456385f407c6879ada17240dffa43fbd71",
+      "sourcePath": "vendor/solidity/@openzeppelin/contracts/package.json"
+    },
+    {
+      "bytes": 2779,
+      "frozenReferencePath": "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "kind": "solidity-dependency",
+      "reviewPath": "contracts/vendor/openzeppelin/token/ERC20/IERC20.sol",
+      "sha256": "6f2faae462e286e24e091d7718575179644dc60e79936ef0c92e2d1ab3ca3cee",
+      "sourcePath": "vendor/solidity/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "virtualCompilerSourcePath": "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+    },
+    {
+      "bytes": 3803,
+      "frozenReferencePath": "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+      "kind": "solidity-dependency",
+      "reviewPath": "contracts/vendor/openzeppelin/token/ERC20/extensions/IERC20Permit.sol",
+      "sha256": "912509e0e9bf74e0f8a8c92d031b5b26d2d35c6d4abf3f56251be1ea9ca946bf",
+      "sourcePath": "vendor/solidity/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+      "virtualCompilerSourcePath": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol"
+    },
+    {
+      "bytes": 5770,
+      "frozenReferencePath": "node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+      "kind": "solidity-dependency",
+      "reviewPath": "contracts/vendor/openzeppelin/token/ERC20/utils/SafeERC20.sol",
+      "sha256": "471157c89111d7b9eab456b53ebe9042bc69504a64cb5cc980d38da9103379ae",
+      "sourcePath": "vendor/solidity/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+      "virtualCompilerSourcePath": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+    },
+    {
+      "bytes": 6262,
+      "frozenReferencePath": "node_modules/@openzeppelin/contracts/utils/Address.sol",
+      "kind": "solidity-dependency",
+      "reviewPath": "contracts/vendor/openzeppelin/utils/Address.sol",
+      "sha256": "b3710b1712637eb8c0df81912da3450da6ff67b0b3ed18146b033ed15b1aa3b9",
+      "sourcePath": "vendor/solidity/@openzeppelin/contracts/utils/Address.sol",
+      "virtualCompilerSourcePath": "@openzeppelin/contracts/utils/Address.sol"
+    },
+    {
+      "bytes": 3240,
+      "frozenReferencePath": "node_modules/@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+      "kind": "solidity-dependency",
+      "reviewPath": "contracts/vendor/openzeppelin/utils/ReentrancyGuard.sol",
+      "sha256": "8d0bac508a25133c9ff80206f65164cef959ec084645d1e7b06050c2971ae0fc",
+      "sourcePath": "vendor/solidity/@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+      "virtualCompilerSourcePath": "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+    },
+    {
+      "bytes": 477,
+      "frozenReferencePath": "node_modules/poseidon-solidity/package.json",
+      "kind": "dependency-metadata",
+      "reviewPath": "contracts/vendor/poseidon-solidity/package.json",
+      "sha256": "77320824b3034f940d88c6ba4c87f2acb1e532bc2af497a9d08e1b531f45b499",
+      "sourcePath": "vendor/solidity/poseidon-solidity/package.json"
+    },
+    {
+      "bytes": 8613,
+      "contractNames": [
+        "Phase2ASPExitVerifier"
+      ],
+      "kind": "solidity-source",
+      "reviewPath": "contracts/verifiers/HolderExitVerifier.sol",
+      "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51",
+      "sourcePath": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+      "virtualCompilerSourcePath": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol"
+    },
+    {
+      "bytes": 10172,
+      "contractNames": [
+        "Phase2ASPJoinSplitVerifier"
+      ],
+      "kind": "solidity-source",
+      "reviewPath": "contracts/verifiers/JoinSplitVerifier.sol",
+      "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82",
+      "sourcePath": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+      "virtualCompilerSourcePath": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol"
+    },
+    {
+      "bytes": 12253,
+      "kind": "foundry-test",
+      "reviewPath": "test/contracts/Adapter.t.sol",
+      "sha256": "5e2004c9d9553893fd9821863260ba241584382c93172b69b37c8f4345d495d0",
+      "sourcePath": "protocol/phase2-mainnet/fuzz/test/Adapter.t.sol"
+    },
+    {
+      "bytes": 4276,
+      "kind": "foundry-test",
+      "reviewPath": "test/contracts/Base.sol",
+      "sha256": "91eb8794394ee61cd777a9da2534c5a83d92defb6ef16bb38eb21a894135b907",
+      "sourcePath": "protocol/phase2-mainnet/fuzz/test/Base.sol"
+    },
+    {
+      "bytes": 12521,
+      "kind": "foundry-test",
+      "reviewPath": "test/contracts/Caps.t.sol",
+      "sha256": "b21fa26496e76b5a11ba99f0107950d154b489eb81b1964c6cb6075511688960",
+      "sourcePath": "protocol/phase2-mainnet/fuzz/test/Caps.t.sol"
+    },
+    {
+      "bytes": 16995,
+      "kind": "foundry-test",
+      "reviewPath": "test/contracts/FeeAdapter.t.sol",
+      "sha256": "6062a3ebc5aaabaa5a21edd8913b4b8f35cce91655946bc6ab252ebc04ac334d",
+      "sourcePath": "protocol/phase2-mainnet/fuzz/test/FeeAdapter.t.sol"
+    },
+    {
+      "bytes": 11940,
+      "kind": "foundry-test",
+      "reviewPath": "test/contracts/Invariant.t.sol",
+      "sha256": "2e0848579a547e34b0cd116ab587b609154f0289182d3fb95f1bf902d9dcf0c0",
+      "sourcePath": "protocol/phase2-mainnet/fuzz/test/Invariant.t.sol"
+    },
+    {
+      "bytes": 16877,
+      "kind": "foundry-test",
+      "reviewPath": "test/contracts/Pool.t.sol",
+      "sha256": "0d8387604a8a07f4d4f9f2e9ec5fca935c72442de7e12acf477f40e4a1d42150",
+      "sourcePath": "protocol/phase2-mainnet/fuzz/test/Pool.t.sol"
+    },
+    {
+      "bytes": 7901,
+      "kind": "foundry-test",
+      "reviewPath": "test/contracts/Registry.t.sol",
+      "sha256": "96a0cc921df0953c77769dd17ac340ad1c0172b780860e1dbbf5c9e7d233fbe7",
+      "sourcePath": "protocol/phase2-mainnet/fuzz/test/Registry.t.sol"
+    },
+    {
+      "bytes": 73530,
+      "kind": "real-proof-acceptance",
+      "reviewPath": "test/evidence/rc2/fees.json",
+      "sha256": "e747824d2fdc0e02a97a582c9c5f064095db3a15f10b99e5183c881da0eeef91",
+      "sourcePath": "artifacts/phase2-mainnet/final-fee-parameter-acceptance.json"
+    },
+    {
+      "bytes": 1507257,
+      "kind": "mock-verifier-foundry-acceptance",
+      "reviewPath": "test/evidence/rc2/foundry.json",
+      "sha256": "6f8fa45075944b83bdb16cf38c8fb2101e05d86883c87b99495b9b6895cab029",
+      "sourcePath": "audit/acceptance/standalone-20261016-r2/foundry.json"
+    },
+    {
+      "bytes": 33783,
+      "kind": "real-proof-acceptance",
+      "reviewPath": "test/evidence/rc2/native.json",
+      "sha256": "38b12b139f073e67971b3d5a75e2d0a4bd1d16ea8f85f31c5dd79a0e98c2fc3c",
+      "sourcePath": "artifacts/phase2-mainnet/final-parameter-acceptance.json"
+    },
+    {
+      "bytes": 5225,
+      "kind": "public-beacon-evidence",
+      "reviewPath": "zk/ceremony/beacon-commitment.applied.json",
+      "sha256": "acab415decdb47ddf681ad0e62c8196504f8d2c69dd6088860145c14974f134f",
+      "sourcePath": "artifacts/phase2-ceremony/beacon-commitment.applied.json"
+    },
+    {
+      "bytes": 6908,
+      "kind": "public-beacon-evidence",
+      "reviewPath": "zk/ceremony/beacon-commitment.json",
+      "sha256": "9fec88e4aabf6522f2a0f648e72cde8b1725691f2b643d8a1153d56f09fd99b0",
+      "sourcePath": "artifacts/phase2-ceremony/beacon-commitment.json"
+    },
+    {
+      "bytes": 2474,
+      "kind": "public-beacon-evidence",
+      "reviewPath": "zk/ceremony/beacon-commitment.observation.json",
+      "sha256": "dedfc10cf0d6284d4062fb9fc63971ec10472e7d3dfdb85a4f1f9ff3eeb3c2a4",
+      "sourcePath": "artifacts/phase2-ceremony/beacon-commitment.observation.json"
+    },
+    {
+      "bytes": 2719,
+      "kind": "public-beacon-evidence",
+      "reviewPath": "zk/ceremony/beacon-commitment.publication.json",
+      "sha256": "35f3f2e166796b6a77762f91b161fc2555fceddebe41ff0fa0a6437ec2995277",
+      "sourcePath": "artifacts/phase2-ceremony/beacon-commitment.publication.json"
+    },
+    {
+      "bytes": 798870,
+      "circuit": "holder-exit",
+      "kind": "public-pre-beacon-parent-key",
+      "reviewPath": "zk/ceremony/parents/holder-exit.zkey",
+      "sha256": "997745765177181fa3b7823b48f71025789ace3aa182167d1d4ed8875fffe421",
+      "sourcePath": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/holder-exit.zkey"
+    },
+    {
+      "bytes": 14169226,
+      "circuit": "joinsplit",
+      "kind": "public-pre-beacon-parent-key",
+      "reviewPath": "zk/ceremony/parents/joinsplit.zkey",
+      "sha256": "f804a5a87014a68e384315b314f87e8800b4b55e69b7d5deee4324a3731f1488",
+      "sourcePath": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/joinsplit.zkey"
+    },
+    {
+      "bytes": 2139,
+      "kind": "circuit-source",
+      "reviewPath": "zk/circuits/holder-exit/main.circom",
+      "sha256": "371f12dec64568726cc816dee3767df685ad48738de84a5da8c118a217b32136",
+      "sourcePath": "protocol/phase2-asp/circuits/holder-exit/main.circom",
+      "virtualCompilerSourcePath": "protocol/phase2-asp/circuits/holder-exit/main.circom"
+    },
+    {
+      "bytes": 7972,
+      "kind": "circuit-source",
+      "reviewPath": "zk/circuits/joinsplit/joinsplit.circom",
+      "sha256": "1e08fe7552092bc186fc28128b9a4650a14f56b562e49849cff2e0a00bd01a3e",
+      "sourcePath": "protocol/phase2-asp/circuits/joinsplit/joinsplit.circom",
+      "virtualCompilerSourcePath": "protocol/phase2-asp/circuits/joinsplit/joinsplit.circom"
+    },
+    {
+      "bytes": 214,
+      "kind": "circuit-source",
+      "reviewPath": "zk/circuits/joinsplit/main.circom",
+      "sha256": "dae1a04201ecf4b33f70906e1d0cf92e965ec55e1edbe172f55ee42dc7205dc6",
+      "sourcePath": "protocol/phase2-asp/circuits/joinsplit/main.circom",
+      "virtualCompilerSourcePath": "protocol/phase2-asp/circuits/joinsplit/main.circom"
+    },
+    {
+      "bytes": 2360,
+      "circuit": "holder-exit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/holder-exit/ceremony-transcript.json",
+      "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d",
+      "sourcePath": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json"
+    },
+    {
+      "bytes": 799334,
+      "circuit": "holder-exit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/holder-exit/final.zkey",
+      "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3",
+      "sourcePath": "protocol/phase2-mainnet/build/holder-exit/final.zkey"
+    },
+    {
+      "bytes": 593640,
+      "circuit": "holder-exit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/holder-exit/main.r1cs",
+      "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b",
+      "sourcePath": "protocol/phase2-mainnet/build/holder-exit/main.r1cs"
+    },
+    {
+      "bytes": 2384051,
+      "circuit": "holder-exit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/holder-exit/main_js/main.wasm",
+      "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f",
+      "sourcePath": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm"
+    },
+    {
+      "bytes": 4822,
+      "circuit": "holder-exit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/holder-exit/manifest.json",
+      "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+      "sourcePath": "protocol/phase2-mainnet/build/holder-exit/manifest.json"
+    },
+    {
+      "bytes": 3939,
+      "circuit": "holder-exit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/holder-exit/verification_key.json",
+      "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea",
+      "sourcePath": "protocol/phase2-mainnet/build/holder-exit/verification_key.json"
+    },
+    {
+      "bytes": 2358,
+      "circuit": "joinsplit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/joinsplit/ceremony-transcript.json",
+      "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018",
+      "sourcePath": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json"
+    },
+    {
+      "bytes": 14169690,
+      "circuit": "joinsplit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/joinsplit/final.zkey",
+      "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed",
+      "sourcePath": "protocol/phase2-mainnet/build/joinsplit/final.zkey"
+    },
+    {
+      "bytes": 11210792,
+      "circuit": "joinsplit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/joinsplit/main.r1cs",
+      "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d",
+      "sourcePath": "protocol/phase2-mainnet/build/joinsplit/main.r1cs"
+    },
+    {
+      "bytes": 2559210,
+      "circuit": "joinsplit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/joinsplit/main_js/main.wasm",
+      "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf",
+      "sourcePath": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm"
+    },
+    {
+      "bytes": 5132,
+      "circuit": "joinsplit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/joinsplit/manifest.json",
+      "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "sourcePath": "protocol/phase2-mainnet/build/joinsplit/manifest.json"
+    },
+    {
+      "bytes": 4721,
+      "circuit": "joinsplit",
+      "kind": "public-proving-material",
+      "reviewPath": "zk/parameters/joinsplit/verification_key.json",
+      "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e",
+      "sourcePath": "protocol/phase2-mainnet/build/joinsplit/verification_key.json"
+    },
+    {
+      "bytes": 37831832,
+      "kind": "public-phase-one-transcript",
+      "reviewPath": "zk/parameters/powersOfTau28_hez_final_15.ptau",
+      "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+      "sourcePath": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau"
+    }
+  ],
+  "generatedFiles": [
+    {
+      "bytes": 5771,
+      "kind": "friendly-review-abi-catalog",
+      "reviewPath": "abi/manifest.json",
+      "sha256": "488fab4e592f37a60ab540c70aa1cc809d1f81bc9efff18e5fe52a489cf3520a",
+      "sourcePath": "abi/manifest.json",
+      "sourceSHA256": "a7f26fbccbeab40adff0ee6259a51fb84012f21ef20f98ecbab24973fed7b724"
+    }
+  ],
+  "invariants": [
+    "Mapped Solidity, Circom, ABI, parameter, ceremony and evidence bytes are unchanged from the pinned RC.2 release.",
+    "Contract identifiers and virtual compiler source paths are retained; friendly filenames do not rename deployed types.",
+    "The review tree is not a replacement compiler root; the immutable capsule preserves reproducible source/import paths.",
+    "No new bytecode, proving key, contribution ceremony, deployment, audit result or mainnet authorization is created."
+  ],
+  "releaseDirectory": "releases/rc2",
+  "releaseManifest": "artifacts/phase2-mainnet/release-candidate-20261016-r2.json",
+  "releaseSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
+  "reviewPathsRelativeTo": "repository root",
+  "schema": "lincoln-core-review-layout/v1",
+  "sourceAuthority": "Immutable RC.2 capsule; review copies are generated and must not be edited independently.",
+  "sourcePathsRelativeTo": "releaseDirectory"
+}

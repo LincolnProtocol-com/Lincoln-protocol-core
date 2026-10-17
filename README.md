@@ -11,6 +11,7 @@ RC.1 provenance: [`LincolnProtocol@99e0be62475ac95bb5f8030659c782d5275475a1`](ht
 - [Audit scope and authoritative contract paths](docs/AUDIT_SCOPE.md)
 - [Security model, trust assumptions and known limitations](docs/SECURITY_MODEL.md)
 - [Mainnet status and remaining launch work](docs/MAINNET_STATUS.md)
+- [Registered mainnet deployer and offline operations plan](docs/MAINNET_OPERATIONS.md)
 - [Proving parameters, ceremony evidence and public sources](docs/PARAMETER_PROVENANCE.md)
 - [License boundaries and third-party notices](THIRD_PARTY_NOTICES.md)
 - [Candidate contract specification](contracts/MAINNET_RELEASE_CANDIDATE.md)

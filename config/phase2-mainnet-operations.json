@@ -1,0 +1,23 @@
+{
+  "schema": "lincoln-mainnet-operations/v1",
+  "chainId": 4663,
+  "candidate": {
+    "tag": "v0.1.0-rc.2",
+    "manifest": "artifacts/phase2-mainnet/release-candidate-20261016-r2.json",
+    "sha256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3"
+  },
+  "deployer": {
+    "address": "0x555998Ba2B2723C97d91FB20Da0ddb896749797e",
+    "signingAccount": "lincoln-deployer",
+    "addressSource": "user-supplied",
+    "keystoreOwnershipVerified": false
+  },
+  "signingEnabled": false,
+  "limits": {
+    "gasBudgetWei": null,
+    "maxTotalFundingWei": null,
+    "maxDepositWei": null,
+    "maxFeePerGasWei": null,
+    "reserveWei": null
+  }
+}

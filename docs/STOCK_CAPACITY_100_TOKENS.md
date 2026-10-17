@@ -1,6 +1,6 @@
 # Stock pools: initial capacity of 100 tokens each
 
-The user's 17 October 2026 decision replaces the future stock pools' total-capacity rule with **100 Robinhood stock tokens per pool**. The public operational policy is [stock-capacity-mainnet-100-tokens-20261017.json](../config/stock-capacity-mainnet-100-tokens-20261017.json). It preserves the approved seven token addresses and the earlier fixed deposit limits. Stock pools remain **undeployed and disabled**. The existing ETH/USDG deployment, frozen RC.3 sources, ABI, circuits and proof parameters are unchanged.
+The user's 17 October 2026 decision replaces the stock pools' total-capacity rule with **100 Robinhood stock tokens per pool**. The public operational policy is [stock-capacity-mainnet-100-tokens-20261017.json](../config/stock-capacity-mainnet-100-tokens-20261017.json). It preserves the approved seven token addresses and the earlier fixed deposit limits. All seven stock pools are **deployed on mainnet; stock DEX trading remains disabled** pending route deployment and asset-specific acceptance. The existing ETH/USDG deployment, frozen RC.3 sources, ABI, circuits and proof parameters are unchanged.
 
 The capacity is the pool's outstanding note-backed `accountedBalance`, not a limit per wallet or a limit on lifetime volume. Withdrawals free capacity. Unsolicited ERC-20 donations do not consume it. Quantities use native ERC-20 units: an issuer multiplier or corporate action can change the underlying share exposure represented by one token. This is therefore a fixed cap of 100 tokens, rather than a promise of exactly 100 underlying shares after every issuer action.
 
@@ -15,6 +15,24 @@ The capacity is the pool's outstanding note-backed `accountedBalance`, not a lim
 | MSTR | 18.3 | `18300000000000000000` | 100 | `100000000000000000000` |
 
 For precision `d`, compute `maxTotalRaw = 100 * 10**d` with integer arithmetic. The single-deposit cap is `min(previousMaxDepositRaw, maxTotalRaw)`. All seven prior deposit limits already fit below 100 tokens. They retain the original approximately USD 2,500 quote reference; there is no live USD cap or price oracle. Prices and issuer multipliers do not automatically alter either limit. The prior approximately USD 25,000 total-cap rule is superseded for these future pools, while its historical dataset remains intact for RC.3 review.
+
+## Verified mainnet deployment
+
+The operator completed all seven stock-pool CREATE transactions. An independent read-only verification at block **90,705,305** checked their canonical receipts and creation blocks, exact frozen creation calldata, linked runtime bytecode, immutable getters, constructor cap events and current cap getters. Every pool's `maxTotal()` is **`100000000000000000000`**; all seven issuer tokens have 18 decimals and were unpaused at that observation. The two pinned issuer-component runtime hashes also matched. The verification signed and broadcast no transactions and ran no test suite.
+
+| Stock | Pool address | Deployment block |
+| --- | --- | ---: |
+| NVDA | `0x4C8BAEb78b032EA3610E0F5D4C8B5Bb4fF5995f7` | 90,703,048 |
+| SPY | `0x8a29Db84A20B0A3CA528FAE0F69F50FfD39c6C39` | 90,703,092 |
+| META | `0xA2078e02A631ae9218DBAa84987a24741bD24d10` | 90,703,141 |
+| TSLA | `0xE8c619705B7452c2281cA8fA675a355846D34BFE` | 90,703,190 |
+| GOOGL | `0x31Bd720527D9875b444c0946c5795351a56d9d8B` | 90,703,241 |
+| QQQ | `0xd4375275F5FA231e238c9FF1237A8e8666Be6B62` | 90,703,293 |
+| MSTR | `0x207Dc4DD4E40Ab280dF9eC10CD5Edf04685e9d88` | 90,703,349 |
+
+The exact [public deployment manifest](../deployments/robinhood-mainnet/stocks-100-tokens.json) has SHA-256 `4aa933e43dc58409489935cd609425d8baf51d4890779b6854f33a3d177400d9`. The [verification record](../deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) contains creation transaction hashes, canonical block hashes, observed runtime hashes and the fixed observation block. Existing shared verifiers, Poseidon libraries and ASP registry were reused; no contract or proof parameter was changed.
+
+The policy's original `prepared-not-deployed` status is intentionally retained as an immutable deployment-input snapshot: its byte hash is bound by the stock runner and completion manifest. Current deployment status comes from the manifest and verification record above, rather than rewriting that approved input. `stockTradingEnabled` remains `false`, routes are empty, and asset-specific private-spend, withdrawal and two-way DEX acceptance are still pending. At the verification block every stock pool had zero note-backed balance and zero leaves, with deposits unpaused. Backend service activation is a separate task.
 
 ## Precision observation
 

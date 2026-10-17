@@ -1,6 +1,6 @@
 # Audit scope
 
-Review the regular files under [`contracts/`](../contracts/README.md), [`zk/`](../zk/README.md), [abi/](../abi/) and [`test/`](../test/README.md). The target chain is **Robinhood Chain, ID 4663**. The contracts are a locally verified release candidate; no Lincoln mainnet deployment or completed independent audit is asserted.
+Review the regular files under [`contracts/`](../contracts/README.md), [`zk/`](../zk/README.md), [abi/](../abi/) and [`test/`](../test/README.md). The target chain is **Robinhood Chain, ID 4663**. The contracts are a locally verified release candidate; neither a complete Lincoln mainnet deployment nor a completed independent audit is asserted.
 
 [review-manifest.json](../review-manifest.json) maps the readable review files to their exact RC.2 originals in [releases/rc2/](../releases/rc2/). The check command verifies byte identity and the preserved release binding. Contract identifiers, source bytes, final keys and the `v0.1.0-rc.2` tag are unchanged by this layout. Review-copy equality and successful tests do not establish security against every attack.
 

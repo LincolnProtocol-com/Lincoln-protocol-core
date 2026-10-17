@@ -16,7 +16,7 @@ Read [audit scope](docs/AUDIT_SCOPE.md), [security model](docs/SECURITY_MODEL.md
 
 The candidate supports two-input/two-output private payments, recovery and respend, public withdrawal, ownership-based public exits, deposit caps with delayed increases, deposit-only pause and fixed-route swaps that return net output to a privacy pool. The selected new-adapter fee is 30 bps; official-relay pricing is separate from a mandatory core-pool tax.
 
-**The contracts have not been deployed to mainnet.** Live fee-route activation, asset-specific stock caps, operations funding and real-market acceptance remain separate launch work. Independent audit is deferred. Publishing this repository does not authorize mainnet spending.
+**Mainnet core deployment and the product launch are incomplete.** An individually confirmed component does not establish a complete deployment. Live fee-route activation, asset-specific stock caps, operations funding and real-market acceptance remain separate launch work. Independent audit is deferred. Publishing this repository does not authorize mainnet spending.
 
 ## Reproduce
 

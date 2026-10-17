@@ -43,6 +43,18 @@
     {
       "path": "config/mainnet-fee-routes-20261017.json",
       "sha256": "43f2929e6ae89c3c2edf1ddc8d9a18aa3e37dbea58f42aac518b15ab3bd0c760"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/four-pools-20261017.json",
+      "sha256": "8f0c186ce4ba727a84a589d27d9c6441d00ef68abb855cb87b84f0af04995645"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+      "sha256": "e4f8401540209e373c5c6cfba4886d5b7f72d3820a91da3fdf3bde18f740cbf7"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+      "sha256": "4c9bed89fd5198a46fb77b0219e104a6dbb3faa9416ed181f9f339c1e8b1d825"
     }
   ],
   "status": {
@@ -56,7 +68,11 @@
     "independentAuditCompleted": false,
     "defiLlamaAdapterSubmitted": false,
     "feeAdaptersDeployed": true,
-    "serviceRoutesConfigured": false
+    "serviceRoutesConfigured": false,
+    "additionalPoolsDeployed": true,
+    "custodyPoolCount": 13,
+    "feeAdapterCount": 24,
+    "fourPoolExtensionBackendActivated": false
   },
   "contracts": [
     {
@@ -380,6 +396,142 @@
         "method": "accountedBalance()",
         "target": "0x207Dc4DD4E40Ab280dF9eC10CD5Edf04685e9d88"
       }
+    },
+    {
+      "id": "aapl",
+      "symbol": "AAPL",
+      "address": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4",
+      "asset": {
+        "kind": "erc20",
+        "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+        "decimals": 18
+      },
+      "deploymentBlock": "90846780",
+      "deploymentBlockHash": "0x2edfe02d29154406bb662d6c839e0abb454acf2332b27252b3f9d377e9056c7c",
+      "deploymentTransactionHash": "0x5dfda36be37c8533e5f8a7fcdb967d6e9e4dd64241299821634b8ea1c2207c24",
+      "runtimeCodeHash": "0x2fd07bdcb1979a0a12f7dbbe418c54944c017772316855035ae2cffc0b0506df",
+      "source": "contracts/PrivacyPool.sol",
+      "abi": "abi/PrivacyPool.json",
+      "initialCaps": {
+        "unit": "asset-base-units",
+        "maxDeposit": "7200000000000000000",
+        "maxTotal": "100000000000000000000"
+      },
+      "tvlRead": {
+        "method": "balanceOf(address)",
+        "target": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+        "holder": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4"
+      },
+      "liabilitiesRead": {
+        "method": "accountedBalance()",
+        "target": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4"
+      },
+      "deploymentManifest": "deployments/robinhood-mainnet/four-pools-20261017.json",
+      "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+      "serviceActivation": "pending-not-attested-by-this-static-address-book",
+      "assetRiskRecord": "deployments/robinhood-mainnet/verification/four-pool-review.json"
+    },
+    {
+      "id": "usde",
+      "symbol": "USDe",
+      "address": "0x4AC6D3EB4379Bd82f1dcD5C8A61c6b8F15b7812C",
+      "asset": {
+        "kind": "erc20",
+        "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "decimals": 18
+      },
+      "deploymentBlock": "90846954",
+      "deploymentBlockHash": "0x123b2130a312d5971040d7a86fbf6445d4f3709d4bdbd8a6ba5c101fd03a01e5",
+      "deploymentTransactionHash": "0xf5457310f571cf47d75da2d28daff26ed5c97fac9c530107a0d86894b1f14ed4",
+      "runtimeCodeHash": "0xec5a40475ce0601219fb5d13b78cce98e66acb57da0024a4e63db5988c69b285",
+      "source": "contracts/PrivacyPool.sol",
+      "abi": "abi/PrivacyPool.json",
+      "initialCaps": {
+        "unit": "asset-base-units",
+        "maxDeposit": "2500000000000000000000",
+        "maxTotal": "50000000000000000000000"
+      },
+      "tvlRead": {
+        "method": "balanceOf(address)",
+        "target": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+        "holder": "0x4AC6D3EB4379Bd82f1dcD5C8A61c6b8F15b7812C"
+      },
+      "liabilitiesRead": {
+        "method": "accountedBalance()",
+        "target": "0x4AC6D3EB4379Bd82f1dcD5C8A61c6b8F15b7812C"
+      },
+      "deploymentManifest": "deployments/robinhood-mainnet/four-pools-20261017.json",
+      "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+      "serviceActivation": "pending-not-attested-by-this-static-address-book",
+      "assetRiskRecord": "deployments/robinhood-mainnet/verification/four-pool-review.json"
+    },
+    {
+      "id": "pons",
+      "symbol": "PONS",
+      "address": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18",
+      "asset": {
+        "kind": "erc20",
+        "address": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+        "decimals": 18
+      },
+      "deploymentBlock": "90847135",
+      "deploymentBlockHash": "0x2df2f39f9196083b67d5cc6cfacadb853bbc30212d5e8d73cefa3e9778413c5f",
+      "deploymentTransactionHash": "0xe8fc71db189f36d9e85efcb860ad986f770b26922838dbf7a6850123d320ba59",
+      "runtimeCodeHash": "0x0ce4789b71a49e9b75ab3f7854236e71981d01bcfd27974671f194339b002f8d",
+      "source": "contracts/PrivacyPool.sol",
+      "abi": "abi/PrivacyPool.json",
+      "initialCaps": {
+        "unit": "asset-base-units",
+        "maxDeposit": "7900000000000000000000",
+        "maxTotal": "110000000000000000000000"
+      },
+      "tvlRead": {
+        "method": "balanceOf(address)",
+        "target": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+        "holder": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18"
+      },
+      "liabilitiesRead": {
+        "method": "accountedBalance()",
+        "target": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18"
+      },
+      "deploymentManifest": "deployments/robinhood-mainnet/four-pools-20261017.json",
+      "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+      "serviceActivation": "pending-not-attested-by-this-static-address-book",
+      "assetRiskRecord": "deployments/robinhood-mainnet/verification/four-pool-review.json"
+    },
+    {
+      "id": "cashcat",
+      "symbol": "CASHCAT",
+      "address": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb",
+      "asset": {
+        "kind": "erc20",
+        "address": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+        "decimals": 18
+      },
+      "deploymentBlock": "90847306",
+      "deploymentBlockHash": "0x5a4d144b0f324314e51880caffa8d37bdcc097ad6154eef723042abd6c6eacf5",
+      "deploymentTransactionHash": "0xcc14ff6a52d121bfdad5fc021c6f6c88ac13f10a99be12fc2c90cfc7bec369e5",
+      "runtimeCodeHash": "0xbcb228c228be9deabc25df7107d43403de9b56ca3daf45e6826db2ce779b0403",
+      "source": "contracts/PrivacyPool.sol",
+      "abi": "abi/PrivacyPool.json",
+      "initialCaps": {
+        "unit": "asset-base-units",
+        "maxDeposit": "22000000000000000000000",
+        "maxTotal": "300000000000000000000000"
+      },
+      "tvlRead": {
+        "method": "balanceOf(address)",
+        "target": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+        "holder": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb"
+      },
+      "liabilitiesRead": {
+        "method": "accountedBalance()",
+        "target": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb"
+      },
+      "deploymentManifest": "deployments/robinhood-mainnet/four-pools-20261017.json",
+      "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+      "serviceActivation": "pending-not-attested-by-this-static-address-book",
+      "assetRiskRecord": "deployments/robinhood-mainnet/verification/four-pool-review.json"
     }
   ],
   "roles": {
@@ -719,6 +871,126 @@
         "runtimeCodeHash": "0x8f17903de7a73ef3082fff2876f210c1ff21b169cfb4a11f772428ca702889f6",
         "source": "contracts/adapters/FeeAdapters.sol",
         "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-aapl-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x1294FF276c7cE8DA5a3Be8635BFB422931d152e9",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90847484",
+        "deploymentBlockHash": "0x51b3655778e968d0e1f9b2fd04b9459b5d158fab7727c645b3de3a663814eb42",
+        "deploymentTransactionHash": "0x65421416029469a8c0c6c9d8e98f718a6bbeca7440ea49eb130c7c3c2f2456d9",
+        "runtimeCodeHash": "0x33af95a75205ef1e630ddb33d249a571de254dc700b9d4ee849bf611cdeb40b7",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json",
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+        "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+        "serviceActivation": "pending-not-attested-by-this-static-address-book"
+      },
+      {
+        "id": "uniswap-usdg-to-aapl",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xe8A5208e21B9c3Ca9d0DDD3374f27A092FE91547",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90847671",
+        "deploymentBlockHash": "0xf8b8abdf718239f6aafdcf27a9f64724de352b9d2d09f44a10754e7e061157e9",
+        "deploymentTransactionHash": "0x497e0f1d745efb821507b91adb14a608c1d1fc2e559fb9fd769d5194bfacb9be",
+        "runtimeCodeHash": "0x03513a9e4096e75717f93094e99e68987681fb4a29c2a0801a6e2c6828d782d2",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json",
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+        "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+        "serviceActivation": "pending-not-attested-by-this-static-address-book"
+      },
+      {
+        "id": "uniswap-pons-to-eth",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xdCC6FB0Be9dE8c2BeeB549d0187bdA920B3705f5",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18",
+        "targetPool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90847850",
+        "deploymentBlockHash": "0x777a0812b38819a0fc3d6874a87b28bfa58551599585f5ff4acaff9f97c89a9a",
+        "deploymentTransactionHash": "0x631b24b1eb0bb0ee6675f2b1e566be5f9949130af715eb9fa0982185e8194290",
+        "runtimeCodeHash": "0x9d228b3770d754cc061a67be1f92986ee04d1a7e1da97e6909297489dd3176ee",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json",
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+        "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+        "serviceActivation": "pending-not-attested-by-this-static-address-book"
+      },
+      {
+        "id": "uniswap-eth-to-pons",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x2dD4643AF77b2E223208ca82337c696F7f31f4F3",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "targetPool": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90848038",
+        "deploymentBlockHash": "0xca5ed9c2a89d3c044d20ae1e3fac5bc2a76fadeabadf39710e7bd91e1efafbd7",
+        "deploymentTransactionHash": "0x3dd9378691e7d2a3c60b8913d343f2b7dfdfd45d930a2b711668209733e81158",
+        "runtimeCodeHash": "0x00567fdc49e9f2df022c781b16c3e9fe79966fc7ee91a21c59ececf5317eea53",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json",
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+        "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+        "serviceActivation": "pending-not-attested-by-this-static-address-book"
+      },
+      {
+        "id": "uniswap-cashcat-to-eth",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xe3A67af6FA192E06d7Cd528D2f0EBAE171653DC2",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb",
+        "targetPool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90848227",
+        "deploymentBlockHash": "0x6d3de55646432586fabc67de6fe4978bc6c5080e92a05bb5a09dcbd937bd62c5",
+        "deploymentTransactionHash": "0x4a700cc761005f39b2b5767ad0a8780de1a80825e20fb6d089f300af3d206395",
+        "runtimeCodeHash": "0x89498f16de629536f07df589b874038d3f254a28caef9ec5afd174bfffb20bdd",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json",
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+        "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+        "serviceActivation": "pending-not-attested-by-this-static-address-book"
+      },
+      {
+        "id": "uniswap-eth-to-cashcat",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xaE8daE90Db5601b786B6ED883D65600397cBC537",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "targetPool": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90848416",
+        "deploymentBlockHash": "0xeb2eca1d2c5c213614642780c54ea748f9c153fa070fa3f6d17967011d53bc9c",
+        "deploymentTransactionHash": "0x43f2e349a3cc58356f091feb26b21c5057acb1eb93555b9e39158593a7e2eeaa",
+        "runtimeCodeHash": "0x015485d24ab396bad0e85170095a2e70dd74c7819c0475abfe24147c0a08839b",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json",
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+        "deploymentVerification": "deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json",
+        "serviceActivation": "pending-not-attested-by-this-static-address-book"
       }
     ],
     "routes": [
@@ -1153,6 +1425,156 @@
           }
         ],
         "executionEnabled": false
+      },
+      {
+        "id": "uniswap-aapl-to-usdg",
+        "adapter": "0x1294FF276c7cE8DA5a3Be8635BFB422931d152e9",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "aapl",
+        "target": "usdg",
+        "tokens": [
+          "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0xaf3d76f1834a1d425780943c99ea8a608f8a93f90001f45fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d",
+            "parameter": 500,
+            "runtimeCodeHash": "0xa488ede24eef95af56b0e7c171832ce207f070212584786d40acbfcecbe9b1d0"
+          }
+        ],
+        "executionEnabled": false,
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json"
+      },
+      {
+        "id": "uniswap-usdg-to-aapl",
+        "adapter": "0xe8A5208e21B9c3Ca9d0DDD3374f27A092FE91547",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "aapl",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680001f4af3d76f1834a1d425780943c99ea8a608f8a93f9",
+        "hops": [
+          {
+            "pool": "0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d",
+            "parameter": 500,
+            "runtimeCodeHash": "0xa488ede24eef95af56b0e7c171832ce207f070212584786d40acbfcecbe9b1d0"
+          }
+        ],
+        "executionEnabled": false,
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json"
+      },
+      {
+        "id": "uniswap-pons-to-eth",
+        "adapter": "0xdCC6FB0Be9dE8c2BeeB549d0187bdA920B3705f5",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "pons",
+        "target": "eth",
+        "tokens": [
+          "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0x39dbed3a2bd333467115de45665cc57f813c4571000bb80bd7d308f8e1639fab988df18a8011f41eacad73",
+        "hops": [
+          {
+            "pool": "0xed50bdeea8adc232f159486192a4157281d722ff",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x195c7d777448794bd8ebe573f2d4a4007abf142d9fcb895ef38603f4de8c2672"
+          }
+        ],
+        "executionEnabled": false,
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json"
+      },
+      {
+        "id": "uniswap-eth-to-pons",
+        "adapter": "0x2dD4643AF77b2E223208ca82337c696F7f31f4F3",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "eth",
+        "target": "pons",
+        "tokens": [
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "0x39dBED3a2bd333467115dE45665cC57F813C4571"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad73000bb839dbed3a2bd333467115de45665cc57f813c4571",
+        "hops": [
+          {
+            "pool": "0xed50bdeea8adc232f159486192a4157281d722ff",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x195c7d777448794bd8ebe573f2d4a4007abf142d9fcb895ef38603f4de8c2672"
+          }
+        ],
+        "executionEnabled": false,
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json"
+      },
+      {
+        "id": "uniswap-cashcat-to-eth",
+        "adapter": "0xe3A67af6FA192E06d7Cd528D2f0EBAE171653DC2",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "cashcat",
+        "target": "eth",
+        "tokens": [
+          "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0x020bfc650a365f8bb26819deaabf3e21291018b4000bb80bd7d308f8e1639fab988df18a8011f41eacad73",
+        "hops": [
+          {
+            "pool": "0xd42a491087a15e5afd51feb3606066cc152d2b09",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x4b535b6f1b07cd80f7c9a8259b0856d8d832896b7fd3b11e32b9f89dafe5a3cf"
+          }
+        ],
+        "executionEnabled": false,
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json"
+      },
+      {
+        "id": "uniswap-eth-to-cashcat",
+        "adapter": "0xaE8daE90Db5601b786B6ED883D65600397cBC537",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "eth",
+        "target": "cashcat",
+        "tokens": [
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "0x020bfC650A365f8BB26819deAAbF3E21291018b4"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad73000bb8020bfc650a365f8bb26819deaabf3e21291018b4",
+        "hops": [
+          {
+            "pool": "0xd42a491087a15e5afd51feb3606066cc152d2b09",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x4b535b6f1b07cd80f7c9a8259b0856d8d832896b7fd3b11e32b9f89dafe5a3cf"
+          }
+        ],
+        "executionEnabled": false,
+        "deploymentManifest": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json"
       }
     ],
     "selectedNewAdapterFeeBps": 30,
@@ -1160,7 +1582,13 @@
     "manifest": "deployments/robinhood-mainnet/fee-adapters-30bps.json",
     "deploymentPlanId": "136619070aa0a2d86d41e33b512f63445791c7fb863ffc2236b02e89356ba883",
     "feeModel": "serviceFee = floor(measuredGrossOutput * 30 / 10000), paid to the Safe treasury in TOKEN_OUT (WETH for ETH targets); net output is reshielded into the target pool.",
-    "feeActivation": "Eighteen 30 bps adapters are deployed and verified on-chain (bytecode, immutable fee, treasury, pools, router and path). Fees are collected on any swap through them; official relay service routes, per-asset gas quotes and real-market end-to-end acceptance are separate operational steps and are not attested by this file."
+    "feeActivation": "Twenty-four 30 bps adapters are deployed and verified on-chain. The six additional AAPL/USDG, PONS/ETH and CASHCAT/ETH directions have confirmed creation/runtime/getter records; new-pool indexer, ASP, relay, fee-policy and Access activation remain separate operational work and are not attested by this file. Fees are collected on swaps that execute through an adapter; no observed revenue is asserted.",
+    "additionalManifests": [
+      "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json"
+    ],
+    "additionalDeploymentPlanIds": [
+      "d05c95c8343b1071185c1fa3b898601da2f4beb03686420bd3cff2c857eecc11"
+    ]
   },
   "tvlAccounting": {
     "basis": "Underlying custody balances at the requested canonical block, once per listed pool.",

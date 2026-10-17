@@ -16,11 +16,11 @@ Read [audit scope](docs/AUDIT_SCOPE.md), [security model](docs/SECURITY_MODEL.md
 
 The candidate supports two-input/two-output private payments, recovery and respend, public withdrawal, ownership-based public exits, deposit caps with a 12-hour increase delay, deposit-only pause and fixed-route swaps that return net output to a privacy pool. The selected new-adapter fee is 30 bps; official-relay pricing is separate from a mandatory core-pool tax.
 
-**The seven-contract ETH/USDG mainnet core and seven stock pools are deployed.** The [core manifest](deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](deployments/robinhood-mainnet/stocks-100-tokens.json), [stock deployment verification](deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) and [nine-pool read-only state acceptance](deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json) record the public chain evidence. Cloud signing and ASP activation are separate operational work; this static repository does not attest their current readiness. Eighteen 30 bps [fee adapters](deployments/robinhood-mainnet/fee-adapters-30bps.json) are deployed and verified; official-relay service routes, live service-fee configuration and real-market acceptance remain launch work. Independent audit is deferred. Keep the original journals and shared account-wide gas ledger.
+**Thirteen custody pools are deployed: ETH, USDG, seven original stock pools, AAPL, USDe, PONS and CASHCAT.** The original seven-contract ETH/USDG core and seven stock pools are preserved. The [core manifest](deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](deployments/robinhood-mainnet/stocks-100-tokens.json), [stock deployment verification](deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) and [nine-pool read-only state acceptance](deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json) record the public chain evidence. Cloud signing and ASP activation are separate operational work; this static repository does not attest their current readiness. The original eighteen 30 bps [fee adapters](deployments/robinhood-mainnet/fee-adapters-30bps.json) and six [extension adapters](deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json) are deployed and verified; official-relay service routes, live service-fee configuration and real-market acceptance remain launch work. Independent audit is deferred. Keep the original journals and shared account-wide gas ledger.
 
 The later [100-token capacity decision](docs/STOCK_CAPACITY_100_TOKENS.md) supersedes the historical stock total caps. Each deployed stock pool has a total capacity of 100 stock tokens, retaining its earlier approximately USD 2,500 single-deposit reference limit. Fee adapters now connect USDG with every stock pool; relay service routes and end-to-end acceptance are still pending before official stock trading is offered. ETH/USDG retain their existing caps; the default core deployment includes no stocks or routes.
 
-**Prepared expansion, not deployed:** AAPL, USDe, PONS and CASHCAT have a [four-pool proposal](docs/mainnet-four-pool-extension.md), [public token/market review](deployments/robinhood-mainnet/verification/four-pool-review.json) and a separate [resumable deployment runner](docs/mainnet-four-pool-deployment-runner.md). These reuse the frozen RC.3 artifacts. AAPL issuer freeze, pause, administrative burn and upgrade powers require explicit acknowledgment. The additional [LINCOLN / SPCX V4 design](docs/mainnet-v4-lincoln-spcx-design.md) needs a new adapter and two approved pool capacities; its candidate ABI is not a deployed ABI export. None of these candidates belongs in the mainnet address book or TVL roster yet.
+**Four-pool extension deployed:** the [AAPL/USDe/PONS/CASHCAT manifest](deployments/robinhood-mainnet/four-pools-20261017.json), [six fee adapters](deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json) and [independent read-only deployment verification](deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json) bind all ten confirmed CREATE transactions, runtimes, getters and pool caps to frozen RC.3. Actual deployment gas cost was 0.000771810193892 ETH. New-pool relay, indexer, ASP, service-fee and Access activation remain operational work; deployment alone does not attest their readiness. The [public token review](deployments/robinhood-mainnet/verification/four-pool-review.json) discloses accepted issuer risks, including AAPL freeze, pause, administrative burn and upgrade powers and USDe OFT bridge administration. The separate [LINCOLN / SPCX V4 design](docs/mainnet-v4-lincoln-spcx-design.md) remains undeployed, needs a new adapter and approved token capacities, and is excluded from the address book and TVL roster.
 
 ## Mainnet address book
 
@@ -50,6 +50,10 @@ Every pool holds exactly one asset. ETH uses the zero address as its asset ident
 | GOOGL | `0x31Bd720527D9875b444c0946c5795351a56d9d8B` | `0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3` | 18 | 90,703,241 |
 | QQQ | `0xd4375275F5FA231e238c9FF1237A8e8666Be6B62` | `0xD5f3879160bc7c32ebb4dC785F8a4F505888de68` | 18 | 90,703,293 |
 | MSTR | `0x207Dc4DD4E40Ab280dF9eC10CD5Edf04685e9d88` | `0xec262a75e413fAfD0dF80480274532C79D42da09` | 18 | 90,703,349 |
+| AAPL | `0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4` | `0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9` | 18 | 90,846,780 |
+| USDe | `0x4AC6D3EB4379Bd82f1dcD5C8A61c6b8F15b7812C` | `0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34` | 18 | 90,846,954 |
+| PONS | `0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18` | `0x39dBED3a2bd333467115dE45665cC57F813C4571` | 18 | 90,847,135 |
+| CASHCAT | `0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb` | `0x020bfC650A365f8BB26819deAAbF3E21291018b4` | 18 | 90,847,306 |
 
 Initial single-deposit / total caps are **1 / 20 ETH**, **2,500 / 50,000 USDG**, and the following stock-token units. These are constructor values; read `maxDeposit()` and `maxTotal()` for current limits.
 
@@ -62,6 +66,8 @@ Initial single-deposit / total caps are **1 / 20 ETH**, **2,500 / 50,000 USDG**,
 | GOOGL | 7.3 | 100 |
 | QQQ | 3.5 | 100 |
 | MSTR | 18.3 | 100 |
+
+Additional constructor caps are **7.2 / 100 AAPL**, **2,500 / 50,000 USDe**, **7,900 / 110,000 PONS** and **22,000 / 300,000 CASHCAT** (single deposit / total). USDe has no exchange route. PONS and CASHCAT are third-party tokens; each asset needs its own accepted pricing mapping.
 
 Stock caps count **issuer ERC20 tokens**, not a guaranteed number of underlying shares. They do not track live dollar prices or automatically adjust for issuer multipliers/corporate actions. See the [100-token decision](docs/STOCK_CAPACITY_100_TOKENS.md). Deposit pause and cap controls do not pause withdrawals or ownership-based public exits. Cap increases require **12 hours**; reductions are immediate.
 
@@ -99,7 +105,7 @@ Their code hashes and observation block are in the [stock verification record](d
 
 ### Fees, routes and integration status
 
-The core pools do not impose a mandatory 0.3% tax. The selected policy for new fee adapters is **30 bps (0.3%)**; official-relay withdrawal / relayed holder-exit pricing is a separate proof-bound service policy. A policy selection is not evidence that live service fees are configured. **Eighteen 30 bps fee adapters were deployed on 2026-10-17** by the same deployer and account ledger; the [fee adapter manifest](deployments/robinhood-mainnet/fee-adapters-30bps.json) records creation transactions, runtime code hashes and every verified immutable getter. Each adapter is a fixed one-hop exact-input route between two privacy pools with an immutable 30 bps fee paid to the Safe treasury `0x9CF17a6E3c75D200f58283A165C442a8A3994555` (as WETH for ETH targets); the net output is reshielded into the target pool. Deployment verification covers bytecode and constructor bindings only. Official relay service routes, per-asset gas quotes and real-market end-to-end acceptance are separate operational steps, so stock trading through the official relay is not yet offered. The adapter source supports ETH wrapping and 1–4 hops for future verified routes.
+The core pools do not impose a mandatory 0.3% tax. The selected policy for new fee adapters is **30 bps (0.3%)**; official-relay withdrawal / relayed holder-exit pricing is a separate proof-bound service policy. A policy selection is not evidence that live service fees are configured. **The original eighteen 30 bps fee adapters were deployed on 2026-10-17** by the same deployer and account ledger; the [fee adapter manifest](deployments/robinhood-mainnet/fee-adapters-30bps.json) records creation transactions, runtime code hashes and every verified immutable getter. Each adapter is a fixed one-hop exact-input route between two privacy pools with an immutable 30 bps fee paid to the Safe treasury `0x9CF17a6E3c75D200f58283A165C442a8A3994555` (as WETH for ETH targets); the net output is reshielded into the target pool. Deployment verification covers bytecode and constructor bindings only. Official relay service routes, per-asset gas quotes and real-market end-to-end acceptance are separate operational steps, so stock trading through the official relay is not yet offered. The adapter source supports ETH wrapping and 1–4 hops for future verified routes.
 
 | Route | Adapter | Venue / pool parameter | Hop pool |
 | --- | --- | --- | --- |
@@ -122,9 +128,20 @@ The core pools do not impose a mandatory 0.3% tax. The selected policy for new f
 | `uniswap-usdg-to-mstr` | `0xb7e36f25FfDaFAbcB28DdE863C97C8ad7dC57bc2` | Uniswap V3 fee 10000 | `0x17578C0e0D15da44f31677263114F71aE76653EA` |
 | `uniswap-mstr-to-usdg` | `0x784a20CAC13Bedcc885AEb0c3B052644582Df2F1` | Uniswap V3 fee 10000 | `0x17578C0e0D15da44f31677263114F71aE76653EA` |
 
+The extension adds these six confirmed fee adapters, bringing the deployed total to **24**. Their backend activation is pending and is not implied by this table.
+
+| Route | Adapter | Uniswap V3 fee | Hop pool |
+| --- | --- | ---: | --- |
+| `uniswap-aapl-to-usdg` | `0x1294FF276c7cE8DA5a3Be8635BFB422931d152e9` | 500 | `0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d` |
+| `uniswap-usdg-to-aapl` | `0xe8A5208e21B9c3Ca9d0DDD3374f27A092FE91547` | 500 | `0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d` |
+| `uniswap-pons-to-eth` | `0xdCC6FB0Be9dE8c2BeeB549d0187bdA920B3705f5` | 3000 | `0xed50bdeea8adc232f159486192a4157281d722ff` |
+| `uniswap-eth-to-pons` | `0x2dD4643AF77b2E223208ca82337c696F7f31f4F3` | 3000 | `0xed50bdeea8adc232f159486192a4157281d722ff` |
+| `uniswap-cashcat-to-eth` | `0xe3A67af6FA192E06d7Cd528D2f0EBAE171653DC2` | 3000 | `0xd42a491087a15e5afd51feb3606066cc152d2b09` |
+| `uniswap-eth-to-cashcat` | `0xaE8daE90Db5601b786B6ED883D65600397cBC537` | 3000 | `0xd42a491087a15e5afd51feb3606066cc152d2b09` |
+
 For audit, start with [audit scope](docs/AUDIT_SCOPE.md), [review manifest](review-manifest.json), [RC.3 acceptance evidence](audit/acceptance/rc3/validation.json), [ABI catalog](abi/manifest.json) and [parameter provenance](docs/PARAMETER_PROVENANCE.md). Source review paths are `contracts/` and `zk/`; the preserved release paths exist to reproduce compiler and parameter identities. Neither deployment verification nor local proof acceptance is an independent audit.
 
-For **DefiLlama**, use the [address book JSON](deployments/robinhood-mainnet/address-book.json) and [TVL integration notes](docs/TVL_INTEGRATION.md). Count underlying custody at the nine pools once. Do not add note balances, `accountedBalance`, operator gas, the registry or external DEX liquidity to that same balance. Chain support, token price mappings and a DefiLlama adapter submission remain separate integration work; no listing or acceptance is claimed here.
+For **DefiLlama**, use the [address book JSON](deployments/robinhood-mainnet/address-book.json) and [TVL integration notes](docs/TVL_INTEGRATION.md). Count underlying custody at the thirteen deployed pools once. Do not add note balances, `accountedBalance`, operator gas, the registry or external DEX liquidity to that same balance. Chain support, token price mappings and a DefiLlama adapter submission remain separate integration work; no listing or acceptance is claimed here.
 
 ## Reproduce
 

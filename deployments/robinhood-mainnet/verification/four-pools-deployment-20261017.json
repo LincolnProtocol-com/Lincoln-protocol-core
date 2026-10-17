@@ -1,0 +1,286 @@
+{
+  "schema": "lincoln-four-pool-deployment-readonly-verification/v1",
+  "verifiedAt": "2026-10-17T10:19:06.342Z",
+  "chainId": 4663,
+  "genesisHash": "0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c",
+  "planId": "d05c95c8343b1071185c1fa3b898601da2f4beb03686420bd3cff2c857eecc11",
+  "releaseId": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747",
+  "observation": {
+    "blockNumber": "90850648",
+    "blockHash": "0x37bace2aec8f80db13d442d22cc092238a4e6726d2c395d4b47212f8e9e47a0f",
+    "blockTimestamp": "1792232343"
+  },
+  "source": {
+    "pools": {
+      "path": "deployments/robinhood-mainnet/four-pools-20261017.json",
+      "sha256": "8f0c186ce4ba727a84a589d27d9c6441d00ef68abb855cb87b84f0af04995645"
+    },
+    "feeAdapters": {
+      "path": "deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json",
+      "sha256": "e4f8401540209e373c5c6cfba4886d5b7f72d3820a91da3fdf3bde18f740cbf7"
+    },
+    "frozenArtifactSHA256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747",
+    "feeArtifactSHA256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997"
+  },
+  "pools": [
+    {
+      "id": "aapl",
+      "symbol": "AAPL",
+      "address": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4",
+      "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "transactionHash": "0x5dfda36be37c8533e5f8a7fcdb967d6e9e4dd64241299821634b8ea1c2207c24",
+      "nonce": "32",
+      "runtimeCodeHash": "0x2fd07bdcb1979a0a12f7dbbe418c54944c017772316855035ae2cffc0b0506df",
+      "startBlock": "90846780",
+      "blockHash": "0x2edfe02d29154406bb662d6c839e0abb454acf2332b27252b3f9d377e9056c7c",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "constructorCapsEvent": true,
+        "currentCaps": true,
+        "tokenIdentity": true
+      },
+      "maxDepositRaw": "7200000000000000000",
+      "maxTotalRaw": "100000000000000000000",
+      "accountedBalance": "0",
+      "custody": "0",
+      "nextLeafIndex": "0",
+      "depositsPaused": false,
+      "feeWei": "92347065144000"
+    },
+    {
+      "id": "usde",
+      "symbol": "USDe",
+      "address": "0x4AC6D3EB4379Bd82f1dcD5C8A61c6b8F15b7812C",
+      "token": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+      "transactionHash": "0xf5457310f571cf47d75da2d28daff26ed5c97fac9c530107a0d86894b1f14ed4",
+      "nonce": "33",
+      "runtimeCodeHash": "0xec5a40475ce0601219fb5d13b78cce98e66acb57da0024a4e63db5988c69b285",
+      "startBlock": "90846954",
+      "blockHash": "0x123b2130a312d5971040d7a86fbf6445d4f3709d4bdbd8a6ba5c101fd03a01e5",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "constructorCapsEvent": true,
+        "currentCaps": true,
+        "tokenIdentity": true
+      },
+      "maxDepositRaw": "2500000000000000000000",
+      "maxTotalRaw": "50000000000000000000000",
+      "accountedBalance": "0",
+      "custody": "0",
+      "nextLeafIndex": "0",
+      "depositsPaused": false,
+      "feeWei": "93340023000000"
+    },
+    {
+      "id": "pons",
+      "symbol": "PONS",
+      "address": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18",
+      "token": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "transactionHash": "0xe8fc71db189f36d9e85efcb860ad986f770b26922838dbf7a6850123d320ba59",
+      "nonce": "34",
+      "runtimeCodeHash": "0x0ce4789b71a49e9b75ab3f7854236e71981d01bcfd27974671f194339b002f8d",
+      "startBlock": "90847135",
+      "blockHash": "0x2df2f39f9196083b67d5cc6cfacadb853bbc30212d5e8d73cefa3e9778413c5f",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "constructorCapsEvent": true,
+        "currentCaps": true,
+        "tokenIdentity": true
+      },
+      "maxDepositRaw": "7900000000000000000000",
+      "maxTotalRaw": "110000000000000000000000",
+      "accountedBalance": "0",
+      "custody": "0",
+      "nextLeafIndex": "0",
+      "depositsPaused": false,
+      "feeWei": "92651304036000"
+    },
+    {
+      "id": "cashcat",
+      "symbol": "CASHCAT",
+      "address": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb",
+      "token": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "transactionHash": "0xcc14ff6a52d121bfdad5fc021c6f6c88ac13f10a99be12fc2c90cfc7bec369e5",
+      "nonce": "35",
+      "runtimeCodeHash": "0xbcb228c228be9deabc25df7107d43403de9b56ca3daf45e6826db2ce779b0403",
+      "startBlock": "90847306",
+      "blockHash": "0x5a4d144b0f324314e51880caffa8d37bdcc097ad6154eef723042abd6c6eacf5",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "constructorCapsEvent": true,
+        "currentCaps": true,
+        "tokenIdentity": true
+      },
+      "maxDepositRaw": "22000000000000000000000",
+      "maxTotalRaw": "300000000000000000000000",
+      "accountedBalance": "0",
+      "custody": "0",
+      "nextLeafIndex": "0",
+      "depositsPaused": false,
+      "feeWei": "92320300746000"
+    }
+  ],
+  "adapters": [
+    {
+      "id": "uniswap-aapl-to-usdg",
+      "address": "0x1294FF276c7cE8DA5a3Be8635BFB422931d152e9",
+      "transactionHash": "0x65421416029469a8c0c6c9d8e98f718a6bbeca7440ea49eb130c7c3c2f2456d9",
+      "nonce": "36",
+      "runtimeCodeHash": "0x33af95a75205ef1e630ddb33d249a571de254dc700b9d4ee849bf611cdeb40b7",
+      "startBlock": "90847484",
+      "blockHash": "0x51b3655778e968d0e1f9b2fd04b9459b5d158fab7727c645b3de3a663814eb42",
+      "feeWei": "66772821150000",
+      "feeBps": 30,
+      "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "sourcePool": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4",
+      "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "routeTokensAndPools": true,
+        "feeAndTreasury": true
+      }
+    },
+    {
+      "id": "uniswap-usdg-to-aapl",
+      "address": "0xe8A5208e21B9c3Ca9d0DDD3374f27A092FE91547",
+      "transactionHash": "0x497e0f1d745efb821507b91adb14a608c1d1fc2e559fb9fd769d5194bfacb9be",
+      "nonce": "37",
+      "runtimeCodeHash": "0x03513a9e4096e75717f93094e99e68987681fb4a29c2a0801a6e2c6828d782d2",
+      "startBlock": "90847671",
+      "blockHash": "0xf8b8abdf718239f6aafdcf27a9f64724de352b9d2d09f44a10754e7e061157e9",
+      "feeWei": "66872489376000",
+      "feeBps": 30,
+      "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+      "targetPool": "0xC2991be873dD0EC1D93a0911dC1068bcCcf4D3B4",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "routeTokensAndPools": true,
+        "feeAndTreasury": true
+      }
+    },
+    {
+      "id": "uniswap-pons-to-eth",
+      "address": "0xdCC6FB0Be9dE8c2BeeB549d0187bdA920B3705f5",
+      "transactionHash": "0x631b24b1eb0bb0ee6675f2b1e566be5f9949130af715eb9fa0982185e8194290",
+      "nonce": "38",
+      "runtimeCodeHash": "0x9d228b3770d754cc061a67be1f92986ee04d1a7e1da97e6909297489dd3176ee",
+      "startBlock": "90847850",
+      "blockHash": "0x777a0812b38819a0fc3d6874a87b28bfa58551599585f5ff4acaff9f97c89a9a",
+      "feeWei": "66676009400000",
+      "feeBps": 30,
+      "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "sourcePool": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18",
+      "targetPool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "routeTokensAndPools": true,
+        "feeAndTreasury": true
+      }
+    },
+    {
+      "id": "uniswap-eth-to-pons",
+      "address": "0x2dD4643AF77b2E223208ca82337c696F7f31f4F3",
+      "transactionHash": "0x3dd9378691e7d2a3c60b8913d343f2b7dfdfd45d930a2b711668209733e81158",
+      "nonce": "39",
+      "runtimeCodeHash": "0x00567fdc49e9f2df022c781b16c3e9fe79966fc7ee91a21c59ececf5317eea53",
+      "startBlock": "90848038",
+      "blockHash": "0xca5ed9c2a89d3c044d20ae1e3fac5bc2a76fadeabadf39710e7bd91e1efafbd7",
+      "feeWei": "66841870590000",
+      "feeBps": 30,
+      "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "sourcePool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+      "targetPool": "0x757335BD24807EAc290521Ee6b3Ab2CB86fd9F18",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "routeTokensAndPools": true,
+        "feeAndTreasury": true
+      }
+    },
+    {
+      "id": "uniswap-cashcat-to-eth",
+      "address": "0xe3A67af6FA192E06d7Cd528D2f0EBAE171653DC2",
+      "transactionHash": "0x4a700cc761005f39b2b5767ad0a8780de1a80825e20fb6d089f300af3d206395",
+      "nonce": "40",
+      "runtimeCodeHash": "0x89498f16de629536f07df589b874038d3f254a28caef9ec5afd174bfffb20bdd",
+      "startBlock": "90848227",
+      "blockHash": "0x6d3de55646432586fabc67de6fe4978bc6c5080e92a05bb5a09dcbd937bd62c5",
+      "feeWei": "67053891054000",
+      "feeBps": 30,
+      "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "sourcePool": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb",
+      "targetPool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "routeTokensAndPools": true,
+        "feeAndTreasury": true
+      }
+    },
+    {
+      "id": "uniswap-eth-to-cashcat",
+      "address": "0xaE8daE90Db5601b786B6ED883D65600397cBC537",
+      "transactionHash": "0x43f2e349a3cc58356f091feb26b21c5057acb1eb93555b9e39158593a7e2eeaa",
+      "nonce": "41",
+      "runtimeCodeHash": "0x015485d24ab396bad0e85170095a2e70dd74c7819c0475abfe24147c0a08839b",
+      "startBlock": "90848416",
+      "blockHash": "0xeb2eca1d2c5c213614642780c54ea748f9c153fa070fa3f6d17967011d53bc9c",
+      "feeWei": "66934419396000",
+      "feeBps": 30,
+      "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "sourcePool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+      "targetPool": "0xe6711cbb2E44A0Ce72d301cC27EfBC244cBD75fb",
+      "checks": {
+        "canonicalReceipt": true,
+        "exactFrozenCreationCalldata": true,
+        "linkedRuntime": true,
+        "immutableGetters": true,
+        "routeTokensAndPools": true,
+        "feeAndTreasury": true
+      }
+    }
+  ],
+  "totalActualDeploymentFeeWei": "771810193892000",
+  "passed": true,
+  "currentCapsMatched": true,
+  "contractsVerified": 10,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "privateFilesRead": false,
+  "operationalReadOnly": true,
+  "newForksRun": 0,
+  "newProofsGenerated": 0,
+  "testSuitesRun": 0,
+  "backendActivated": false,
+  "limitations": [
+    "This observes existing public-chain deployments; it is not an additional test suite, proof ceremony or transaction.",
+    "New-pool relay, ASP, indexer, fee-policy and Access activation are separate operational work, not attested by this report.",
+    "Issuer powers and future token implementation/control changes remain the accepted disclosed asset risks."
+  ]
+}

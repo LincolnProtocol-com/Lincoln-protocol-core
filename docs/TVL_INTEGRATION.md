@@ -6,10 +6,10 @@ This is the integration handoff for the deployed Robinhood Chain pools. The [REA
 
 - Chain ID: **4663**, Robinhood Chain mainnet, native ETH with 18 decimals.
 - Genesis: `0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c`.
-- Custody roster: exactly the nine pools in `address-book.json.pools`.
+- Custody roster: exactly the thirteen deployed pools in `address-book.json.pools`.
 - Deployment starts: each pool has its own `deploymentBlock`, creation transaction/block hash and runtime code hash.
 - Public contract interface: [`abi/PrivacyPool.json`](../abi/PrivacyPool.json); [`abi/manifest.json`](../abi/manifest.json) binds all review ABIs to RC.3.
-- Original evidence: the [ETH/USDG manifest](../deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](../deployments/robinhood-mainnet/stocks-100-tokens.json), [stock verification](../deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) and [nine-pool state observation](../deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json). Their file hashes are recorded in the address book.
+- Original evidence: the [ETH/USDG manifest](../deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](../deployments/robinhood-mainnet/stocks-100-tokens.json), [stock verification](../deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) and [nine-pool state observation](../deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json). The [four-pool extension](../deployments/robinhood-mainnet/four-pools-20261017.json), [six new fee adapters](../deployments/robinhood-mainnet/four-pools-fee-adapters-30bps.json) and [ten-contract read-only verification](../deployments/robinhood-mainnet/verification/four-pools-deployment-20261017.json) add AAPL, USDe, PONS and CASHCAT. Their file hashes are recorded in the address book. The old nine-pool observation and new four-pool observation occur at different blocks; neither is a single fresh thirteen-pool balance snapshot.
 
 The two original deployment manifests intentionally retain `relayer: null`: they describe deployment-time profiles. The README and address book separately identify the subsequently provisioned operational relay. Neither file should be rewritten to make a historical deployment profile look like a live service attestation.
 
@@ -21,7 +21,8 @@ At one requested canonical block, sum each pool's underlying custody exactly onc
 | --- | --- | --- |
 | ETH | `eth_getBalance(pool, blockTag)` | Wei, 18 decimals |
 | USDG | `USDG.balanceOf(pool)` at the same block | ERC20 base units, 6 decimals |
-| Each stock | That stock token's `balanceOf(pool)` at the same block | ERC20 base units, 18 decimals |
+| Each stock, including AAPL | That stock token's `balanceOf(pool)` at the same block | ERC20 base units, 18 decimals |
+| USDe, PONS, CASHCAT | The corresponding token's `balanceOf(pool)` at the same block | ERC20 base units, 18 decimals |
 
 The ETH asset identifier is the zero address; it does **not** mean an ERC20 `balanceOf` call to address zero. Stock pools hold the actual listed issuer tokens, not a separate Lincoln receipt token.
 
@@ -29,13 +30,13 @@ Read `pool.accountedBalance()` separately as the note-backed liability diagnosti
 
 Do not include the deployer, Safe, ASP or relay gas wallets; registry; verifiers; Poseidon libraries; encrypted notes; recovered copies of notes; or aggregate historical deposit volume. Private transfers keep funds in the same pool and must not increase TVL. Public withdrawals reduce custody. A future atomic swap moves value between source and target pools: count the assets still held at the measurement block, not both the historical input and its output. External DEX liquidity belongs to its own protocol accounting.
 
-The current deployments hold no yield strategy, lending position or bridge escrow on behalf of these pools. DEX adapters and routes are not deployed in the published manifests. Do not add prospective contracts to the active TVL roster before a separate deployment and acceptance record exists.
+The current deployments hold no yield strategy, lending position or bridge escrow on behalf of these pools. Twenty-four fee adapters are deployed in the published manifests, including six new extension adapters. They are atomic execution contracts, not extra custody TVL. New-pool backend activation remains operationally separate. LINCOLN/SPCX V4 pools and adapters remain prospective and are excluded from this roster.
 
 ## Pricing and stock units
 
 Use verified chain-specific asset identifiers and pricing mappings. A ticker string alone is not a token identity. Do not assume that a Robinhood stock ERC20 is always equivalent to one underlying share: issuer multipliers and corporate actions can change share exposure. The 100-token stock cap is in native ERC20 units and is not a live USD valuation.
 
-For a stock without an accepted price mapping, report its raw token balance separately or resolve a verified mapping before including it in dollar TVL. Do not substitute the historical constructor-cap reference prices as a live valuation. USDG pricing likewise requires the selected integration's asset mapping; this document does not install an assumed USD peg.
+For a stock without an accepted price mapping, report its raw token balance separately or resolve a verified mapping before including it in dollar TVL. Do not substitute the historical constructor-cap reference prices as a live valuation. USDG and USDe pricing likewise require the selected integration's asset mappings; this document does not install assumed dollar pegs. PONS and CASHCAT need their exact Robinhood-chain token price mappings, not similarly named tokens on another chain. USDe OFT ownership controls bridging, while AAPL has disclosed issuer freeze, pause, administrative burn and upgrade risks; see the [asset review](../deployments/robinhood-mainnet/verification/four-pool-review.json).
 
 The DefiLlama SDK chain namespace and token-price support must be confirmed during the adapter contribution. Chain ID `4663` in this address book is not a claim that a particular SDK namespace or price route already exists. The read path needs only public RPC and contract calls; it requires no relay credential, ASP approval, spending key or recovery seed.
 
@@ -43,4 +44,4 @@ The DefiLlama SDK chain namespace and token-price support must be confirmed duri
 
 The address book distinguishes deployed custody from selected fee policies and service activation. The selected 30-bps adapter/service policy does not create a mandatory core-pool fee or establish collected revenue. A future fees/revenue adapter needs observed execution and recipient accounting, independently of TVL.
 
-Stock creation calldata, canonical receipts, runtime hashes, getters, issuer decimals and initial caps were checked in the linked verification record. Nine-pool state reconstruction was checked in a separate read-only observation. Those observations are historical block-specific evidence; they do not certify current service readiness, issuer behavior, practical anonymity, asset-specific trading acceptance or an independent security audit. Use current on-chain reads for mutable policy and balances.
+Stock creation calldata, canonical receipts, runtime hashes, getters, issuer decimals and initial caps were checked in the linked verification record. All four extension pools and six extension adapters were independently checked against their exact frozen creation inputs, canonical receipts, runtime/getters and constructor/current caps in the new read-only deployment report. This operational check submitted no transaction and generated no new proof or test run. Nine-pool state reconstruction was checked in a separate read-only observation. Those observations are historical block-specific evidence; they do not certify current service readiness, issuer behavior, practical anonymity, asset-specific trading acceptance or an independent security audit. Use current on-chain reads for mutable policy and balances.

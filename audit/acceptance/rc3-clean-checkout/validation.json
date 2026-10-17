@@ -62,6 +62,18 @@
     "log": {
       "path": "audit/acceptance/rc3-clean-checkout/fresh-root.log",
       "sha256": "3da5181ba934f97e7a4cc2d1cca7a3128152ddf2f0a244425e52049de19b1a37"
+    },
+    "fullNodeSuite": {
+      "capsulePassed": 108,
+      "rootPassed": 79,
+      "totalPassed": 187,
+      "failed": 0,
+      "skipped": 0,
+      "log": {
+        "path": "audit/acceptance/rc3-clean-checkout/fresh-node-full.log",
+        "sha256": "ce92ee768feeb02cd869d6c55e56b4ab763e501f605ce94c1fc09dc7a5d00bea"
+      },
+      "testedInputFilesMatchCurrentSource": true
     }
   },
   "frozenScopesUnchanged": [
@@ -80,7 +92,7 @@
   "transactionsSigned": 0,
   "walletKeysAccessed": false,
   "limits": [
-    "This follow-up reruns the affected root tooling tests. It does not claim a new full proof/Foundry run; the unchanged candidate retains its separately identified evidence.",
+    "The fresh checkout reran all 187 Node tests. It does not claim a new proof/Foundry run for this root-only follow-up; the unchanged candidate retains its separately identified proof and Foundry evidence.",
     "Both reused libraries were checked with read-only canonical receipts, CREATE intents and runtime verification. Remaining mainnet contracts require explicit local deployment."
   ]
 }

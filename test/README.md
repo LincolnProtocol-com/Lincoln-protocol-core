@@ -30,7 +30,7 @@ The wrappers validate the root review files before running preserved tooling wit
 
 This is **15 newly generated final proofs and 124 local transactions**, not public-mainnet execution. Parameter bytes and all ten ABIs match RC.2; only the pool bytecode changes. Mainnet stock liquidity and per-stock fork acceptance remain pending.
 
-The subsequent [clean-checkout tooling fix](../audit/acceptance/rc3-clean-checkout/validation.json) passed 17 targeted tests and all 79 root tests in a disposable checkout without pre-existing capsule dependency caches. It leaves both frozen capsules and the contract/proof evidence above unchanged.
+The subsequent [clean-checkout tooling fix](../audit/acceptance/rc3-clean-checkout/validation.json) passed 17 targeted tests and the complete 187 Node tests (108 capsule + 79 root) in a disposable checkout without pre-existing capsule dependency caches. It leaves both frozen capsules and the contract/proof evidence above unchanged.
 
 ## Recorded RC.2 results
 

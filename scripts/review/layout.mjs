@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // SPDX-License-Identifier: Apache-2.0
-// A real, byte-exact public review tree derived from the immutable RC.2 capsule.
+// A real, byte-exact public review tree derived from the pinned RC.3 capsule.
 // No compilation, source rewriting, signing, network or production configuration.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -9,12 +9,13 @@ import {fileURLToPath} from 'node:url';
 import {isDeepStrictEqual} from 'node:util';
 
 const ROOT=fileURLToPath(new URL('../../',import.meta.url));
-export const RC2_BASE_COMMIT='abe000c7acd9c26931a17961e1b4bdda083df84e';
-export const RC2_RELEASE_DIRECTORY='releases/rc2';
-export const RC2_RELEASE_MANIFEST='artifacts/phase2-mainnet/release-candidate-20261016-r2.json';
-export const RC2_RELEASE_SHA256='abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3';
+export const CURRENT_PARENT_COMMIT='abe000c7acd9c26931a17961e1b4bdda083df84e';
+export const CURRENT_RELEASE_DIRECTORY='releases/rc3';
+export const CURRENT_RELEASE_MANIFEST='artifacts/phase2-mainnet/release-candidate-20261017-r3.json';
+export const CURRENT_RELEASE_SHA256='dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d';
+export const CURRENT_CANDIDATE_TAG='v0.1.0-rc.3';
 export const REVIEW_MANIFEST='review-manifest.json';
-export const REVIEW_MANAGED_DIRECTORIES=Object.freeze(['contracts','zk','abi','test/contracts','test/evidence/rc2']);
+export const REVIEW_MANAGED_DIRECTORIES=Object.freeze(['contracts','zk','abi','test/contracts','test/evidence/rc3']);
 const CORE_ARTIFACT='artifacts/phase2-mainnet/contracts.json',FEE_ARTIFACT='artifacts/phase2-fees-mainnet/contracts.json';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const need=(ok,code)=>{if(!ok)throw Object.assign(new Error(code),{code});};
@@ -74,9 +75,10 @@ export const REVIEW_MAPPINGS=Object.freeze([
   ...ABI_NAMES.map(([name,friendly,group])=>mapping(`abi/${group}/${name}.json`,`abi/${friendly}.json`,'contract-abi',{contractNames:Object.freeze([name])})),
   ...['Base.sol','Pool.t.sol','Caps.t.sol','Registry.t.sol','Adapter.t.sol','FeeAdapter.t.sol','Invariant.t.sol'].map(file=>
     mapping(`protocol/phase2-mainnet/fuzz/test/${file}`,`test/contracts/${file}`,'foundry-test')),
-  mapping('artifacts/phase2-mainnet/final-parameter-acceptance.json','test/evidence/rc2/native.json','real-proof-acceptance'),
-  mapping('artifacts/phase2-mainnet/final-fee-parameter-acceptance.json','test/evidence/rc2/fees.json','real-proof-acceptance'),
-  mapping('audit/acceptance/standalone-20261016-r2/foundry.json','test/evidence/rc2/foundry.json','mock-verifier-foundry-acceptance'),
+  mapping('artifacts/phase2-mainnet/final-parameter-acceptance.json','test/evidence/rc3/native.json','real-proof-acceptance'),
+  mapping('artifacts/phase2-mainnet/final-fee-parameter-acceptance.json','test/evidence/rc3/fees.json','real-proof-acceptance'),
+  mapping('audit/acceptance/standalone-20261017-r3/foundry.json','test/evidence/rc3/foundry.json','mock-verifier-foundry-acceptance'),
+  mapping('audit/acceptance/standalone-20261017-r3/foundry-deep.json','test/evidence/rc3/foundry-deep.json','mock-verifier-foundry-acceptance'),
 ]);
 
 function relative(value){
@@ -90,7 +92,7 @@ async function regular(root,value,{missing=false}={}){
   return fs.readFile(filename);
 }
 async function capsuleDirectory(root){
-  const directory=path.join(root,RC2_RELEASE_DIRECTORY),stat=await fs.lstat(directory);
+  const directory=path.join(root,CURRENT_RELEASE_DIRECTORY),stat=await fs.lstat(directory);
   need(stat.isDirectory()&&!stat.isSymbolicLink()&&await fs.realpath(directory)===directory,'REVIEW_CAPSULE_DIRECTORY_INVALID');return directory;
 }
 async function managedFiles(root,directory){
@@ -122,14 +124,14 @@ async function writeNewOrEmpty(root,value,bytes){
 }
 
 async function prepareLayout(root){
-  const capsule=await capsuleDirectory(root),releaseBytes=await regular(capsule,RC2_RELEASE_MANIFEST);
-  need(sha(releaseBytes)===RC2_RELEASE_SHA256,'REVIEW_RC2_RELEASE_CHANGED');
+  const capsule=await capsuleDirectory(root),releaseBytes=await regular(capsule,CURRENT_RELEASE_MANIFEST);
+  need(sha(releaseBytes)===CURRENT_RELEASE_SHA256,'REVIEW_CURRENT_RELEASE_CHANGED');
   const release=JSON.parse(releaseBytes);
   need(release.schema==='phase2-mainnet-contract-candidate/v1'&&release.chainId===4663&&release.releaseCandidate===true
-    &&release.productionReady===false&&Array.isArray(release.files),'REVIEW_RC2_RELEASE_INVALID');
+    &&release.productionReady===false&&Array.isArray(release.files),'REVIEW_CURRENT_RELEASE_INVALID');
   const references=new Map();
   for(const ref of release.files){
-    relative(ref.path);need(!references.has(ref.path)&&Number.isSafeInteger(ref.bytes)&&ref.bytes>=0&&/^[a-f0-9]{64}$/.test(ref.sha256),'REVIEW_RC2_REFERENCE_INVALID');
+    relative(ref.path);need(!references.has(ref.path)&&Number.isSafeInteger(ref.bytes)&&ref.bytes>=0&&/^[a-f0-9]{64}$/.test(ref.sha256),'REVIEW_CURRENT_REFERENCE_INVALID');
     references.set(ref.path,ref);
   }
   async function pinned(sourcePath,referencePath=sourcePath){
@@ -171,21 +173,21 @@ async function prepareLayout(root){
     return {contractName:name,abiPath,frozenABIPath,abiSHA256:sha(files.get(abiPath)),sourceReviewPath,chainId:4663,
       productionArtifact:{path:artifactPath,sha256:references.get(artifactPath).sha256}};
   }).sort((a,b)=>order(a.abiPath,b.abiPath));
-  const reviewCatalog={schema:'lincoln-review-abi-catalog/v1',chainId:4663,releaseDirectory:RC2_RELEASE_DIRECTORY,
-    baseCommit:RC2_BASE_COMMIT,releaseManifest:RC2_RELEASE_MANIFEST,releaseSHA256:RC2_RELEASE_SHA256,
-    entries:abiEntries,scope:'Byte-identical RC.2 ABIs with review paths; no deployment addresses or new compiler outputs.'};
+  const reviewCatalog={schema:'lincoln-review-abi-catalog/v1',chainId:4663,releaseDirectory:CURRENT_RELEASE_DIRECTORY,
+    baseCommit:CURRENT_PARENT_COMMIT,candidateTag:CURRENT_CANDIDATE_TAG,releaseManifest:CURRENT_RELEASE_MANIFEST,releaseSHA256:CURRENT_RELEASE_SHA256,
+    entries:abiEntries,scope:'Byte-identical RC.3 ABIs with review paths; no deployment addresses or new compiler outputs.'};
   const catalogBytes=Buffer.from(json(reviewCatalog));files.set('abi/manifest.json',catalogBytes);
-  const manifest={schema:'lincoln-core-review-layout/v1',baseCommit:RC2_BASE_COMMIT,releaseDirectory:RC2_RELEASE_DIRECTORY,
-    releaseManifest:RC2_RELEASE_MANIFEST,releaseSHA256:RC2_RELEASE_SHA256,
-    sourceAuthority:'Immutable RC.2 capsule; review copies are generated and must not be edited independently.',
+  const manifest={schema:'lincoln-core-review-layout/v1',baseCommit:CURRENT_PARENT_COMMIT,candidateTag:CURRENT_CANDIDATE_TAG,releaseDirectory:CURRENT_RELEASE_DIRECTORY,
+    releaseManifest:CURRENT_RELEASE_MANIFEST,releaseSHA256:CURRENT_RELEASE_SHA256,
+    sourceAuthority:'Pinned RC.3 capsule; review copies are generated and must not be edited independently.',
     sourcePathsRelativeTo:'releaseDirectory',reviewPathsRelativeTo:'repository root',
     files:entries.sort((a,b)=>order(a.reviewPath,b.reviewPath)),
     generatedFiles:[{sourcePath:'abi/manifest.json',sourceSHA256:references.get('abi/manifest.json').sha256,
       reviewPath:'abi/manifest.json',kind:'friendly-review-abi-catalog',bytes:catalogBytes.length,sha256:sha(catalogBytes)}],
-    invariants:['Mapped Solidity, Circom, ABI, parameter, ceremony and evidence bytes are unchanged from the pinned RC.2 release.',
+    invariants:['Mapped Solidity, Circom, ABI, parameter, ceremony and evidence bytes are unchanged from the pinned RC.3 release.',
       'Contract identifiers and virtual compiler source paths are retained; friendly filenames do not rename deployed types.',
       'The review tree is not a replacement compiler root; the immutable capsule preserves reproducible source/import paths.',
-      'No new bytecode, proving key, contribution ceremony, deployment, audit result or mainnet authorization is created.']};
+      'Generating review copies does not recompile bytecode, change proving keys, create an audit result or authorize mainnet transactions.']};
   files.set(REVIEW_MANIFEST,Buffer.from(json(manifest)));return {capsule,files,manifest};
 }
 
@@ -208,7 +210,7 @@ export async function syncReviewLayout({root=ROOT,checkOnly=false}={}){
   // by a pinned circuit manifest rather than by the top-level inventory itself.
   for(const item of manifest.files){const bytes=await regular(capsule,item.sourcePath);need(bytes.length===item.bytes&&sha(bytes)===item.sha256,'REVIEW_CAPSULE_SOURCE_CHANGED');}
   if(!checkOnly)for(const filename of missing)await writeNewOrEmpty(root,filename,files.get(filename));
-  return {passed:true,checkOnly,baseCommit:RC2_BASE_COMMIT,releaseSHA256:RC2_RELEASE_SHA256,
+  return {passed:true,checkOnly,baseCommit:CURRENT_PARENT_COMMIT,candidateTag:CURRENT_CANDIDATE_TAG,releaseDirectory:CURRENT_RELEASE_DIRECTORY,releaseSHA256:CURRENT_RELEASE_SHA256,
     copiedFiles:manifest.files.length,generatedFiles:manifest.generatedFiles.length,changedFiles:missing.length,
     manifest:REVIEW_MANIFEST,manifestSHA256:sha(files.get(REVIEW_MANIFEST)),contracts:10,
     sourceBytes:manifest.files.reduce((sum,item)=>sum+item.bytes,0),networkRequests:0,publicTransactions:0};

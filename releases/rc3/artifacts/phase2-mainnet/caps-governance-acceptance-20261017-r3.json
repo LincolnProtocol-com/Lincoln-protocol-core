@@ -1,0 +1,164 @@
+{
+  "schema": "phase2-mainnet-caps-governance-acceptance/v1",
+  "recordedAt": "2026-10-17T04:28:17.098847+00:00",
+  "passed": true,
+  "localOnly": true,
+  "publicTransactions": 0,
+  "mainnetDeployed": false,
+  "productionReady": false,
+  "parameters": {
+    "acceptedPolicyWindow": 16,
+    "supersededPolicyGraceSeconds": 3600,
+    "providerRotationDelaySeconds": 259200,
+    "capIncreaseDelaySeconds": 43200,
+    "depositPauseScope": "depositDynamic-only"
+  },
+  "coreRelease": {
+    "path": "artifacts/phase2-mainnet/contracts.json",
+    "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747",
+    "sourceSetSHA256": "a96ec2aa126e34aaafc7479d23552acd08df911370fd2fcd6615e75e86ff3ba0"
+  },
+  "inputs": {
+    "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol": {
+      "sha256": "185e7edf3bacd42db6b4361032e8163328d391c837bb120a968db0f21e208ed0",
+      "bytes": 22730
+    },
+    "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol": {
+      "sha256": "5d7367d6b4addf0823339cf3a636dfa9632e752e22538e3dcc152d4cb78539eb",
+      "bytes": 7431
+    },
+    "protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol": {
+      "sha256": "d4b7d0c2e0585223d3f5890438ba3c0f43117f2fe853c5e3b083ebca27434719",
+      "bytes": 16243
+    },
+    "protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol": {
+      "sha256": "e48d4a2cda65c016c10beefcb0ced1bce27e2702a70430d455542652ea0b6f5d",
+      "bytes": 15960
+    },
+    "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol": {
+      "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82",
+      "bytes": 10172
+    },
+    "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol": {
+      "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51",
+      "bytes": 8613
+    },
+    "protocol/phase2-asp/contracts/Phase2ASPPool.sol": {
+      "sha256": "b4bdf3d85a471adffde748dd3335f556b037673798b48a9d939db9e806b76de6",
+      "bytes": 22744
+    },
+    "protocol/phase2-asp/contracts/Phase2ASPRegistry.sol": {
+      "sha256": "a01174a2ce12f3126f356a751c2225516008963c35e4dcc52d8c52d8761fe2f6",
+      "bytes": 7458
+    },
+    "protocol/phase2-mainnet/foundry.toml": {
+      "sha256": "5372ed7adb12b481ca1a8cd1052c58de025c073f18326b1b88189aaa9f6829a9",
+      "bytes": 1288
+    },
+    "protocol/phase2-mainnet/fuzz/test/Base.sol": {
+      "sha256": "91eb8794394ee61cd777a9da2534c5a83d92defb6ef16bb38eb21a894135b907",
+      "bytes": 4276
+    },
+    "protocol/phase2-mainnet/fuzz/test/Pool.t.sol": {
+      "sha256": "0d8387604a8a07f4d4f9f2e9ec5fca935c72442de7e12acf477f40e4a1d42150",
+      "bytes": 16877
+    },
+    "protocol/phase2-mainnet/fuzz/test/Caps.t.sol": {
+      "sha256": "12cdfeb9b13af6189d5cd527475bebfcc052787a2ab1097aebddffa966cd3696",
+      "bytes": 13883
+    },
+    "protocol/phase2-mainnet/fuzz/test/Registry.t.sol": {
+      "sha256": "96a0cc921df0953c77769dd17ac340ad1c0172b780860e1dbbf5c9e7d233fbe7",
+      "bytes": 7901
+    },
+    "protocol/phase2-mainnet/fuzz/test/Adapter.t.sol": {
+      "sha256": "5e2004c9d9553893fd9821863260ba241584382c93172b69b37c8f4345d495d0",
+      "bytes": 12253
+    },
+    "protocol/phase2-mainnet/fuzz/test/FeeAdapter.t.sol": {
+      "sha256": "6062a3ebc5aaabaa5a21edd8913b4b8f35cce91655946bc6ab252ebc04ac334d",
+      "bytes": 16995
+    },
+    "protocol/phase2-mainnet/fuzz/test/Invariant.t.sol": {
+      "sha256": "2e0848579a547e34b0cd116ab587b609154f0289182d3fb95f1bf902d9dcf0c0",
+      "bytes": 11940
+    }
+  },
+  "foundry": {
+    "command": "forge test --root protocol/phase2-mainnet --json",
+    "report": {
+      "path": "audit/acceptance/standalone-20261017-r3/foundry.json",
+      "sha256": "355ed5f86429ac1eac6e37e122682de904a5f3367c08f864f9af5c4728eeecd2"
+    },
+    "passed": 69,
+    "failed": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "fuzz/test/Adapter.t.sol:AdapterTest",
+        "tests": 8,
+        "passed": 8
+      },
+      {
+        "name": "fuzz/test/Caps.t.sol:CapsTest",
+        "tests": 18,
+        "passed": 18
+      },
+      {
+        "name": "fuzz/test/FeeAdapter.t.sol:FeeAdapterTest",
+        "tests": 10,
+        "passed": 10
+      },
+      {
+        "name": "fuzz/test/Invariant.t.sol:PoolInvariantTest",
+        "tests": 1,
+        "passed": 1
+      },
+      {
+        "name": "fuzz/test/Pool.t.sol:PoolTest",
+        "tests": 20,
+        "passed": 20
+      },
+      {
+        "name": "fuzz/test/Registry.t.sol:RegistryTest",
+        "tests": 12,
+        "passed": 12
+      }
+    ],
+    "fuzzRunsPerCase": 1000,
+    "invariantRuns": 128,
+    "invariantDepth": 40,
+    "invariantCalls": 5120,
+    "invariantReverts": 0,
+    "proofSoundnessTested": false,
+    "verifierMode": "mocks accepting proofs",
+    "DEXLiquidity": "explicit mocks"
+  },
+  "deep": {
+    "command": "FOUNDRY_PROFILE=deep forge test --root protocol/phase2-mainnet --match-contract 'CapsTest|PoolInvariantTest' --json",
+    "report": {
+      "path": "audit/acceptance/standalone-20261017-r3/foundry-deep.json",
+      "sha256": "e7d57c7054ea4991bb98b36f9f6924ff562c5f4828b06b09a716ca88212fa08f"
+    },
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "suites": [
+      "fuzz/test/Caps.t.sol:CapsTest",
+      "fuzz/test/Invariant.t.sol:PoolInvariantTest"
+    ],
+    "fuzzRunsPerCase": 20000,
+    "invariantRuns": 512,
+    "invariantDepth": 80,
+    "invariantCalls": 40960,
+    "invariantReverts": 0
+  },
+  "nativeReport": "artifacts/phase2-mainnet/final-parameter-acceptance.json",
+  "nativeReportSHA256": "6ede7a406c55de078f117fd52056c37235014b6864aacf886cbd01c1b5e5a43c",
+  "limitations": [
+    "Foundry verifier mocks exercise accounting and authorization; actual final Groth16 acceptance is separately bound.",
+    "Deep coverage is scoped to CapsTest and PoolInvariantTest, not every contract suite.",
+    "Reports are local runs with synthetic DEX fixtures, not a public-mainnet launch or independent audit.",
+    "No mainnet transaction was signed or broadcast by this release work."
+  ]
+}

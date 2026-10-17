@@ -1,6 +1,6 @@
 # Security model
 
-This describes the production review sources under `contracts/` and `zk/`, mapped byte-for-byte to the immutable RC.2 capsule by `review-manifest.json`. It does not assert independent audit completion, production anonymity or a live mainnet deployment. See [audit scope](AUDIT_SCOPE.md) for the exact review boundary.
+This describes the production review sources under `contracts/` and `zk/`, mapped byte-for-byte to the current RC.3 capsule by `review-manifest.json`. It does not assert independent audit completion, production anonymity or a live mainnet deployment. See [audit scope](AUDIT_SCOPE.md) for the exact review boundary.
 
 ## Custody and note ownership
 
@@ -36,11 +36,11 @@ Pool constructors require positive uint128 `maxDeposit` and `maxTotal`, with sin
 
 Accounting changes are `+value` on a successful dynamic deposit, `-publicOut` once on normal spending, and minus the full note value on holder exit/ragequit. The fee is already inside gross `publicOut` or the revealed exit value; payout and fee split it rather than add another debit. Private-only transfers leave pool liabilities unchanged. Solvency requires actual custody **at least** accounted liabilities; donations can create a surplus.
 
-Guardian `setCaps` may lower caps immediately, including below current reserve. Raising either requires a non-decreasing proposal and a fresh **24-hour delay**. Replacing the proposal restarts the delay; any applied cap change, including a no-op set, clears it. Mixed reductions/increases require reducing first and proposing afresh. Pending increases can be cancelled.
+Guardian `setCaps` may lower caps immediately, including below current reserve. Raising either requires a non-decreasing proposal and a fresh **12-hour delay**. Replacing the proposal restarts the delay; any applied cap change, including a no-op set, clears it. Mixed reductions/increases require reducing first and proposing afresh. Pending increases can be cancelled.
 
 Only `depositDynamic` is paused or capped. This includes a DEX adapter's reshielding deposit. Normal withdrawal, private transfer, holder exit and ragequit remain outside those restrictions; normal spending still needs ASP approval. A paused/full target pool causes the entire DEX operation, source spend and fee movements to revert atomically. Quote-time capacity is advisory and may change before execution.
 
-Selected initial raw-asset caps are 1/20 ETH and 2,500/50,000 USDG. Stock dollar targets require pinned raw-token price/decimals, multiplier and liquidity evidence before constructor values are resolved. Raw caps do not use an on-chain USD oracle, hold dollar exposure constant or guarantee DEX liquidity.
+Selected initial raw-asset caps are 1/20 ETH and 2,500/50,000 USDG. Seven stock constructor limits are fixed by the user-approved [historical tokenAsk dataset](../config/stock-caps-mainnet-20261017.json), at approximately USD 2,500/25,000 per stock. The address, precision and multiplier observations are pinned separately; stock pools/routes remain disabled until per-asset mainnet fork and two-way DEX acceptance. Raw caps do not use an on-chain USD oracle, hold dollar exposure constant or guarantee DEX liquidity.
 
 ## Public escape paths
 
@@ -74,4 +74,4 @@ Security assumes sound Groth16/Poseidon, correct finalized-key/verifier binding,
 
 The root review map and reproduction commands preserve exact source/parameter identity, not independent security assurance. RPC/indexer completeness, public set-data hosting, relay uptime and gas funding affect liveness. Stale state must not authorize a fresh spend. A relay holding proofs and ciphertexts does not thereby own the notes, but direct recovery/exit support still depends on functioning client tools.
 
-Mainnet funding, signing, live fee activation, stock raw caps and actual market acceptance are separate operational work. Neither a public artifact nor a deposit cap authorizes a mainnet expenditure.
+Mainnet broadcasting is paused pending RC.3 and reconciliation of the unresolved RC.2 PoseidonT4 broadcast. The new deployment must preserve the old journals, reuse only verified confirmed libraries and share the original signer gas ledger. Mainnet funding, signing, live fee activation, stock pool/route activation and actual market acceptance remain separate operational work. Neither a public artifact nor a deposit cap authorizes a mainnet expenditure.

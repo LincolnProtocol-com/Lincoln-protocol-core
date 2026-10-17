@@ -36,7 +36,7 @@ contract Phase2ASPPool is ReentrancyGuard {
     uint256 public constant TREE_DEPTH = 20;
     uint256 public constant ROOT_HISTORY_SIZE = 100;
     uint256 public constant CIPHERTEXT_BYTES = 256;
-    uint64 public constant CAP_INCREASE_DELAY = 24 hours;
+    uint64 public constant CAP_INCREASE_DELAY = 12 hours;
     bytes32 public constant DOMAIN = keccak256('CHENG_PHASE2_ASP_V1');
     bytes32 public constant EXIT_DOMAIN = keccak256('CHENG_PHASE2_ASP_EXIT_V1');
     address public immutable ASSET;
@@ -191,7 +191,7 @@ contract Phase2ASPPool is ReentrancyGuard {
         _setCaps(depositCap, totalCap);
     }
 
-    /// @notice Queue a non-decreasing cap change with a new 24-hour delay.
+    /// @notice Queue a non-decreasing cap change with a new 12-hour delay.
     /// @dev Apply reductions with setCaps first; mixed changes are not accepted.
     function proposeCapIncrease(uint128 depositCap, uint128 totalCap) external onlyGuardian {
         _validateCaps(depositCap, totalCap);

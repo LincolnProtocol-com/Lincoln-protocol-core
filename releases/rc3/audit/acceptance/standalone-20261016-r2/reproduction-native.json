@@ -1,0 +1,934 @@
+{
+  "schema": "phase2-final-parameter-acceptance/v1",
+  "runId": "ea1c21fd-f796-4564-9652-d6fa22e2759d",
+  "localOnly": true,
+  "chainId": 4663,
+  "publicTransactions": 0,
+  "mainnetDeployed": false,
+  "productionReady": false,
+  "passed": true,
+  "artifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+  "production": {
+    "build": {
+      "path": "artifacts/phase2-mainnet/contracts.json",
+      "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+    },
+    "manifests": {
+      "joinsplit": {
+        "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+        "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+      },
+      "holder-exit": {
+        "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+        "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+      }
+    },
+    "parameters": {
+      "joinsplit": {
+        "r1cs": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+          "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+        },
+        "wasm": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+          "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+        },
+        "zkey": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+          "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+        },
+        "vkey": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+          "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+        },
+        "verifier": {
+          "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+          "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+        },
+        "ceremonyTranscript": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+          "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+        }
+      },
+      "holder-exit": {
+        "r1cs": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+          "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+        },
+        "wasm": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+          "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+        },
+        "zkey": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+          "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+        },
+        "vkey": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+          "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+        },
+        "verifier": {
+          "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+          "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+        },
+        "ceremonyTranscript": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+          "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+        }
+      }
+    },
+    "releaseId": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+  },
+  "checks": [
+    {
+      "name": "independent-synthetic-EOAs-and-private-note-seeds",
+      "passed": true
+    },
+    {
+      "name": "deployer-cannot-use-guardian-authority",
+      "passed": true
+    },
+    {
+      "name": "production-loader-accepts-actual-final-parameters-and-recompiled-build",
+      "passed": true
+    },
+    {
+      "name": "real-pool-constructor-binds-explicit-raw-unit-deposit-caps",
+      "passed": true
+    },
+    {
+      "name": "public-deposits-and-canonical-note-recovery",
+      "passed": true
+    },
+    {
+      "name": "full-accounted-pool-rejects-another-public-deposit",
+      "passed": true
+    },
+    {
+      "name": "non-guardian-cannot-pause-new-deposits",
+      "passed": true
+    },
+    {
+      "name": "paused-pool-rejects-new-deposits",
+      "passed": true
+    },
+    {
+      "name": "paused-and-lowered-caps-do-not-restrict-the-following-real-proof-spends-and-exits",
+      "passed": true
+    },
+    {
+      "name": "normal-spending-fails-without-ASP",
+      "passed": true
+    },
+    {
+      "name": "superseded-epoch-proof-accepted-within-grace",
+      "passed": true
+    },
+    {
+      "name": "oldest-of-sixteen-epochs-accepts-real-proof-under-relay-gas-cap",
+      "passed": true,
+      "detail": {
+        "gasEstimate": "2994859",
+        "paddedGas": "3603830",
+        "relayGasCap": "5000000"
+      }
+    },
+    {
+      "name": "seventeenth-policy-evicts-original-proof-within-time-grace",
+      "passed": true
+    },
+    {
+      "name": "recent-proof-remains-valid-before-time-grace",
+      "passed": true
+    },
+    {
+      "name": "superseded-epoch-proof-rejected-after-grace",
+      "passed": true
+    },
+    {
+      "name": "reject-joinsplit-proof-mutation",
+      "passed": true
+    },
+    {
+      "name": "reject-joinsplit-recipient-mutation",
+      "passed": true
+    },
+    {
+      "name": "reject-joinsplit-processor-mutation",
+      "passed": true
+    },
+    {
+      "name": "reject-joinsplit-ciphertext-mutation",
+      "passed": true
+    },
+    {
+      "name": "reject-joinsplit-scope-mutation",
+      "passed": true
+    },
+    {
+      "name": "two-note-merge-private-payment-with-real-final-joinsplit-proof",
+      "passed": true
+    },
+    {
+      "name": "private-payment-proof-replay-rejected",
+      "passed": true
+    },
+    {
+      "name": "spent-original-note-ragequit-rejected",
+      "passed": true
+    },
+    {
+      "name": "B-encrypted-backup-only-recovery-without-input-note-identifiers",
+      "passed": true
+    },
+    {
+      "name": "B-recovered-note-private-respend",
+      "passed": true
+    },
+    {
+      "name": "approved-public-withdrawal-exact-payout",
+      "passed": true
+    },
+    {
+      "name": "excluded-note-proof-accepted-within-grace",
+      "passed": true
+    },
+    {
+      "name": "revoked-current-note-normal-proof-rejected",
+      "passed": true
+    },
+    {
+      "name": "suspension-revocation-survives-resume",
+      "passed": true
+    },
+    {
+      "name": "reject-holder-exit-proof-mutation",
+      "passed": true
+    },
+    {
+      "name": "reject-holder-exit-recipient-mutation",
+      "passed": true
+    },
+    {
+      "name": "reject-holder-exit-value-mutation",
+      "passed": true
+    },
+    {
+      "name": "reject-holder-exit-context-mutation",
+      "passed": true
+    },
+    {
+      "name": "received-private-output-cannot-ragequit",
+      "passed": true
+    },
+    {
+      "name": "excluded-holder-exit-with-real-final-exit-proof",
+      "passed": true
+    },
+    {
+      "name": "holder-exit-proof-replay-rejected",
+      "passed": true
+    },
+    {
+      "name": "excluded-original-depositor-full-refund",
+      "passed": true
+    },
+    {
+      "name": "all-private-wallet-balances-and-native-pool-reserve-zero",
+      "passed": true
+    },
+    {
+      "name": "cap-increase-cannot-be-accepted-before-24-hours",
+      "passed": true
+    },
+    {
+      "name": "independent-guardian-delayed-cap-increase-preserves-exit-accounting",
+      "passed": true
+    },
+    {
+      "name": "new-provider-cannot-claim-before-delay",
+      "passed": true
+    },
+    {
+      "name": "rotated-out-provider-cannot-publish",
+      "passed": true
+    },
+    {
+      "name": "independent-guardian-delayed-provider-rotation",
+      "passed": true
+    }
+  ],
+  "transactions": [
+    {
+      "name": "deploy-PoseidonT3",
+      "hash": "0x9e80b842f6bc71152faf21f7939e32ec6da8c3d0d35f08256f6b8c034cb3ec68",
+      "from": "0xF29b15e18f7045e7aF0025351C45834877b18Eba",
+      "to": null,
+      "contractAddress": "0xa78c0859cb68eac901ea105c6d441bf595605255",
+      "blockNumber": "1",
+      "gasUsed": "5152328",
+      "feeWei": "10304656000000000"
+    },
+    {
+      "name": "deploy-PoseidonT4",
+      "hash": "0x6dbcf8d37308963dbb7dc033f570afd5722e5526df53887836663bf60fed1a8a",
+      "from": "0xF29b15e18f7045e7aF0025351C45834877b18Eba",
+      "to": null,
+      "contractAddress": "0xbfb78d58eea637d5d05ee67be38ceb8f2251382e",
+      "blockNumber": "2",
+      "gasUsed": "2785123",
+      "feeWei": "5341687852731241"
+    },
+    {
+      "name": "deploy-Phase2ASPJoinSplitVerifier",
+      "hash": "0xee5067c026950a86a24e29f349a5e43d26cf1b4240bcdc3eba06de0079024c82",
+      "from": "0xF29b15e18f7045e7aF0025351C45834877b18Eba",
+      "to": null,
+      "contractAddress": "0x34c174f7e04f6b0c5ce71de216cd2c60bd241666",
+      "blockNumber": "3",
+      "gasUsed": "585931",
+      "feeWei": "1069030386461146"
+    },
+    {
+      "name": "deploy-Phase2ASPExitVerifier",
+      "hash": "0x61df90dde52844dd1fd0ca6bd04e28ccd57992b31b3c6e0986f5cc4939fb1e07",
+      "from": "0xF29b15e18f7045e7aF0025351C45834877b18Eba",
+      "to": null,
+      "contractAddress": "0x0f19188285cfd423960d478ace1eba4355975d35",
+      "blockNumber": "4",
+      "gasUsed": "438506",
+      "feeWei": "756625548959994"
+    },
+    {
+      "name": "deploy-Phase2ASPRegistry",
+      "hash": "0x00d3120827dea56943f31f1b7b66ed19562f2e22a9cefe0474769339a8faeaa4",
+      "from": "0xF29b15e18f7045e7aF0025351C45834877b18Eba",
+      "to": null,
+      "contractAddress": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "blockNumber": "5",
+      "gasUsed": "888189",
+      "feeWei": "1454347727277885"
+    },
+    {
+      "name": "deploy-Phase2ASPPool",
+      "hash": "0xe7ced1bac2d77c53a68552e86d27492feacbddcd8d3bf07a8d88c71e3c415773",
+      "from": "0xF29b15e18f7045e7aF0025351C45834877b18Eba",
+      "to": null,
+      "contractAddress": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "blockNumber": "6",
+      "gasUsed": "4592018",
+      "feeWei": "7174888743477646"
+    },
+    {
+      "name": "A-public-deposit-3",
+      "hash": "0x415fc6a7e25960163c414bd8e8355e4226a7c6fd9f4716bfdca502366f276e97",
+      "from": "0x5aA29D82af407E62EF2b0B77E5dDD437DFEf1675",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "7",
+      "gasUsed": "765580",
+      "feeWei": "1158846858181120"
+    },
+    {
+      "name": "A-public-deposit-4",
+      "hash": "0x2046d84121dab40b28061d4723f13eff395595f177c36e480067b90648d6ccf2",
+      "from": "0x5aA29D82af407E62EF2b0B77E5dDD437DFEf1675",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "8",
+      "gasUsed": "692169",
+      "feeWei": "1005549539160120"
+    },
+    {
+      "name": "C-public-unapproved-deposit-5",
+      "hash": "0xc08df3afd96daeca86ed1d626b2ecf7b1c011cecbc6aad01b19879274d1e231a",
+      "from": "0xeA8f73e9D0E1218C56133fe99059e73f5dE6CC78",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "9",
+      "gasUsed": "692169",
+      "feeWei": "968184574569450"
+    },
+    {
+      "name": "guardian-pause-public-deposits",
+      "hash": "0x092f2038dd7ca377b19f201c4602b4a0a430733058b1f2541d2027b563d17d7b",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "10",
+      "gasUsed": "47654",
+      "feeWei": "64391183177046"
+    },
+    {
+      "name": "guardian-lower-caps-below-accounted-tvl",
+      "hash": "0x674e1efde19288a59bb5f1f85a6409c53d9f0e0082571b759a0e824c24419757",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "11",
+      "gasUsed": "36245",
+      "feeWei": "47388874833025"
+    },
+    {
+      "name": "approve-A-notes",
+      "hash": "0x5047f4b7f523b0e62cc522bc670cb9924f129e4ed5cf762bd34626a2ea2d4c3f",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "12",
+      "gasUsed": "118253",
+      "feeWei": "150077253863915"
+    },
+    {
+      "name": "advance-ASP-epoch",
+      "hash": "0x5935787b1754d1dd26fca9f39334bad9f6f757e8d5dc004cd26d42bd48625bc7",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "13",
+      "gasUsed": "86391",
+      "feeWei": "106757267979141"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-0",
+      "hash": "0x9082472378397f29e7d869370f50b8323c2f2b209a40a52ca91c408465fe1842",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "14",
+      "gasUsed": "86391",
+      "feeWei": "104226146708274"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-1",
+      "hash": "0x7fa9d1630cda06ac422b0812709c5fe07fe1560e2ae0831ff27b1a86c6b4742c",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "15",
+      "gasUsed": "86391",
+      "feeWei": "102009593383299"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-2",
+      "hash": "0x8366bdb8ca7007d416954ccb6aba10d3e757a01020b4275b3f2de1e750657077",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "16",
+      "gasUsed": "86391",
+      "feeWei": "100068513484986"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-3",
+      "hash": "0x438c4cba488f0530e0780b45fb2b2637a41f2a260f39f1f95150d061e69c9766",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "17",
+      "gasUsed": "86391",
+      "feeWei": "98368671123945"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-4",
+      "hash": "0x7046fe00b98878195e67b5854e20317efca92760d4993d1a624174e08114d89f",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "18",
+      "gasUsed": "86391",
+      "feeWei": "96880085340318"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-5",
+      "hash": "0x75ec4d933c74b479becbb5cc0b8ec5c7623d94f3d018dab6798b9eff79655be0",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "19",
+      "gasUsed": "86391",
+      "feeWei": "95576501045295"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-6",
+      "hash": "0x2b228006528a3fbcc8b1369dbcbbb506c12ba3ff450f0a31bf03b614826dc8f7",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "20",
+      "gasUsed": "86391",
+      "feeWei": "94434926310918"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-7",
+      "hash": "0x1d0854a11a2c2ba499978c2c68aa0ac4281fb316e64235ddf193af14743a0c55",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "21",
+      "gasUsed": "86391",
+      "feeWei": "93435226591554"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-8",
+      "hash": "0x99ea5c79828af59da96b73808f72901be8f8e40a68086883defab0435d9f54cb",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "22",
+      "gasUsed": "86391",
+      "feeWei": "92559769656885"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-9",
+      "hash": "0x13f57de0fc4da8e42dcb464e542b8ede0b8928fb53bbdb82c53291a46f30667d",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "23",
+      "gasUsed": "86391",
+      "feeWei": "91793114584308"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-10",
+      "hash": "0x36a4f9fb501dbc9e5ca796c267e957fc9a56685dbdd284d801574ba8cafbe08f",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "24",
+      "gasUsed": "86391",
+      "feeWei": "91121739454503"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-11",
+      "hash": "0x8f53f5cc054704bc1b26cc462a7878d2120b70973172a7d50d51f4110077861c",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "25",
+      "gasUsed": "86391",
+      "feeWei": "90533802825882"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-12",
+      "hash": "0x756ffb012a72accd038534deb27bc960b770344f1d98106da97a22b86f284419",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "26",
+      "gasUsed": "86391",
+      "feeWei": "90018935013933"
+    },
+    {
+      "name": "advance-to-policy-window-boundary-13",
+      "hash": "0xe50535b9e88b1a6a7972d707a8f691109a22be4cdfb42fbd45705bcfb757236c",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "27",
+      "gasUsed": "86391",
+      "feeWei": "89568055028691"
+    },
+    {
+      "name": "evict-oldest-epoch",
+      "hash": "0x26e9d8ef1904a7ca116a522c85883b45e2cd61e78b6d03c296d14ce8de8ea946",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "28",
+      "gasUsed": "86391",
+      "feeWei": "89173210405824"
+    },
+    {
+      "name": "refresh-ASP-after-grace",
+      "hash": "0x57beb2da64eaf1ddb033b7e40e02ce43df20c0db226c3bae9cd6540b1dc8761b",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "30",
+      "gasUsed": "86391",
+      "feeWei": "88522882542567"
+    },
+    {
+      "name": "A-merge-two-notes-private-payment-to-B",
+      "hash": "0x4818dda486ea3fd243865e13adf79fefb12d7338c98c5f328bfcb7c76ef4676d",
+      "from": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "31",
+      "gasUsed": "1527574",
+      "feeWei": "1560585272836814"
+    },
+    {
+      "name": "approve-B-recovered-note",
+      "hash": "0xb58a931df5f4e19546ee38285d0192b6851851473c4e07adb32dc2cb8e93126e",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "32",
+      "gasUsed": "89191",
+      "feeWei": "90902046654943"
+    },
+    {
+      "name": "B-restored-private-respend",
+      "hash": "0xe5a7ea95713dfbe342211f80558c321466e1c1c799297a361907cfbaf96d688f",
+      "from": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "33",
+      "gasUsed": "1522675",
+      "feeWei": "1548256431824025"
+    },
+    {
+      "name": "approve-B-change",
+      "hash": "0x3c1a5f33fde173808eb850b469be883f3b1000fa322ec6ebc116a6c4bb188a31",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "34",
+      "gasUsed": "89203",
+      "feeWei": "90533325550786"
+    },
+    {
+      "name": "B-approved-public-withdrawal",
+      "hash": "0x9b5ebb065e29f662f56630d1ea30a7949e97c8c0d0e0ad74766e99c267fdb1ee",
+      "from": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "35",
+      "gasUsed": "1068196",
+      "feeWei": "1082147030719736"
+    },
+    {
+      "name": "approve-B-final-change",
+      "hash": "0xeab89dff21ce1e454fd0c1f32445d615e37c32fa4df919473c375c3cf43f436a",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "36",
+      "gasUsed": "89203",
+      "feeWei": "90232766479037"
+    },
+    {
+      "name": "exclude-all-current-notes",
+      "hash": "0x5c84e93f456c6bf2e39d822eed9902044e6696ca26a1c5de9552eaa77f1e8c15",
+      "from": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "37",
+      "gasUsed": "89203",
+      "feeWei": "90104811198153"
+    },
+    {
+      "name": "guardian-suspendProvider",
+      "hash": "0x31f8a7dd3a33d38ea7b31228b9a725fcaeb958f96b5d2516da2a783fa7e46e7b",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "38",
+      "gasUsed": "52270",
+      "feeWei": "52732770354200"
+    },
+    {
+      "name": "guardian-resumeProvider",
+      "hash": "0x468ef099e882428d0fac093d0bd47371f2edb117cbb2eb698061648ef76a54fa",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "39",
+      "gasUsed": "24827",
+      "feeWei": "25019424990318"
+    },
+    {
+      "name": "B-excluded-holder-exit",
+      "hash": "0xa5833391766df2d5141c59887db16dd2c56d579a2a29a7e2beb33a02733853de",
+      "from": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "40",
+      "gasUsed": "295492",
+      "feeWei": "297496443092228"
+    },
+    {
+      "name": "C-original-depositor-ragequit",
+      "hash": "0xd44293ea7b7d129761b0476dedb95cf21a9c7713cbeace4148044379bfddd472",
+      "from": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "41",
+      "gasUsed": "299823",
+      "feeWei": "301607602562901"
+    },
+    {
+      "name": "A-holder-exit-1",
+      "hash": "0x807a90f38b0e56eea9dca1ad6b64b5f9d7344cf0f3420a6ab28c36a3856c31cc",
+      "from": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "42",
+      "gasUsed": "295564",
+      "feeWei": "297107741412304"
+    },
+    {
+      "name": "A-holder-exit-2",
+      "hash": "0x98fd4b005c9c582ab0a8ce63cca51c6e3f422685ae081022c6d5bb5385661561",
+      "from": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "43",
+      "gasUsed": "290764",
+      "feeWei": "292096577808808"
+    },
+    {
+      "name": "guardian-propose-cap-increase",
+      "hash": "0x52e953bf0cad6d650f4f3aec8b13abd46ad4760d61048e8c229ba593791671b2",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "44",
+      "gasUsed": "73914",
+      "feeWei": "74211226672500"
+    },
+    {
+      "name": "guardian-accept-cap-increase-after-delay",
+      "hash": "0x413a666563f35c86ddc591277ea59bcb753fa5aff20dea4cdbe96b28511c9a73",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "46",
+      "gasUsed": "33340",
+      "feeWei": "33442718472920"
+    },
+    {
+      "name": "guardian-unpause-deposits",
+      "hash": "0xde8ac11668f33165c0babaec1317d4b925266ee443e8a9df30e80c80a2408857",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "contractAddress": null,
+      "blockNumber": "47",
+      "gasUsed": "26173",
+      "feeWei": "26243580127121"
+    },
+    {
+      "name": "guardian-propose-provider",
+      "hash": "0xd41d0429d7fb4215367d9aefd8a13fc5b4dc732010d468af04432f68892962ad",
+      "from": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "48",
+      "gasUsed": "48182",
+      "feeWei": "48295718240942"
+    },
+    {
+      "name": "new-provider-accept-after-delay",
+      "hash": "0xdcb934ff7e002c07441c68e579abedcd7a84aa8645ee59b98788fb90d83d9ed2",
+      "from": "0x0B84BA3D49AAf18D06bCA8382289BF22659484fA",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "50",
+      "gasUsed": "28182",
+      "feeWei": "28232948659608"
+    },
+    {
+      "name": "new-provider-publish",
+      "hash": "0xbeea7d6c04735f73481790828dc7d36695119a1ec1b0dd5e2c56c75128f09724",
+      "from": "0x0B84BA3D49AAf18D06bCA8382289BF22659484fA",
+      "to": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "contractAddress": null,
+      "blockNumber": "51",
+      "gasUsed": "86031",
+      "feeWei": "86167125904959"
+    }
+  ],
+  "proofs": [
+    {
+      "circuit": "holder-exit",
+      "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+      "offchainVerified": true,
+      "onchainVerified": true
+    },
+    {
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 2
+    },
+    {
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 2
+    },
+    {
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 2
+    },
+    {
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 1
+    },
+    {
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 1
+    },
+    {
+      "circuit": "joinsplit",
+      "manifestSHA256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "offchainVerified": true,
+      "onchainVerified": true,
+      "inputNoteCount": 1
+    },
+    {
+      "circuit": "holder-exit",
+      "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+      "offchainVerified": true,
+      "onchainVerified": true
+    },
+    {
+      "circuit": "holder-exit",
+      "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+      "offchainVerified": true,
+      "onchainVerified": true
+    },
+    {
+      "circuit": "holder-exit",
+      "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+      "offchainVerified": true,
+      "onchainVerified": true
+    },
+    {
+      "circuit": "holder-exit",
+      "manifestSHA256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+      "offchainVerified": true,
+      "onchainVerified": true
+    }
+  ],
+  "limitations": [
+    "This is local acceptance with real final parameters, not public mainnet execution.",
+    "It is not an independent audit, an anonymity measurement or authentication of participant identities.",
+    "DEX, bridge and ERC20 integration are covered separately; this run accepts the final native-pool circuits.",
+    "The local guardian is an independent synthetic EOA; the configured mainnet Safe is verified separately on its public chain."
+  ],
+  "profile": {
+    "schema": "phase2-asp-production-profile/v1",
+    "releaseCandidate": true,
+    "testOnly": false,
+    "productionReady": false,
+    "chain": {
+      "id": 4663,
+      "rpcUrl": "http://127.0.0.1:52619"
+    },
+    "genesisHash": "0x5684b240d9c08eb081ce6a36b203a728518780f1a52503b82ac1c8db7877dd9e",
+    "artifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+    "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
+    "production": {
+      "build": {
+        "path": "artifacts/phase2-mainnet/contracts.json",
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+      },
+      "manifests": {
+        "joinsplit": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+          "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+        },
+        "holder-exit": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+          "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+        }
+      },
+      "parameters": {
+        "joinsplit": {
+          "r1cs": {
+            "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+            "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+          },
+          "wasm": {
+            "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+            "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+          },
+          "zkey": {
+            "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+            "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+          },
+          "vkey": {
+            "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+            "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+          },
+          "verifier": {
+            "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+            "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+          },
+          "ceremonyTranscript": {
+            "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+            "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+          }
+        },
+        "holder-exit": {
+          "r1cs": {
+            "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+            "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+          },
+          "wasm": {
+            "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+            "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+          },
+          "zkey": {
+            "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+            "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+          },
+          "vkey": {
+            "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+            "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+          },
+          "verifier": {
+            "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+            "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+          },
+          "ceremonyTranscript": {
+            "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+            "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+          }
+        }
+      },
+      "releaseId": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+    },
+    "relayer": "0x54abd50fd4be5F9A26cE326B872F0f5FCDcc33CD",
+    "pool": {
+      "address": "0x1302fda73a93bf075900d0a9bc1beee8733db1e9",
+      "runtimeCodeHash": "0xeae4d5b4262c333e4d41e9f296bb74497babeefce30bdd3c1d3ad7f30cb6b545",
+      "asset": "0x0000000000000000000000000000000000000000",
+      "noteModel": "factorized-asp-v1",
+      "treeDepth": 20,
+      "startBlock": "6",
+      "scope": "19193831781482755039330800108563708304366162546828984173538048023293966614531"
+    },
+    "verifier": {
+      "address": "0x34c174f7e04f6b0c5ce71de216cd2c60bd241666",
+      "runtimeCodeHash": "0x53b6c748afbdf537440036d238752a874e918bb8128aa11d2df65926b271fb4a"
+    },
+    "exitVerifier": {
+      "address": "0x0f19188285cfd423960d478ace1eba4355975d35",
+      "runtimeCodeHash": "0x25611eb4723ceab2d49339495042c2899d45e04de6fd503c5d07efe7f9015a60"
+    },
+    "registry": {
+      "address": "0xa05ea11a34a811d46c23d5c10b79d6dc4d248ee2",
+      "runtimeCodeHash": "0xd93a442c2d68d1f4794551ceedd069c352b31035bc85a28692a5126994da9f9b",
+      "provider": "0xEEA5Bb45498E4c8da2984CaC9D47f3c9Ba05b30c",
+      "guardian": "0x15b2e959675a4617df1ee532B048b14f8867464c",
+      "startBlock": "5"
+    }
+  },
+  "finalReserve": "0",
+  "finalBalance": "0"
+}

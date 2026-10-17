@@ -1,10 +1,12 @@
 # Local mainnet deployment
 
-The encrypted account is managed by Foundry on the operator's computer. The public target is `config/mainnet-operations.json`; no password or private key is included. Registration does not prove ownership of a keystore. Its account is checked against the recovered transaction sender when signing.
+**Mainnet deployment is paused.** The existing PoseidonT3 transaction is confirmed, but the later RC.2 PoseidonT4 broadcast has not yet been reconciled. Do not resume the old `scripts/deploy.sh --deploy`: that snapshot would deploy pools with the superseded 24-hour cap-increase delay. Unknown does not mean failed, and a new directory must not bypass an outstanding nonce or gas reservation.
 
-The review baseline remains `v0.1.0-rc.2`. Its configuration inside `releases/rc2/` deliberately retains an unset deployer. A new operations snapshot changes only the public deployer identity; its manifest records the original commit, frozen inventory and before/after configuration hashes. It is explicitly a derived operations snapshot, not a byte-identical frozen release.
+The current candidate is **`v0.1.0-rc.3`**. It changes `CAP_INCREASE_DELAY` to **12 hours**, leaving immediate reductions and exit availability unchanged. The original tag and `releases/rc2/` remain untouched. The final circuits, proving keys and verifier identities are retained; the pool bytecode is newly compiled and needs its own acceptance evidence.
 
-## Check and prepare
+The encrypted account stays in Foundry on the operator's computer. `config/mainnet-operations-rc3.json` contains public deployment metadata, never a password or private key. The release configuration retains an unset deployer and null spending budgets. The account is validated against the recovered transaction sender when the operator signs locally.
+
+## Check and prepare RC.3
 
 From the repository root:
 
@@ -12,33 +14,37 @@ From the repository root:
 npm ci --ignore-scripts
 npm run check
 npm run plan
-bash scripts/deploy.sh --prepare
+bash scripts/deploy-mainnet.sh --prepare
 ```
 
-Preparation reads no wallet, sends no transaction and leaves the review capsule unchanged. It creates `.phase1-private/mainnet-deployments/rc2-eth-usdg/` from the exact RC.2 commit. Existing directories and deployment journals are preserved. Incomplete or modified snapshots fail validation; do not remove a directory that may contain an unresolved transaction.
+The new entry point prepares a separately identified RC.3 operations snapshot. It must validate the new candidate and source bindings, preserve the RC.2 journal, verify any reused component, and use the **original shared account-wide signer ledger**. It must not reset spent gas, release unknown reservations, reset nonces or create a separate budget allowance. Preparation sends no transaction and reads no wallet password. Existing snapshots and journals must never be deleted or overwritten to work around a failure.
 
-## Execute locally
+A successful preparation is not permission to broadcast while the PoseidonT4 result remains unresolved. The final RC.3 run must fail closed until that old transaction is canonically reconciled. PoseidonT3 is reusable only after its receipt and exact expected runtime are verified; an eventual confirmed PoseidonT4 must be handled the same way. Never recompile a linked pool using an unverified library address.
 
-The first deployment covers **seven CREATE transactions: two Poseidon libraries, two final verifiers, one association registry and the ETH/USDG pools**. It does not deploy stock pools or DEX routes and does not activate a frontend, relayer or ASP publisher.
+Preparation checks the local ledger and sends no RPC request. If a transaction has since confirmed on chain, first run the read-only recovery command below to reconcile the saved status. The deployment engine independently checks canonical receipts and runtimes before reuse. A current RC.3 reservation left `prepared` by a password error or interruption can resume only if it has no signed hash/bytes and its entire frozen plan and journal match. Foreign reservations and signed or ambiguous broadcasts remain blocked; never delete them to continue.
 
-All three limits are explicit. An example invocation is:
+## Execute RC.3 locally after reconciliation
+
+The base deployment comprises two Poseidon libraries, two final verifiers, one association registry and **ETH/USDG pools only**. Verified libraries from RC.2 may be reused, reducing new CREATE transactions. It deploys no stock pools or DEX routes and starts no frontend, relayer or ASP publisher.
+
+The user approved [seven stock-token caps](STOCK_CAPS.md), and `releases/rc3/config/phase2-mainnet.json` binds the same dataset by path and SHA-256. Values are configured; per-asset mainnet fork and two-way DEX checks remain pending. `stockPoolsEnabled` stays false and `stocksRouteActivationPending` stays true. Approved caps must not silently expand the default deployment.
+
+The new explicit command is `bash scripts/deploy-mainnet.sh --deploy`, with all spending limits supplied by the local operator. For example, after the pause is lifted and reconciliation/preparation pass:
 
 ```sh
-bash scripts/deploy.sh --deploy \
+bash scripts/deploy-mainnet.sh --deploy \
   --budget-wei 1100000000000000 \
   --max-fee-per-gas-wei 40000000 \
   --reserve-wei 3000000000000000
 ```
 
-Running `--deploy` is the operator's instruction to sign and broadcast on Robinhood **mainnet, chain ID 4663** within those limits. The example sets a cumulative gas budget of **0.0011 ETH**, maximum gas price of **0.04 gwei**, and retains **0.003 ETH**. These are example limits to review, not a claim of current gas cost or a default permission for an agent to spend funds. The seven conservative gas caps total 26,500,000; at that price ceiling their maximum reservation is 0.00106 ETH. Insufficient balance or budget, incorrect chain/dependencies, altered source, or a changed keystore sender fails closed.
+This example is a **cumulative** gas budget of 0.0011 ETH, gas-price ceiling of 0.04 gwei and reserve of 0.003 ETH; previous confirmed costs and unresolved reservations remain counted. It is not a new allowance, current-price assertion or agent spending authorization. The prepared snapshot must be checked with the current receipt and ledger state before the operator chooses final limits. Incorrect chain/dependencies, changed source or recovered sender, insufficient budget/balance and unknown prior broadcasts must fail closed.
 
-The command installs the snapshot's locked dependencies with lifecycle scripts disabled, validates all original public files except the explicitly derived config, and prompts for the keystore password in the operator's interactive terminal. It uses a temporary owner-only password file, deletes it on normal exit or handled signals, and never exports a private key. A machine crash or `SIGKILL` can leave that temporary file; it must be removed locally. No password belongs in chat, command arguments or Git.
+The command prompts for the keystore password only in the operator's interactive terminal. An owner-only temporary password file is removed on normal exit or handled signals; a crash or `SIGKILL` can leave it for local cleanup. No password belongs in chat, command arguments or Git. Existing testnet EC2 services are not changed by local core deployment.
 
-The account-wide signer ledger and canonical receipt checks support resuming an interrupted deployment with the same limits. An unknown broadcast is not blindly resent. Changing limits or resolving an ambiguous transaction requires reviewing the existing journal.
+## Legacy RC.2 unknown-broadcast reconciliation
 
-## An unknown broadcast
-
-`MAINNET_BROADCAST_UNKNOWN` means that the transaction was signed and its hash was saved, but the broadcaster did not receive an acceptable response. It does not prove success or failure. Keep the original snapshot, signer ledger and deployment journal; do not switch directories, reset nonces, remove locks or delete records.
+`MAINNET_BROADCAST_UNKNOWN` means that the transaction was signed and its hash was saved, but the broadcaster did not receive an acceptable response. It does not prove success or failure. RC.2 discarded the underlying RPC reason, so a later not-found response cannot distinguish an original timeout from a rejection. RC.3 preserves a bounded, sanitized `rpcDiagnostic` in the ledger and CLI error while retaining the unknown reservation. Keep the original snapshot, signer ledger and deployment journal; do not switch directories, reset nonces, remove locks or delete records.
 
 Inspect the saved transaction without sending it:
 
@@ -46,9 +52,9 @@ Inspect the saved transaction without sending it:
 node scripts/operations/recover-mainnet-broadcast.mjs --hash <transaction-hash>
 ```
 
-This command verifies the frozen inputs, original signature, chain, intent, limits and canonical receipts. Receipt reconciliation may update local accounting. If already confirmed, resume the original deployment command with exactly the same limits. The deployment engine verifies and reuses that contract before continuing.
+This command verifies the frozen inputs, original signature, chain, intent, limits and canonical receipts. Receipt reconciliation may update local accounting. If already confirmed, retain the reconciled journal and ledger. Do not resume the old RC.2 deployment: its pools have the superseded 24-hour delay. RC.3 must import confirmed components only after validating their receipts, runtime and identity.
 
-If the node knows neither the transaction nor its receipt, explicit recovery can submit the **identical signed bytes once**:
+The legacy recovery tool also has an explicit `--rebroadcast` mode for the **identical signed bytes once**. This is a mainnet write, not inspection. Do not run it automatically or during the current deployment pause; reconcile the pending transaction and decide the recovery action first:
 
 ```sh
 node scripts/operations/recover-mainnet-broadcast.mjs --hash <transaction-hash> --rebroadcast
@@ -58,4 +64,4 @@ Recovery requires the saved sender nonce, original reserve and original budget t
 
 ## Remaining launch work
 
-A completed core deployment is not the completed product launch. Fee-adapter deployment and route activation, stock raw-cap valuation, real two-way DEX acceptance, mainnet signer/ASP/relayer operations, and independent A/B acceptance remain separate steps. The current registration file keeps its persistent signing flag off; the local `--deploy` command provides explicit limits for that one operator-run process. Existing testnet services and EC2 are unchanged.
+A core deployment is not a completed launch. Fees and typed DEX route deployment/activation, each stock's fork and real two-way DEX acceptance, mainnet signer/ASP/relayer operations, funding and independent A/B acceptance remain separate steps. Independent audit remains deferred under the user's decision; it is not claimed complete. This release work does not itself resume mainnet broadcasts.

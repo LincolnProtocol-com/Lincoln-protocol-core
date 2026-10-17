@@ -1,0 +1,679 @@
+{
+  "schema": "phase2-mainnet-contract-candidate/v1",
+  "releaseCandidate": true,
+  "productionReady": false,
+  "chainId": 4663,
+  "coreArtifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+  "feeArtifactSHA256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a",
+  "contractCount": 10,
+  "parameters": {
+    "guardian": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "provider": "0xce6770154D793dF78FbfA0D3615B2946366E6612",
+    "dexFeeBps": 30,
+    "withdrawalFeeBps": 30,
+    "holderExitFeeBps": 30,
+    "privateTransferFeeUnits": "0",
+    "ragequitFeeUnits": "0",
+    "capIncreaseDelaySeconds": 86400,
+    "capPauseScope": "deposits-only",
+    "acceptedPolicyWindow": 16,
+    "supersededPolicyGraceSeconds": 3600,
+    "providerRotationDelaySeconds": 259200,
+    "noteInputs": 2,
+    "noteOutputs": 2,
+    "merkleDepth": 20,
+    "maxDexHops": 4,
+    "maxRelayGas": "5000000"
+  },
+  "selectedRouteIds": [
+    "uniswap-eth-to-usdg",
+    "uniswap-usdg-to-eth",
+    "up-eth-to-usdg",
+    "up-usdg-to-eth",
+    "uniswap-eth-to-nvda",
+    "uniswap-nvda-to-eth"
+  ],
+  "depositCaps": [
+    {
+      "symbol": "ETH",
+      "schema": "lincoln-pool-deposit-caps/v1",
+      "unit": "asset-base-units",
+      "status": "configured",
+      "maxDepositUnits": "1000000000000000000",
+      "maxTotalUnits": "20000000000000000000"
+    },
+    {
+      "symbol": "USDG",
+      "schema": "lincoln-pool-deposit-caps/v1",
+      "unit": "asset-base-units",
+      "status": "configured",
+      "maxDepositUnits": "2500000000",
+      "maxTotalUnits": "50000000000"
+    },
+    {
+      "symbol": "SPY",
+      "schema": "lincoln-pool-deposit-caps/v1",
+      "unit": "asset-base-units",
+      "status": "valuation-required",
+      "maxDepositUnits": null,
+      "maxTotalUnits": null,
+      "valuationTargets": {
+        "singleDepositUsd": "2500",
+        "poolTotalUsd": "25000",
+        "fixedBlock": null,
+        "rawTokenPriceUsd": null,
+        "uiMultiplierChecked": false,
+        "liveLiquidityAccepted": false
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "schema": "lincoln-pool-deposit-caps/v1",
+      "unit": "asset-base-units",
+      "status": "valuation-required",
+      "maxDepositUnits": null,
+      "maxTotalUnits": null,
+      "valuationTargets": {
+        "singleDepositUsd": "2500",
+        "poolTotalUsd": "25000",
+        "fixedBlock": null,
+        "rawTokenPriceUsd": null,
+        "uiMultiplierChecked": false,
+        "liveLiquidityAccepted": false
+      }
+    },
+    {
+      "symbol": "AAPL",
+      "schema": "lincoln-pool-deposit-caps/v1",
+      "unit": "asset-base-units",
+      "status": "valuation-required",
+      "maxDepositUnits": null,
+      "maxTotalUnits": null,
+      "valuationTargets": {
+        "singleDepositUsd": "2500",
+        "poolTotalUsd": "25000",
+        "fixedBlock": null,
+        "rawTokenPriceUsd": null,
+        "uiMultiplierChecked": false,
+        "liveLiquidityAccepted": false
+      }
+    }
+  ],
+  "mainnetDeployer": null,
+  "feeRuntimeConfigured": false,
+  "validation": {
+    "native": {
+      "checks": 43,
+      "proofs": 11,
+      "localTransactions": 48,
+      "oldestEpochGasEstimate": "2994835",
+      "oldestEpochPaddedGas": "3603802"
+    },
+    "fee": {
+      "checks": 22,
+      "proofs": 4,
+      "localTransactions": 73,
+      "actualDEX": false,
+      "routeGas": [
+        {
+          "id": "up-native-in",
+          "estimate": "3138781",
+          "paddedGas": "3776537",
+          "actualGasUsed": "3023907",
+          "relayMaxGas": "5000000",
+          "oldestWindowProof": true
+        },
+        {
+          "id": "router02-native-out",
+          "estimate": "1614135",
+          "paddedGas": "1946962",
+          "actualGasUsed": "1514361",
+          "relayMaxGas": "5000000",
+          "oldestWindowProof": false
+        }
+      ]
+    },
+    "governanceReport": "artifacts/phase2-mainnet/caps-governance-acceptance-20261016-r2.json"
+  },
+  "files": [
+    {
+      "path": "abi/manifest.json",
+      "bytes": 64511,
+      "sha256": "a7f26fbccbeab40adff0ee6259a51fb84012f21ef20f98ecbab24973fed7b724"
+    },
+    {
+      "path": "abi/phase2-fees-mainnet/Phase2FeeRouteAdapter.json",
+      "bytes": 17296,
+      "sha256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e"
+    },
+    {
+      "path": "abi/phase2-fees-mainnet/Phase2FeeRouter02Adapter.json",
+      "bytes": 17296,
+      "sha256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPExitVerifier.json",
+      "bytes": 672,
+      "sha256": "4fad9212460f2528b274bbdf5c1911e4690569227a8ea1e9737f991f4fb30f41"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPJoinSplitVerifier.json",
+      "bytes": 672,
+      "sha256": "b48de91bf3da1ab0e4c9033a6d92dd4579c0f11336d2ba100a89a23fc5430e12"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPPool.json",
+      "bytes": 28218,
+      "sha256": "0b710998d83533b48f9e27e22338223f8d8af0ba038557519fcf5e6f7c8d0d67"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPRegistry.json",
+      "bytes": 9204,
+      "sha256": "26bcff3c56fe5c261b0f8f69e2f49b87c942e5336f938add0bdc134a3a072be7"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2RouteAdapter.json",
+      "bytes": 14524,
+      "sha256": "79308abdac61eaebd902e6bb2fdc58236829168650cc1fee4089d28a9fe253cb"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2Router02Adapter.json",
+      "bytes": 14349,
+      "sha256": "7aa5fa3d3d110989ccb1116e648e2cf1a244608ea8417eb4d206af903864b6c2"
+    },
+    {
+      "path": "abi/phase2-mainnet/PoseidonT3.json",
+      "bytes": 333,
+      "sha256": "604d68e02f21308d1dd3f4d079eec44481bcdd7942015f98824e62f916e6a0d0"
+    },
+    {
+      "path": "abi/phase2-mainnet/PoseidonT4.json",
+      "bytes": 333,
+      "sha256": "ceb0cbb415a74f7f7633336b128e54490ec077937bf3172fd66ddafeb84e19c3"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.applied.json",
+      "bytes": 5225,
+      "sha256": "acab415decdb47ddf681ad0e62c8196504f8d2c69dd6088860145c14974f134f"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.json",
+      "bytes": 6908,
+      "sha256": "9fec88e4aabf6522f2a0f648e72cde8b1725691f2b643d8a1153d56f09fd99b0"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.observation.json",
+      "bytes": 2474,
+      "sha256": "dedfc10cf0d6284d4062fb9fc63971ec10472e7d3dfdb85a4f1f9ff3eeb3c2a4"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.publication.json",
+      "bytes": 2719,
+      "sha256": "35f3f2e166796b6a77762f91b161fc2555fceddebe41ff0fa0a6437ec2995277"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/holder-exit.zkey",
+      "bytes": 798870,
+      "sha256": "997745765177181fa3b7823b48f71025789ace3aa182167d1d4ed8875fffe421"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/joinsplit.zkey",
+      "bytes": 14169226,
+      "sha256": "f804a5a87014a68e384315b314f87e8800b4b55e69b7d5deee4324a3731f1488"
+    },
+    {
+      "path": "artifacts/phase2-fees-mainnet/contracts.json",
+      "bytes": 184624,
+      "sha256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a"
+    },
+    {
+      "path": "artifacts/phase2-fees-mainnet/launch-plan.json",
+      "bytes": 60019,
+      "sha256": "a2593e62b0bc6c939e7dcc210747ea81fcf985ebcfede68f5613b7218a3e99e2"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/caps-governance-acceptance-20261016-r2.json",
+      "bytes": 5442,
+      "sha256": "3e4cdf4ead02c33b51b1f5e01399901bb057cd73059b9b2a372c4c456f2c5670"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/contracts.json",
+      "bytes": 451099,
+      "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/final-fee-parameter-acceptance.json",
+      "bytes": 73530,
+      "sha256": "e747824d2fdc0e02a97a582c9c5f064095db3a15f10b99e5183c881da0eeef91"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/final-parameter-acceptance.json",
+      "bytes": 33783,
+      "sha256": "38b12b139f073e67971b3d5a75e2d0a4bd1d16ea8f85f31c5dd79a0e98c2fc3c"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/safe-verification-20261016.json",
+      "bytes": 850,
+      "sha256": "6e764a263bf0a751fa70ca0225c3ed1332d8d03551cabcc96b289e2eff3e5122"
+    },
+    {
+      "path": "audit/acceptance/standalone-20261016-r2/foundry.json",
+      "bytes": 1507257,
+      "sha256": "6f8fa45075944b83bdb16cf38c8fb2101e05d86883c87b99495b9b6895cab029"
+    },
+    {
+      "path": "audit/test-adaptations.json",
+      "bytes": 1574,
+      "sha256": "c75e2a5b37be337c28e0986798748822ce905dfb7c66be7d8af2b529baa45bc8"
+    },
+    {
+      "path": "config/phase2-mainnet-routes-example.json",
+      "bytes": 3736,
+      "sha256": "ad1aa46520a488b1014883b5259da175389933d73963fd21b4f0fa903d6d5752"
+    },
+    {
+      "path": "config/phase2-mainnet.json",
+      "bytes": 9550,
+      "sha256": "773a73f4ba848c77db057b4cd4efb1a297ac26db98c30a0d01e6f05033d36d1e"
+    },
+    {
+      "path": "contracts/phase2-fees-mainnet.manifest.json",
+      "bytes": 3371,
+      "sha256": "21202ef419e9942d8bf5fd94af2d584fd9579c3609d297b61f09fd5967130adf"
+    },
+    {
+      "path": "contracts/phase2-fees-mainnet.standard-input.json",
+      "bytes": 74982,
+      "sha256": "8753daf03f5c54741feca7e7613d6a4bafd40d9d45a3a77b820e946f5e0a8bf4"
+    },
+    {
+      "path": "node_modules/@openzeppelin/contracts/package.json",
+      "bytes": 786,
+      "sha256": "7e5965609fbc7c48253296f94dde1d456385f407c6879ada17240dffa43fbd71"
+    },
+    {
+      "path": "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+      "bytes": 3803,
+      "sha256": "912509e0e9bf74e0f8a8c92d031b5b26d2d35c6d4abf3f56251be1ea9ca946bf"
+    },
+    {
+      "path": "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "bytes": 2779,
+      "sha256": "6f2faae462e286e24e091d7718575179644dc60e79936ef0c92e2d1ab3ca3cee"
+    },
+    {
+      "path": "node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+      "bytes": 5770,
+      "sha256": "471157c89111d7b9eab456b53ebe9042bc69504a64cb5cc980d38da9103379ae"
+    },
+    {
+      "path": "node_modules/@openzeppelin/contracts/utils/Address.sol",
+      "bytes": 6262,
+      "sha256": "b3710b1712637eb8c0df81912da3450da6ff67b0b3ed18146b033ed15b1aa3b9"
+    },
+    {
+      "path": "node_modules/@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+      "bytes": 3240,
+      "sha256": "8d0bac508a25133c9ff80206f65164cef959ec084645d1e7b06050c2971ae0fc"
+    },
+    {
+      "path": "node_modules/poseidon-solidity/package.json",
+      "bytes": 477,
+      "sha256": "77320824b3034f940d88c6ba4c87f2acb1e532bc2af497a9d08e1b531f45b499"
+    },
+    {
+      "path": "node_modules/poseidon-solidity/PoseidonT3.sol",
+      "bytes": 44165,
+      "sha256": "08a7493be37838166954af6c77d583d797cc17d37673196498fc70cbf557831c"
+    },
+    {
+      "path": "node_modules/poseidon-solidity/PoseidonT4.sol",
+      "bytes": 27353,
+      "sha256": "289e22a19a20bcec7519e29d172b8c1624b65ac6140d1982fe029254e1600a8f"
+    },
+    {
+      "path": "protocol/phase2-asp/contracts/Phase2ASPPool.sol",
+      "bytes": 22744,
+      "sha256": "beed886ad561b975957ef34300958ddf104f33524a3de84c57936ea60c99d703"
+    },
+    {
+      "path": "protocol/phase2-asp/contracts/Phase2ASPRegistry.sol",
+      "bytes": 7458,
+      "sha256": "a01174a2ce12f3126f356a751c2225516008963c35e4dcc52d8c52d8761fe2f6"
+    },
+    {
+      "path": "protocol/phase2-fees/contracts/Phase2FeeRouteAdapter.sol",
+      "bytes": 18405,
+      "sha256": "9ffd41f9140295343225f2d9c4995a33c515e409460a4ec9ed5bbd7a05e7bfbd"
+    },
+    {
+      "path": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol",
+      "bytes": 18353,
+      "sha256": "cf718c0a4b34a03c7beda661400d6cff4a0acaddac4bbbdc1b03e8ce87c66244"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+      "bytes": 2360,
+      "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+      "bytes": 799334,
+      "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+      "bytes": 2384051,
+      "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+      "bytes": 593640,
+      "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+      "bytes": 4822,
+      "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+      "bytes": 3939,
+      "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+      "bytes": 2358,
+      "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+      "bytes": 14169690,
+      "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+      "bytes": 2559210,
+      "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+      "bytes": 11210792,
+      "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+      "bytes": 5132,
+      "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+      "bytes": 4721,
+      "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol",
+      "bytes": 22730,
+      "sha256": "cfaafe4e0fa20178d658bff1198ccda110f6d1420c92e155ea78eeaf6c6d2d92"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol",
+      "bytes": 7431,
+      "sha256": "5d7367d6b4addf0823339cf3a636dfa9632e752e22538e3dcc152d4cb78539eb"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol",
+      "bytes": 16243,
+      "sha256": "d4b7d0c2e0585223d3f5890438ba3c0f43117f2fe853c5e3b083ebca27434719"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol",
+      "bytes": 15960,
+      "sha256": "e48d4a2cda65c016c10beefcb0ced1bce27e2702a70430d455542652ea0b6f5d"
+    },
+    {
+      "path": "protocol/phase2-mainnet/foundry.toml",
+      "bytes": 1288,
+      "sha256": "5372ed7adb12b481ca1a8cd1052c58de025c073f18326b1b88189aaa9f6829a9"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/README.md",
+      "bytes": 2201,
+      "sha256": "e36eddcc088d2b7ee3d135841c98bea54435277af98f9cc038e54239a4d5c2d7"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Adapter.t.sol",
+      "bytes": 12253,
+      "sha256": "5e2004c9d9553893fd9821863260ba241584382c93172b69b37c8f4345d495d0"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Base.sol",
+      "bytes": 4276,
+      "sha256": "91eb8794394ee61cd777a9da2534c5a83d92defb6ef16bb38eb21a894135b907"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Caps.t.sol",
+      "bytes": 12521,
+      "sha256": "b21fa26496e76b5a11ba99f0107950d154b489eb81b1964c6cb6075511688960"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/FeeAdapter.t.sol",
+      "bytes": 16995,
+      "sha256": "6062a3ebc5aaabaa5a21edd8913b4b8f35cce91655946bc6ab252ebc04ac334d"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Invariant.t.sol",
+      "bytes": 11940,
+      "sha256": "2e0848579a547e34b0cd116ab587b609154f0289182d3fb95f1bf902d9dcf0c0"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Pool.t.sol",
+      "bytes": 16877,
+      "sha256": "0d8387604a8a07f4d4f9f2e9ec5fca935c72442de7e12acf477f40e4a1d42150"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Registry.t.sol",
+      "bytes": 7901,
+      "sha256": "96a0cc921df0953c77769dd17ac340ad1c0172b780860e1dbbf5c9e7d233fbe7"
+    },
+    {
+      "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+      "bytes": 8613,
+      "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+    },
+    {
+      "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+      "bytes": 10172,
+      "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82"
+    },
+    {
+      "path": "protocol/phase2-router02/contracts/Phase2Router02Adapter.sol",
+      "bytes": 15984,
+      "sha256": "8b4a83e8607acb3cb120cd92a21ebde572c5e03e83f48ecf926e17020a4248f2"
+    },
+    {
+      "path": "protocol/phase2-routes/contracts/Phase2RouteAdapter.sol",
+      "bytes": 16267,
+      "sha256": "774e2b3904fae21d3425021d10b623b84903b2006b9d59739603b068dc394bff"
+    },
+    {
+      "path": "scripts/core/acceptance-report.mjs",
+      "bytes": 7270,
+      "sha256": "ff9f32e3977e29f1a9327a1d7c8634b4b853e13aa0a1e322d7c0b02eb0ffd9c8"
+    },
+    {
+      "path": "scripts/core/acceptance.mjs",
+      "bytes": 3288,
+      "sha256": "e046c6a4f420dae604f2640a050c68378f8f4cef6a427dc92445098125a6fb99"
+    },
+    {
+      "path": "scripts/core/build.mjs",
+      "bytes": 698,
+      "sha256": "c377d474a03f99d34fac2a74c737d8fea9e730ed670cda6d7e4b891ad45fca3f"
+    },
+    {
+      "path": "scripts/core/check-circuits.mjs",
+      "bytes": 3849,
+      "sha256": "6e35d73380ecf7e101eefa046921b1daf5cbd7eaa04c81a6eaf3d7f714dc3a69"
+    },
+    {
+      "path": "scripts/core/sync-abi.mjs",
+      "bytes": 10324,
+      "sha256": "b9387eab80fce8c507f0d036a27e0aea38788902e517f0ea73adfdf1af85ccde"
+    },
+    {
+      "path": "scripts/phase2-fees/build-mainnet.mjs",
+      "bytes": 3295,
+      "sha256": "e4b2b0719204d824ed5d34502697a337a64cca95b8e528f750e4455ed91c7ed3"
+    },
+    {
+      "path": "scripts/phase2-fees/plan-mainnet.mjs",
+      "bytes": 8633,
+      "sha256": "fafd93e468ff491180843e63b3da279dd6f3cfa86b21368ddf7b547daae1c16a"
+    },
+    {
+      "path": "scripts/phase2-mainnet/build.mjs",
+      "bytes": 24303,
+      "sha256": "adb2f9e16e73ccffe2b911ad4fd9e1c2a7221a8d26de7eb455f99f34f3aead28"
+    },
+    {
+      "path": "scripts/phase2-mainnet/deploy.mjs",
+      "bytes": 32199,
+      "sha256": "c27fd8eb8e8398826ca2d4d7ff3746343d88ccdef4de24d2397352908404087c"
+    },
+    {
+      "path": "scripts/phase2-mainnet/freeze-release.mjs",
+      "bytes": 11611,
+      "sha256": "ce1e1e7d4156f2d8809fe94d5d04ffe78992227f02f7c65393e65f232089a42d"
+    },
+    {
+      "path": "scripts/phase2-mainnet/plan.mjs",
+      "bytes": 10086,
+      "sha256": "942d051f80a905d4b83c990281846cefef22c1d241f8b64f12432fd0c2e7d55d"
+    },
+    {
+      "path": "scripts/phase2-mainnet/verify-fee-parameters.mjs",
+      "bytes": 34361,
+      "sha256": "58b4b094ead8c24c69f5ba147c83d6c7ad3ea5c7a2817495f25f5a0c8275ff5e"
+    },
+    {
+      "path": "scripts/phase2-mainnet/verify-final-parameters.mjs",
+      "bytes": 27260,
+      "sha256": "2f6379a3812447d8cb4176f11b9393dee15130fb6780203789c74ce88d0f9872"
+    },
+    {
+      "path": "src/phase2-asp/sdk.mjs",
+      "bytes": 53189,
+      "sha256": "a5e27601cdceb7d9d3c878f63474fe493806980715a39ad602c65d72580c16cb"
+    },
+    {
+      "path": "src/phase2-asp/state.mjs",
+      "bytes": 28673,
+      "sha256": "8b6b363e7f5dda280ece36f05d5d0f033a07f04939908df1d935b5994767cf8d"
+    },
+    {
+      "path": "src/phase2-fees/mainnet-release.mjs",
+      "bytes": 11433,
+      "sha256": "ce310e68621cf280a40aecd19de5b3ba5dbff1ebff323e60d6c89e3aaa60dc89"
+    },
+    {
+      "path": "src/phase2-fees/policy.mjs",
+      "bytes": 8435,
+      "sha256": "61009165aa9a9803e4cc11a6ccabcf8faf5a3218cc9811e1fcaca5127c0d96b7"
+    },
+    {
+      "path": "src/phase2-fees/sdk.mjs",
+      "bytes": 6192,
+      "sha256": "25a44ad7234f14a12abfe894b8dc480f1b4e7dea3adbb6ef370fe0b11cf619d2"
+    },
+    {
+      "path": "src/phase2-mainnet/artifacts.mjs",
+      "bytes": 10259,
+      "sha256": "32e375c76a030827ba24146139dcdc34d62fc84330e397b3c9ee246d894889cd"
+    },
+    {
+      "path": "src/phase2-mainnet/caps.mjs",
+      "bytes": 1028,
+      "sha256": "14a8bc8972fffe34890423809368485d52d524ec147a55671f5c6870aa592379"
+    },
+    {
+      "path": "src/phase2-mainnet/release.mjs",
+      "bytes": 4094,
+      "sha256": "c0409086682ad2adbb073200f12a8460d7125d5564abb0b37786819ddf6be1b8"
+    },
+    {
+      "path": "src/phase2-mainnet/safe.mjs",
+      "bytes": 2417,
+      "sha256": "03664726eefbd27ea3b6616ef346659d26bc3946787f0e0d44aa0c2a37ee705e"
+    },
+    {
+      "path": "src/phase2-mainnet/sdk.mjs",
+      "bytes": 1389,
+      "sha256": "fca4d9ca80747702818a3c90bed4d2be99974a9a4ac2da79b27d56bd20d503f6"
+    },
+    {
+      "path": "tests/core-acceptance-report.test.mjs",
+      "bytes": 8183,
+      "sha256": "f66df0ff0aca2f1436fae670cec179a5956e43434da5a5ca50002f7de80e69cc"
+    },
+    {
+      "path": "tests/phase2-deposit-caps-state.test.mjs",
+      "bytes": 9531,
+      "sha256": "a4f1cd1e81a6192680a33797d62c3a2942925af0e0bec05d650b9b5eba29222e"
+    },
+    {
+      "path": "tests/phase2-fees-mainnet.test.mjs",
+      "bytes": 12077,
+      "sha256": "c5d00a353dbf9deec00acacd2b21d7087df101bf0687bf7871f5b42329fca84a"
+    },
+    {
+      "path": "tests/phase2-fees-policy.test.mjs",
+      "bytes": 8598,
+      "sha256": "d71c2aa571a096385d11923e4e873bfd8e0a6d10534db3100d10533fd9fc0401"
+    },
+    {
+      "path": "tests/phase2-fees-sdk.test.mjs",
+      "bytes": 7688,
+      "sha256": "1654b2e54188bfc7cb76afa4d58acd5c3a82034fcce7c0434d5fd3a7c3e82779"
+    },
+    {
+      "path": "tests/phase2-mainnet-caps-deploy-resume.test.mjs",
+      "bytes": 7925,
+      "sha256": "5c4c03bca809786a8d292d1c6c880cad23578121b58cc4b550119d0c2de85b07"
+    },
+    {
+      "path": "tests/phase2-mainnet-caps.test.mjs",
+      "bytes": 6381,
+      "sha256": "182e25b2f6e0d2a40f539c3d2297ea581cd86ed19f6ef5bafc32959c5b0c4496"
+    },
+    {
+      "path": "tests/phase2-mainnet-deploy.test.mjs",
+      "bytes": 19970,
+      "sha256": "e276b977563bde67a8dd283bbcfdf13cfb4c1cd585ef0c896b251a3328a2f17d"
+    },
+    {
+      "path": "tests/phase2-mainnet-plan.test.mjs",
+      "bytes": 11091,
+      "sha256": "eb3f2719aa94b1c56b93f4b68a01056ad456b9fdc9615e6e958b9835eef0b6e5"
+    },
+    {
+      "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+      "bytes": 37831832,
+      "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f"
+    }
+  ],
+  "mainnetDeployed": false,
+  "deploymentAuthorized": false,
+  "publicTransactions": 0,
+  "audit": {
+    "status": "deferred",
+    "blocking": false,
+    "independentReviewCompleted": false
+  },
+  "limitations": [
+    "This inventory binds tested contract candidates and public artifacts; it is not an independent audit or public-chain acceptance.",
+    "Fee DEX acceptance uses explicit mock routers/liquidity with real production pools, adapters and final proofs.",
+    "Operational budgets, backend performance changes, Docker deployment and live route activation are separate."
+  ]
+}

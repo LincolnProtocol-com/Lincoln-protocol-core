@@ -1,0 +1,43 @@
+# Foundry fuzz/invariant suite for the mainnet release-candidate contracts.
+# Mirrors the production compiler settings (scripts/phase2-mainnet/build.mjs).
+[profile.default]
+src = "contracts"
+test = "fuzz/test"
+out = "../../.forge/phase2-mainnet/out"
+cache_path = "../../.forge/phase2-mainnet/cache"
+libs = ["../../node_modules"]
+auto_detect_remappings = false
+allow_paths = ["../../node_modules", ".."]
+solc_version = "0.8.28"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 10000
+via_ir = true
+remappings = [
+  "@openzeppelin/contracts/=../../node_modules/@openzeppelin/contracts/",
+  "poseidon-solidity/=../../node_modules/poseidon-solidity/",
+  # Sibling sources the fee adapter imports by relative path.
+  "phase2-fees/=../phase2-fees/",
+  "phase2-routes/=../phase2-routes/",
+  "phase2-router02/=../phase2-router02/",
+]
+
+[fuzz]
+runs = 1000
+failure_persist_dir = "../../.forge/phase2-mainnet/fuzz-failures"
+
+[invariant]
+failure_persist_dir = "../../.forge/phase2-mainnet/invariant-failures"
+runs = 128
+depth = 40
+fail_on_revert = true
+
+[profile.deep.fuzz]
+runs = 20000
+failure_persist_dir = "../../.forge/phase2-mainnet/fuzz-failures"
+
+[profile.deep.invariant]
+runs = 512
+depth = 80
+fail_on_revert = true
+failure_persist_dir = "../../.forge/phase2-mainnet/invariant-failures"

@@ -1,0 +1,400 @@
+{
+  "schema": "lincoln-core-source-changes/v1",
+  "baseCommit": "abe000c7acd9c26931a17961e1b4bdda083df84e",
+  "baseTag": "v0.1.0-rc.2",
+  "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
+  "releaseManifest": "artifacts/phase2-mainnet/release-candidate-20261017-r3.json",
+  "releaseManifestSHA256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d",
+  "parentReleaseManifestSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
+  "compareInventory": {
+    "path": "audit/upstream-files.json",
+    "sha256": "36d67c0577c974c7d0044e7db300d9dad459af32f949416f8c90e61d8a509826",
+    "note": "The before fields remain the original upstream-extraction references. The after fields compose inherited RC.2 adaptations with RC.3 changes; the full original RC.2 capsule and tag remain preserved separately."
+  },
+  "changes": [
+    {
+      "path": "abi/manifest.json",
+      "before": {
+        "bytes": 317278,
+        "sha256": "6db6da46d371cd08119705f9d6c911231fc73d5a5355c758baa7eb4b6158f05b"
+      },
+      "after": {
+        "bytes": 64511,
+        "sha256": "fac9de0ddc9690f9c8ada2de41172b872c0d9bb79ded54fab5ec4e453484eb49"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPPool.json",
+      "before": {
+        "bytes": 23375,
+        "sha256": "b93e203bef0dded77f4cdd24eeb02bfc3524062da6fec185f121f0cd62c02ed5"
+      },
+      "after": {
+        "bytes": 28218,
+        "sha256": "0b710998d83533b48f9e27e22338223f8d8af0ba038557519fcf5e6f7c8d0d67"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "artifacts/phase2-fees-mainnet/contracts.json",
+      "before": {
+        "bytes": 184624,
+        "sha256": "a171065c1d29c86f25227298137e6952ac2d135e18ea4a7cbf959efaed09c65d"
+      },
+      "after": {
+        "bytes": 184624,
+        "sha256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "artifacts/phase2-fees-mainnet/launch-plan.json",
+      "before": {
+        "bytes": 60019,
+        "sha256": "dbc310f1d50705265f4d3a79c448c4fd045324e4b8188e9f71ac547986ede5ca"
+      },
+      "after": {
+        "bytes": 60019,
+        "sha256": "b1a5623bd8c2fbf85e61ba989ebdf70e4eae773e0c7ec8b85b0908afee1fc1e6"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "artifacts/phase2-mainnet/contracts.json",
+      "before": {
+        "bytes": 434989,
+        "sha256": "f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414"
+      },
+      "after": {
+        "bytes": 451091,
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "artifacts/phase2-mainnet/final-fee-parameter-acceptance.json",
+      "before": {
+        "bytes": 69704,
+        "sha256": "e16e0082f53b25457f88c94821f3169d03f849109080ee63a62c61ac706ae306"
+      },
+      "after": {
+        "bytes": 73532,
+        "sha256": "d45fa475666a5a54ae53d91ee62b4f8bdc181aec579f7c168686fc5f8ea66345"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "artifacts/phase2-mainnet/final-parameter-acceptance.json",
+      "before": {
+        "bytes": 31135,
+        "sha256": "7c7d6e71d57f9fb2aec3acda9ff15a6e055729c2b655b7e5d657b665ef7f5190"
+      },
+      "after": {
+        "bytes": 35668,
+        "sha256": "6ede7a406c55de078f117fd52056c37235014b6864aacf886cbd01c1b5e5a43c"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "config/phase2-mainnet.json",
+      "before": {
+        "bytes": 7354,
+        "sha256": "e9667c6f716344ec007b8e094c32b5b582090ebc57e2cd50b254f941a6f2ec2b"
+      },
+      "after": {
+        "bytes": 18314,
+        "sha256": "84037df47a9b0ae3b2ec391a9c348eb6c6b53664d769d7b1562c43ac76347cb8"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "contracts/MAINNET_RELEASE_CANDIDATE.md",
+      "before": {
+        "bytes": 4462,
+        "sha256": "0abbc484ed8660e25fccece2ce766b70727f542b3732441647cd5bb8d07be905"
+      },
+      "after": {
+        "bytes": 5901,
+        "sha256": "dc51b838e51de18189bfb7668fea7b91e5ca69f41cd441b16694c96ace004311"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "contracts/phase2-fees-mainnet.manifest.json",
+      "before": {
+        "bytes": 3371,
+        "sha256": "668f50dc40b7f5d5d3aa889931d36d96acf380a3c61a23a6c08c57b60118f87e"
+      },
+      "after": {
+        "bytes": 3371,
+        "sha256": "2dfb8ceb1de20d0125ad1592fab40bbfa0554f37fda7bffbfd5737595c4b4739"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "docs/MAINNET_FEE_COMPONENT.md",
+      "before": {
+        "bytes": 3652,
+        "sha256": "84aeed75d6a625d655572a2a875d37be633e0c9f5c82bf198541e9e5b37c9ee9"
+      },
+      "after": {
+        "bytes": 7673,
+        "sha256": "0c6b2211084d0c9c52f28447df0f10d87ed6b3b209ac3fc2bf5857b3fd2ebaae"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "protocol/phase2-asp/contracts/Phase2ASPPool.sol",
+      "before": {
+        "bytes": 18576,
+        "sha256": "9147b035b1b68b39a48dca4569e72bc6dbeeb42252c2bdabb7dd439b14d77819"
+      },
+      "after": {
+        "bytes": 22744,
+        "sha256": "b4bdf3d85a471adffde748dd3335f556b037673798b48a9d939db9e806b76de6"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol",
+      "before": {
+        "bytes": 18562,
+        "sha256": "baafbcde87d10794e9c1851d48a645490270f0da53aec61af3a58f4a4458f611"
+      },
+      "after": {
+        "bytes": 22730,
+        "sha256": "185e7edf3bacd42db6b4361032e8163328d391c837bb120a968db0f21e208ed0"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/README.md",
+      "before": {
+        "bytes": 1914,
+        "sha256": "6ff2773dca7bd6f0237caf8f22a4082af1a379e3bc75c2043293e6725a84d309"
+      },
+      "after": {
+        "bytes": 2201,
+        "sha256": "0e18aa4e2ae4363df528cf43b1a9c7fcb8b425ad1da61980ed5c3b70ed79611e"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Adapter.t.sol",
+      "before": {
+        "bytes": 10086,
+        "sha256": "a13a4405ad27c036f8989dad2cb53def9ef114ca234e5f118b3e6f9bb80ba973"
+      },
+      "after": {
+        "bytes": 12253,
+        "sha256": "5e2004c9d9553893fd9821863260ba241584382c93172b69b37c8f4345d495d0"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/FeeAdapter.t.sol",
+      "before": {
+        "bytes": 15475,
+        "sha256": "843f59c130d672c84d5398a88915d73ecd69b69daf8121f0e1087dd1bffed26c"
+      },
+      "after": {
+        "bytes": 16995,
+        "sha256": "6062a3ebc5aaabaa5a21edd8913b4b8f35cce91655946bc6ab252ebc04ac334d"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Invariant.t.sol",
+      "before": {
+        "bytes": 9961,
+        "sha256": "351f53d7c69607a5d1826037cb3b00d7b85ca32ca44767077bb9b98c200678c4"
+      },
+      "after": {
+        "bytes": 11940,
+        "sha256": "2e0848579a547e34b0cd116ab587b609154f0289182d3fb95f1bf902d9dcf0c0"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Pool.t.sol",
+      "before": {
+        "bytes": 16839,
+        "sha256": "78f129fcab3df9ba57ffbba36de233b44eac524a080db8de29bf71ddbbaa30b6"
+      },
+      "after": {
+        "bytes": 16877,
+        "sha256": "0d8387604a8a07f4d4f9f2e9ec5fca935c72442de7e12acf477f40e4a1d42150"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "scripts/phase2-fees/plan-mainnet.mjs",
+      "before": {
+        "bytes": 8633,
+        "sha256": "f23f1211ebe1f08138c3952478a007bb74eb1f7d17c4091c9644c8a86a6f255e"
+      },
+      "after": {
+        "bytes": 8633,
+        "sha256": "fafd93e468ff491180843e63b3da279dd6f3cfa86b21368ddf7b547daae1c16a"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "scripts/phase2-mainnet/build.mjs",
+      "before": {
+        "bytes": 24220,
+        "sha256": "7a40d862105f183b748a59425ed15715a0755e27a4b2d5e1f328a9b32833040e"
+      },
+      "after": {
+        "bytes": 24303,
+        "sha256": "adb2f9e16e73ccffe2b911ad4fd9e1c2a7221a8d26de7eb455f99f34f3aead28"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "scripts/phase2-mainnet/deploy.mjs",
+      "before": {
+        "bytes": 29741,
+        "sha256": "53dd5919802635a40ec3da50b4723706ef70442395ccb73051667c6e72e82763"
+      },
+      "after": {
+        "bytes": 37926,
+        "sha256": "ea1278293454d4274e88ade988f0f3fc08b5d13958b7046cf2d1225524b66235"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "scripts/phase2-mainnet/freeze-release.mjs",
+      "before": {
+        "bytes": 8607,
+        "sha256": "8ae2cb95212c9255c7eda4f3449490755d176189af250a3cdde8d6d130c2c130"
+      },
+      "after": {
+        "bytes": 13723,
+        "sha256": "ca74fe77dd8f62a0a5a4fbe43d910ec67c5895a7b656079e4a8e37ecd2b9af95"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "scripts/phase2-mainnet/plan.mjs",
+      "before": {
+        "bytes": 9798,
+        "sha256": "a31f23b719287503155bb66be2cf36775dbd1c7573999c59eefbfe664a75c713"
+      },
+      "after": {
+        "bytes": 10086,
+        "sha256": "942d051f80a905d4b83c990281846cefef22c1d241f8b64f12432fd0c2e7d55d"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "scripts/phase2-mainnet/verify-fee-parameters.mjs",
+      "before": {
+        "bytes": 31996,
+        "sha256": "ea1589bb1e122871f6c2706c6159c086c733f699d5f46471cf3fb7f1bbcf9d32"
+      },
+      "after": {
+        "bytes": 34361,
+        "sha256": "58b4b094ead8c24c69f5ba147c83d6c7ad3ea5c7a2817495f25f5a0c8275ff5e"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "scripts/phase2-mainnet/verify-final-parameters.mjs",
+      "before": {
+        "bytes": 24353,
+        "sha256": "8b3acdc7b7dc7fe7dd7069cc5c70b1a3f2fb6a0f236d6eeca0b8080f34eaeb2b"
+      },
+      "after": {
+        "bytes": 30277,
+        "sha256": "5e6631475d8a3ff1076232117abd33d3c95492b4a538092cf246311ef39e22df"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "src/phase2-asp/state.mjs",
+      "before": {
+        "bytes": 24852,
+        "sha256": "102f7be2ec8da7b9315110742fc49855fabf53c371b68ce0af2077746f6cd101"
+      },
+      "after": {
+        "bytes": 28673,
+        "sha256": "8b6b363e7f5dda280ece36f05d5d0f033a07f04939908df1d935b5994767cf8d"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "src/phase2-fees/sdk.mjs",
+      "before": {
+        "bytes": 6192,
+        "sha256": "b4d97a725862b64e98c2b82b4e952a9674f580a63b0516bdccf68c08496a9a06"
+      },
+      "after": {
+        "bytes": 6192,
+        "sha256": "25a44ad7234f14a12abfe894b8dc480f1b4e7dea3adbb6ef370fe0b11cf619d2"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "src/phase2-mainnet/signer.mjs",
+      "before": {
+        "bytes": 15332,
+        "sha256": "43958902dffeab52e68c5fd1690721e656e0cd1f623cddee0cd94617874baea8"
+      },
+      "after": {
+        "bytes": 15476,
+        "sha256": "0496aa7fe1cf03ea4de78db55677cf9c7446471cb9ca1a96a8d67609ea4405be"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    },
+    {
+      "path": "tests/phase2-fees-mainnet.test.mjs",
+      "before": {
+        "bytes": 11423,
+        "sha256": "4fc9b524c90975e6c2d4763851e008e829814b7add3250d3153a66db9f2fb484"
+      },
+      "after": {
+        "bytes": 12077,
+        "sha256": "c5d00a353dbf9deec00acacd2b21d7087df101bf0687bf7871f5b42329fca84a"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "tests/phase2-fees-sdk.test.mjs",
+      "before": {
+        "bytes": 6987,
+        "sha256": "ae46641acb5044ee82bc2ec12c4dec61d57abafdb4faa33e4fdfe0edf8b76e44"
+      },
+      "after": {
+        "bytes": 7688,
+        "sha256": "1654b2e54188bfc7cb76afa4d58acd5c3a82034fcce7c0434d5fd3a7c3e82779"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "tests/phase2-mainnet-deploy.test.mjs",
+      "before": {
+        "bytes": 19746,
+        "sha256": "335ab3ab9ccd64ce2bb538b30440154fbc518ed93782c87a8dc445cc9ada2bdc"
+      },
+      "after": {
+        "bytes": 19970,
+        "sha256": "e276b977563bde67a8dd283bbcfdf13cfb4c1cd585ef0c896b251a3328a2f17d"
+      },
+      "reason": "Preserve the previously documented RC.2 adaptation."
+    },
+    {
+      "path": "tests/phase2-mainnet-signer.test.mjs",
+      "before": {
+        "bytes": 9766,
+        "sha256": "b1333fd4b12f0aea103af1b00cf9dc553d581badd2c8da102f76c768ed4ebce5"
+      },
+      "after": {
+        "bytes": 9907,
+        "sha256": "5bc230ee52734161814d43ca973c6a4b9d1dce7d5ee4af87114fe9fa1d86875f"
+      },
+      "reason": "RC.3: twelve-hour cap governance, seven approved stock caps, refreshed artifacts/ABI metadata and proof acceptance, or safe account-ledger continuation and RPC diagnostics."
+    }
+  ]
+}

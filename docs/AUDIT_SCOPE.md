@@ -2,7 +2,7 @@
 
 Review the regular files under [`contracts/`](../contracts/README.md), [`zk/`](../zk/README.md), [abi/](../abi/) and [`test/`](../test/README.md). The target chain is **Robinhood Chain, ID 4663**. The contracts are a locally verified release candidate; neither a complete Lincoln mainnet deployment nor a completed independent audit is asserted.
 
-[review-manifest.json](../review-manifest.json) maps the readable review files to their exact RC.2 originals in [releases/rc2/](../releases/rc2/). The check command verifies byte identity and the preserved release binding. Contract identifiers, source bytes, final keys and the `v0.1.0-rc.2` tag are unchanged by this layout. Review-copy equality and successful tests do not establish security against every attack.
+[review-manifest.json](../review-manifest.json) maps the readable review files to their RC.3 candidate files in [releases/rc3/](../releases/rc3/). The check command verifies byte identity and the preserved release binding. The current target is `v0.1.0-rc.3`: pool cap increases wait 12 hours. The immutable `v0.1.0-rc.2` tag and archive remain unchanged; the circuits and final keys are shared unchanged. Review-copy equality and successful tests do not establish security against every attack.
 
 ## Production contracts
 
@@ -32,7 +32,7 @@ Review contribution-chain verification, public beacon evidence, parameter hashes
 
 ## Contract obligations and trust boundaries
 
-- **Accounting and caps:** `publicOut` already includes its fee. Deduct it once, deduct full note value on public exit, and leave accounted liabilities unchanged by donations. Verify actual custody covers accounted reserve. Cap increases wait 24 hours; replacements reset the delay and applied changes clear old proposals. Reductions below reserve and deposit pause must never gate withdrawal or ownership-based exits. A failed target deposit must roll back the complete DEX transaction.
+- **Accounting and caps:** `publicOut` already includes its fee. Deduct it once, deduct full note value on public exit, and leave accounted liabilities unchanged by donations. Verify actual custody covers accounted reserve. Cap increases wait 12 hours; replacements reset the delay and applied changes clear old proposals. Reductions below reserve and deposit pause must never gate withdrawal or ownership-based exits. A failed target deposit must roll back the complete DEX transaction.
 - **ASP and Guardian:** only approved positive input notes may spend normally. Approval is current-note membership, not inherited source lineage. Review expiry, the latest-plus-15-epochs count, one-hour superseded grace, immediate revocation on suspension, resume behavior and the three-day provider rotation. The Guardian can control admission and pause new deposits but cannot publish roots or withdraw users' funds.
 - **Public exits:** holder exit reveals commitment/value and pays the proof-bound holder recipient. Ragequit additionally pays the recorded original depositor and requires zero fee. DEX-created deposits record the adapter as original depositor; ragequit to that adapter can strand proceeds because it has no sweep. Holder exit is the supported recipient escape path.
 - **DEX and fees:** routes are typed, immutable exact-input routes, with no generic arbitrary-calldata executor. Review 1–4 hops, wrap/unwrap, exact transfers, allowance cleanup, residual balances, actual rather than reported output, net minimum and proof-bound absolute fee cap. Selected new-adapter fees are 30 bps to an immutable Safe treasury; native-output fees settle as WETH.
@@ -42,7 +42,7 @@ The [security model](SECURITY_MODEL.md) expands these limits, including finite t
 
 ## Reproducibility boundary
 
-Use the root `npm run check`, `build`, `check:circuits`, `test:contracts` and `test:proofs` commands. They verify the regular review files and invoke preserved tooling in `releases/rc2/` at its original logical paths. Those paths are compiler/manifest identities, not extra production targets. Compiling renamed root paths directly can alter metadata and library links; it must not be substituted for the frozen build.
+Use the root `npm run check`, `build`, `check:circuits`, `test:contracts` and `test:proofs` commands. They verify the regular review files and invoke preserved tooling in `releases/rc3/` at its original logical paths. Those paths are compiler/manifest identities, not extra production targets. Compiling renamed root paths directly can alter metadata and library links; it must not be substituted for the frozen build.
 
 The capsule also includes build/SDK/state-validation helpers needed for artifact rejection, witness preparation, context hashing, encryption and acceptance. This is a scoped reproduction dependency, not a claim that the complete wallet, relay, indexer or hosted product is included in the audit target. Review the helper closure and exact source/input bindings through the preserved inventories. User keys and witnesses are intended to remain client-side.
 
@@ -58,6 +58,8 @@ Actual-proof reports total **15 proofs and 121 local transactions**, with zero p
 
 ## Exclusions and open review areas
 
-The scope excludes frontend presentation, hosted availability, production key custody, Cloudflare/AWS operation, third-party DEX implementations, bridges, lending, TVL investment and new DEX adapter types. Integration assumptions still require review. Live fee-route activation, stock raw-cap valuation/liquidity acceptance, operational funding and public-chain A/B acceptance are unresolved launch work.
+The scope excludes frontend presentation, hosted availability, production key custody, Cloudflare/AWS operation, third-party DEX implementations, bridges, lending, TVL investment and new DEX adapter types. Integration assumptions still require review. Seven stock caps are fixed in [the approved dataset](../config/stock-caps-mainnet-20261017.json), which is hash-bound in the RC.3 target. Stock pools remain disabled pending per-asset fork and two-way DEX acceptance. Live fee-route activation, operational funding and public-chain A/B acceptance remain unresolved launch work. Mainnet broadcasting is paused while the unresolved RC.2 PoseidonT4 broadcast is reconciled; the replacement deployment must reuse verified libraries and the original account-wide accounting.
 
 Assess permanent immutable-contract failures, tree exhaustion/dust, old-policy spendability after exclusion, public set-data availability, practical anonymity under small sets, exact-transfer/issuer assumptions and cap/pause governance. An identified review topic is not a claim that an audit has resolved it. Independent audit is deferred under the current launch decision.
+
+Fresh [RC.3 evidence](../test/README.md#current-rc3-results) passed against the new pool bytecode: 69 default Foundry results, 19 deep cap/invariant results and 15 actual final proofs across 124 local transactions. The RC.2 report table above remains historical provenance.

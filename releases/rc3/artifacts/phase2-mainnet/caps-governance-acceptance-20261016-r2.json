@@ -1,0 +1,145 @@
+{
+  "schema": "phase2-mainnet-caps-governance-acceptance/v1",
+  "recordedAt": "2026-10-17T01:44:58.018Z",
+  "passed": true,
+  "localOnly": true,
+  "publicTransactions": 0,
+  "mainnetDeployed": false,
+  "productionReady": false,
+  "parameters": {
+    "acceptedPolicyWindow": 16,
+    "supersededPolicyGraceSeconds": 3600,
+    "providerRotationDelaySeconds": 259200,
+    "capIncreaseDelaySeconds": 86400,
+    "depositPauseScope": "depositDynamic-only"
+  },
+  "coreRelease": {
+    "path": "artifacts/phase2-mainnet/contracts.json",
+    "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+    "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9"
+  },
+  "inputs": {
+    "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol": {
+      "sha256": "cfaafe4e0fa20178d658bff1198ccda110f6d1420c92e155ea78eeaf6c6d2d92",
+      "bytes": 22730
+    },
+    "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol": {
+      "sha256": "5d7367d6b4addf0823339cf3a636dfa9632e752e22538e3dcc152d4cb78539eb",
+      "bytes": 7431
+    },
+    "protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol": {
+      "sha256": "d4b7d0c2e0585223d3f5890438ba3c0f43117f2fe853c5e3b083ebca27434719",
+      "bytes": 16243
+    },
+    "protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol": {
+      "sha256": "e48d4a2cda65c016c10beefcb0ced1bce27e2702a70430d455542652ea0b6f5d",
+      "bytes": 15960
+    },
+    "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol": {
+      "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82",
+      "bytes": 10172
+    },
+    "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol": {
+      "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51",
+      "bytes": 8613
+    },
+    "protocol/phase2-asp/contracts/Phase2ASPPool.sol": {
+      "sha256": "beed886ad561b975957ef34300958ddf104f33524a3de84c57936ea60c99d703",
+      "bytes": 22744
+    },
+    "protocol/phase2-asp/contracts/Phase2ASPRegistry.sol": {
+      "sha256": "a01174a2ce12f3126f356a751c2225516008963c35e4dcc52d8c52d8761fe2f6",
+      "bytes": 7458
+    },
+    "protocol/phase2-mainnet/foundry.toml": {
+      "sha256": "5372ed7adb12b481ca1a8cd1052c58de025c073f18326b1b88189aaa9f6829a9",
+      "bytes": 1288
+    },
+    "protocol/phase2-mainnet/fuzz/test/Base.sol": {
+      "sha256": "91eb8794394ee61cd777a9da2534c5a83d92defb6ef16bb38eb21a894135b907",
+      "bytes": 4276
+    },
+    "protocol/phase2-mainnet/fuzz/test/Pool.t.sol": {
+      "sha256": "0d8387604a8a07f4d4f9f2e9ec5fca935c72442de7e12acf477f40e4a1d42150",
+      "bytes": 16877
+    },
+    "protocol/phase2-mainnet/fuzz/test/Caps.t.sol": {
+      "sha256": "b21fa26496e76b5a11ba99f0107950d154b489eb81b1964c6cb6075511688960",
+      "bytes": 12521
+    },
+    "protocol/phase2-mainnet/fuzz/test/Registry.t.sol": {
+      "sha256": "96a0cc921df0953c77769dd17ac340ad1c0172b780860e1dbbf5c9e7d233fbe7",
+      "bytes": 7901
+    },
+    "protocol/phase2-mainnet/fuzz/test/Adapter.t.sol": {
+      "sha256": "5e2004c9d9553893fd9821863260ba241584382c93172b69b37c8f4345d495d0",
+      "bytes": 12253
+    },
+    "protocol/phase2-mainnet/fuzz/test/FeeAdapter.t.sol": {
+      "sha256": "6062a3ebc5aaabaa5a21edd8913b4b8f35cce91655946bc6ab252ebc04ac334d",
+      "bytes": 16995
+    },
+    "protocol/phase2-mainnet/fuzz/test/Invariant.t.sol": {
+      "sha256": "2e0848579a547e34b0cd116ab587b609154f0289182d3fb95f1bf902d9dcf0c0",
+      "bytes": 11940
+    }
+  },
+  "foundry": {
+    "command": "forge test --root protocol/phase2-mainnet --json",
+    "report": {
+      "path": "audit/acceptance/standalone-20261016-r2/foundry.json",
+      "sha256": "6f8fa45075944b83bdb16cf38c8fb2101e05d86883c87b99495b9b6895cab029"
+    },
+    "passed": 68,
+    "failed": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "fuzz/test/Adapter.t.sol:AdapterTest",
+        "tests": 8,
+        "passed": 8
+      },
+      {
+        "name": "fuzz/test/Caps.t.sol:CapsTest",
+        "tests": 17,
+        "passed": 17
+      },
+      {
+        "name": "fuzz/test/FeeAdapter.t.sol:FeeAdapterTest",
+        "tests": 10,
+        "passed": 10
+      },
+      {
+        "name": "fuzz/test/Invariant.t.sol:PoolInvariantTest",
+        "tests": 1,
+        "passed": 1
+      },
+      {
+        "name": "fuzz/test/Pool.t.sol:PoolTest",
+        "tests": 20,
+        "passed": 20
+      },
+      {
+        "name": "fuzz/test/Registry.t.sol:RegistryTest",
+        "tests": 12,
+        "passed": 12
+      }
+    ],
+    "fuzzRunsPerCase": 1000,
+    "invariantRuns": 128,
+    "invariantDepth": 40,
+    "invariantCalls": 5120,
+    "invariantReverts": 0,
+    "proofSoundnessTested": false,
+    "verifierMode": "mocks accepting proofs",
+    "DEXLiquidity": "explicit mocks"
+  },
+  "nativeReport": "artifacts/phase2-mainnet/final-parameter-acceptance.json",
+  "nativeReportSHA256": "38b12b139f073e67971b3d5a75e2d0a4bd1d16ea8f85f31c5dd79a0e98c2fc3c",
+  "limitations": [
+    "The raw Foundry report is a completed local execution, not an independent audit or public-mainnet acceptance.",
+    "Mock verifier tests exercise contract accounting and authorization; actual final Groth16 acceptance is separately bound by nativeReportSHA256.",
+    "The invariant suite reports one test item with three invariant properties; 68 is the raw report item count.",
+    "Foundry scenario gas is not a single relay transaction estimate. No cloud service or public chain was modified."
+  ]
+}

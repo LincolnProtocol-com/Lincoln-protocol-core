@@ -1,0 +1,97 @@
+{
+  "schema": "phase2-asp-dev-circuits/v1",
+  "createdAtUTC": "2026-10-15T22:58:31.076Z",
+  "testOnly": true,
+  "allowedChainIds": [
+    31341,
+    46630
+  ],
+  "productionReady": false,
+  "officialFinalKey": false,
+  "protocol": "groth16",
+  "curve": "bn128",
+  "inputs": {
+    "sources": [
+      {
+        "path": "protocol/phase2-asp/circuits/holder-exit/main.circom",
+        "bytes": 2139,
+        "sha256": "371f12dec64568726cc816dee3767df685ad48738de84a5da8c118a217b32136"
+      }
+    ],
+    "sourceSetSHA256": "573ccb45ed57d7b6ac36b323734bffe42b855479f04373a523b4aab912bac9cf",
+    "circomlibVersion": "2.0.5",
+    "circomlibSourceSetSHA256": "783ea25b4e1f0a19181ad83a91511c75091a3a98ee8d79dc8a36bc0d2a7a5612",
+    "compilerPackageVersion": "0.2.22",
+    "compilerVersion": "circom2 npm package 0.2.22\ncircom compiler 2.2.2",
+    "compilerEntrypointSHA256": "5e36c6153c416e17b1fa822411b1fb9e4ab9b5cd4a0249cc3b5be3259315f5ad",
+    "compilerWasmSHA256": "91fa82b3621c4f4aa4fe51cb7507a296a8332432e79cc49772bce98963f9e2fe",
+    "dependencyLockSHA256": "da570567d77761a94a2f56ad17c601e9e7acfb91f7a484fab97ed4ebb3ae4f6e",
+    "snarkjsVersion": "0.7.5",
+    "optimization": "O2",
+    "circuit": "holder-exit",
+    "maxTreeDepth": null,
+    "noteModel": "factorized-v1",
+    "publicSignalNames": [
+      "commitment",
+      "nullifier",
+      "value",
+      "scope",
+      "context"
+    ]
+  },
+  "counts": {
+    "constraints": 1328,
+    "wires": 1333,
+    "publicInputs": 5,
+    "outputs": 0,
+    "privateInputs": 2
+  },
+  "requiredPower": 11,
+  "phase1": {
+    "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+    "bytes": 37831832,
+    "power": 15,
+    "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+    "blake2b512": "982372c867d229c236091f767e703253249a9b432c1710b4f326306bfa2428a17b06240359606cfe4d580b10a5a1f63fbed499527069c18ae17060472969ae6e",
+    "publishedChecksumMatches": true
+  },
+  "setup": {
+    "kind": "self-generated-test-development-phase2",
+    "randomContributions": 1,
+    "entropyPersisted": false,
+    "verifyFromR1cs": true,
+    "officialCeremony": false
+  },
+  "artifacts": {
+    "r1cs": {
+      "path": "artifacts/phase2-asp/circuits/holder-exit/holder-exit.r1cs",
+      "bytes": 593640,
+      "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+    },
+    "wasm": {
+      "path": "artifacts/phase2-asp/circuits/holder-exit/holder-exit.wasm",
+      "bytes": 2384051,
+      "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+    },
+    "zkey": {
+      "path": "artifacts/phase2-asp/circuits/holder-exit/holder-exit.dev.zkey",
+      "bytes": 798464,
+      "sha256": "385365eb7191f0420c88d5674bc0afa780bdade7d1e9b4a9ad1df9a43ae0c44c"
+    },
+    "vkey": {
+      "path": "artifacts/phase2-asp/circuits/holder-exit/holder-exit.vkey.json",
+      "bytes": 3940,
+      "sha256": "eee79c6e33510057552d3bd446697061da38532eb262f04a0b9f4652f8034d53"
+    },
+    "verifier": {
+      "path": "protocol/phase2-asp/generated/Phase2ASPExitVerifier.sol",
+      "bytes": 8701,
+      "sha256": "8d02257b090e4eee00ae88722832587be94ab2227502911eac60f92c768ded1b"
+    }
+  },
+  "limitations": [
+    "Experimental 20-layer circuit and self-generated development Phase-2 key; never use for real funds.",
+    "No production audit, multi-party Phase-2 ceremony or funded lifecycle is established by this build.",
+    "The existing Phase1, permissionless Phase2, Phase2-routes, Privacy Pools and Nocturne parameters and deployments are not changed."
+  ]
+}

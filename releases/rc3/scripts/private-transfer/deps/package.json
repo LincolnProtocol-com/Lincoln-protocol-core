@@ -1,0 +1,12 @@
+{
+  "name": "private-transfer-isolated-development-circuit-tools",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated tools for experimental local-only Privacy Pools transfer circuits; never production setup parameters.",
+  "dependencies": {
+    "circom2": "0.2.22",
+    "circomlib": "2.0.5",
+    "snarkjs": "0.7.5"
+  }
+}

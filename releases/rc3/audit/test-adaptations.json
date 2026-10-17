@@ -1,0 +1,23 @@
+{
+  "schema": "lincoln-core-test-adaptations/v2",
+  "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
+  "adaptations": [
+    {
+      "path": "tests/phase2-asp-sdk.test.mjs",
+      "upstreamSHA256": "5090cc40d70040ca9b2e6a8eb40f59480711b3d3a81c1f998a266871d553d888",
+      "packagedSHA256": "3c1511033e2b59448ef4dd3943ad2f015501c6ff8b59ea5d507fdd0f039122a9",
+      "change": "Add provenance header and production loader import; replace only the development-artifact verification case with checks of the final production JoinSplit and holder-exit materials. All preceding SDK tests are unchanged.",
+      "reason": "Development zkeys and verifier artifacts are intentionally absent from the standalone mainnet audit scope."
+    },
+    {
+      "path": "tests/phase2-mainnet-plan.test.mjs",
+      "upstreamSHA256": "6f9d2e6d737353123cc046ecd7e87a7294e9e9d5e8f472a94c080db85125769f",
+      "packagedSHA256": "e74f42f94c64048cb4fa9f6d2f55287c5f76910bbbf45f4281c1923eb830d1dc",
+      "change": "Add provenance header; replace only the development-zkey MPC case with binary inspection of the final holder-exit zkey (two non-beacon records and a beacon), retaining rejection of a one-record truncated chain. Other cases unchanged.",
+      "reason": "Development zkeys are intentionally absent from the standalone mainnet audit scope.",
+      "r2Change": "Require a new mainnet deployer (unset in the candidate), preserve offline build/planning, and use an explicit synthetic configured address only in read-only RPC fixtures.",
+      "r3Change": "Bind all seven approved stock raw caps and retain ETH/USDG-only default deployment; this does not certify live stock markets."
+    }
+  ],
+  "baselineTag": "v0.1.0-rc.1"
+}

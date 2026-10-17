@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
-// Preserve the exact RC.2 compiler source-unit names inside its release capsule.
+// Preserve the exact RC.3 compiler source-unit names inside its release capsule.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {randomUUID,createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 export const ROOT=fileURLToPath(new URL('../../',import.meta.url));
-export const RELEASE_DIRECTORY='releases/rc2';
+import {CURRENT_RELEASE_DIRECTORY} from './layout.mjs';
+export const RELEASE_DIRECTORY=CURRENT_RELEASE_DIRECTORY;
 const need=(ok,code)=>{if(!ok)throw new Error(code);};
 const sha=x=>createHash('sha256').update(x).digest('hex');
 export async function ensureReleaseDependencies({root=ROOT}={}){

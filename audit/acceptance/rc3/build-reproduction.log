@@ -1,0 +1,6 @@
+
+> @lincolnprotocol/core@0.1.0-rc.3 build
+> node scripts/review/run.mjs build
+
+{"stage":"core","schema":"lincoln-mainnet-build-result/v1","compiled":true,"contracts":8,"chainId":4663,"artifact":"artifacts/phase2-mainnet/contracts.json","artifactSHA256":"26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747","productionReady":false,"audit":{"status":"deferred","blocking":false},"transactionsBroadcast":0}
+{"stage":"fees","schema":"phase2-fees-mainnet-build-result/v1","passed":true,"checkOnly":true,"chainId":4663,"releaseCandidate":true,"productionReady":false,"artifact":"artifacts/phase2-fees-mainnet/contracts.json","artifactSHA256":"1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997","coreArtifactSHA256":"26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747","adapters":2,"rpcRequests":0,"transactionsBroadcast":0,"keysAccessed":false}

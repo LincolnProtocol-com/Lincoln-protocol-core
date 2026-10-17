@@ -2,7 +2,7 @@
 
 Review circuit sources under `zk/circuits/`, final proving materials under `zk/parameters/`, ceremony evidence under `zk/ceremony/` and generated verifiers under `contracts/verifiers/`.
 
-These regular files preserve their exact RC.2 bytes. `review-manifest.json` connects readable physical paths to originals in `releases/rc2/`; `npm run check` verifies identity and the frozen release binding. The immutable tag, final keys, circuit statements and bytecode are not changed by the review layout.
+These regular circuit/parameter/verifier files preserve the same final bytes used by RC.2. The current `review-manifest.json` maps them to `releases/rc3/`; `npm run check` verifies the candidate binding. RC.3 changes the pool cap-increase delay to 12 hours and therefore its pool bytecode. It does not change the circuit statements, final keys or historical `v0.1.0-rc.2` tag/archive.
 
 ## Physical review paths and logical release paths
 
@@ -10,7 +10,7 @@ Parameter manifests contain the original logical names used by the release tooli
 
 The root map resolves physical files to those logical originals and checks byte lengths/SHA256. Build/proof wrappers then execute preserved tooling with the original path identities in the reproduction capsule. This also keeps Solidity source-unit metadata and library links stable. Direct compilation under new filenames is not evidence of reproducing the frozen bytecode.
 
-The preserved RC.2 identities are:
+For historical comparison, the preserved RC.2 identities are:
 
 | Item | SHA256 |
 | --- | --- |
@@ -76,6 +76,8 @@ npm run check:circuits
 npm run test:proofs
 ```
 
-Run these at the repository root. Actual-proof acceptance uses fresh local chains; recorded RC.2 results are 11 native proofs/48 transactions plus four fee proofs/73 transactions, totaling 15 proofs and 121 local transactions. Fee liquidity/router/token fixtures are mocks. Contract fuzz tests with accepting verifier mocks are separate evidence. None establishes live mainnet execution, real market liquidity or measured anonymity.
+Run these at the repository root. Actual-proof acceptance uses fresh local chains. RC.3 requires a new run against its new pool bytecode; the recorded RC.2 results below are historical only: 11 native proofs/48 transactions plus four fee proofs/73 transactions, totaling 15 proofs and 121 local transactions. Fee liquidity/router/token fixtures are mocks. Contract fuzz tests with accepting verifier mocks are separate evidence. None establishes live mainnet execution, real market liquidity or measured anonymity.
 
 See [tests](../test/README.md) for report scope and [releases](../releases/README.md) for original-path reproduction. New runs must retain their own identity and must not overwrite preserved release reports.
+
+The approved seven-stock integer caps are operational constructor configuration, not a circuit change. Stock fork/DEX acceptance remains pending. Mainnet broadcasts are paused, including until the old unknown library transaction is reconciled.

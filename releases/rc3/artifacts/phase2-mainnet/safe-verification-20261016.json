@@ -1,0 +1,23 @@
+{
+  "schema": "lincoln-mainnet-safe-verification/v1",
+  "verified": true,
+  "chainId": 4663,
+  "address": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+  "blockNumber": "90508136",
+  "blockHash": "0xa3f1a0b6361b48df61eaa54d744708bacafdc31306bef6a11ac665164eafec37",
+  "blockTimestamp": "1792197132",
+  "runtimeCodeHash": "0x4e381985ca68b3e5d27b4425fa581c19cf33146d3f887a3cfca96f55528ea46f",
+  "codeBytes": 123,
+  "version": "1.5.0",
+  "ownerCount": 3,
+  "threshold": 2,
+  "nonce": "0",
+  "ownerSetHash": "0x793c28b343a41f2376fc69f42937812bcdcd926831a4b6dd152d62f6751adcd7",
+  "readOnly": true,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "limitations": [
+    "Point-in-time public RPC verification; rechecked before deployment.",
+    "A Safe threshold does not authenticate owner independence or verify who controls their keys."
+  ]
+}

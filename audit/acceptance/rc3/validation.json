@@ -1,0 +1,160 @@
+{
+  "schema": "lincoln-core-rc3-validation/v1",
+  "candidate": "v0.1.0-rc.3",
+  "recordedAt": "2026-10-17T04:44:04.281051+00:00",
+  "passed": true,
+  "localOnly": true,
+  "publicChainTransactions": 0,
+  "mainnetDeploymentPaused": true,
+  "auditStatus": "deferred",
+  "release": {
+    "path": "releases/rc3/artifacts/phase2-mainnet/release-candidate-20261017-r3.json",
+    "sha256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d"
+  },
+  "reviewManifest": {
+    "path": "review-manifest.json",
+    "sha256": "a62bb50f41156efb39705bdf91aaccf1bc4a3a96e94ee22928d2f515e8b49678"
+  },
+  "artifacts": {
+    "core": {
+      "path": "releases/rc3/artifacts/phase2-mainnet/contracts.json",
+      "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
+    },
+    "fees": {
+      "path": "releases/rc3/artifacts/phase2-fees-mainnet/contracts.json",
+      "sha256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997"
+    }
+  },
+  "node": {
+    "totalPassed": 178,
+    "failed": 0,
+    "capsule": {
+      "passed": 108,
+      "scope": "all releases/rc3/tests/*.test.mjs",
+      "log": {
+        "path": "audit/acceptance/rc3/node-capsule-and-initial-root.log",
+        "sha256": "6d3ec7542c5773dc2f2ad19829c49d16d135543d44bf64b86648f0ec629ad951"
+      }
+    },
+    "root": {
+      "passed": 70,
+      "scope": "all regular test/**/*.test.mjs, final run including unsigned prepared continuation regressions",
+      "log": {
+        "path": "audit/acceptance/rc3/node-root-final.log",
+        "sha256": "cca89800ce0442259b3dbfbf9ee9cab70a79317d016b2793b1ad48aedbca72ad"
+      }
+    },
+    "note": "The full npm test log contains 108 capsule tests and an earlier 65 root tests. The separate final 70-test root run supersedes that root phase; counts are not added twice."
+  },
+  "foundry": {
+    "default": {
+      "passed": 69,
+      "failed": 0,
+      "fuzzRunsPerCase": 1000,
+      "invariantCalls": 5120,
+      "invariantReverts": 0,
+      "evidence": {
+        "path": "test/evidence/rc3/foundry.json",
+        "sha256": "355ed5f86429ac1eac6e37e122682de904a5f3367c08f864f9af5c4728eeecd2"
+      }
+    },
+    "deep": {
+      "passed": 19,
+      "failed": 0,
+      "scope": [
+        "CapsTest",
+        "PoolInvariantTest"
+      ],
+      "fuzzRunsPerCase": 20000,
+      "invariantCalls": 40960,
+      "invariantReverts": 0,
+      "evidence": {
+        "path": "test/evidence/rc3/foundry-deep.json",
+        "sha256": "e7d57c7054ea4991bb98b36f9f6924ff562c5f4828b06b09a716ca88212fa08f"
+      }
+    }
+  },
+  "actualProofAcceptance": {
+    "proofs": 15,
+    "localTransactions": 124,
+    "publicChainTransactions": 0,
+    "realGroth16": true,
+    "mockDEXLiquidity": true,
+    "native": {
+      "path": "test/evidence/rc3/native.json",
+      "sha256": "6ede7a406c55de078f117fd52056c37235014b6864aacf886cbd01c1b5e5a43c",
+      "runId": "1568c3f2-acf7-4a55-b255-0a6b190fe18e",
+      "checks": 48,
+      "proofs": 11,
+      "localTransactions": 51
+    },
+    "fees": {
+      "path": "test/evidence/rc3/fees.json",
+      "sha256": "d45fa475666a5a54ae53d91ee62b4f8bdc181aec579f7c168686fc5f8ea66345",
+      "runId": "69651888-f27e-4837-b6bb-398e69d10bac",
+      "checks": 22,
+      "proofs": 4,
+      "localTransactions": 73
+    }
+  },
+  "reproducibility": {
+    "coreAndFeesBuildMatched": true,
+    "bothCircuitsRecompiledAndMatched": true,
+    "provingKeysRewritten": false,
+    "comparison": {
+      "path": "releases/rc3/audit/rc3-bytecode-comparison.json",
+      "sha256": "9a34edb7ca92b1489eaea3a400e0edd3abeefeca6dcce2e0d8a1c20254f91827"
+    },
+    "onlyPoolBytecodeChanged": true,
+    "identicalABIs": 10,
+    "rc2OriginalGitFilesChecked": 182,
+    "rc2OriginalGitFilesChanged": 0
+  },
+  "logs": {
+    "abi.log": {
+      "path": "audit/acceptance/rc3/abi.log",
+      "sha256": "06dec66848ba9612800876745d8af17c7caff797cf63f282dd446f20e93847ab"
+    },
+    "build-reproduction.log": {
+      "path": "audit/acceptance/rc3/build-reproduction.log",
+      "sha256": "0e46d3047700f16b70d4048967af6e80639907a840193da6e3a2fcb46ee43619"
+    },
+    "circuits.log": {
+      "path": "audit/acceptance/rc3/circuits.log",
+      "sha256": "febc76ddc0f64c472da442eb874ebe26ef31e1ec2164d2f0996585a0f0b55b37"
+    },
+    "deep-foundry-stderr.log": {
+      "path": "audit/acceptance/rc3/deep-foundry-stderr.log",
+      "sha256": "e37f3f9deb64eaa2e213d9a17dfca09a9eacb4fc4054859e2c4022b5ccd10ef7"
+    },
+    "default-foundry-stderr.log": {
+      "path": "audit/acceptance/rc3/default-foundry-stderr.log",
+      "sha256": "15bf781b5bf96541bda3db891ec50d2490cb83fa2fdb0eaf2dc42e2a46c8d398"
+    },
+    "fee-proof.log": {
+      "path": "audit/acceptance/rc3/fee-proof.log",
+      "sha256": "a4f44cf48ce3181fdba7162c1d54bfef4ec000ac65bb7b6b9529b3187498b42d"
+    },
+    "frozen-release-check.log": {
+      "path": "audit/acceptance/rc3/frozen-release-check.log",
+      "sha256": "3a84bbe9f7fe5f1b698190b8290e2b276109f0f0e3825bdb8da14e5dd33d2c9e"
+    },
+    "native-proof.log": {
+      "path": "audit/acceptance/rc3/native-proof.log",
+      "sha256": "969d74f6a8fbdf1795a64f639b31cb159efb67e6c079c8e468d2d0410b4da9a2"
+    },
+    "node-capsule-and-initial-root.log": {
+      "path": "audit/acceptance/rc3/node-capsule-and-initial-root.log",
+      "sha256": "6d3ec7542c5773dc2f2ad19829c49d16d135543d44bf64b86648f0ec629ad951"
+    },
+    "node-root-final.log": {
+      "path": "audit/acceptance/rc3/node-root-final.log",
+      "sha256": "cca89800ce0442259b3dbfbf9ee9cab70a79317d016b2793b1ad48aedbca72ad"
+    }
+  },
+  "limits": [
+    "Local results do not establish public-mainnet deployment, live stock liquidity, per-stock fork acceptance, measured anonymity or an independent audit.",
+    "Shared-ledger preparation and future broadcasting are separate operator actions. No original signed transaction was rebroadcast by this validation.",
+    "Only 19 cap/invariant results were rerun in the deep profile; the complete 69-result suite used the default profile."
+  ]
+}

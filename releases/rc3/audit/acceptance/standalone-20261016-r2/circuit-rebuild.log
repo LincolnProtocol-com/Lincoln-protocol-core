@@ -1,0 +1,6 @@
+
+> @lincolnprotocol/core@0.1.0-rc.2 check:circuits
+> node scripts/core/check-circuits.mjs
+
+{"passed":true,"circuit":"joinsplit","r1csSHA256":"f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d","wasmSHA256":"54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf","compilerVersion":"circom2 npm package 0.2.22\ncircom compiler 2.2.2","provingKeysWritten":false,"publicTransactions":0}
+{"passed":true,"circuit":"holder-exit","r1csSHA256":"899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b","wasmSHA256":"fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f","compilerVersion":"circom2 npm package 0.2.22\ncircom compiler 2.2.2","provingKeysWritten":false,"publicTransactions":0}

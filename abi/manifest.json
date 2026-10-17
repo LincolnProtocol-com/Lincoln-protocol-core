@@ -1,5 +1,6 @@
 {
   "baseCommit": "abe000c7acd9c26931a17961e1b4bdda083df84e",
+  "candidateTag": "v0.1.0-rc.3",
   "chainId": 4663,
   "entries": [
     {
@@ -10,7 +11,7 @@
       "frozenABIPath": "abi/phase2-mainnet/Phase2ASPRegistry.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/AssociationSetRegistry.sol"
     },
@@ -22,7 +23,7 @@
       "frozenABIPath": "abi/phase2-fees-mainnet/Phase2FeeRouter02Adapter.json",
       "productionArtifact": {
         "path": "artifacts/phase2-fees-mainnet/contracts.json",
-        "sha256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a"
+        "sha256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997"
       },
       "sourceReviewPath": "contracts/adapters/FeeAdapters.sol"
     },
@@ -34,7 +35,7 @@
       "frozenABIPath": "abi/phase2-fees-mainnet/Phase2FeeRouteAdapter.json",
       "productionArtifact": {
         "path": "artifacts/phase2-fees-mainnet/contracts.json",
-        "sha256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a"
+        "sha256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997"
       },
       "sourceReviewPath": "contracts/adapters/FeeAdapters.sol"
     },
@@ -46,7 +47,7 @@
       "frozenABIPath": "abi/phase2-mainnet/Phase2ASPExitVerifier.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/verifiers/HolderExitVerifier.sol"
     },
@@ -58,7 +59,7 @@
       "frozenABIPath": "abi/phase2-mainnet/Phase2ASPJoinSplitVerifier.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/verifiers/JoinSplitVerifier.sol"
     },
@@ -70,7 +71,7 @@
       "frozenABIPath": "abi/phase2-mainnet/PoseidonT3.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/libraries/PoseidonT3.sol"
     },
@@ -82,7 +83,7 @@
       "frozenABIPath": "abi/phase2-mainnet/PoseidonT4.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/libraries/PoseidonT4.sol"
     },
@@ -94,7 +95,7 @@
       "frozenABIPath": "abi/phase2-mainnet/Phase2ASPPool.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/PrivacyPool.sol"
     },
@@ -106,7 +107,7 @@
       "frozenABIPath": "abi/phase2-mainnet/Phase2Router02Adapter.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/adapters/Router02Adapter.sol"
     },
@@ -118,14 +119,14 @@
       "frozenABIPath": "abi/phase2-mainnet/Phase2RouteAdapter.json",
       "productionArtifact": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
+        "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
       },
       "sourceReviewPath": "contracts/adapters/V3RouteAdapter.sol"
     }
   ],
-  "releaseDirectory": "releases/rc2",
-  "releaseManifest": "artifacts/phase2-mainnet/release-candidate-20261016-r2.json",
-  "releaseSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
+  "releaseDirectory": "releases/rc3",
+  "releaseManifest": "artifacts/phase2-mainnet/release-candidate-20261017-r3.json",
+  "releaseSHA256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d",
   "schema": "lincoln-review-abi-catalog/v1",
-  "scope": "Byte-identical RC.2 ABIs with review paths; no deployment addresses or new compiler outputs."
+  "scope": "Byte-identical RC.3 ABIs with review paths; no deployment addresses or new compiler outputs."
 }

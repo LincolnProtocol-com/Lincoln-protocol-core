@@ -1,6 +1,6 @@
 {
   "name": "@lincolnprotocol/core",
-  "version": "0.1.0-rc.2",
+  "version": "0.1.0-rc.3",
   "private": true,
   "description": "Lincoln privacy contracts, zero-knowledge circuits and verifiable public review sources.",
   "type": "module",
@@ -24,10 +24,11 @@
     "test:acceptance": "npm run test:proofs",
     "test:acceptance:native": "node test/proofs/native.mjs",
     "test:acceptance:fees": "node test/proofs/fees.mjs",
-    "test:all": "npm run check && npm run check:abi && npm run build && npm run check:circuits && npm test && npm run test:contracts && npm run test:proofs",
+    "test:all": "npm run check && npm run check:abi && npm run build && npm run check:circuits && npm test && npm run test:contracts && npm run test:contracts:deep && npm run test:proofs",
     "plan": "node scripts/review/run.mjs plan",
     "sync:review": "node scripts/review/layout.mjs",
-    "check:review": "node scripts/review/layout.mjs --check"
+    "check:review": "node scripts/review/layout.mjs --check",
+    "test:contracts:deep": "node scripts/review/run.mjs contracts-deep"
   },
   "dependencies": {
     "@iden3/binfileutils": "0.0.12",

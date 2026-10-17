@@ -3,18 +3,32 @@
 | Directory | Review scope |
 | --- | --- |
 | [contracts/](contracts/) | Foundry contract, fuzz and invariant sources |
+| [evidence/rc3/](evidence/rc3/) | Current native, fee, default Foundry and deep Foundry results |
 | [evidence/rc2/](evidence/rc2/) | Recorded native-pool, fee-adapter and Foundry results |
 | [evidence/layout/](evidence/layout/validation.json) | Fresh public-layout validation, logs and new proof-run IDs |
 
-The review sources and reports are regular files mapped by [review-manifest.json](../review-manifest.json) to the preserved RC.2 capsule. `npm run check` verifies exact identity. Test sources retain their original imports and compiler identity; use the root wrappers rather than assuming that the readable directory is a standalone Foundry project.
+The review sources and reports are regular files mapped by [review-manifest.json](../review-manifest.json) to the current RC.3 capsule, with older evidence retained separately. `npm run check` verifies exact identity. Test sources retain their original imports and compiler identity; use the root wrappers rather than assuming that the readable directory is a standalone Foundry project.
 
 ```sh
 npm run check
 npm run test:contracts
+npm run test:contracts:deep
 npm run test:proofs
 ```
 
 The wrappers validate the root review files before running preserved tooling with the original logical paths. They do not require a production wallet, public RPC or funding. Actual-proof acceptance starts fresh local Anvil instances, generates temporary test accounts and sends no public-chain transactions. DEX routers, tokens, factories and liquidity in proof acceptance are explicit fixtures.
+
+## Current RC.3 results
+
+| Evidence | Result | Scope |
+| --- | --- | --- |
+| [validation.json](../audit/acceptance/rc3/validation.json) | 178 Node tests passed | 108 capsule tests plus the final 70 root operations/review tests; exact logs and hashes |
+| [foundry.json](evidence/rc3/foundry.json) | 69 passed, zero failed | Complete default contract suite; mocks verify accounting and authorization |
+| [foundry-deep.json](evidence/rc3/foundry-deep.json) | 19 passed; 20,000 fuzz runs per case; 40,960 invariant calls, zero reverts | CapsTest and PoolInvariantTest only |
+| [native.json](evidence/rc3/native.json) | 48 checks, 11 final proofs, 51 local transactions | Fresh RC.3 pool, recovery/respend/exits, exact twelve-hour boundary and replacement restart |
+| [fees.json](evidence/rc3/fees.json) | 22 checks, four final proofs, 73 local transactions | Both fee adapters, multihop wrap/unwrap and net recovery using synthetic DEX liquidity |
+
+This is **15 newly generated final proofs and 124 local transactions**, not public-mainnet execution. Parameter bytes and all ten ABIs match RC.2; only the pool bytecode changes. Mainnet stock liquidity and per-stock fork acceptance remain pending.
 
 ## Recorded RC.2 results
 
@@ -30,4 +44,10 @@ The invariant runner reports its properties together as one test result; do not 
 
 The fee fixture measures gross output 10,000 raw units, charges 30 and recovers B's 9,970-unit note. B then withdraws gross 9,970 once with fee 32: percentage fee 29 plus three **synthetic fixed-gas fixture units**, leaving 9,938. The three-unit quote is not a mainnet ETH gas-price or fee configuration.
 
-Recorded reports describe their exact build and run, not a fresh execution of a later layout commit. The preserved tag and release inventory remain unchanged; newly generated validation output must identify its own run and must not overwrite historical evidence. See [releases](../releases/README.md) for the reproduction boundary.
+Recorded reports describe their exact build and run, not a fresh execution of a later layout commit. The historical RC.2 tag and inventory remain unchanged; newly generated validation output must identify its own run and must not overwrite historical evidence. See [releases](../releases/README.md) for the reproduction boundary.
+
+## RC.3 validation scope
+
+RC.3 evidence above covers fresh default and deep-profile Foundry runs for the 12-hour delay and actual-proof acceptance against the revised pool. Boundary cases include `eta - 1`, exact `eta`, replacement proposals and cancellation; cap tests read the getter. Registry/invariant epoch validity durations are unrelated and remain unchanged.
+
+[Stock-cap tests](operations/stock-caps-mainnet.test.mjs) independently verify all seven approved integer caps and floor boundaries. The RC.3 target binds the same dataset by SHA-256, retains ETH/USDG as default deployment, and keeps a synthetic unresolved-stock negative case. These checks do not establish live stock liquidity or fork acceptance. Mainnet deployment remains paused while the old unknown library broadcast is reconciled.

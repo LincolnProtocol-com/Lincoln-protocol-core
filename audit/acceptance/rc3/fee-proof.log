@@ -1,0 +1,24 @@
+Passed: final-core-and-production-fee-component-cryptographically-bound
+Passed: independent-ephemeral-A-B-processor-provider-and-guardian
+Passed: real-final-core-runtime-bytecode-and-independent-guardian-verified
+Passed: up-native-in:fee-proof-is-oldest-still-accepted-of-16-epochs
+Passed: up-native-in:original-envelope-rejects-fee-cap-tampering
+Passed: up-native-in:original-proof-rejects-rebound-fee-cap
+Passed: up-native-in:original-envelope-rejects-action-deadline-tampering
+Passed: up-native-in:original-proof-rejects-treasury-and-adapter-substitution
+Passed: up-native-in:measured-output-fee-above-cap-reverts-atomically
+Passed: up-native-in:real-fee-swap-estimate-and-relay-padding-fit-cap
+Passed: up-native-in:two-hop-measured-30bps-fee-and-net-private-output
+Passed: up-native-in:B-backup-only-recovery-and-pending-current-note-ASP
+Passed: up-native-in:B-final-proof-withdrawal-and-zero-private-reserves-allowances
+Passed: router02-native-out:original-envelope-rejects-fee-cap-tampering
+Passed: router02-native-out:original-proof-rejects-rebound-fee-cap
+Passed: router02-native-out:original-envelope-rejects-action-deadline-tampering
+Passed: router02-native-out:original-proof-rejects-treasury-and-adapter-substitution
+Passed: router02-native-out:measured-output-fee-above-cap-reverts-atomically
+Passed: router02-native-out:real-fee-swap-estimate-and-relay-padding-fit-cap
+Passed: router02-native-out:two-hop-measured-30bps-fee-and-net-private-output
+Passed: router02-native-out:B-backup-only-recovery-and-pending-current-note-ASP
+Passed: router02-native-out:B-final-proof-withdrawal-and-zero-private-reserves-allowances
+Passed: all-four-production-private-pools-reconcile-to-zero-reserves
+{"passed":true,"publicTransactions":0,"checks":22,"proofs":4,"transactions":73,"report":"artifacts/phase2-mainnet/final-fee-parameter-acceptance.json"}

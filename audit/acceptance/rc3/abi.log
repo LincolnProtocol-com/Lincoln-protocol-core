@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checkOnly": true,
+  "contracts": 10,
+  "groups": 2,
+  "files": 11,
+  "changedFiles": 0,
+  "manifest": "abi/manifest.json",
+  "manifestSHA256": "fac9de0ddc9690f9c8ada2de41172b872c0d9bb79ded54fab5ec4e453484eb49",
+  "coreArtifactSHA256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747",
+  "feeArtifactSHA256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997",
+  "networkRequests": 0,
+  "transactionsBroadcast": 0
+}

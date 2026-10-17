@@ -1,0 +1,74 @@
+{
+  "schema": "phase2-fees-mainnet-contract-package/v1",
+  "releaseCandidate": true,
+  "testOnly": false,
+  "productionReady": false,
+  "deployed": false,
+  "allowedChainIds": [
+    4663
+  ],
+  "artifact": {
+    "path": "artifacts/phase2-fees-mainnet/contracts.json",
+    "sha256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997",
+    "sourceSetSHA256": "0dd2fe9242978a3b4ae1b65a0dd31aa3344dae1017e120546d51b4c47d2a4253"
+  },
+  "standardInput": {
+    "path": "contracts/phase2-fees-mainnet.standard-input.json",
+    "sha256": "8753daf03f5c54741feca7e7613d6a4bafd40d9d45a3a77b820e946f5e0a8bf4"
+  },
+  "sourceDerivation": {
+    "source": "protocol/phase2-fees/contracts/Phase2FeeRouteAdapter.sol",
+    "sourceSHA256": "9ffd41f9140295343225f2d9c4995a33c515e409460a4ec9ed5bbd7a05e7bfbd",
+    "target": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol",
+    "derivedSourceSHA256": "cf718c0a4b34a03c7beda661400d6cff4a0acaddac4bbbdc1b03e8ce87c66244",
+    "changes": [
+      "mainnet-only-chain-guard",
+      "final-core-interface-imports"
+    ]
+  },
+  "coreRelease": {
+    "build": {
+      "path": "artifacts/phase2-mainnet/contracts.json",
+      "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
+    },
+    "sourceSetSHA256": "a96ec2aa126e34aaafc7479d23552acd08df911370fd2fcd6615e75e86ff3ba0",
+    "manifests": {
+      "joinsplit": {
+        "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+        "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+        "zkeySHA256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed"
+      },
+      "holder-exit": {
+        "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+        "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+        "zkeySHA256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+      }
+    }
+  },
+  "contracts": {
+    "Phase2FeeRouteAdapter": {
+      "source": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol",
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "9796028bb6f91b0d7a4f36dd64ac2d99d248e50979c8705c1c10b0f23555f6ab",
+      "initcodeSHA256": "32b7f06693ca28f16b5c877869931ad2fbd3451014b3d89adadb46591bb1ac94",
+      "runtimeBytes": 13970,
+      "initcodeBytes": 17440,
+      "linked": false
+    },
+    "Phase2FeeRouter02Adapter": {
+      "source": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol",
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "b42761075d64c51cb9ac7bd124fe8dd50a8baf417a9ef7c98937eac8ca874dfd",
+      "initcodeSHA256": "e458d49f22ff916ef7d42077dd8b2acb0db87529971a71ce90ad1cc76493e57c",
+      "runtimeBytes": 13951,
+      "initcodeBytes": 17423,
+      "linked": false
+    }
+  },
+  "limitations": [
+    "Release candidate only; no independent audit, public deployment or mainnet funds acceptance is implied.",
+    "Binds the final core release and derived mainnet-only bytecode; never adopts development proving keys.",
+    "Existing testnet artifacts and free adapters are unchanged. Route, amounts, fees and timing remain public.",
+    "Treasury and fee rate are immutable constructor arguments and require a separately reviewed deployment plan."
+  ]
+}

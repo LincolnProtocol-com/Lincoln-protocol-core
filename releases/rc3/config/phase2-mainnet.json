@@ -1,0 +1,473 @@
+{
+  "schema": "lincoln-mainnet-target/v1",
+  "enabled": true,
+  "network": "mainnet",
+  "chain": {
+    "id": 4663,
+    "name": "Robinhood Chain Mainnet",
+    "rpcUrl": "https://rpc.mainnet.chain.robinhood.com/",
+    "explorerUrl": "https://robinhoodchain.blockscout.com"
+  },
+  "deployer": {
+    "address": null,
+    "signingAccount": null,
+    "signerLocation": "dedicated-mainnet-keystore-not-configured",
+    "privateKeyIncluded": false,
+    "status": "awaiting-new-public-address"
+  },
+  "deployment": {
+    "policyMode": "asp",
+    "policyOptions": [
+      "asp",
+      "permissionless"
+    ],
+    "selectedPolicyPending": false,
+    "newImmutablePoolRequired": true,
+    "reuseDevelopmentVerifiers": false,
+    "broadcastImplemented": true,
+    "selected": "aspSelfHosted",
+    "deploymentBuildEnabled": true,
+    "sourceBuildPlanCommand": "node scripts/phase2-mainnet/build.mjs --plan",
+    "productionCompileImplemented": true,
+    "sourceBuildCommand": "node scripts/phase2-mainnet/build.mjs",
+    "deploymentPlanCommand": "node scripts/phase2-mainnet/deploy.mjs --plan",
+    "deploymentCommand": "node scripts/phase2-mainnet/deploy.mjs --deploy",
+    "productionRuntimeImplemented": true,
+    "productionRuntimeCommand": "node src/phase2-mainnet/server.mjs",
+    "stockPoolsEnabled": false,
+    "stocksRouteActivationPending": true
+  },
+  "productionArtifacts": {
+    "build": "artifacts/phase2-mainnet/contracts.json",
+    "joinsplitManifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+    "holderExitManifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json"
+  },
+  "limits": {
+    "gasBudgetWei": null,
+    "maxTotalFundingWei": null,
+    "maxDepositWei": null,
+    "maxFeePerGasWei": null,
+    "maxSlippageBPS": 100,
+    "maxRelayGas": "5000000"
+  },
+  "assets": [
+    {
+      "symbol": "ETH",
+      "address": "0x0000000000000000000000000000000000000000",
+      "decimals": 18,
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "1000000000000000000",
+        "maxTotalUnits": "20000000000000000000"
+      }
+    },
+    {
+      "symbol": "USDG",
+      "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "decimals": 6,
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "2500000000",
+        "maxTotalUnits": "50000000000"
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "stockPoolEnabled": false,
+      "deploymentStatus": "route-activation-pending",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "11400000000000000000",
+        "maxTotalUnits": "114000000000000000000",
+        "valuation": {
+          "sourceBinding": {
+            "schema": "lincoln-stock-caps-source-binding/v1",
+            "path": "config/stock-caps-mainnet-20261017.json",
+            "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+          },
+          "priceField": "tokenAsk",
+          "tokenAsk": "219.069682341137637246",
+          "quotedAt": "2026-10-17T03:34:10.508047439Z",
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "rounding": "floor",
+          "singleDepositIncrementTokens": "0.1",
+          "poolTotalIncrementTokens": "1",
+          "uiMultiplierChecked": true,
+          "readOnlyVerificationBlock": "90639127",
+          "liveLiquidityAccepted": false,
+          "mainnetForkAccepted": false
+        }
+      }
+    },
+    {
+      "symbol": "SPY",
+      "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "stockPoolEnabled": false,
+      "deploymentStatus": "route-activation-pending",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "3200000000000000000",
+        "maxTotalUnits": "32000000000000000000",
+        "valuation": {
+          "sourceBinding": {
+            "schema": "lincoln-stock-caps-source-binding/v1",
+            "path": "config/stock-caps-mainnet-20261017.json",
+            "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+          },
+          "priceField": "tokenAsk",
+          "tokenAsk": "763.098748506704297165",
+          "quotedAt": "2026-10-17T03:33:55.543005899Z",
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "rounding": "floor",
+          "singleDepositIncrementTokens": "0.1",
+          "poolTotalIncrementTokens": "1",
+          "uiMultiplierChecked": true,
+          "readOnlyVerificationBlock": "90639127",
+          "liveLiquidityAccepted": false,
+          "mainnetForkAccepted": false
+        }
+      }
+    },
+    {
+      "symbol": "META",
+      "address": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "stockPoolEnabled": false,
+      "deploymentStatus": "route-activation-pending",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "3400000000000000000",
+        "maxTotalUnits": "34000000000000000000",
+        "valuation": {
+          "sourceBinding": {
+            "schema": "lincoln-stock-caps-source-binding/v1",
+            "path": "config/stock-caps-mainnet-20261017.json",
+            "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+          },
+          "priceField": "tokenAsk",
+          "tokenAsk": "715.877409129148850326",
+          "quotedAt": "2026-10-17T03:33:45.814628175Z",
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "rounding": "floor",
+          "singleDepositIncrementTokens": "0.1",
+          "poolTotalIncrementTokens": "1",
+          "uiMultiplierChecked": true,
+          "readOnlyVerificationBlock": "90639127",
+          "liveLiquidityAccepted": false,
+          "mainnetForkAccepted": false
+        }
+      }
+    },
+    {
+      "symbol": "TSLA",
+      "address": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "stockPoolEnabled": false,
+      "deploymentStatus": "route-activation-pending",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "7000000000000000000",
+        "maxTotalUnits": "70000000000000000000",
+        "valuation": {
+          "sourceBinding": {
+            "schema": "lincoln-stock-caps-source-binding/v1",
+            "path": "config/stock-caps-mainnet-20261017.json",
+            "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+          },
+          "priceField": "tokenAsk",
+          "tokenAsk": "352.530000000000000000",
+          "quotedAt": "2026-10-17T03:34:11.713478100Z",
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "rounding": "floor",
+          "singleDepositIncrementTokens": "0.1",
+          "poolTotalIncrementTokens": "1",
+          "uiMultiplierChecked": true,
+          "readOnlyVerificationBlock": "90639127",
+          "liveLiquidityAccepted": false,
+          "mainnetForkAccepted": false
+        }
+      }
+    },
+    {
+      "symbol": "GOOGL",
+      "address": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "stockPoolEnabled": false,
+      "deploymentStatus": "route-activation-pending",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "7300000000000000000",
+        "maxTotalUnits": "73000000000000000000",
+        "valuation": {
+          "sourceBinding": {
+            "schema": "lincoln-stock-caps-source-binding/v1",
+            "path": "config/stock-caps-mainnet-20261017.json",
+            "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+          },
+          "priceField": "tokenAsk",
+          "tokenAsk": "339.725868366497481300",
+          "quotedAt": "2026-10-17T03:33:57.407322462Z",
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "rounding": "floor",
+          "singleDepositIncrementTokens": "0.1",
+          "poolTotalIncrementTokens": "1",
+          "uiMultiplierChecked": true,
+          "readOnlyVerificationBlock": "90639127",
+          "liveLiquidityAccepted": false,
+          "mainnetForkAccepted": false
+        }
+      }
+    },
+    {
+      "symbol": "QQQ",
+      "address": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "stockPoolEnabled": false,
+      "deploymentStatus": "route-activation-pending",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "3500000000000000000",
+        "maxTotalUnits": "35000000000000000000",
+        "valuation": {
+          "sourceBinding": {
+            "schema": "lincoln-stock-caps-source-binding/v1",
+            "path": "config/stock-caps-mainnet-20261017.json",
+            "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+          },
+          "priceField": "tokenAsk",
+          "tokenAsk": "710.997912177018554463",
+          "quotedAt": "2026-10-17T03:33:57.542198660Z",
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "rounding": "floor",
+          "singleDepositIncrementTokens": "0.1",
+          "poolTotalIncrementTokens": "1",
+          "uiMultiplierChecked": true,
+          "readOnlyVerificationBlock": "90639127",
+          "liveLiquidityAccepted": false,
+          "mainnetForkAccepted": false
+        }
+      }
+    },
+    {
+      "symbol": "MSTR",
+      "address": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "stockPoolEnabled": false,
+      "deploymentStatus": "route-activation-pending",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "18300000000000000000",
+        "maxTotalUnits": "183000000000000000000",
+        "valuation": {
+          "sourceBinding": {
+            "schema": "lincoln-stock-caps-source-binding/v1",
+            "path": "config/stock-caps-mainnet-20261017.json",
+            "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+          },
+          "priceField": "tokenAsk",
+          "tokenAsk": "136.600000000000000000",
+          "quotedAt": "2026-10-17T03:34:15.954784165Z",
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "rounding": "floor",
+          "singleDepositIncrementTokens": "0.1",
+          "poolTotalIncrementTokens": "1",
+          "uiMultiplierChecked": true,
+          "readOnlyVerificationBlock": "90639127",
+          "liveLiquidityAccepted": false,
+          "mainnetForkAccepted": false
+        }
+      }
+    }
+  ],
+  "codePins": [
+    {
+      "role": "weth",
+      "address": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "runtimeCodeHash": "0x5706be52f64875fee65a2cec0d80e47a23d8793cbe85d214b48445e2d05f5353"
+    },
+    {
+      "role": "usdg",
+      "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "runtimeCodeHash": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6"
+    },
+    {
+      "role": "uniFactory",
+      "address": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0xec72b1abd1f2faee020cfea9c646bd8994f9fb389054f6e574f103a895091739"
+    },
+    {
+      "role": "uniRouter",
+      "address": "0xCaf681a66D020601342297493863E78C959E5cb2",
+      "runtimeCodeHash": "0x6f36c378e272c6324c48f045182bcb54bd8ad654cf9ebd42e8893d52c4cb25dc"
+    },
+    {
+      "role": "uniQuoter",
+      "address": "0x33e885eD0Ec9bF04EcfB19341582aADCb4c8A9E7",
+      "runtimeCodeHash": "0x3db0868d945e9304c9bc6a8b2181948109ea617647142f3c4083e14393496a28"
+    },
+    {
+      "role": "upFactory",
+      "address": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+      "runtimeCodeHash": "0x4350c8fcdf90361969542249d76c25d6afbd31f10bebf0134bfe21beba1e8f4c"
+    },
+    {
+      "role": "upRouter",
+      "address": "0xC062b870E813fcA720f1e002c234369Ab3aB9415",
+      "runtimeCodeHash": "0x11ea7d3599ef56eda32c0ce7ca26e9aae71bec13bfcbd3ad0e83826c1a2defe4"
+    },
+    {
+      "role": "upQuoter",
+      "address": "0x03983AB2C057a2eac211ff01738a1e49ff325B49",
+      "runtimeCodeHash": "0x1ed81396c831d69a6c59384019850c21ac672d24ae83b4b26304a7384e1e4096"
+    },
+    {
+      "role": "stock-NVDA",
+      "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-SPY",
+      "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-META",
+      "address": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-TSLA",
+      "address": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-GOOGL",
+      "address": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-QQQ",
+      "address": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-MSTR",
+      "address": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-issuer-registry",
+      "address": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+      "runtimeCodeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e"
+    },
+    {
+      "role": "stock-issuer-implementation",
+      "address": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "runtimeCodeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7"
+    }
+  ],
+  "audit": {
+    "status": "deferred",
+    "blocking": false,
+    "independentReviewCompleted": false
+  },
+  "sources": [
+    "https://docs.robinhood.com/chain/connecting/",
+    "https://docs.robinhood.com/chain/contracts/",
+    "https://docs.robinhood.com/chain/building-with-stock-tokens/",
+    "https://developers.uniswap.org/deployments",
+    "https://docs.robinhood.com/chain/stock-token-apis/",
+    "https://api.robinhood.com/rhj/assets"
+  ],
+  "limitations": [
+    "Mainnet is an enabled target configuration, not a production artifact or deployment claim.",
+    "Existing development contracts and SDK guards remain unchanged; their 31341/46630 allowance does not become mainnet support.",
+    "Stock issuer pause, block, upgrade and administrative burn are accepted known boundaries, not a new prerequisite imposed by this plan.",
+    "Code hashes only describe the addresses queried. Proxy runtime matching does not freeze its current or future implementation.",
+    "A local keystore account name is metadata only; this planner never reads, unlocks or invokes it.",
+    "Seven stock-token constructor caps are approved, but stock pools and routes remain disabled until asset-specific mainnet fork and two-way DEX acceptance.",
+    "Approved token-unit caps are fixed; later price or multiplier changes do not update them automatically.",
+    "Mainnet broadcasting is paused pending the new RC.3 operations snapshot and reconciliation of the unresolved RC.2 PoseidonT4 transaction."
+  ],
+  "provider": {
+    "kind": "self-hosted",
+    "address": "0xce6770154D793dF78FbfA0D3615B2946366E6612",
+    "signerAccountName": null,
+    "bootstrapPolicy": "all-current-notes",
+    "sourceScreening": false,
+    "providerAddressImmutable": false,
+    "hotRotationSupported": false,
+    "futureSignerOrProviderChange": "Guardian proposes a provider; the new provider accepts after the on-chain three-day delay. Update pinned profiles and runtime configuration after rotation.",
+    "signerKeystoreFile": ".phase1-private/asp-provider-next/provider.keystore.json",
+    "signerPasswordFile": ".phase1-private/asp-provider-next/provider.password",
+    "fundingStatus": "not-funded-by-this-task",
+    "dedicated": true,
+    "delayedRotationSupported": true,
+    "rotationDelaySeconds": 259200
+  },
+  "guardian": {
+    "address": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "kind": "safe",
+    "chainId": 4663,
+    "version": "1.5.0",
+    "threshold": 2,
+    "ownerCount": 3,
+    "runtimeCodeHash": "0x4e381985ca68b3e5d27b4425fa581c19cf33146d3f887a3cfca96f55528ea46f",
+    "verificationReport": "artifacts/phase2-mainnet/safe-verification-20261016.json"
+  },
+  "treasury": {
+    "address": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "kind": "safe",
+    "chainId": 4663,
+    "sameAsGuardian": true
+  },
+  "launchFees": {
+    "dexFeeBps": 30,
+    "withdrawalBps": 30,
+    "holderExitBps": 30,
+    "privateTransferUnits": "0",
+    "ragequitUnits": "0",
+    "gasQuote": "fixed-in-current-pool-asset-before-proof",
+    "mainnetRuntimeConfigured": false
+  },
+  "stockCapSource": {
+    "schema": "lincoln-stock-caps-source-binding/v1",
+    "path": "config/stock-caps-mainnet-20261017.json",
+    "sha256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+  }
+}

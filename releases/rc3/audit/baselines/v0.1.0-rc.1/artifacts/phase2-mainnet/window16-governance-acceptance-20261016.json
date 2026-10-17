@@ -1,0 +1,206 @@
+{
+  "schema": "phase2-mainnet-window16-governance-acceptance/v1",
+  "recordedAt": "2026-10-17T00:46:50.098724Z",
+  "passed": true,
+  "localOnly": true,
+  "publicTransactions": 0,
+  "mainnetDeployed": false,
+  "productionReady": false,
+  "mockVerifier": true,
+  "parameters": {
+    "acceptedPolicyWindow": 16,
+    "supersededPolicyGraceSeconds": 3600,
+    "providerRotationDelaySeconds": 259200
+  },
+  "coreRelease": {
+    "path": "artifacts/phase2-mainnet/contracts.json",
+    "sha256": "f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414",
+    "sourceSetSHA256": "e6cc6ae47eaee4e15f8cdfadec4756a41b85b609b80d8eb7af107749156e7b36"
+  },
+  "inputs": {
+    "protocol/phase2-asp/contracts/Phase2ASPRegistry.sol": {
+      "sha256": "a01174a2ce12f3126f356a751c2225516008963c35e4dcc52d8c52d8761fe2f6",
+      "bytes": 7458
+    },
+    "protocol/phase2-asp/contracts/Phase2ASPPool.sol": {
+      "sha256": "9147b035b1b68b39a48dca4569e72bc6dbeeb42252c2bdabb7dd439b14d77819",
+      "bytes": 18576
+    },
+    "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol": {
+      "sha256": "5d7367d6b4addf0823339cf3a636dfa9632e752e22538e3dcc152d4cb78539eb",
+      "bytes": 7431
+    },
+    "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol": {
+      "sha256": "baafbcde87d10794e9c1851d48a645490270f0da53aec61af3a58f4a4458f611",
+      "bytes": 18562
+    },
+    "protocol/phase2-mainnet/foundry.toml": {
+      "sha256": "5372ed7adb12b481ca1a8cd1052c58de025c073f18326b1b88189aaa9f6829a9",
+      "bytes": 1288
+    },
+    "protocol/phase2-mainnet/fuzz/test/Base.sol": {
+      "sha256": "91eb8794394ee61cd777a9da2534c5a83d92defb6ef16bb38eb21a894135b907",
+      "bytes": 4276
+    },
+    "protocol/phase2-mainnet/fuzz/test/Registry.t.sol": {
+      "sha256": "96a0cc921df0953c77769dd17ac340ad1c0172b780860e1dbbf5c9e7d233fbe7",
+      "bytes": 7901
+    },
+    "protocol/phase2-mainnet/fuzz/test/Pool.t.sol": {
+      "sha256": "78f129fcab3df9ba57ffbba36de233b44eac524a080db8de29bf71ddbbaa30b6",
+      "bytes": 16839
+    },
+    "protocol/phase2-asp/test/governance-indexer.mjs": {
+      "sha256": "d56e04a2f42e05d6a3d523cdaf50818e8ccedda0f55a15ae980f995a9c20e53d",
+      "bytes": 12536
+    },
+    "protocol/phase2-asp/test/contract-adversarial.mjs": {
+      "sha256": "31bd01f9df733df6e7b36f91c9785631e04beb29db15924ca83fc3adbeea80a5",
+      "bytes": 20936
+    },
+    "protocol/phase2-asp/test/proof-smoke.mjs": {
+      "sha256": "a697dbe0e3def8bdf7af7aed7dbf38b08a6308f520dffb74722a810efa232f77",
+      "bytes": 12172
+    },
+    "protocol/phase2-asp/circuits/joinsplit/main.circom": {
+      "sha256": "dae1a04201ecf4b33f70906e1d0cf92e965ec55e1edbe172f55ee42dc7205dc6",
+      "bytes": 214
+    },
+    "protocol/phase2-asp/circuits/holder-exit/main.circom": {
+      "sha256": "371f12dec64568726cc816dee3767df685ad48738de84a5da8c118a217b32136",
+      "bytes": 2139
+    },
+    "protocol/phase2-mainnet/fuzz/test/Adapter.t.sol": {
+      "sha256": "a13a4405ad27c036f8989dad2cb53def9ef114ca234e5f118b3e6f9bb80ba973",
+      "bytes": 10086
+    },
+    "protocol/phase2-mainnet/fuzz/test/FeeAdapter.t.sol": {
+      "sha256": "843f59c130d672c84d5398a88915d73ecd69b69daf8121f0e1087dd1bffed26c",
+      "bytes": 15475
+    },
+    "protocol/phase2-mainnet/fuzz/test/Invariant.t.sol": {
+      "sha256": "351f53d7c69607a5d1826037cb3b00d7b85ca32ca44767077bb9b98c200678c4",
+      "bytes": 9961
+    },
+    "tests/phase2-asp-governance.test.mjs": {
+      "sha256": "2d144e4f925255492602fc2b27798be67b6230add0d7e272c764a440f53a0d47",
+      "bytes": 19385
+    },
+    "tests/phase2-asp-operator.test.mjs": {
+      "sha256": "a36a41e2bd8ba8057279862ddab1ce460dfa3e9065c5bbab578f2626f7a34061",
+      "bytes": 28666
+    }
+  },
+  "provenance": {
+    "kind": "completed-execution-tool-output",
+    "recordedWithoutRerunning": true,
+    "note": "The completed outputs were returned by exec_command/write_stdin in this Codex session; terminal session and completion chunk identifiers below identify the actual captured logs. No filesystem log path is invented."
+  },
+  "runs": [
+    {
+      "name": "registry-and-pool-foundry",
+      "command": "forge test --offline --match-contract 'RegistryTest|PoolTest' -vv",
+      "cwd": "protocol/phase2-mainnet",
+      "chainId": 4663,
+      "compiler": "0.8.28",
+      "fuzzRunsPerCase": 1000,
+      "tests": 32,
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0,
+      "suites": [
+        {
+          "name": "RegistryTest",
+          "tests": 12,
+          "passed": 12
+        },
+        {
+          "name": "PoolTest",
+          "tests": 20,
+          "passed": 20
+        }
+      ],
+      "durationSeconds": 126.76,
+      "receipt": {
+        "terminalSessionId": 35672,
+        "compileChunkId": "d31786",
+        "completionChunkId": "be2d84",
+        "summary": "Ran 2 test suites in 126.76s (253.51s CPU time): 32 tests passed, 0 failed, 0 skipped (32 total tests)"
+      },
+      "verifierMode": "mocks accepting proofs; this run checks contract authorization, acceptance bounds and accounting, not final Groth16 proof validity"
+    },
+    {
+      "name": "real-local-guardian-indexer",
+      "command": "node protocol/phase2-asp/test/governance-indexer.mjs --rpc http://127.0.0.1:<ephemeral-port>",
+      "launcher": "Fresh anvil --host 127.0.0.1 --port <ephemeral-port> --chain-id 31341 --hardfork cancun --silent; stopped after completion. No fork or public RPC.",
+      "chainId": 31341,
+      "checks": 9,
+      "passed": 9,
+      "failed": 0,
+      "checkNames": [
+        "compiled-current-sources-and-deployed-on-isolated-anvil",
+        "latest-policy-relayable-and-context-matches-pool",
+        "proof-for-superseded-epoch-relayable-inside-grace",
+        "superseded-epoch-refused-inside-inclusion-margin",
+        "superseded-epoch-refused-after-grace",
+        "propose-and-cancel-index-cleanly-with-recovery-and-exit",
+        "guardian-suspension-revokes-immediately-recovery-and-exit-continue",
+        "resume-keeps-revocation-and-window-caps-at-sixteen-epochs",
+        "rotation-indexes-blocks-stale-provider-spends-keeps-recovery-and-exit"
+      ],
+      "receipt": {
+        "terminalSessionId": 6483,
+        "completionChunkId": "95b799",
+        "summary": "{\"passed\":true,\"checks\":9,\"publicChainTransactions\":0,\"writesFiles\":false}"
+      },
+      "verifierMode": "inert STOP-runtime verifier placeholders; real pool/registry governance calls and SDK/indexer/relay context comparisons, no proof submission"
+    },
+    {
+      "name": "node-governance-and-operator-compatibility",
+      "command": "node --test tests/phase2-asp-governance.test.mjs tests/phase2-asp-operator.test.mjs",
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "durationMilliseconds": 7801.88625,
+      "receipt": {
+        "terminalSessionId": 73407,
+        "initialChunkId": "48dc7e",
+        "completionChunkId": "d4a59c",
+        "summary": "tests 22; pass 22; fail 0; cancelled 0; skipped 0; todo 0"
+      },
+      "verifierMode": "synthetic canonical RPC/log fixtures; no wallet, public RPC or transactions",
+      "scopeNote": "Operator compatibility is supplementary backend evidence. Its working-tree source hash is recorded exactly; backend changes are excluded from the contract-freeze deployment scope."
+    }
+  ],
+  "windowBoundaryEvidence": [
+    {
+      "run": "registry-and-pool-foundry",
+      "latestEpoch": 17,
+      "rejectedEpoch": 1,
+      "rejectedDistance": 16,
+      "acceptedEpoch": 2,
+      "acceptedDistance": 15
+    },
+    {
+      "run": "real-local-guardian-indexer",
+      "latestEpoch": 19,
+      "rejectedEpoch": 3,
+      "rejectedDistance": 16,
+      "acceptedEpoch": 4,
+      "acceptedDistance": 15
+    }
+  ],
+  "gasInterpretation": {
+    "singleTransactionGasMeasuredHere": false,
+    "foundryWindowScenarioTotalGas": 5934740,
+    "scenario": "test_M2_windowCapsOlderEpochs: deposit, sixteen registry publications, an out-of-window attempt and an accepted oldest-epoch spend",
+    "warning": "The Foundry test total is not a single private transaction gas estimate. Actual final-proof native transaction gas is reported separately by final-parameter acceptance."
+  },
+  "limitations": [
+    "These are local contract and governance acceptance checks, not an independent audit or completed public mainnet E2E.",
+    "Mock/inert verifiers do not verify Groth16 mathematics. Final-parameter real-proof acceptance is a separate pinned report.",
+    "No cloud deployment, signer activation or mainnet expenditure occurred.",
+    "The window counts the latest epoch plus fifteen predecessors; a one-hour superseded grace is an upper bound, not a promise of a full hour or a guaranteed four minutes under arbitrary provider publication cadence."
+  ]
+}

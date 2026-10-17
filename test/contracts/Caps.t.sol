@@ -201,17 +201,18 @@ contract CapsTest is Base {
     }
 
     function testFuzz_increaseWaitsFullDelay(uint256 elapsed) public {
-        elapsed = bound(elapsed, 0, 2 days);
+        uint256 delay = pool.CAP_INCREASE_DELAY();
+        elapsed = bound(elapsed, 0, 2 * delay);
         propose(3 ether, 6 ether);
         (uint128 perDeposit, uint128 total, uint64 eta) = pool.pendingCaps();
         eq(perDeposit, 3 ether, 'pending deposit cap');
         eq(total, 6 ether, 'pending total cap');
-        eq(eta, START + 1 days, 'full delay');
+        eq(eta, START + delay, 'full delay');
         skip(elapsed);
-        if (elapsed < 1 days) vm.expectRevert(Phase2ASPPool.CapIncreaseNotReady.selector);
+        if (elapsed < delay) vm.expectRevert(Phase2ASPPool.CapIncreaseNotReady.selector);
         vm.prank(GUARDIAN);
         pool.acceptCapIncrease();
-        if (elapsed >= 1 days) {
+        if (elapsed >= delay) {
             eq(pool.maxDeposit(), 3 ether, 'new deposit cap');
             eq(pool.maxTotal(), 6 ether, 'new total cap');
             (,, eta) = pool.pendingCaps();
@@ -221,7 +222,7 @@ contract CapsTest is Base {
 
     function test_loweringCapsClearsOldProposalAndNewIncreaseWaitsAgain() public {
         propose(3 ether, 6 ether);
-        skip(1 days);
+        skip(pool.CAP_INCREASE_DELAY());
         lower(1 ether, 2 ether);
         vm.prank(GUARDIAN);
         vm.expectRevert(Phase2ASPPool.UnavailableCapProposal.selector);
@@ -230,21 +231,47 @@ contract CapsTest is Base {
         vm.prank(GUARDIAN);
         vm.expectRevert(Phase2ASPPool.CapIncreaseNotReady.selector);
         pool.acceptCapIncrease();
-        skip(1 days);
+        skip(pool.CAP_INCREASE_DELAY());
         vm.prank(GUARDIAN);
         pool.acceptCapIncrease();
         eq(pool.maxTotal(), 6 ether, 'accepted fresh proposal');
     }
 
-    function test_replacementProposalResetsDelay() public {
+    function test_exactTwelveHourBoundary() public {
+        eq(pool.CAP_INCREASE_DELAY(), 12 hours, 'frozen twelve-hour delay');
         propose(3 ether, 6 ether);
-        skip(1 days - 1);
-        propose(4 ether, 8 ether);
-        skip(1);
+        (,, uint64 eta) = pool.pendingCaps();
+        eq(eta, START + 12 hours, 'proposal twelve-hour eta');
+        vm.warp(eta - 1); // 11 hours, 59 minutes, 59 seconds after proposal.
         vm.prank(GUARDIAN);
         vm.expectRevert(Phase2ASPPool.CapIncreaseNotReady.selector);
         pool.acceptCapIncrease();
-        skip(1 days - 1);
+        eq(pool.maxTotal(), 5 ether, 'early call cannot change caps');
+        vm.warp(eta);
+        vm.prank(GUARDIAN);
+        pool.acceptCapIncrease();
+        eq(pool.maxTotal(), 6 ether, 'exact twelve-hour acceptance');
+        (,, eta) = pool.pendingCaps();
+        eq(eta, 0, 'accepted proposal cleared');
+    }
+
+    function test_replacementProposalResetsDelay() public {
+        uint256 delay = pool.CAP_INCREASE_DELAY();
+        propose(3 ether, 6 ether);
+        (,, uint64 originalEta) = pool.pendingCaps();
+        skip(delay - 1);
+        propose(4 ether, 8 ether);
+        (,, uint64 replacementEta) = pool.pendingCaps();
+        eq(replacementEta, now_() + delay, 'replacement starts full fresh delay');
+        vm.warp(originalEta);
+        vm.prank(GUARDIAN);
+        vm.expectRevert(Phase2ASPPool.CapIncreaseNotReady.selector);
+        pool.acceptCapIncrease();
+        vm.warp(replacementEta - 1);
+        vm.prank(GUARDIAN);
+        vm.expectRevert(Phase2ASPPool.CapIncreaseNotReady.selector);
+        pool.acceptCapIncrease();
+        vm.warp(replacementEta);
         vm.prank(GUARDIAN);
         pool.acceptCapIncrease();
         eq(pool.maxTotal(), 8 ether, 'replacement accepted after own delay');
@@ -254,7 +281,7 @@ contract CapsTest is Base {
         propose(3 ether, 6 ether);
         vm.prank(GUARDIAN);
         pool.cancelCapIncrease();
-        skip(1 days);
+        skip(pool.CAP_INCREASE_DELAY());
         vm.prank(GUARDIAN);
         vm.expectRevert(Phase2ASPPool.UnavailableCapProposal.selector);
         pool.acceptCapIncrease();
@@ -278,7 +305,7 @@ contract CapsTest is Base {
     function test_noopSetCapsAlsoClearsProposal() public {
         propose(3 ether, 6 ether);
         lower(2 ether, 5 ether);
-        skip(1 days);
+        skip(pool.CAP_INCREASE_DELAY());
         vm.prank(GUARDIAN);
         vm.expectRevert(Phase2ASPPool.UnavailableCapProposal.selector);
         pool.acceptCapIncrease();

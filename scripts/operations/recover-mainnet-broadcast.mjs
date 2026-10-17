@@ -3,9 +3,11 @@
 // Explicit recovery of one existing signed hash. Never signs or changes a nonce.
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {createPublicClient,getContractAddress,http} from 'viem';
 import {checkDeploymentSnapshot} from './check-deployment.mjs';
+import {checkRC3Deployment,PARENT_PLAN_ID,RC3_RELEASE_DIRECTORY,RC3_RELEASE_MANIFEST,RC3_RELEASE_SHA256} from './mainnet-rc3.mjs';
 import {checkPublicReview} from '../review/run.mjs';
 import {openServiceStore} from '../../releases/rc2/src/phase1-service/store.mjs';
 import {createMainnetSigner,mainnetSignerDirectory,MAINNET_RPC} from '../../releases/rc2/src/phase2-mainnet/signer.mjs';
@@ -25,8 +27,26 @@ async function readSigner(directory,address){
  const store=await openServiceStore({directory,identity:`lincoln-mainnet-signer:4663:${address.toLowerCase()}`,filename:'signer.json'});
  try{return await store.read();}finally{await store.close();}
 }
+async function publicBytes(file){
+ const stat=await fs.lstat(file);
+ need(stat.isFile()&&!stat.isSymbolicLink()&&await fs.realpath(file)===file&&stat.size<=160*1024*1024,'RECOVERY_CONTINUATION_FILE_INVALID');
+ return fs.readFile(file);
+}
+async function continuationJournal({root,planId,directory,address,initial,validateContinuationSnapshot}){
+ const checked=await validateContinuationSnapshot({root});
+ need(checked&&typeof checked.directory==='string'&&path.isAbsolute(checked.directory)
+  &&await fs.realpath(checked.directory)===checked.directory&&checked.sharedSignerDirectory===directory,'RECOVERY_CONTINUATION_SIGNER_MISMATCH');
+ need(checked.limits&&['budgetWei','maxFeePerGasWei','reserveWei'].every(key=>checked.limits[key]===initial[key]),'RECOVERY_CONTINUATION_LIMITS_MISMATCH');
+ const config=JSON.parse(await publicBytes(path.join(checked.directory,'config/phase2-mainnet.json')));
+ need(config.chain?.id===4663&&same(config.deployer?.address,address),'RECOVERY_CONTINUATION_ADDRESS_MISMATCH');
+ const releaseBytes=await publicBytes(path.join(root,RC3_RELEASE_DIRECTORY,RC3_RELEASE_MANIFEST));
+ need(createHash('sha256').update(releaseBytes).digest('hex')===RC3_RELEASE_SHA256,'RECOVERY_CONTINUATION_RELEASE_MISMATCH');
+ const release=JSON.parse(releaseBytes);
+ need(release.chainId===4663&&/^[a-f0-9]{64}$/.test(release.coreArtifactSHA256),'RECOVERY_CONTINUATION_RELEASE_MISMATCH');
+ return {directory:path.join(checked.directory,'.phase1-private/phase2-mainnet/deployments',planId),artifactSHA256:release.coreArtifactSHA256};
+}
 export async function recoverMainnetBroadcast({root=ROOT,hash,rebroadcast=false,client,
- validateSnapshot=checkDeploymentSnapshot}={}){
+ validateSnapshot=checkDeploymentSnapshot,validateContinuationSnapshot=checkRC3Deployment}={}){
  need(/^0x[0-9a-fA-F]{64}$/.test(hash??'')&&typeof rebroadcast==='boolean','USAGE_RECOVER_MAINNET_BROADCAST');
  hash=hash.toLowerCase();
  root=await fs.realpath(root);
@@ -35,7 +55,11 @@ export async function recoverMainnetBroadcast({root=ROOT,hash,rebroadcast=false,
  need(matching?.length===1,'RECOVERY_HASH_NOT_IN_LEDGER');
  const original=matching[0],match=/^deploy:([0-9a-f]{64}):(.+)$/.exec(original.id);
  need(match,'RECOVERY_DEPLOYMENT_INTENT_REQUIRED');
- const planId=match[1],deploymentDirectory=path.join(snapshot.directory,'.phase1-private/phase2-mainnet/deployments',planId);
+ const planId=match[1];
+ // Only the one original plan belongs to the RC.2 journal tree. All later plans
+ // must validate the RC.3 snapshot and still point to the same physical ledger.
+ const continuation=planId===PARENT_PLAN_ID?null:await continuationJournal({root,planId,directory,address,initial,validateContinuationSnapshot});
+ const deploymentDirectory=continuation?.directory??path.join(snapshot.directory,'.phase1-private/phase2-mainnet/deployments',planId);
  await existingPrivateFile(path.join(deploymentDirectory,'deployment.json'));
  client??=createPublicClient({transport:http(MAINNET_RPC,{retryCount:0,timeout:20000})});
  // The original signer validates chain, canonical receipts, ledger integrity and
@@ -44,19 +68,6 @@ export async function recoverMainnetBroadcast({root=ROOT,hash,rebroadcast=false,
   maxFeePerGasWei:initial.maxFeePerGasWei,reserveWei:initial.reserveWei,expectedGenesisHash:initial.genesisHash});
  const reconciled=await signer.reconcile(),resolved=reconciled.entries.find(entry=>same(entry.hash,hash));
  need(resolved,'RECOVERY_HASH_NOT_IN_LEDGER');
- if(['confirmed','reverted'].includes(resolved.status)){
-  // A previously settled ledger entry is insufficient evidence if the node no
-  // longer serves its receipt. Do not mistake an old confirmation for a fresh
-  // canonical check, even though this path cannot send a transaction.
-  let receipt;try{receipt=await client.getTransactionReceipt({hash});}
-  catch(error){if(notFound(error))throw Object.assign(new Error('RECOVERY_CONFIRMED_RECEIPT_UNAVAILABLE'),{code:'RECOVERY_CONFIRMED_RECEIPT_UNAVAILABLE'});throw error;}
-  need(same(receipt.transactionHash,hash)&&same(receipt.from,address)&&receipt.blockNumber.toString()===resolved.blockNumber
-   &&same(receipt.blockHash,resolved.blockHash)&&receipt.status===(resolved.status==='confirmed'?'success':'reverted')
-   &&same((await client.getBlock({blockNumber:receipt.blockNumber})).hash,receipt.blockHash),'RECOVERY_CONFIRMED_RECEIPT_NONCANONICAL');
-  return {transactionHash:hash,status:resolved.status,
-   feeWei:resolved.feeWei,blockNumber:resolved.blockNumber,contractAddress:resolved.contractAddress,
-   rebroadcast:false,transactionsSigned:0,next:resolved.status==='confirmed'?'Resume the original deployment command with the same limits.':'Review the reverted receipt; no replacement was signed.'};
- }
  // Match the deployment engine's lock order. Refuse concurrent deployment;
  // never delete an existing lock or copy the ledger to another directory.
  const deploymentStore=await openServiceStore({directory:deploymentDirectory,identity:`lincoln-mainnet-deployment:${planId}`,filename:'deployment.json'});
@@ -71,10 +82,23 @@ export async function recoverMainnetBroadcast({root=ROOT,hash,rebroadcast=false,
    &&same(journal.pins.deployer,address)&&journal.pins.genesisHash===state.genesisHash
    &&journal.pins.budgetWei===state.budgetWei&&journal.pins.maxFeePerGasWei===state.maxFeePerGasWei
    &&journal.pins.reserveWei===state.reserveWei,'RECOVERY_JOURNAL_MISMATCH');
+  if(continuation)need(journal.pins.artifactSHA256===continuation.artifactSHA256
+   &&journal.pins.signerDirectory===directory,'RECOVERY_CONTINUATION_JOURNAL_MISMATCH');
   const step=journal.steps.find(s=>s.reservationId===entry.id);
   need(step&&step.id===match[2]&&same(step.deployer,address)&&step.nonce===entry.nonce
    &&step.data===entry.data&&same(step.address,getContractAddress({from:address,nonce:BigInt(entry.nonce)}))
    &&(!step.hash||same(step.hash,hash)),'RECOVERY_JOURNAL_MISMATCH');
+  if(['confirmed','reverted'].includes(entry.status)){
+   // An old ledger confirmation is not fresh canonical chain evidence. Check
+   // the correct journal and RC.3 artifact binding before returning any status.
+   let receipt;try{receipt=await client.getTransactionReceipt({hash});}
+   catch(error){if(notFound(error))throw Object.assign(new Error('RECOVERY_CONFIRMED_RECEIPT_UNAVAILABLE'),{code:'RECOVERY_CONFIRMED_RECEIPT_UNAVAILABLE'});throw error;}
+   need(same(receipt.transactionHash,hash)&&same(receipt.from,address)&&receipt.blockNumber.toString()===entry.blockNumber
+    &&same(receipt.blockHash,entry.blockHash)&&receipt.status===(entry.status==='confirmed'?'success':'reverted')
+    &&same((await client.getBlock({blockNumber:receipt.blockNumber})).hash,receipt.blockHash),'RECOVERY_CONFIRMED_RECEIPT_NONCANONICAL');
+   return {transactionHash:hash,status:entry.status,feeWei:entry.feeWei,blockNumber:entry.blockNumber,contractAddress:entry.contractAddress,
+    rebroadcast:false,transactionsSigned:0,next:entry.status==='confirmed'?'Continue with the RC.3 deployment command and original limits after the deployment pause is lifted; do not resume RC.2.':'Review the reverted receipt; no replacement was signed.'};
+  }
   const verified=await verifyRecoveryTransaction({entry,address,expectedHash:hash,budgetWei:state.budgetWei,
    maxFeePerGasWei:state.maxFeePerGasWei,reserveWei:state.reserveWei});
   need(state.entries.filter(e=>!settled(e)).length===1,'RECOVERY_CONCURRENT_RESERVATION');

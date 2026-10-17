@@ -16,8 +16,10 @@ These **nine Solidity source files contain ten deployable contract/library types
 
 `Phase2FeeRouteBase` and interface declarations support those contracts; they do not add deployable types to the table. OpenZeppelin dependency sources and their pinned compiler inputs remain part of the preserved build boundary.
 
-The readable filenames do not rename Solidity identifiers. Every review file must be a regular file with the exact byte length and SHA256 of its mapped RC.2 source. The root `review-manifest.json` connects these paths to the immutable reproduction capsule in `releases/rc2/`. `npm run check` rejects a missing, changed or independently drifting review copy.
+The readable filenames do not rename Solidity identifiers. Every review file must be a regular file with the exact byte length and SHA256 of its mapped RC.3 source. The root `review-manifest.json` connects these paths to the current reproduction capsule in `releases/rc3/`. `npm run check` rejects a missing, changed or independently drifting review copy.
 
-Use `npm run build` and `npm run test:contracts` from the repository root. The wrappers verify review-file equality before running the preserved compiler/test tooling at its original logical paths. A plain compilation under renamed source-unit paths can change Solidity metadata and library-link names even when the source text is identical; it must not be presented as the frozen RC.2 build.
+Use `npm run build` and `npm run test:contracts` from the repository root. The wrappers verify review-file equality before running the preserved compiler/test tooling at its original logical paths. A plain compilation under renamed source-unit paths can change Solidity metadata and library-link names even when the source text is identical; it must not be presented as the identified RC.3 build.
 
 Review [audit scope](../docs/AUDIT_SCOPE.md) for the exact obligations and [security model](../docs/SECURITY_MODEL.md) for trust assumptions. This directory supplies no upgrade, owner sweep or mainnet deployment claim.
+
+RC.3 sets `CAP_INCREASE_DELAY = 12 hours`; every cap proposal still restarts the full delay. Reductions remain immediate, and deposit pause/caps do not restrict exits. RC.2 remains unchanged in its archive. Seven approved stock caps do not enable stock pools or routes; the current deployment remains paused and defaults to ETH/USDG only.

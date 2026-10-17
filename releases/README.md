@@ -1,6 +1,8 @@
 # Preserved releases
 
-`rc2/` is the complete immutable RC.2 reproduction capsule. It retains the original source layout, compiler inputs, parameter bindings, test tooling and release evidence. The original `v0.1.0-rc.2` Git tag remains unchanged.
+`rc3/` is the current candidate reproduction capsule. It changes the pool cap-increase delay from 24 to 12 hours and fixes the seven user-approved stock constructor caps. Stock pools/routes remain disabled pending per-asset acceptance. Its artifact inventory, source mapping and test evidence are separately identified.
+
+`rc2/` remains the complete immutable RC.2 reproduction capsule. It retains the original source layout, compiler inputs, parameter bindings, test tooling and release evidence. The original `v0.1.0-rc.2` Git tag remains unchanged.
 
 The regular files under the root `contracts/`, `zk/`, `abi/` and `test/` directories are the readable review entry points. `review-manifest.json` maps each to its exact capsule file, byte length and SHA256. They are not a second implementation: `npm run check` rejects any drift between the review tree and its pinned release source.
 
@@ -8,7 +10,7 @@ The regular files under the root `contracts/`, `zk/`, `abi/` and `test/` directo
 
 Solidity source-unit paths influence metadata, fully qualified library links and bytecode. Parameter manifests also contain original logical paths. Renaming all compiler keys or rewriting frozen imports would produce a different build even if the contract behavior appeared unchanged.
 
-The root wrappers first verify the review files, then execute preserved tooling at its original logical paths in the capsule. This preserves RC.2 bytecode and final-key identity while keeping the public review tree concise. Original development names and historical documentation are reproduction details inside the capsule, not additional production deployment targets.
+The root wrappers first verify the review files, then execute preserved tooling at its original logical paths in the capsule. This makes RC.3 bytecode reproducible and preserves the existing final-key identity while keeping the public review tree concise. Original development names and historical documentation are reproduction details inside the capsule, not additional production deployment targets.
 
 Use the repository-root commands:
 
@@ -34,4 +36,4 @@ Resolve physical capsule filenames through the root review manifest and preserve
 
 RC.1 snapshots, source-change records and prior acceptance remain historical provenance inside the capsule and the original tags. Their successful reports do not certify arbitrary new code. A future contract change requires a separately identified release, refreshed evidence and an explicit mapping update; changing a review copy alone must fail verification.
 
-The capsule contains public review/reproduction materials, not production keys, private witnesses, wallet recovery data, cloud secrets or permission to spend real ETH. The candidate has no completed mainnet deployment. Fees in a live service, stock cap valuation, funding and real-market launch acceptance remain separate operations work.
+The capsule contains public review/reproduction materials, not production keys, private witnesses, wallet recovery data, cloud secrets or permission to spend real ETH. The candidate has no completed mainnet deployment. Broadcasting is paused pending reconciliation of the unknown RC.2 PoseidonT4 transaction. RC.3 must reuse confirmed libraries only after code verification and retain the account-wide gas ledger. Fees in a live service, stock fork/DEX acceptance, funding and real-market launch acceptance remain separate operations work.

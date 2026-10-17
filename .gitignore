@@ -24,3 +24,6 @@ artifacts/**/indexer/
 
 # Local dependencies for the immutable reproduction capsule.
 releases/rc2/.lincoln-deps-*/
+
+# RC.3 immutable capsule local dependency staging.
+releases/rc3/.lincoln-deps-*/

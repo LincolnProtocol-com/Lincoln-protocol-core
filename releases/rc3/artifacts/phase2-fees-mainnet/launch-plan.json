@@ -1,0 +1,2777 @@
+{
+  "schema": "phase2-fees-mainnet-deployment-plan/v1",
+  "chainId": 4663,
+  "planOnly": true,
+  "executionEnabled": false,
+  "productionReady": false,
+  "releaseCandidate": true,
+  "coreArtifactSHA256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747",
+  "feeArtifact": {
+    "path": "artifacts/phase2-fees-mainnet/contracts.json",
+    "sha256": "1ea5a17f5de66c7933087833297a4e2cfcdc969be844d78bab18a179b9d1c997"
+  },
+  "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
+  "feeBps": 30,
+  "coreDeploymentRequired": true,
+  "plannedAdapters": [
+    {
+      "id": "uniswap-eth-to-usdg",
+      "sourceAssetId": "eth",
+      "targetAssetId": "usdg",
+      "adapterType": "Phase2FeeRouter02Adapter",
+      "feeBps": 30,
+      "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
+      "routerABIStyle": "router02-exactInput-without-deadline",
+      "constructorABI": [
+        {
+          "internalType": "address",
+          "name": "sourcePool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "targetPool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "router",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "wrappedNative",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "protocol",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "path",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint16",
+          "name": "feeBps",
+          "type": "uint16"
+        },
+        {
+          "internalType": "address",
+          "name": "treasury",
+          "type": "address"
+        }
+      ],
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "b42761075d64c51cb9ac7bd124fe8dd50a8baf417a9ef7c98937eac8ca874dfd",
+      "immutableReferences": {
+        "830": [
+          {
+            "length": 32,
+            "start": 36
+          },
+          {
+            "length": 32,
+            "start": 1681
+          },
+          {
+            "length": 32,
+            "start": 2063
+          },
+          {
+            "length": 32,
+            "start": 4275
+          },
+          {
+            "length": 32,
+            "start": 9680
+          },
+          {
+            "length": 32,
+            "start": 11698
+          }
+        ],
+        "833": [
+          {
+            "length": 32,
+            "start": 3660
+          },
+          {
+            "length": 32,
+            "start": 4196
+          },
+          {
+            "length": 32,
+            "start": 4411
+          },
+          {
+            "length": 32,
+            "start": 5944
+          },
+          {
+            "length": 32,
+            "start": 6052
+          },
+          {
+            "length": 32,
+            "start": 6115
+          },
+          {
+            "length": 32,
+            "start": 10687
+          },
+          {
+            "length": 32,
+            "start": 11737
+          },
+          {
+            "length": 32,
+            "start": 13343
+          },
+          {
+            "length": 32,
+            "start": 13402
+          }
+        ],
+        "835": [
+          {
+            "length": 32,
+            "start": 1462
+          },
+          {
+            "length": 32,
+            "start": 1522
+          },
+          {
+            "length": 32,
+            "start": 2200
+          },
+          {
+            "length": 32,
+            "start": 2506
+          },
+          {
+            "length": 32,
+            "start": 2557
+          },
+          {
+            "length": 32,
+            "start": 3824
+          },
+          {
+            "length": 32,
+            "start": 4849
+          },
+          {
+            "length": 32,
+            "start": 5340
+          },
+          {
+            "length": 32,
+            "start": 5507
+          },
+          {
+            "length": 32,
+            "start": 8092
+          },
+          {
+            "length": 32,
+            "start": 10401
+          },
+          {
+            "length": 32,
+            "start": 11777
+          }
+        ],
+        "838": [
+          {
+            "length": 32,
+            "start": 134
+          },
+          {
+            "length": 32,
+            "start": 1263
+          },
+          {
+            "length": 32,
+            "start": 1575
+          },
+          {
+            "length": 32,
+            "start": 3217
+          },
+          {
+            "length": 32,
+            "start": 3334
+          },
+          {
+            "length": 32,
+            "start": 5393
+          },
+          {
+            "length": 32,
+            "start": 5587
+          },
+          {
+            "length": 32,
+            "start": 7406
+          },
+          {
+            "length": 32,
+            "start": 7500
+          },
+          {
+            "length": 32,
+            "start": 9316
+          },
+          {
+            "length": 32,
+            "start": 11817
+          }
+        ],
+        "840": [
+          {
+            "length": 32,
+            "start": 10526
+          },
+          {
+            "length": 32,
+            "start": 11857
+          }
+        ],
+        "842": [
+          {
+            "length": 32,
+            "start": 625
+          }
+        ],
+        "844": [
+          {
+            "length": 32,
+            "start": 10819
+          }
+        ],
+        "846": [
+          {
+            "length": 32,
+            "start": 2111
+          },
+          {
+            "length": 32,
+            "start": 10184
+          }
+        ],
+        "848": [
+          {
+            "length": 32,
+            "start": 3171
+          },
+          {
+            "length": 32,
+            "start": 9497
+          },
+          {
+            "length": 32,
+            "start": 13297
+          }
+        ],
+        "851": [
+          {
+            "length": 32,
+            "start": 554
+          },
+          {
+            "length": 32,
+            "start": 2233
+          },
+          {
+            "length": 32,
+            "start": 2590
+          },
+          {
+            "length": 32,
+            "start": 2661
+          },
+          {
+            "length": 32,
+            "start": 3883
+          },
+          {
+            "length": 32,
+            "start": 7152
+          },
+          {
+            "length": 32,
+            "start": 7613
+          }
+        ],
+        "854": [
+          {
+            "length": 32,
+            "start": 1406
+          },
+          {
+            "length": 32,
+            "start": 2813
+          },
+          {
+            "length": 32,
+            "start": 3095
+          },
+          {
+            "length": 32,
+            "start": 3416
+          },
+          {
+            "length": 32,
+            "start": 3981
+          },
+          {
+            "length": 32,
+            "start": 4476
+          },
+          {
+            "length": 32,
+            "start": 5181
+          },
+          {
+            "length": 32,
+            "start": 5978
+          },
+          {
+            "length": 32,
+            "start": 6149
+          },
+          {
+            "length": 32,
+            "start": 6317
+          },
+          {
+            "length": 32,
+            "start": 6616
+          },
+          {
+            "length": 32,
+            "start": 10754
+          },
+          {
+            "length": 32,
+            "start": 13455
+          }
+        ],
+        "856": [
+          {
+            "length": 32,
+            "start": 9741
+          },
+          {
+            "length": 32,
+            "start": 11899
+          }
+        ],
+        "858": [
+          {
+            "length": 32,
+            "start": 2739
+          },
+          {
+            "length": 32,
+            "start": 3470
+          },
+          {
+            "length": 32,
+            "start": 9961
+          }
+        ],
+        "860": [
+          {
+            "length": 32,
+            "start": 9375
+          },
+          {
+            "length": 32,
+            "start": 11939
+          }
+        ],
+        "862": [
+          {
+            "length": 32,
+            "start": 2907
+          },
+          {
+            "length": 32,
+            "start": 9587
+          },
+          {
+            "length": 32,
+            "start": 11981
+          },
+          {
+            "length": 32,
+            "start": 12346
+          }
+        ],
+        "864": [
+          {
+            "length": 32,
+            "start": 1353
+          },
+          {
+            "length": 32,
+            "start": 4059
+          },
+          {
+            "length": 32,
+            "start": 5128
+          },
+          {
+            "length": 32,
+            "start": 6264
+          },
+          {
+            "length": 32,
+            "start": 6538
+          },
+          {
+            "length": 32,
+            "start": 10620
+          },
+          {
+            "length": 32,
+            "start": 12022
+          }
+        ]
+      },
+      "requiredImmutableGetters": {
+        "ROUTER": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "WRAPPED_NATIVE": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "FACTORY": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "SOURCE_ASSET": "0x0000000000000000000000000000000000000000",
+        "TARGET_ASSET": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "SOURCE_NATIVE": true,
+        "TARGET_NATIVE": false,
+        "TOKEN_IN": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "TOKEN_OUT": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "HOPS": 1,
+        "PATH_HASH": "0x009514e01a6a764422d7c7249a6f787f10eb04bc975b5bca07b47490cf24e110",
+        "PROTOCOL": 0,
+        "PATH": "0x0bd7d308f8e1639fab988df18a8011f41eacad730000645fc5360d0400a0fd4f2af552add042d716f1d168",
+        "FEE_BPS": 30,
+        "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
+      },
+      "executionEnabled": false,
+      "initcodeHash": null,
+      "unsignedCreateTransaction": null,
+      "newAdapter": {
+        "address": null,
+        "runtimeCodeHash": null,
+        "status": "awaitCoreDeployment"
+      }
+    },
+    {
+      "id": "uniswap-usdg-to-eth",
+      "sourceAssetId": "usdg",
+      "targetAssetId": "eth",
+      "adapterType": "Phase2FeeRouter02Adapter",
+      "feeBps": 30,
+      "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
+      "routerABIStyle": "router02-exactInput-without-deadline",
+      "constructorABI": [
+        {
+          "internalType": "address",
+          "name": "sourcePool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "targetPool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "router",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "wrappedNative",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "protocol",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "path",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint16",
+          "name": "feeBps",
+          "type": "uint16"
+        },
+        {
+          "internalType": "address",
+          "name": "treasury",
+          "type": "address"
+        }
+      ],
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "b42761075d64c51cb9ac7bd124fe8dd50a8baf417a9ef7c98937eac8ca874dfd",
+      "immutableReferences": {
+        "830": [
+          {
+            "length": 32,
+            "start": 36
+          },
+          {
+            "length": 32,
+            "start": 1681
+          },
+          {
+            "length": 32,
+            "start": 2063
+          },
+          {
+            "length": 32,
+            "start": 4275
+          },
+          {
+            "length": 32,
+            "start": 9680
+          },
+          {
+            "length": 32,
+            "start": 11698
+          }
+        ],
+        "833": [
+          {
+            "length": 32,
+            "start": 3660
+          },
+          {
+            "length": 32,
+            "start": 4196
+          },
+          {
+            "length": 32,
+            "start": 4411
+          },
+          {
+            "length": 32,
+            "start": 5944
+          },
+          {
+            "length": 32,
+            "start": 6052
+          },
+          {
+            "length": 32,
+            "start": 6115
+          },
+          {
+            "length": 32,
+            "start": 10687
+          },
+          {
+            "length": 32,
+            "start": 11737
+          },
+          {
+            "length": 32,
+            "start": 13343
+          },
+          {
+            "length": 32,
+            "start": 13402
+          }
+        ],
+        "835": [
+          {
+            "length": 32,
+            "start": 1462
+          },
+          {
+            "length": 32,
+            "start": 1522
+          },
+          {
+            "length": 32,
+            "start": 2200
+          },
+          {
+            "length": 32,
+            "start": 2506
+          },
+          {
+            "length": 32,
+            "start": 2557
+          },
+          {
+            "length": 32,
+            "start": 3824
+          },
+          {
+            "length": 32,
+            "start": 4849
+          },
+          {
+            "length": 32,
+            "start": 5340
+          },
+          {
+            "length": 32,
+            "start": 5507
+          },
+          {
+            "length": 32,
+            "start": 8092
+          },
+          {
+            "length": 32,
+            "start": 10401
+          },
+          {
+            "length": 32,
+            "start": 11777
+          }
+        ],
+        "838": [
+          {
+            "length": 32,
+            "start": 134
+          },
+          {
+            "length": 32,
+            "start": 1263
+          },
+          {
+            "length": 32,
+            "start": 1575
+          },
+          {
+            "length": 32,
+            "start": 3217
+          },
+          {
+            "length": 32,
+            "start": 3334
+          },
+          {
+            "length": 32,
+            "start": 5393
+          },
+          {
+            "length": 32,
+            "start": 5587
+          },
+          {
+            "length": 32,
+            "start": 7406
+          },
+          {
+            "length": 32,
+            "start": 7500
+          },
+          {
+            "length": 32,
+            "start": 9316
+          },
+          {
+            "length": 32,
+            "start": 11817
+          }
+        ],
+        "840": [
+          {
+            "length": 32,
+            "start": 10526
+          },
+          {
+            "length": 32,
+            "start": 11857
+          }
+        ],
+        "842": [
+          {
+            "length": 32,
+            "start": 625
+          }
+        ],
+        "844": [
+          {
+            "length": 32,
+            "start": 10819
+          }
+        ],
+        "846": [
+          {
+            "length": 32,
+            "start": 2111
+          },
+          {
+            "length": 32,
+            "start": 10184
+          }
+        ],
+        "848": [
+          {
+            "length": 32,
+            "start": 3171
+          },
+          {
+            "length": 32,
+            "start": 9497
+          },
+          {
+            "length": 32,
+            "start": 13297
+          }
+        ],
+        "851": [
+          {
+            "length": 32,
+            "start": 554
+          },
+          {
+            "length": 32,
+            "start": 2233
+          },
+          {
+            "length": 32,
+            "start": 2590
+          },
+          {
+            "length": 32,
+            "start": 2661
+          },
+          {
+            "length": 32,
+            "start": 3883
+          },
+          {
+            "length": 32,
+            "start": 7152
+          },
+          {
+            "length": 32,
+            "start": 7613
+          }
+        ],
+        "854": [
+          {
+            "length": 32,
+            "start": 1406
+          },
+          {
+            "length": 32,
+            "start": 2813
+          },
+          {
+            "length": 32,
+            "start": 3095
+          },
+          {
+            "length": 32,
+            "start": 3416
+          },
+          {
+            "length": 32,
+            "start": 3981
+          },
+          {
+            "length": 32,
+            "start": 4476
+          },
+          {
+            "length": 32,
+            "start": 5181
+          },
+          {
+            "length": 32,
+            "start": 5978
+          },
+          {
+            "length": 32,
+            "start": 6149
+          },
+          {
+            "length": 32,
+            "start": 6317
+          },
+          {
+            "length": 32,
+            "start": 6616
+          },
+          {
+            "length": 32,
+            "start": 10754
+          },
+          {
+            "length": 32,
+            "start": 13455
+          }
+        ],
+        "856": [
+          {
+            "length": 32,
+            "start": 9741
+          },
+          {
+            "length": 32,
+            "start": 11899
+          }
+        ],
+        "858": [
+          {
+            "length": 32,
+            "start": 2739
+          },
+          {
+            "length": 32,
+            "start": 3470
+          },
+          {
+            "length": 32,
+            "start": 9961
+          }
+        ],
+        "860": [
+          {
+            "length": 32,
+            "start": 9375
+          },
+          {
+            "length": 32,
+            "start": 11939
+          }
+        ],
+        "862": [
+          {
+            "length": 32,
+            "start": 2907
+          },
+          {
+            "length": 32,
+            "start": 9587
+          },
+          {
+            "length": 32,
+            "start": 11981
+          },
+          {
+            "length": 32,
+            "start": 12346
+          }
+        ],
+        "864": [
+          {
+            "length": 32,
+            "start": 1353
+          },
+          {
+            "length": 32,
+            "start": 4059
+          },
+          {
+            "length": 32,
+            "start": 5128
+          },
+          {
+            "length": 32,
+            "start": 6264
+          },
+          {
+            "length": 32,
+            "start": 6538
+          },
+          {
+            "length": 32,
+            "start": 10620
+          },
+          {
+            "length": 32,
+            "start": 12022
+          }
+        ]
+      },
+      "requiredImmutableGetters": {
+        "ROUTER": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "WRAPPED_NATIVE": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "FACTORY": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "SOURCE_ASSET": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "TARGET_ASSET": "0x0000000000000000000000000000000000000000",
+        "SOURCE_NATIVE": false,
+        "TARGET_NATIVE": true,
+        "TOKEN_IN": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "TOKEN_OUT": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "HOPS": 1,
+        "PATH_HASH": "0x53cd3b81a3cfa24cf3f3287e5dae535430380552cd08997974aa9f996ae77dff",
+        "PROTOCOL": 0,
+        "PATH": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680000640bd7d308f8e1639fab988df18a8011f41eacad73",
+        "FEE_BPS": 30,
+        "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
+      },
+      "executionEnabled": false,
+      "initcodeHash": null,
+      "unsignedCreateTransaction": null,
+      "newAdapter": {
+        "address": null,
+        "runtimeCodeHash": null,
+        "status": "awaitCoreDeployment"
+      }
+    },
+    {
+      "id": "up-eth-to-usdg",
+      "sourceAssetId": "eth",
+      "targetAssetId": "usdg",
+      "adapterType": "Phase2FeeRouteAdapter",
+      "feeBps": 30,
+      "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
+      "routerABIStyle": "exactInput-with-deadline",
+      "constructorABI": [
+        {
+          "internalType": "address",
+          "name": "sourcePool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "targetPool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "router",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "wrappedNative",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "protocol",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "path",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint16",
+          "name": "feeBps",
+          "type": "uint16"
+        },
+        {
+          "internalType": "address",
+          "name": "treasury",
+          "type": "address"
+        }
+      ],
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "9796028bb6f91b0d7a4f36dd64ac2d99d248e50979c8705c1c10b0f23555f6ab",
+      "immutableReferences": {
+        "830": [
+          {
+            "length": 32,
+            "start": 36
+          },
+          {
+            "length": 32,
+            "start": 1681
+          },
+          {
+            "length": 32,
+            "start": 2063
+          },
+          {
+            "length": 32,
+            "start": 4294
+          },
+          {
+            "length": 32,
+            "start": 9699
+          },
+          {
+            "length": 32,
+            "start": 11717
+          }
+        ],
+        "833": [
+          {
+            "length": 32,
+            "start": 3679
+          },
+          {
+            "length": 32,
+            "start": 4215
+          },
+          {
+            "length": 32,
+            "start": 4430
+          },
+          {
+            "length": 32,
+            "start": 5963
+          },
+          {
+            "length": 32,
+            "start": 6071
+          },
+          {
+            "length": 32,
+            "start": 6134
+          },
+          {
+            "length": 32,
+            "start": 10706
+          },
+          {
+            "length": 32,
+            "start": 11756
+          },
+          {
+            "length": 32,
+            "start": 13362
+          },
+          {
+            "length": 32,
+            "start": 13421
+          }
+        ],
+        "835": [
+          {
+            "length": 32,
+            "start": 1462
+          },
+          {
+            "length": 32,
+            "start": 1522
+          },
+          {
+            "length": 32,
+            "start": 2200
+          },
+          {
+            "length": 32,
+            "start": 2525
+          },
+          {
+            "length": 32,
+            "start": 2576
+          },
+          {
+            "length": 32,
+            "start": 3843
+          },
+          {
+            "length": 32,
+            "start": 4868
+          },
+          {
+            "length": 32,
+            "start": 5359
+          },
+          {
+            "length": 32,
+            "start": 5526
+          },
+          {
+            "length": 32,
+            "start": 8111
+          },
+          {
+            "length": 32,
+            "start": 10420
+          },
+          {
+            "length": 32,
+            "start": 11796
+          }
+        ],
+        "838": [
+          {
+            "length": 32,
+            "start": 134
+          },
+          {
+            "length": 32,
+            "start": 1263
+          },
+          {
+            "length": 32,
+            "start": 1575
+          },
+          {
+            "length": 32,
+            "start": 3236
+          },
+          {
+            "length": 32,
+            "start": 3353
+          },
+          {
+            "length": 32,
+            "start": 5412
+          },
+          {
+            "length": 32,
+            "start": 5606
+          },
+          {
+            "length": 32,
+            "start": 7425
+          },
+          {
+            "length": 32,
+            "start": 7519
+          },
+          {
+            "length": 32,
+            "start": 9335
+          },
+          {
+            "length": 32,
+            "start": 11836
+          }
+        ],
+        "840": [
+          {
+            "length": 32,
+            "start": 10545
+          },
+          {
+            "length": 32,
+            "start": 11876
+          }
+        ],
+        "842": [
+          {
+            "length": 32,
+            "start": 625
+          }
+        ],
+        "844": [
+          {
+            "length": 32,
+            "start": 10838
+          }
+        ],
+        "846": [
+          {
+            "length": 32,
+            "start": 2111
+          },
+          {
+            "length": 32,
+            "start": 10203
+          }
+        ],
+        "848": [
+          {
+            "length": 32,
+            "start": 3190
+          },
+          {
+            "length": 32,
+            "start": 9516
+          },
+          {
+            "length": 32,
+            "start": 13316
+          }
+        ],
+        "851": [
+          {
+            "length": 32,
+            "start": 554
+          },
+          {
+            "length": 32,
+            "start": 2233
+          },
+          {
+            "length": 32,
+            "start": 2609
+          },
+          {
+            "length": 32,
+            "start": 2680
+          },
+          {
+            "length": 32,
+            "start": 3902
+          },
+          {
+            "length": 32,
+            "start": 7171
+          },
+          {
+            "length": 32,
+            "start": 7632
+          }
+        ],
+        "854": [
+          {
+            "length": 32,
+            "start": 1406
+          },
+          {
+            "length": 32,
+            "start": 2832
+          },
+          {
+            "length": 32,
+            "start": 3114
+          },
+          {
+            "length": 32,
+            "start": 3435
+          },
+          {
+            "length": 32,
+            "start": 4000
+          },
+          {
+            "length": 32,
+            "start": 4495
+          },
+          {
+            "length": 32,
+            "start": 5200
+          },
+          {
+            "length": 32,
+            "start": 5997
+          },
+          {
+            "length": 32,
+            "start": 6168
+          },
+          {
+            "length": 32,
+            "start": 6336
+          },
+          {
+            "length": 32,
+            "start": 6635
+          },
+          {
+            "length": 32,
+            "start": 10773
+          },
+          {
+            "length": 32,
+            "start": 13474
+          }
+        ],
+        "856": [
+          {
+            "length": 32,
+            "start": 9760
+          },
+          {
+            "length": 32,
+            "start": 11918
+          }
+        ],
+        "858": [
+          {
+            "length": 32,
+            "start": 2758
+          },
+          {
+            "length": 32,
+            "start": 3489
+          },
+          {
+            "length": 32,
+            "start": 9980
+          }
+        ],
+        "860": [
+          {
+            "length": 32,
+            "start": 9394
+          },
+          {
+            "length": 32,
+            "start": 11958
+          }
+        ],
+        "862": [
+          {
+            "length": 32,
+            "start": 2926
+          },
+          {
+            "length": 32,
+            "start": 9606
+          },
+          {
+            "length": 32,
+            "start": 12000
+          },
+          {
+            "length": 32,
+            "start": 12365
+          }
+        ],
+        "864": [
+          {
+            "length": 32,
+            "start": 1353
+          },
+          {
+            "length": 32,
+            "start": 4078
+          },
+          {
+            "length": 32,
+            "start": 5147
+          },
+          {
+            "length": 32,
+            "start": 6283
+          },
+          {
+            "length": 32,
+            "start": 6557
+          },
+          {
+            "length": 32,
+            "start": 10639
+          },
+          {
+            "length": 32,
+            "start": 12041
+          }
+        ]
+      },
+      "requiredImmutableGetters": {
+        "ROUTER": "0xC062b870E813fcA720f1e002c234369Ab3aB9415",
+        "WRAPPED_NATIVE": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "FACTORY": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+        "SOURCE_ASSET": "0x0000000000000000000000000000000000000000",
+        "TARGET_ASSET": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "SOURCE_NATIVE": true,
+        "TARGET_NATIVE": false,
+        "TOKEN_IN": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "TOKEN_OUT": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "HOPS": 1,
+        "PATH_HASH": "0x28b619dab196ee5f73d5190b1ec5ddadfaf7a5e4b77d130d780800a50eea0f7d",
+        "PROTOCOL": 1,
+        "PATH": "0x0bd7d308f8e1639fab988df18a8011f41eacad7300000a5fc5360d0400a0fd4f2af552add042d716f1d168",
+        "FEE_BPS": 30,
+        "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
+      },
+      "executionEnabled": false,
+      "initcodeHash": null,
+      "unsignedCreateTransaction": null,
+      "newAdapter": {
+        "address": null,
+        "runtimeCodeHash": null,
+        "status": "awaitCoreDeployment"
+      }
+    },
+    {
+      "id": "up-usdg-to-eth",
+      "sourceAssetId": "usdg",
+      "targetAssetId": "eth",
+      "adapterType": "Phase2FeeRouteAdapter",
+      "feeBps": 30,
+      "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
+      "routerABIStyle": "exactInput-with-deadline",
+      "constructorABI": [
+        {
+          "internalType": "address",
+          "name": "sourcePool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "targetPool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "router",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "wrappedNative",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "protocol",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "path",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint16",
+          "name": "feeBps",
+          "type": "uint16"
+        },
+        {
+          "internalType": "address",
+          "name": "treasury",
+          "type": "address"
+        }
+      ],
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "9796028bb6f91b0d7a4f36dd64ac2d99d248e50979c8705c1c10b0f23555f6ab",
+      "immutableReferences": {
+        "830": [
+          {
+            "length": 32,
+            "start": 36
+          },
+          {
+            "length": 32,
+            "start": 1681
+          },
+          {
+            "length": 32,
+            "start": 2063
+          },
+          {
+            "length": 32,
+            "start": 4294
+          },
+          {
+            "length": 32,
+            "start": 9699
+          },
+          {
+            "length": 32,
+            "start": 11717
+          }
+        ],
+        "833": [
+          {
+            "length": 32,
+            "start": 3679
+          },
+          {
+            "length": 32,
+            "start": 4215
+          },
+          {
+            "length": 32,
+            "start": 4430
+          },
+          {
+            "length": 32,
+            "start": 5963
+          },
+          {
+            "length": 32,
+            "start": 6071
+          },
+          {
+            "length": 32,
+            "start": 6134
+          },
+          {
+            "length": 32,
+            "start": 10706
+          },
+          {
+            "length": 32,
+            "start": 11756
+          },
+          {
+            "length": 32,
+            "start": 13362
+          },
+          {
+            "length": 32,
+            "start": 13421
+          }
+        ],
+        "835": [
+          {
+            "length": 32,
+            "start": 1462
+          },
+          {
+            "length": 32,
+            "start": 1522
+          },
+          {
+            "length": 32,
+            "start": 2200
+          },
+          {
+            "length": 32,
+            "start": 2525
+          },
+          {
+            "length": 32,
+            "start": 2576
+          },
+          {
+            "length": 32,
+            "start": 3843
+          },
+          {
+            "length": 32,
+            "start": 4868
+          },
+          {
+            "length": 32,
+            "start": 5359
+          },
+          {
+            "length": 32,
+            "start": 5526
+          },
+          {
+            "length": 32,
+            "start": 8111
+          },
+          {
+            "length": 32,
+            "start": 10420
+          },
+          {
+            "length": 32,
+            "start": 11796
+          }
+        ],
+        "838": [
+          {
+            "length": 32,
+            "start": 134
+          },
+          {
+            "length": 32,
+            "start": 1263
+          },
+          {
+            "length": 32,
+            "start": 1575
+          },
+          {
+            "length": 32,
+            "start": 3236
+          },
+          {
+            "length": 32,
+            "start": 3353
+          },
+          {
+            "length": 32,
+            "start": 5412
+          },
+          {
+            "length": 32,
+            "start": 5606
+          },
+          {
+            "length": 32,
+            "start": 7425
+          },
+          {
+            "length": 32,
+            "start": 7519
+          },
+          {
+            "length": 32,
+            "start": 9335
+          },
+          {
+            "length": 32,
+            "start": 11836
+          }
+        ],
+        "840": [
+          {
+            "length": 32,
+            "start": 10545
+          },
+          {
+            "length": 32,
+            "start": 11876
+          }
+        ],
+        "842": [
+          {
+            "length": 32,
+            "start": 625
+          }
+        ],
+        "844": [
+          {
+            "length": 32,
+            "start": 10838
+          }
+        ],
+        "846": [
+          {
+            "length": 32,
+            "start": 2111
+          },
+          {
+            "length": 32,
+            "start": 10203
+          }
+        ],
+        "848": [
+          {
+            "length": 32,
+            "start": 3190
+          },
+          {
+            "length": 32,
+            "start": 9516
+          },
+          {
+            "length": 32,
+            "start": 13316
+          }
+        ],
+        "851": [
+          {
+            "length": 32,
+            "start": 554
+          },
+          {
+            "length": 32,
+            "start": 2233
+          },
+          {
+            "length": 32,
+            "start": 2609
+          },
+          {
+            "length": 32,
+            "start": 2680
+          },
+          {
+            "length": 32,
+            "start": 3902
+          },
+          {
+            "length": 32,
+            "start": 7171
+          },
+          {
+            "length": 32,
+            "start": 7632
+          }
+        ],
+        "854": [
+          {
+            "length": 32,
+            "start": 1406
+          },
+          {
+            "length": 32,
+            "start": 2832
+          },
+          {
+            "length": 32,
+            "start": 3114
+          },
+          {
+            "length": 32,
+            "start": 3435
+          },
+          {
+            "length": 32,
+            "start": 4000
+          },
+          {
+            "length": 32,
+            "start": 4495
+          },
+          {
+            "length": 32,
+            "start": 5200
+          },
+          {
+            "length": 32,
+            "start": 5997
+          },
+          {
+            "length": 32,
+            "start": 6168
+          },
+          {
+            "length": 32,
+            "start": 6336
+          },
+          {
+            "length": 32,
+            "start": 6635
+          },
+          {
+            "length": 32,
+            "start": 10773
+          },
+          {
+            "length": 32,
+            "start": 13474
+          }
+        ],
+        "856": [
+          {
+            "length": 32,
+            "start": 9760
+          },
+          {
+            "length": 32,
+            "start": 11918
+          }
+        ],
+        "858": [
+          {
+            "length": 32,
+            "start": 2758
+          },
+          {
+            "length": 32,
+            "start": 3489
+          },
+          {
+            "length": 32,
+            "start": 9980
+          }
+        ],
+        "860": [
+          {
+            "length": 32,
+            "start": 9394
+          },
+          {
+            "length": 32,
+            "start": 11958
+          }
+        ],
+        "862": [
+          {
+            "length": 32,
+            "start": 2926
+          },
+          {
+            "length": 32,
+            "start": 9606
+          },
+          {
+            "length": 32,
+            "start": 12000
+          },
+          {
+            "length": 32,
+            "start": 12365
+          }
+        ],
+        "864": [
+          {
+            "length": 32,
+            "start": 1353
+          },
+          {
+            "length": 32,
+            "start": 4078
+          },
+          {
+            "length": 32,
+            "start": 5147
+          },
+          {
+            "length": 32,
+            "start": 6283
+          },
+          {
+            "length": 32,
+            "start": 6557
+          },
+          {
+            "length": 32,
+            "start": 10639
+          },
+          {
+            "length": 32,
+            "start": 12041
+          }
+        ]
+      },
+      "requiredImmutableGetters": {
+        "ROUTER": "0xC062b870E813fcA720f1e002c234369Ab3aB9415",
+        "WRAPPED_NATIVE": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "FACTORY": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+        "SOURCE_ASSET": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "TARGET_ASSET": "0x0000000000000000000000000000000000000000",
+        "SOURCE_NATIVE": false,
+        "TARGET_NATIVE": true,
+        "TOKEN_IN": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "TOKEN_OUT": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "HOPS": 1,
+        "PATH_HASH": "0x7b39c7a0674b347b1b1bd0946cdbb3a839c340a4bfe2a746802c78efc249e119",
+        "PROTOCOL": 1,
+        "PATH": "0x5fc5360d0400a0fd4f2af552add042d716f1d16800000a0bd7d308f8e1639fab988df18a8011f41eacad73",
+        "FEE_BPS": 30,
+        "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
+      },
+      "executionEnabled": false,
+      "initcodeHash": null,
+      "unsignedCreateTransaction": null,
+      "newAdapter": {
+        "address": null,
+        "runtimeCodeHash": null,
+        "status": "awaitCoreDeployment"
+      }
+    },
+    {
+      "id": "uniswap-eth-to-nvda",
+      "sourceAssetId": "eth",
+      "targetAssetId": "nvda",
+      "adapterType": "Phase2FeeRouter02Adapter",
+      "feeBps": 30,
+      "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
+      "routerABIStyle": "router02-exactInput-without-deadline",
+      "constructorABI": [
+        {
+          "internalType": "address",
+          "name": "sourcePool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "targetPool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "router",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "wrappedNative",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "protocol",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "path",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint16",
+          "name": "feeBps",
+          "type": "uint16"
+        },
+        {
+          "internalType": "address",
+          "name": "treasury",
+          "type": "address"
+        }
+      ],
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "b42761075d64c51cb9ac7bd124fe8dd50a8baf417a9ef7c98937eac8ca874dfd",
+      "immutableReferences": {
+        "830": [
+          {
+            "length": 32,
+            "start": 36
+          },
+          {
+            "length": 32,
+            "start": 1681
+          },
+          {
+            "length": 32,
+            "start": 2063
+          },
+          {
+            "length": 32,
+            "start": 4275
+          },
+          {
+            "length": 32,
+            "start": 9680
+          },
+          {
+            "length": 32,
+            "start": 11698
+          }
+        ],
+        "833": [
+          {
+            "length": 32,
+            "start": 3660
+          },
+          {
+            "length": 32,
+            "start": 4196
+          },
+          {
+            "length": 32,
+            "start": 4411
+          },
+          {
+            "length": 32,
+            "start": 5944
+          },
+          {
+            "length": 32,
+            "start": 6052
+          },
+          {
+            "length": 32,
+            "start": 6115
+          },
+          {
+            "length": 32,
+            "start": 10687
+          },
+          {
+            "length": 32,
+            "start": 11737
+          },
+          {
+            "length": 32,
+            "start": 13343
+          },
+          {
+            "length": 32,
+            "start": 13402
+          }
+        ],
+        "835": [
+          {
+            "length": 32,
+            "start": 1462
+          },
+          {
+            "length": 32,
+            "start": 1522
+          },
+          {
+            "length": 32,
+            "start": 2200
+          },
+          {
+            "length": 32,
+            "start": 2506
+          },
+          {
+            "length": 32,
+            "start": 2557
+          },
+          {
+            "length": 32,
+            "start": 3824
+          },
+          {
+            "length": 32,
+            "start": 4849
+          },
+          {
+            "length": 32,
+            "start": 5340
+          },
+          {
+            "length": 32,
+            "start": 5507
+          },
+          {
+            "length": 32,
+            "start": 8092
+          },
+          {
+            "length": 32,
+            "start": 10401
+          },
+          {
+            "length": 32,
+            "start": 11777
+          }
+        ],
+        "838": [
+          {
+            "length": 32,
+            "start": 134
+          },
+          {
+            "length": 32,
+            "start": 1263
+          },
+          {
+            "length": 32,
+            "start": 1575
+          },
+          {
+            "length": 32,
+            "start": 3217
+          },
+          {
+            "length": 32,
+            "start": 3334
+          },
+          {
+            "length": 32,
+            "start": 5393
+          },
+          {
+            "length": 32,
+            "start": 5587
+          },
+          {
+            "length": 32,
+            "start": 7406
+          },
+          {
+            "length": 32,
+            "start": 7500
+          },
+          {
+            "length": 32,
+            "start": 9316
+          },
+          {
+            "length": 32,
+            "start": 11817
+          }
+        ],
+        "840": [
+          {
+            "length": 32,
+            "start": 10526
+          },
+          {
+            "length": 32,
+            "start": 11857
+          }
+        ],
+        "842": [
+          {
+            "length": 32,
+            "start": 625
+          }
+        ],
+        "844": [
+          {
+            "length": 32,
+            "start": 10819
+          }
+        ],
+        "846": [
+          {
+            "length": 32,
+            "start": 2111
+          },
+          {
+            "length": 32,
+            "start": 10184
+          }
+        ],
+        "848": [
+          {
+            "length": 32,
+            "start": 3171
+          },
+          {
+            "length": 32,
+            "start": 9497
+          },
+          {
+            "length": 32,
+            "start": 13297
+          }
+        ],
+        "851": [
+          {
+            "length": 32,
+            "start": 554
+          },
+          {
+            "length": 32,
+            "start": 2233
+          },
+          {
+            "length": 32,
+            "start": 2590
+          },
+          {
+            "length": 32,
+            "start": 2661
+          },
+          {
+            "length": 32,
+            "start": 3883
+          },
+          {
+            "length": 32,
+            "start": 7152
+          },
+          {
+            "length": 32,
+            "start": 7613
+          }
+        ],
+        "854": [
+          {
+            "length": 32,
+            "start": 1406
+          },
+          {
+            "length": 32,
+            "start": 2813
+          },
+          {
+            "length": 32,
+            "start": 3095
+          },
+          {
+            "length": 32,
+            "start": 3416
+          },
+          {
+            "length": 32,
+            "start": 3981
+          },
+          {
+            "length": 32,
+            "start": 4476
+          },
+          {
+            "length": 32,
+            "start": 5181
+          },
+          {
+            "length": 32,
+            "start": 5978
+          },
+          {
+            "length": 32,
+            "start": 6149
+          },
+          {
+            "length": 32,
+            "start": 6317
+          },
+          {
+            "length": 32,
+            "start": 6616
+          },
+          {
+            "length": 32,
+            "start": 10754
+          },
+          {
+            "length": 32,
+            "start": 13455
+          }
+        ],
+        "856": [
+          {
+            "length": 32,
+            "start": 9741
+          },
+          {
+            "length": 32,
+            "start": 11899
+          }
+        ],
+        "858": [
+          {
+            "length": 32,
+            "start": 2739
+          },
+          {
+            "length": 32,
+            "start": 3470
+          },
+          {
+            "length": 32,
+            "start": 9961
+          }
+        ],
+        "860": [
+          {
+            "length": 32,
+            "start": 9375
+          },
+          {
+            "length": 32,
+            "start": 11939
+          }
+        ],
+        "862": [
+          {
+            "length": 32,
+            "start": 2907
+          },
+          {
+            "length": 32,
+            "start": 9587
+          },
+          {
+            "length": 32,
+            "start": 11981
+          },
+          {
+            "length": 32,
+            "start": 12346
+          }
+        ],
+        "864": [
+          {
+            "length": 32,
+            "start": 1353
+          },
+          {
+            "length": 32,
+            "start": 4059
+          },
+          {
+            "length": 32,
+            "start": 5128
+          },
+          {
+            "length": 32,
+            "start": 6264
+          },
+          {
+            "length": 32,
+            "start": 6538
+          },
+          {
+            "length": 32,
+            "start": 10620
+          },
+          {
+            "length": 32,
+            "start": 12022
+          }
+        ]
+      },
+      "requiredImmutableGetters": {
+        "ROUTER": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "WRAPPED_NATIVE": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "FACTORY": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "SOURCE_ASSET": "0x0000000000000000000000000000000000000000",
+        "TARGET_ASSET": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "SOURCE_NATIVE": true,
+        "TARGET_NATIVE": false,
+        "TOKEN_IN": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "TOKEN_OUT": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "HOPS": 2,
+        "PATH_HASH": "0x671a930cf2a4e985acf52f8beb2cf1863323c56b72de0d0b2274c9229ea93814",
+        "PROTOCOL": 0,
+        "PATH": "0x0bd7d308f8e1639fab988df18a8011f41eacad730000645fc5360d0400a0fd4f2af552add042d716f1d1680001f4d0601ce157db5bdc3162bbac2a2c8af5320d9eec",
+        "FEE_BPS": 30,
+        "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
+      },
+      "executionEnabled": false,
+      "initcodeHash": null,
+      "unsignedCreateTransaction": null,
+      "newAdapter": {
+        "address": null,
+        "runtimeCodeHash": null,
+        "status": "awaitCoreDeployment"
+      }
+    },
+    {
+      "id": "uniswap-nvda-to-eth",
+      "sourceAssetId": "nvda",
+      "targetAssetId": "eth",
+      "adapterType": "Phase2FeeRouter02Adapter",
+      "feeBps": 30,
+      "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
+      "routerABIStyle": "router02-exactInput-without-deadline",
+      "constructorABI": [
+        {
+          "internalType": "address",
+          "name": "sourcePool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "targetPool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "router",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "wrappedNative",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "protocol",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes",
+          "name": "path",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint16",
+          "name": "feeBps",
+          "type": "uint16"
+        },
+        {
+          "internalType": "address",
+          "name": "treasury",
+          "type": "address"
+        }
+      ],
+      "abiSHA256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "runtimeTemplateSHA256": "b42761075d64c51cb9ac7bd124fe8dd50a8baf417a9ef7c98937eac8ca874dfd",
+      "immutableReferences": {
+        "830": [
+          {
+            "length": 32,
+            "start": 36
+          },
+          {
+            "length": 32,
+            "start": 1681
+          },
+          {
+            "length": 32,
+            "start": 2063
+          },
+          {
+            "length": 32,
+            "start": 4275
+          },
+          {
+            "length": 32,
+            "start": 9680
+          },
+          {
+            "length": 32,
+            "start": 11698
+          }
+        ],
+        "833": [
+          {
+            "length": 32,
+            "start": 3660
+          },
+          {
+            "length": 32,
+            "start": 4196
+          },
+          {
+            "length": 32,
+            "start": 4411
+          },
+          {
+            "length": 32,
+            "start": 5944
+          },
+          {
+            "length": 32,
+            "start": 6052
+          },
+          {
+            "length": 32,
+            "start": 6115
+          },
+          {
+            "length": 32,
+            "start": 10687
+          },
+          {
+            "length": 32,
+            "start": 11737
+          },
+          {
+            "length": 32,
+            "start": 13343
+          },
+          {
+            "length": 32,
+            "start": 13402
+          }
+        ],
+        "835": [
+          {
+            "length": 32,
+            "start": 1462
+          },
+          {
+            "length": 32,
+            "start": 1522
+          },
+          {
+            "length": 32,
+            "start": 2200
+          },
+          {
+            "length": 32,
+            "start": 2506
+          },
+          {
+            "length": 32,
+            "start": 2557
+          },
+          {
+            "length": 32,
+            "start": 3824
+          },
+          {
+            "length": 32,
+            "start": 4849
+          },
+          {
+            "length": 32,
+            "start": 5340
+          },
+          {
+            "length": 32,
+            "start": 5507
+          },
+          {
+            "length": 32,
+            "start": 8092
+          },
+          {
+            "length": 32,
+            "start": 10401
+          },
+          {
+            "length": 32,
+            "start": 11777
+          }
+        ],
+        "838": [
+          {
+            "length": 32,
+            "start": 134
+          },
+          {
+            "length": 32,
+            "start": 1263
+          },
+          {
+            "length": 32,
+            "start": 1575
+          },
+          {
+            "length": 32,
+            "start": 3217
+          },
+          {
+            "length": 32,
+            "start": 3334
+          },
+          {
+            "length": 32,
+            "start": 5393
+          },
+          {
+            "length": 32,
+            "start": 5587
+          },
+          {
+            "length": 32,
+            "start": 7406
+          },
+          {
+            "length": 32,
+            "start": 7500
+          },
+          {
+            "length": 32,
+            "start": 9316
+          },
+          {
+            "length": 32,
+            "start": 11817
+          }
+        ],
+        "840": [
+          {
+            "length": 32,
+            "start": 10526
+          },
+          {
+            "length": 32,
+            "start": 11857
+          }
+        ],
+        "842": [
+          {
+            "length": 32,
+            "start": 625
+          }
+        ],
+        "844": [
+          {
+            "length": 32,
+            "start": 10819
+          }
+        ],
+        "846": [
+          {
+            "length": 32,
+            "start": 2111
+          },
+          {
+            "length": 32,
+            "start": 10184
+          }
+        ],
+        "848": [
+          {
+            "length": 32,
+            "start": 3171
+          },
+          {
+            "length": 32,
+            "start": 9497
+          },
+          {
+            "length": 32,
+            "start": 13297
+          }
+        ],
+        "851": [
+          {
+            "length": 32,
+            "start": 554
+          },
+          {
+            "length": 32,
+            "start": 2233
+          },
+          {
+            "length": 32,
+            "start": 2590
+          },
+          {
+            "length": 32,
+            "start": 2661
+          },
+          {
+            "length": 32,
+            "start": 3883
+          },
+          {
+            "length": 32,
+            "start": 7152
+          },
+          {
+            "length": 32,
+            "start": 7613
+          }
+        ],
+        "854": [
+          {
+            "length": 32,
+            "start": 1406
+          },
+          {
+            "length": 32,
+            "start": 2813
+          },
+          {
+            "length": 32,
+            "start": 3095
+          },
+          {
+            "length": 32,
+            "start": 3416
+          },
+          {
+            "length": 32,
+            "start": 3981
+          },
+          {
+            "length": 32,
+            "start": 4476
+          },
+          {
+            "length": 32,
+            "start": 5181
+          },
+          {
+            "length": 32,
+            "start": 5978
+          },
+          {
+            "length": 32,
+            "start": 6149
+          },
+          {
+            "length": 32,
+            "start": 6317
+          },
+          {
+            "length": 32,
+            "start": 6616
+          },
+          {
+            "length": 32,
+            "start": 10754
+          },
+          {
+            "length": 32,
+            "start": 13455
+          }
+        ],
+        "856": [
+          {
+            "length": 32,
+            "start": 9741
+          },
+          {
+            "length": 32,
+            "start": 11899
+          }
+        ],
+        "858": [
+          {
+            "length": 32,
+            "start": 2739
+          },
+          {
+            "length": 32,
+            "start": 3470
+          },
+          {
+            "length": 32,
+            "start": 9961
+          }
+        ],
+        "860": [
+          {
+            "length": 32,
+            "start": 9375
+          },
+          {
+            "length": 32,
+            "start": 11939
+          }
+        ],
+        "862": [
+          {
+            "length": 32,
+            "start": 2907
+          },
+          {
+            "length": 32,
+            "start": 9587
+          },
+          {
+            "length": 32,
+            "start": 11981
+          },
+          {
+            "length": 32,
+            "start": 12346
+          }
+        ],
+        "864": [
+          {
+            "length": 32,
+            "start": 1353
+          },
+          {
+            "length": 32,
+            "start": 4059
+          },
+          {
+            "length": 32,
+            "start": 5128
+          },
+          {
+            "length": 32,
+            "start": 6264
+          },
+          {
+            "length": 32,
+            "start": 6538
+          },
+          {
+            "length": 32,
+            "start": 10620
+          },
+          {
+            "length": 32,
+            "start": 12022
+          }
+        ]
+      },
+      "requiredImmutableGetters": {
+        "ROUTER": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "WRAPPED_NATIVE": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "FACTORY": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "SOURCE_ASSET": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "TARGET_ASSET": "0x0000000000000000000000000000000000000000",
+        "SOURCE_NATIVE": false,
+        "TARGET_NATIVE": true,
+        "TOKEN_IN": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "TOKEN_OUT": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "HOPS": 2,
+        "PATH_HASH": "0x8150199ea5b2a21db7886557ca8af379a0aec101638f6ad36b52a72b0a72f191",
+        "PROTOCOL": 0,
+        "PATH": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec0001f45fc5360d0400a0fd4f2af552add042d716f1d1680000640bd7d308f8e1639fab988df18a8011f41eacad73",
+        "FEE_BPS": 30,
+        "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
+      },
+      "executionEnabled": false,
+      "initcodeHash": null,
+      "unsignedCreateTransaction": null,
+      "newAdapter": {
+        "address": null,
+        "runtimeCodeHash": null,
+        "status": "awaitCoreDeployment"
+      }
+    }
+  ],
+  "pending": [
+    {
+      "code": "MAINNET_CORE_DEPLOYMENT_REQUIRED",
+      "detail": "Deploy and verify the final core pools before materializing constructor initcode; no pool addresses are invented."
+    }
+  ],
+  "deploymentExecutorImplemented": false,
+  "activationImplemented": false,
+  "rpcRequests": 0,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "keysAccessed": false,
+  "requiredBeforeActivation": [
+    "Explicit mainnet signing and gas budget approval; use one durable per-account nonce/fee ledger.",
+    "Verify canonical deployment receipts, actual runtime and every immutable getter before creating NEW fee routes.",
+    "Configure per-asset service policies and treasury accounting, then exercise final-proof A/B and real DEX acceptance.",
+    "This offline plan neither installs a service route nor claims the Safe is verified or callable."
+  ],
+  "limitations": [
+    "No live liquidity, issuer, Safe configuration or bytecode is checked by this offline plan.",
+    "Unsigned create initcode is prepared only when real core deployment profiles are supplied. Nonce, gas and predicted addresses remain unset.",
+    "Current free adapters and existing testnet services remain unchanged."
+  ]
+}

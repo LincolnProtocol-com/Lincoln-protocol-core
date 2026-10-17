@@ -1,5 +1,6 @@
 {
   "baseCommit": "abe000c7acd9c26931a17961e1b4bdda083df84e",
+  "candidateTag": "v0.1.0-rc.3",
   "files": [
     {
       "bytes": 9204,
@@ -119,7 +120,7 @@
       ],
       "kind": "solidity-source",
       "reviewPath": "contracts/PrivacyPool.sol",
-      "sha256": "cfaafe4e0fa20178d658bff1198ccda110f6d1420c92e155ea78eeaf6c6d2d92",
+      "sha256": "185e7edf3bacd42db6b4361032e8163328d391c837bb120a968db0f21e208ed0",
       "sourcePath": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol",
       "virtualCompilerSourcePath": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol"
     },
@@ -279,10 +280,10 @@
       "sourcePath": "protocol/phase2-mainnet/fuzz/test/Base.sol"
     },
     {
-      "bytes": 12521,
+      "bytes": 13883,
       "kind": "foundry-test",
       "reviewPath": "test/contracts/Caps.t.sol",
-      "sha256": "b21fa26496e76b5a11ba99f0107950d154b489eb81b1964c6cb6075511688960",
+      "sha256": "12cdfeb9b13af6189d5cd527475bebfcc052787a2ab1097aebddffa966cd3696",
       "sourcePath": "protocol/phase2-mainnet/fuzz/test/Caps.t.sol"
     },
     {
@@ -314,24 +315,31 @@
       "sourcePath": "protocol/phase2-mainnet/fuzz/test/Registry.t.sol"
     },
     {
-      "bytes": 73530,
+      "bytes": 73532,
       "kind": "real-proof-acceptance",
-      "reviewPath": "test/evidence/rc2/fees.json",
-      "sha256": "e747824d2fdc0e02a97a582c9c5f064095db3a15f10b99e5183c881da0eeef91",
+      "reviewPath": "test/evidence/rc3/fees.json",
+      "sha256": "d45fa475666a5a54ae53d91ee62b4f8bdc181aec579f7c168686fc5f8ea66345",
       "sourcePath": "artifacts/phase2-mainnet/final-fee-parameter-acceptance.json"
     },
     {
-      "bytes": 1507257,
+      "bytes": 1947222,
       "kind": "mock-verifier-foundry-acceptance",
-      "reviewPath": "test/evidence/rc2/foundry.json",
-      "sha256": "6f8fa45075944b83bdb16cf38c8fb2101e05d86883c87b99495b9b6895cab029",
-      "sourcePath": "audit/acceptance/standalone-20261016-r2/foundry.json"
+      "reviewPath": "test/evidence/rc3/foundry-deep.json",
+      "sha256": "e7d57c7054ea4991bb98b36f9f6924ff562c5f4828b06b09a716ca88212fa08f",
+      "sourcePath": "audit/acceptance/standalone-20261017-r3/foundry-deep.json"
     },
     {
-      "bytes": 33783,
+      "bytes": 1507301,
+      "kind": "mock-verifier-foundry-acceptance",
+      "reviewPath": "test/evidence/rc3/foundry.json",
+      "sha256": "355ed5f86429ac1eac6e37e122682de904a5f3367c08f864f9af5c4728eeecd2",
+      "sourcePath": "audit/acceptance/standalone-20261017-r3/foundry.json"
+    },
+    {
+      "bytes": 35668,
       "kind": "real-proof-acceptance",
-      "reviewPath": "test/evidence/rc2/native.json",
-      "sha256": "38b12b139f073e67971b3d5a75e2d0a4bd1d16ea8f85f31c5dd79a0e98c2fc3c",
+      "reviewPath": "test/evidence/rc3/native.json",
+      "sha256": "6ede7a406c55de078f117fd52056c37235014b6864aacf886cbd01c1b5e5a43c",
       "sourcePath": "artifacts/phase2-mainnet/final-parameter-acceptance.json"
     },
     {
@@ -508,25 +516,25 @@
   ],
   "generatedFiles": [
     {
-      "bytes": 5771,
+      "bytes": 5804,
       "kind": "friendly-review-abi-catalog",
       "reviewPath": "abi/manifest.json",
-      "sha256": "488fab4e592f37a60ab540c70aa1cc809d1f81bc9efff18e5fe52a489cf3520a",
+      "sha256": "1e7d2730d44a1ffb787385690c079b0095a3e9d2d369b086cc7af9545fb648bb",
       "sourcePath": "abi/manifest.json",
-      "sourceSHA256": "a7f26fbccbeab40adff0ee6259a51fb84012f21ef20f98ecbab24973fed7b724"
+      "sourceSHA256": "fac9de0ddc9690f9c8ada2de41172b872c0d9bb79ded54fab5ec4e453484eb49"
     }
   ],
   "invariants": [
-    "Mapped Solidity, Circom, ABI, parameter, ceremony and evidence bytes are unchanged from the pinned RC.2 release.",
+    "Mapped Solidity, Circom, ABI, parameter, ceremony and evidence bytes are unchanged from the pinned RC.3 release.",
     "Contract identifiers and virtual compiler source paths are retained; friendly filenames do not rename deployed types.",
     "The review tree is not a replacement compiler root; the immutable capsule preserves reproducible source/import paths.",
-    "No new bytecode, proving key, contribution ceremony, deployment, audit result or mainnet authorization is created."
+    "Generating review copies does not recompile bytecode, change proving keys, create an audit result or authorize mainnet transactions."
   ],
-  "releaseDirectory": "releases/rc2",
-  "releaseManifest": "artifacts/phase2-mainnet/release-candidate-20261016-r2.json",
-  "releaseSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
+  "releaseDirectory": "releases/rc3",
+  "releaseManifest": "artifacts/phase2-mainnet/release-candidate-20261017-r3.json",
+  "releaseSHA256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d",
   "reviewPathsRelativeTo": "repository root",
   "schema": "lincoln-core-review-layout/v1",
-  "sourceAuthority": "Immutable RC.2 capsule; review copies are generated and must not be edited independently.",
+  "sourceAuthority": "Pinned RC.3 capsule; review copies are generated and must not be edited independently.",
   "sourcePathsRelativeTo": "releaseDirectory"
 }

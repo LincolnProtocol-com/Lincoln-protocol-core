@@ -8,11 +8,15 @@ individual file notices or relicense dependencies.
 
 ## Lincoln source files
 
-The first-party Solidity contracts, Circom source files, and JavaScript files that
-carry `SPDX-License-Identifier: Apache-2.0` identify Apache License 2.0 as their
-license. See [Apache-2.0.txt](LICENSES/Apache-2.0.txt). This notice does not assign
-invented contributor names or copyright years, and it does not infer a license
-for an unmarked file.
+From this commit on, the first-party Solidity contracts, Circom source files and
+JavaScript files in this repository are licensed under the Business Source
+License 1.1 in the root [LICENSE](LICENSE) (Change Date 2030-10-17, Change
+License Apache-2.0). Files that still carry `SPDX-License-Identifier: Apache-2.0`
+were published with that identifier in the `v0.1.0-rc.3` capsule and keep it
+until their headers are updated in the next release cut, because the release
+manifest binds their exact bytes. See [Apache-2.0.txt](LICENSES/Apache-2.0.txt).
+This notice does not assign invented contributor names or copyright years, and
+it does not infer a license for an unmarked file.
 
 The generated verification contracts in
 `contracts/verifiers/JoinSplitVerifier.sol` and

@@ -1,0 +1,214 @@
+{
+  "chainId": 4663,
+  "blockNumber": "90832363",
+  "key": {
+    "currency0": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+    "currency1": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+    "fee": 2000,
+    "tickSpacing": 60,
+    "hooks": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC"
+  },
+  "poolId": "0xec0d72f0c70983525d99f777303e92f82b3cbb2e89aede6d44c9f22f8abc3f55",
+  "frozenRates": {
+    "taxBps": 100,
+    "spikeBps": 0,
+    "spikeSeconds": 0,
+    "protocolBps": 3000,
+    "creatorBps": 5000,
+    "sweepTipBps": 0,
+    "snipeBps": 0,
+    "snipeSeconds": 0
+  },
+  "strategy": [
+    "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+    "0x72aBbC490A18B5c0c61A9BeA4Ed091a74Eef991F",
+    "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+    "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+    "0xD7d7284FF95BAaD76167D331E803847DF0470577"
+  ],
+  "hook": {
+    "isRegistered": true,
+    "rates": {
+      "taxBps": 100,
+      "spikeBps": 0,
+      "spikeSeconds": 0,
+      "protocolBps": 3000,
+      "creatorBps": 5000,
+      "sweepTipBps": 0,
+      "snipeBps": 0,
+      "snipeSeconds": 0
+    },
+    "poolConfig": [
+      "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+      "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "0x72aBbC490A18B5c0c61A9BeA4Ed091a74Eef991F",
+      true
+    ],
+    "liquidityVaultOf": "0xA6dF493aC0FCF58aa1acFB60FA2aB96a01c17E30",
+    "creatorOf": "0xD7d7284FF95BAaD76167D331E803847DF0470577",
+    "protocolOf": "0x2910117dd2cB431173Ae9Fb6eAF30726321d1693",
+    "pendingCreator": "0x0000000000000000000000000000000000000000",
+    "pendingCreatorAt": "0",
+    "sellRateBps": "100",
+    "buyRateBps": "100"
+  },
+  "tokenMetadataControls": {
+    "deployer": "0xD7d7284FF95BAaD76167D331E803847DF0470577",
+    "launcher": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+    "editor": "0x0000000000000000000000000000000000000000",
+    "locked": false
+  },
+  "sourceArtifact": {
+    "compiler": {
+      "version": "0.8.26+commit.8a97fa7a"
+    },
+    "immutableReferences": {
+      "112957": [
+        {
+          "start": 811,
+          "length": 32
+        },
+        {
+          "start": 1352,
+          "length": 32
+        },
+        {
+          "start": 2257,
+          "length": 32
+        },
+        {
+          "start": 2519,
+          "length": 32
+        },
+        {
+          "start": 3590,
+          "length": 32
+        },
+        {
+          "start": 3798,
+          "length": 32
+        }
+      ],
+      "112960": [
+        {
+          "start": 398,
+          "length": 32
+        },
+        {
+          "start": 1235,
+          "length": 32
+        }
+      ]
+    },
+    "deployedBytecodeBytes": 7260,
+    "actualRuntimeBytes": 7260,
+    "actualRuntimeKeccak256": "0x47ac9e2d06060f8967967485194b8107706bcab075cc3398674b1130353e7e21"
+  },
+  "localSourceComparisonPending": false,
+  "localSourceComparison": {
+    "passed": true,
+    "matchesWholeRuntimeIncludingMetadata": true,
+    "onlyPatchesFoundryDeclaredImmutables": true,
+    "expectedKeccak256": "0x47ac9e2d06060f8967967485194b8107706bcab075cc3398674b1130353e7e21",
+    "actualKeccak256": "0x47ac9e2d06060f8967967485194b8107706bcab075cc3398674b1130353e7e21",
+    "artifactPath": "/Users/leo/Hedgefun-trade/contractV2/out/HedgeFunToken.sol/HedgeFunToken.json",
+    "artifactSHA256": "4fd537c779ac5cbc5440fb3b37ef31b7e045b6fb6ad772b920cd5f314a87b7f9",
+    "sourcePath": "src/HedgeFunToken.sol",
+    "localSourceSHA256": "ab343a61af31a283c71c32067f3712c5a91bd11f91b678fc52ebed15e7eebaad",
+    "matchesVerifiedTokenDeployerEmbeddedTokenSource": true,
+    "immutables": [
+      {
+        "astId": "112957",
+        "name": "deployer",
+        "value": "0xd7d7284ff95baad76167d331e803847df0470577",
+        "references": [
+          {
+            "start": 811,
+            "length": 32
+          },
+          {
+            "start": 1352,
+            "length": 32
+          },
+          {
+            "start": 2257,
+            "length": 32
+          },
+          {
+            "start": 2519,
+            "length": 32
+          },
+          {
+            "start": 3590,
+            "length": 32
+          },
+          {
+            "start": 3798,
+            "length": 32
+          }
+        ]
+      },
+      {
+        "astId": "112960",
+        "name": "launcher",
+        "value": "0xc78b6a83d75c5612a1a7323702b56038254a6459",
+        "references": [
+          {
+            "start": 398,
+            "length": 32
+          },
+          {
+            "start": 1235,
+            "length": 32
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "The token address is not directly verified on the explorer.",
+      "This is a local artifact/source and immutable-patched runtime comparison; no fresh compiler invocation or complete deployed-factory reproducibility build was performed."
+    ]
+  },
+  "initializeEvents": [
+    {
+      "blockNumber": "90821662",
+      "transactionHash": "0x26f9c373dece8f671319393ea2476bc2093f8322ab178bb55b2e23c86aa313e7",
+      "args": {
+        "id": "0xec0d72f0c70983525d99f777303e92f82b3cbb2e89aede6d44c9f22f8abc3f55",
+        "currency0": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+        "currency1": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+        "fee": 2000,
+        "tickSpacing": 60,
+        "hooks": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+        "sqrtPriceX96": "42650601405571385896432229",
+        "tick": -150549
+      }
+    }
+  ],
+  "publicSourceRuntimeMatches": {
+    "spcx-source": {
+      "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "onchainKeccak256": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+      "explorerDeployedBytecodeKeccak256": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+      "matches": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true
+    },
+    "addon-hook-source": {
+      "address": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+      "onchainKeccak256": "0x0905d4cc5af8b1872eaf6a0a11536f2111acff07fbef7270c7f498f77cb5d8fc",
+      "explorerDeployedBytecodeKeccak256": "0x0905d4cc5af8b1872eaf6a0a11536f2111acff07fbef7270c7f498f77cb5d8fc",
+      "matches": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true
+    },
+    "addon-factory-source": {
+      "address": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+      "onchainKeccak256": "0x6ed5348d51a5e51a5def01a8254bf0aaa2050749f4d2493692f18d1a5966404e",
+      "explorerDeployedBytecodeKeccak256": "0x6ed5348d51a5e51a5def01a8254bf0aaa2050749f4d2493692f18d1a5966404e",
+      "matches": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true
+    }
+  }
+}

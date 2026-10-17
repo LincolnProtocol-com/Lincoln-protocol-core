@@ -1,0 +1,450 @@
+{
+  "schema": "lincoln-candidate-interface/v1",
+  "status": "design-only-not-deployed",
+  "contract": "Phase2FeeV4SinglePoolAdapter",
+  "source": null,
+  "runtimeCodeHash": null,
+  "abi": [
+    {
+      "type": "constructor",
+      "stateMutability": "nonpayable",
+      "inputs": [
+        {
+          "name": "sourcePool",
+          "type": "address"
+        },
+        {
+          "name": "targetPool",
+          "type": "address"
+        },
+        {
+          "name": "poolManager",
+          "type": "address"
+        },
+        {
+          "name": "poolKey",
+          "type": "tuple",
+          "components": [
+            {
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "name": "hooks",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "name": "feeBps",
+          "type": "uint16"
+        },
+        {
+          "name": "treasury",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "SOURCE_POOL",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "TARGET_POOL",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "POOL_MANAGER",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "POOL_ID",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "HOOK",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "ZERO_FOR_ONE",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "FEE_BPS",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint16"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "TREASURY",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "poolKey",
+      "stateMutability": "view",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "key",
+          "type": "tuple",
+          "components": [
+            {
+              "name": "currency0",
+              "type": "address"
+            },
+            {
+              "name": "currency1",
+              "type": "address"
+            },
+            {
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "name": "tickSpacing",
+              "type": "int24"
+            },
+            {
+              "name": "hooks",
+              "type": "address"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "actionHash",
+      "stateMutability": "view",
+      "inputs": [
+        {
+          "name": "action",
+          "type": "tuple",
+          "components": [
+            {
+              "name": "processor",
+              "type": "address"
+            },
+            {
+              "name": "amountIn",
+              "type": "uint128"
+            },
+            {
+              "name": "minAmountOut",
+              "type": "uint128"
+            },
+            {
+              "name": "deadline",
+              "type": "uint256"
+            },
+            {
+              "name": "targetPrecommitment",
+              "type": "uint256"
+            },
+            {
+              "name": "encryptedTemplate",
+              "type": "bytes"
+            },
+            {
+              "name": "maxServiceFee",
+              "type": "uint128"
+            },
+            {
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            },
+            {
+              "name": "maxHookTaxBps",
+              "type": "uint16"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "actionEnvelope",
+      "stateMutability": "view",
+      "inputs": [
+        {
+          "name": "action",
+          "type": "tuple",
+          "components": [
+            {
+              "name": "processor",
+              "type": "address"
+            },
+            {
+              "name": "amountIn",
+              "type": "uint128"
+            },
+            {
+              "name": "minAmountOut",
+              "type": "uint128"
+            },
+            {
+              "name": "deadline",
+              "type": "uint256"
+            },
+            {
+              "name": "targetPrecommitment",
+              "type": "uint256"
+            },
+            {
+              "name": "encryptedTemplate",
+              "type": "bytes"
+            },
+            {
+              "name": "maxServiceFee",
+              "type": "uint128"
+            },
+            {
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            },
+            {
+              "name": "maxHookTaxBps",
+              "type": "uint16"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "minimumGrossOutput",
+      "stateMutability": "view",
+      "inputs": [
+        {
+          "name": "minNet",
+          "type": "uint128"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "swap",
+      "stateMutability": "nonpayable",
+      "inputs": [
+        {
+          "name": "action",
+          "type": "tuple",
+          "components": [
+            {
+              "name": "processor",
+              "type": "address"
+            },
+            {
+              "name": "amountIn",
+              "type": "uint128"
+            },
+            {
+              "name": "minAmountOut",
+              "type": "uint128"
+            },
+            {
+              "name": "deadline",
+              "type": "uint256"
+            },
+            {
+              "name": "targetPrecommitment",
+              "type": "uint256"
+            },
+            {
+              "name": "encryptedTemplate",
+              "type": "bytes"
+            },
+            {
+              "name": "maxServiceFee",
+              "type": "uint128"
+            },
+            {
+              "name": "sqrtPriceLimitX96",
+              "type": "uint160"
+            },
+            {
+              "name": "maxHookTaxBps",
+              "type": "uint16"
+            }
+          ]
+        },
+        {
+          "name": "proof",
+          "type": "tuple",
+          "components": [
+            {
+              "name": "pA",
+              "type": "uint256[2]"
+            },
+            {
+              "name": "pB",
+              "type": "uint256[2][2]"
+            },
+            {
+              "name": "pC",
+              "type": "uint256[2]"
+            },
+            {
+              "name": "pubSignals",
+              "type": "uint256[9]"
+            }
+          ]
+        },
+        {
+          "name": "data",
+          "type": "tuple",
+          "components": [
+            {
+              "name": "recipient",
+              "type": "address"
+            },
+            {
+              "name": "feeRecipient",
+              "type": "address"
+            },
+            {
+              "name": "processor",
+              "type": "address"
+            },
+            {
+              "name": "publicIn",
+              "type": "uint128"
+            },
+            {
+              "name": "publicOut",
+              "type": "uint128"
+            },
+            {
+              "name": "fee",
+              "type": "uint128"
+            }
+          ]
+        },
+        {
+          "name": "encryptedOutputs",
+          "type": "bytes[2]"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "amountOut",
+          "type": "uint256"
+        },
+        {
+          "name": "targetCommitment",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "unlockCallback",
+      "stateMutability": "nonpayable",
+      "inputs": [
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes"
+        }
+      ]
+    }
+  ]
+}

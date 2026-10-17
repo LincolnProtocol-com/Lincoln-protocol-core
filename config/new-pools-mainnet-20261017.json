@@ -1,0 +1,139 @@
+{
+  "schema": "lincoln-mainnet-four-pool-policy/v1",
+  "chainId": 4663,
+  "status": "proposal-not-approved",
+  "contractCandidate": "v0.1.0-rc.3",
+  "approval": null,
+  "source": "frontend handoff codex-new-pools.md, received 2026-10-17; requested values remain proposals until user approval",
+  "guardian": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+  "registry": "0x89ad7Cce6c161A21323BE234d9924fEe915b2660",
+  "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+  "capIncreaseDelaySeconds": 43200,
+  "feeBps": 30,
+  "assets": [
+    {
+      "id": "aapl",
+      "symbol": "AAPL",
+      "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "decimals": 18,
+      "kind": "robinhood-stock",
+      "maxDepositTokens": "7.2",
+      "maxTotalTokens": "100",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "proposed",
+        "maxDepositUnits": "7200000000000000000",
+        "maxTotalUnits": "100000000000000000000"
+      },
+      "valuation": "Fixed token quantities, not a live USD oracle. Prices and issuer multipliers never change caps automatically.",
+      "verificationStatus": "pending-source-and-transfer-review"
+    },
+    {
+      "id": "usde",
+      "symbol": "USDe",
+      "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+      "decimals": 18,
+      "kind": "oft-stablecoin",
+      "maxDepositTokens": "2500",
+      "maxTotalTokens": "50000",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "proposed",
+        "maxDepositUnits": "2500000000000000000000",
+        "maxTotalUnits": "50000000000000000000000"
+      },
+      "valuation": "Fixed token quantities, not a live USD oracle. Prices and issuer multipliers never change caps automatically.",
+      "verificationStatus": "pending-source-and-transfer-review"
+    },
+    {
+      "id": "pons",
+      "symbol": "PONS",
+      "address": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "decimals": 18,
+      "kind": "third-party-token",
+      "maxDepositTokens": "7900",
+      "maxTotalTokens": "110000",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "proposed",
+        "maxDepositUnits": "7900000000000000000000",
+        "maxTotalUnits": "110000000000000000000000"
+      },
+      "valuation": "Fixed token quantities, not a live USD oracle. Prices and issuer multipliers never change caps automatically.",
+      "verificationStatus": "pending-source-and-transfer-review"
+    },
+    {
+      "id": "cashcat",
+      "symbol": "CASHCAT",
+      "address": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "decimals": 18,
+      "kind": "third-party-token",
+      "maxDepositTokens": "22000",
+      "maxTotalTokens": "300000",
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "proposed",
+        "maxDepositUnits": "22000000000000000000000",
+        "maxTotalUnits": "300000000000000000000000"
+      },
+      "valuation": "Fixed token quantities, not a live USD oracle. Prices and issuer multipliers never change caps automatically.",
+      "verificationStatus": "pending-source-and-transfer-review"
+    }
+  ],
+  "markets": [
+    {
+      "id": "aapl-usdg",
+      "source": "aapl",
+      "target": "usdg",
+      "fee": 500,
+      "pool": "0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d",
+      "alternatives": []
+    },
+    {
+      "id": "pons-eth",
+      "source": "pons",
+      "target": "eth",
+      "fee": 3000,
+      "pool": "0xed50bdeea8adc232f159486192a4157281d722ff",
+      "alternatives": [
+        {
+          "fee": 10000,
+          "pool": "0x10cc6bd38112cac182db90b6a71d8bb5939526ba"
+        }
+      ]
+    },
+    {
+      "id": "cashcat-eth",
+      "source": "cashcat",
+      "target": "eth",
+      "fee": 3000,
+      "pool": "0xd42a491087a15e5afd51feb3606066cc152d2b09",
+      "alternatives": [
+        {
+          "fee": 10000,
+          "pool": "0xa70fc67c9f69da90b63a0e4c05d229954574e313"
+        }
+      ]
+    }
+  ],
+  "proposedTransactionPolicy": {
+    "status": "proposal-not-approved",
+    "poolGasLimit": "6000000",
+    "adapterGasLimit": "4000000",
+    "newTransactionPriceCapWei": "100000000",
+    "existingCumulativeBudgetWei": "65000000000000000",
+    "existingGlobalPriceCapWei": "2800000000",
+    "reserveWei": "3000000000000000",
+    "ledgerPolicy": "Preserve the physical lincoln-deployer cumulative signer journal; never reset, copy or infer remaining budget from this proposal."
+  },
+  "acceptance": {
+    "signingEnabled": false,
+    "transactionsBroadcast": 0,
+    "productionReady": false,
+    "usdeSwapEnabled": false
+  }
+}

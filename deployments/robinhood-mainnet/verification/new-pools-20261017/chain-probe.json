@@ -1,0 +1,471 @@
+{
+  "schema": "lincoln-mainnet-new-token-dex-probe/v1",
+  "checkedAtUTC": "2026-10-17T09:45:12.892Z",
+  "chainId": 4663,
+  "genesisHash": "0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c",
+  "blockNumber": "90830759",
+  "blockHash": "0xf06616485b345b8f6a10735c0c8dd8de830925d914514779bfed32216d8eb106",
+  "blockTimestamp": "1792230309",
+  "confirmationBlocks": 30,
+  "tokens": {
+    "aapl": {
+      "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "symbol": "AAPL",
+      "decimals": 18,
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+      "totalSupply": "11705495952020000000000",
+      "issuer": {
+        "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+        "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+        "registryCodeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e",
+        "implementationCodeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7",
+        "beaconStorage": "0x000000000000000000000000e10b6f6b275de231345c20d14ab812db62151b00",
+        "paused": false,
+        "tokenPaused": false,
+        "oraclePaused": false,
+        "registryPaused": false,
+        "uiMultiplier": "1000566080061092436",
+        "guardianBlocked": false,
+        "blacklistCapability": true,
+        "globalPauseCapability": true,
+        "upgradeCapability": true,
+        "adminBurnCapability": true,
+        "note": "Current unblocked status cannot prevent future issuer blocking, upgrade or admin burn. New pool/adapter addresses must be checked after CREATE."
+      }
+    },
+    "usde": {
+      "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+      "symbol": "USDe",
+      "decimals": 18,
+      "runtimeCodeHash": "0x43d4a9c80fe87d7d878b8c8bdcb419261a1cb037e6833918c67c9b74e8519ca4",
+      "totalSupply": "356789688677634000000000000",
+      "crossChain": {
+        "owner": "0x5B29AcbB51A1290ebda7f6A7a209Aa08cAA35901",
+        "pendingOwner": "0x0000000000000000000000000000000000000000",
+        "endpoint": "0x6F475642a6e85809B1c36Fa62763669b1b48DD5B",
+        "rateLimiter": "0x0000000000000000000000000000000000000000",
+        "msgInspector": "0x0000000000000000000000000000000000000000",
+        "preCrime": "0x0000000000000000000000000000000000000000"
+      }
+    },
+    "pons": {
+      "address": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "symbol": "PONS",
+      "decimals": 18,
+      "runtimeCodeHash": "0x16c3d3ede897688ddff79262606f13bead398332e65001f192460fbac4e1fb85",
+      "totalSupply": "1000000000000000000000000000",
+      "launch": {
+        "launchBlock": "25526166",
+        "restrictionEndBlock": "25526532",
+        "dexFactory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "liquidityPool": "0x10CC6BD38112cAc182db90B6a71d8Bb5939526bA",
+        "poolFee": 10000,
+        "pairToken": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "restrictionsEnded": true
+      }
+    },
+    "cashcat": {
+      "address": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "symbol": "CASHCAT",
+      "decimals": 18,
+      "runtimeCodeHash": "0x725781ccca82a0bf9b1f8920b2fe58ea1e4facf46d0db9f50226d6409de890fe",
+      "totalSupply": "1000000000000000000000000000",
+      "launch": {
+        "launchBlock": "25346701",
+        "restrictionEndBlock": "25347067",
+        "dexFactory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+        "liquidityPool": "0xA70fc67C9F69da90B63a0e4C05D229954574E313",
+        "poolFee": 10000,
+        "pairToken": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "restrictionsEnded": true
+      }
+    }
+  },
+  "markets": [
+    {
+      "id": "aapl-usdg-500",
+      "asset": "aapl",
+      "pair": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "pairSymbol": "USDG",
+      "pairDecimals": 6,
+      "fee": 500,
+      "address": "0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d",
+      "amountIn": [
+        "7200000000000000000",
+        "2500000000"
+      ],
+      "token0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "token1": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0xa488ede24eef95af56b0e7c171832ce207f070212584786d40acbfcecbe9b1d0",
+      "liquidity": "332298113265391681",
+      "slot0": [
+        "4279507176866314203192140857879204",
+        217951,
+        5428,
+        7200,
+        7200,
+        68,
+        true
+      ],
+      "balances": {
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168": "187839557340",
+        "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9": "187449843316364207114"
+      },
+      "quotes": [
+        {
+          "direction": "asset-to-pair",
+          "tokenIn": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+          "tokenOut": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "amountIn": "7200000000000000000",
+          "path": "0xaf3d76f1834a1d425780943c99ea8a608f8a93f90001f45fc5360d0400a0fd4f2af552add042d716f1d168",
+          "grossAmountOut": "2465544557",
+          "serviceFeeUnits": "7396633",
+          "netAmountOut": "2458147924",
+          "gasEstimate": "110154",
+          "sqrtPriceX96After": [
+            "4281222978208412984465137518122369"
+          ],
+          "initializedTicksCrossed": [
+            0
+          ],
+          "passed": true
+        },
+        {
+          "direction": "pair-to-asset",
+          "tokenIn": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "tokenOut": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+          "amountIn": "2500000000",
+          "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680001f4af3d76f1834a1d425780943c99ea8a608f8a93f9",
+          "grossAmountOut": "7287436703483161495",
+          "serviceFeeUnits": "21862310110449484",
+          "netAmountOut": "7265574393372712011",
+          "gasEstimate": "117676",
+          "sqrtPriceX96After": [
+            "4277769670102335501779991324738082"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "pons-eth-3000",
+      "asset": "pons",
+      "pair": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "pairSymbol": "ETH",
+      "pairDecimals": 18,
+      "fee": 3000,
+      "address": "0xed50bdeea8adc232f159486192a4157281d722ff",
+      "amountIn": [
+        "7900000000000000000000",
+        "10000000000000000"
+      ],
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0x195c7d777448794bd8ebe573f2d4a4007abf142d9fcb895ef38603f4de8c2672",
+      "liquidity": "73297908507813526664178",
+      "slot0": [
+        "6953728176134510585442517841814",
+        89498,
+        721,
+        2400,
+        2400,
+        102,
+        true
+      ],
+      "balances": {
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73": "159222675239549810977",
+        "0x39dBED3a2bd333467115dE45665cC57F813C4571": "4348978208980413374282173"
+      },
+      "quotes": [
+        {
+          "direction": "asset-to-pair",
+          "tokenIn": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+          "tokenOut": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "amountIn": "7900000000000000000000",
+          "path": "0x39dbed3a2bd333467115de45665cc57f813c4571000bb80bd7d308f8e1639fab988df18a8011f41eacad73",
+          "grossAmountOut": "1021208489750946983",
+          "serviceFeeUnits": "3063625469252840",
+          "netAmountOut": "1018144864281694143",
+          "gasEstimate": "125090",
+          "sqrtPriceX96After": [
+            "6962267224002668182633682312693"
+          ],
+          "initializedTicksCrossed": [
+            2
+          ],
+          "passed": true
+        },
+        {
+          "direction": "pair-to-asset",
+          "tokenIn": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "tokenOut": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+          "amountIn": "10000000000000000",
+          "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad73000bb839dbed3a2bd333467115de45665cc57f813c4571",
+          "grossAmountOut": "76800885256177796679",
+          "serviceFeeUnits": "230402655768533390",
+          "netAmountOut": "76570482600409263289",
+          "gasEstimate": "88012",
+          "sqrtPriceX96After": [
+            "6953645161582769764816708688989"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "pons-eth-10000",
+      "asset": "pons",
+      "pair": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "pairSymbol": "ETH",
+      "pairDecimals": 18,
+      "fee": 10000,
+      "address": "0x10cc6bd38112cac182db90b6a71d8bb5939526ba",
+      "amountIn": [
+        "7900000000000000000000",
+        "10000000000000000"
+      ],
+      "token0": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "token1": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0x6b805cc147fb0d1392158bffce6dbdc926d32a88063ef74b9142efce5320d774",
+      "liquidity": "94355615861246486369209",
+      "slot0": [
+        "6930622407300095595712482532647",
+        89431,
+        182,
+        20000,
+        20000,
+        102,
+        true
+      ],
+      "balances": {
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73": "508004906865450323927",
+        "0x39dBED3a2bd333467115dE45665cC57F813C4571": "4495210312254931258141275"
+      },
+      "quotes": [
+        {
+          "direction": "asset-to-pair",
+          "tokenIn": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+          "tokenOut": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "amountIn": "7900000000000000000000",
+          "path": "0x39dbed3a2bd333467115de45665cc57f813c45710027100bd7d308f8e1639fab988df18a8011f41eacad73",
+          "grossAmountOut": "1021093839548770341",
+          "serviceFeeUnits": "3063281518646311",
+          "netAmountOut": "1018030558030124030",
+          "gasEstimate": "95603",
+          "sqrtPriceX96After": [
+            "6937189514656326205286232959631"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        },
+        {
+          "direction": "pair-to-asset",
+          "tokenIn": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "tokenOut": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+          "amountIn": "10000000000000000",
+          "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad7300271039dbed3a2bd333467115de45665cc57f813c4571",
+          "grossAmountOut": "75755909711770441969",
+          "serviceFeeUnits": "227267729135311325",
+          "netAmountOut": "75528641982635130644",
+          "gasEstimate": "88030",
+          "sqrtPriceX96After": [
+            "6930558796867676965160470318305"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "cashcat-eth-3000",
+      "asset": "cashcat",
+      "pair": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "pairSymbol": "ETH",
+      "pairDecimals": 18,
+      "fee": 3000,
+      "address": "0xd42a491087a15e5afd51feb3606066cc152d2b09",
+      "amountIn": [
+        "22000000000000000000000",
+        "10000000000000000"
+      ],
+      "token0": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "token1": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0x4b535b6f1b07cd80f7c9a8259b0856d8d832896b7fd3b11e32b9f89dafe5a3cf",
+      "liquidity": "221160025197483189134480",
+      "slot0": [
+        "540545252914275157682480693",
+        -99756,
+        1800,
+        14400,
+        14400,
+        102,
+        true
+      ],
+      "balances": {
+        "0x020bfC650A365f8BB26819deAAbF3E21291018b4": "9859269769151765196576759",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73": "179542363264264280684"
+      },
+      "quotes": [
+        {
+          "direction": "asset-to-pair",
+          "tokenIn": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+          "tokenOut": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "amountIn": "22000000000000000000000",
+          "path": "0x020bfc650a365f8bb26819deaabf3e21291018b4000bb80bd7d308f8e1639fab988df18a8011f41eacad73",
+          "grossAmountOut": "1020302665812153029",
+          "serviceFeeUnits": "3060907997436459",
+          "netAmountOut": "1017241757814716570",
+          "gasEstimate": "95688",
+          "sqrtPriceX96After": [
+            "540179740632620641386731044"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        },
+        {
+          "direction": "pair-to-asset",
+          "tokenIn": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "tokenOut": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+          "amountIn": "10000000000000000",
+          "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad73000bb8020bfc650a365f8bb26819deaabf3e21291018b4",
+          "grossAmountOut": "214184155745386564243",
+          "serviceFeeUnits": "642552467236159692",
+          "netAmountOut": "213541603278150404551",
+          "gasEstimate": "86713",
+          "sqrtPriceX96After": [
+            "540548824557837604720025764"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "cashcat-eth-10000",
+      "asset": "cashcat",
+      "pair": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "pairSymbol": "ETH",
+      "pairDecimals": 18,
+      "fee": 10000,
+      "address": "0xa70fc67c9f69da90b63a0e4c05d229954574e313",
+      "amountIn": [
+        "22000000000000000000000",
+        "10000000000000000"
+      ],
+      "token0": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "token1": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0xf54b18fdd4021731542b67112c0f0e745ca7ed610df17dae69a13b06dddf92f8",
+      "liquidity": "96284857435915758164853",
+      "slot0": [
+        "542474608886102500000000000",
+        -99684,
+        19802,
+        20000,
+        20000,
+        102,
+        true
+      ],
+      "balances": {
+        "0x020bfC650A365f8BB26819deAAbF3E21291018b4": "11764345074807038409265681",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73": "389139091214779418274"
+      },
+      "quotes": [
+        {
+          "direction": "asset-to-pair",
+          "tokenIn": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+          "tokenOut": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "amountIn": "22000000000000000000000",
+          "path": "0x020bfc650a365f8bb26819deaabf3e21291018b40027100bd7d308f8e1639fab988df18a8011f41eacad73",
+          "grossAmountOut": "1019495743676699228",
+          "serviceFeeUnits": "3058487231030097",
+          "netAmountOut": "1016437256445669131",
+          "gasEstimate": "95692",
+          "sqrtPriceX96After": [
+            "541635715039098798700941659"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        },
+        {
+          "direction": "pair-to-asset",
+          "tokenIn": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "tokenOut": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+          "amountIn": "10000000000000000",
+          "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad73002710020bfc650a365f8bb26819deaabf3e21291018b4",
+          "grossAmountOut": "211168439065385408163",
+          "serviceFeeUnits": "633505317196156224",
+          "netAmountOut": "210534933748189251939",
+          "gasEstimate": "86683",
+          "sqrtPriceX96After": [
+            "542482755118332352571142240"
+          ],
+          "initializedTicksCrossed": [
+            1
+          ],
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "infrastructure": {
+    "factory": {
+      "address": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0xec72b1abd1f2faee020cfea9c646bd8994f9fb389054f6e574f103a895091739"
+    },
+    "router": {
+      "address": "0xCaf681a66D020601342297493863E78C959E5cb2",
+      "runtimeCodeHash": "0x6f36c378e272c6324c48f045182bcb54bd8ad654cf9ebd42e8893d52c4cb25dc"
+    },
+    "quoter": {
+      "address": "0x33e885eD0Ec9bF04EcfB19341582aADCb4c8A9E7",
+      "runtimeCodeHash": "0x3db0868d945e9304c9bc6a8b2181948109ea617647142f3c4083e14393496a28"
+    },
+    "wrappedNative": {
+      "address": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "runtimeCodeHash": "0x5706be52f64875fee65a2cec0d80e47a23d8793cbe85d214b48445e2d05f5353"
+    }
+  },
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "keysAccessed": false,
+  "deploymentApproved": false,
+  "readOnlyQuotesAreNotFundedAcceptance": true,
+  "usdgCapsReference": {
+    "pool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+    "maxDeposit": "2500000000",
+    "maxTotal": "50000000000",
+    "decimals": 6
+  },
+  "canonicalBlockRechecked": true,
+  "passed": true,
+  "remainingGates": [
+    "verified-source/runtime correspondence review",
+    "local-fork exact balance transfer/transferFrom tests",
+    "explicit issuer-risk and cap acceptance",
+    "scoped deployment gas approval",
+    "new pool and adapter deployment plus canonical receipts",
+    "ASP/indexer/Access append migration and live readiness",
+    "funded end-to-end acceptance"
+  ]
+}

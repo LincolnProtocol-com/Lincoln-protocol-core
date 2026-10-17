@@ -1,0 +1,123 @@
+{
+  "chainId": 4663,
+  "blockNumber": "90833751",
+  "roles": [
+    {
+      "role": "MINTER_ROLE",
+      "roleHash": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6",
+      "address": "0x2b94105fFf37630f98e1f24811daD588FC5C3A87",
+      "hasRole": true
+    },
+    {
+      "role": "BURNER_ROLE",
+      "roleHash": "0x3c11d16cbaffd01df69ce1c404f6340ee057498f5f00246190ea54220576a848",
+      "address": "0x6E40B50A40C1db42A85a0E8fe8FF7d9CbFc2D8C1",
+      "hasRole": true
+    },
+    {
+      "role": "PAUSER_ROLE",
+      "roleHash": "0x65d7a28e3265b37a6474929f336521b332c1681b933f6cb9f3376673440d862a",
+      "address": "0xe7BCB188254Bc6eBBfF63014DfED4cD4A024F22A",
+      "hasRole": true
+    },
+    {
+      "role": "TOKEN_DEPLOYER_ROLE",
+      "roleHash": "0x5f077d4e72bed5b3b14877559c782788e60c3fbb27bf29d3586097d8fa36bbeb",
+      "address": "0x5516B3451d4d6C9f63353Fe7Bc9537477ECCE000",
+      "hasRole": true
+    },
+    {
+      "role": "BEACON_UPGRADER_ROLE",
+      "roleHash": "0x5ab8bd28475e0dc8d5764e9ce50f85ffe2f14ec40c5b74e45f541485ad510c39",
+      "address": "0xCd8C6182e7C6Ca3B5156D6a90a67719d7e2Be094",
+      "hasRole": true
+    },
+    {
+      "role": "FACTORY_UPGRADER_ROLE",
+      "roleHash": "0xb4e5de7340a2fee2ff9be79f5ec0e8feae4b633bc8cc663711520e08f24984f8",
+      "address": "0x697e774d60c1a3769f2eD0b919AAcf17be0ae553",
+      "hasRole": true
+    },
+    {
+      "role": "MULTIPLIER_UPDATER_ROLE",
+      "roleHash": "0x7158cf42e4a4f01c5456c8d75cdbd375748d45e9db7e812f5bcd18844122b615",
+      "address": "0x92905e8d0e2301BA143215B8D86D63fFD4188143",
+      "hasRole": true
+    },
+    {
+      "role": "METADATA_UPDATER_ROLE",
+      "roleHash": "0x7f5260842512b02356ff92de24be96e7e1aac2e234d9371b076ac2b4cddda61e",
+      "address": "0xcba16C2b9048AF033c5b34E43dd1D47D1358524A",
+      "hasRole": true
+    },
+    {
+      "role": "BLOCKER_ROLE",
+      "roleHash": "0x8f2e0057cd5e35397007bcc8f5418f73dd64cc6e4073a0276563f247c3079037",
+      "address": "0x913cA87347391218e5De2C17c5A0AEba8B0b28fD",
+      "hasRole": true
+    },
+    {
+      "role": "ADMIN_BURNER_ROLE",
+      "roleHash": "0x25e7ebc863fa4efd16243c82323b71f247c0cf439aca64c51b84a74afb738936",
+      "address": "0x957B6de6525C63349f7619743Ef1E0ad93cd74D4",
+      "hasRole": true
+    },
+    {
+      "role": "TOKEN_PAUSER_ROLE",
+      "roleHash": "0xe95e22ec6dbf4c911d1fae59680a3e9cb71dd35b3a1c697d232e4b01a8ff30a2",
+      "address": "0xFCcF56B674113d9C4eb0F9B3370930ceD9E6Ab23",
+      "hasRole": true
+    },
+    {
+      "role": "ORACLE_PAUSER_ROLE",
+      "roleHash": "0x155fc2c2b00b801014447f9d3a1522625740f8e592e4c0b0bb7c5867c150aa11",
+      "address": "0x7369d100c00F28E45D779ac9d4b1c7afa61e4aBC",
+      "hasRole": true
+    },
+    {
+      "role": "DEFAULT_ADMIN_ROLE",
+      "roleHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "address": "0xD6f8378F8e440c65F8382F5f2728c78DfD55B66d",
+      "hasRole": true
+    }
+  ],
+  "usde": {
+    "owner": "0x5B29AcbB51A1290ebda7f6A7a209Aa08cAA35901",
+    "pendingOwner": "0x0000000000000000000000000000000000000000",
+    "endpoint": "0x6F475642a6e85809B1c36Fa62763669b1b48DD5B",
+    "rateLimiter": "0x0000000000000000000000000000000000000000"
+  },
+  "paused": {
+    "registry": false,
+    "aapl": false,
+    "spcx": false
+  },
+  "isBlocked": {
+    "relay": {
+      "address": "0x8d890058818EDbc222E6E01F501dC77FBFf6f4dC",
+      "blocked": false
+    },
+    "safe": {
+      "address": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "blocked": false
+    },
+    "v4PoolManager": {
+      "address": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "blocked": false
+    },
+    "v4Hook": {
+      "address": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+      "blocked": false
+    },
+    "hedgeFunTreasury": {
+      "address": "0x72aBbC490A18B5c0c61A9BeA4Ed091a74Eef991F",
+      "blocked": false
+    }
+  },
+  "hookOwner": "0x2910117dd2cB431173Ae9Fb6eAF30726321d1693",
+  "limitations": [
+    "hasRole results only validate replayed candidate addresses; no negative claim about unknown future grants.",
+    "Future new private pool and adapter addresses are not available yet and must be checked before activation.",
+    "Non-blocked now does not remove future issuer block/pause/adminBurn/upgrade powers."
+  ]
+}

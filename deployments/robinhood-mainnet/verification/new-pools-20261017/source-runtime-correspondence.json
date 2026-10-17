@@ -1,0 +1,66 @@
+{
+  "schema": "lincoln-source-runtime-correspondence/v1",
+  "chainId": 4663,
+  "blockNumber": "90830759",
+  "blockHash": "0xf06616485b345b8f6a10735c0c8dd8de830925d914514779bfed32216d8eb106",
+  "entries": {
+    "aapl": {
+      "apiDeployedBytecodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+      "chainRuntimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+      "exactMatch": true,
+      "explorerVerified": true,
+      "explorerFullyVerified": false,
+      "explorerPartiallyVerified": true,
+      "compilerVersion": "v0.8.33+commit.64118f21"
+    },
+    "usde": {
+      "apiDeployedBytecodeHash": "0x43d4a9c80fe87d7d878b8c8bdcb419261a1cb037e6833918c67c9b74e8519ca4",
+      "chainRuntimeCodeHash": "0x43d4a9c80fe87d7d878b8c8bdcb419261a1cb037e6833918c67c9b74e8519ca4",
+      "exactMatch": true,
+      "explorerVerified": true,
+      "explorerFullyVerified": false,
+      "explorerPartiallyVerified": true,
+      "compilerVersion": "v0.8.26+commit.8a97fa7a"
+    },
+    "pons": {
+      "apiDeployedBytecodeHash": "0x16c3d3ede897688ddff79262606f13bead398332e65001f192460fbac4e1fb85",
+      "chainRuntimeCodeHash": "0x16c3d3ede897688ddff79262606f13bead398332e65001f192460fbac4e1fb85",
+      "exactMatch": true,
+      "explorerVerified": true,
+      "explorerFullyVerified": false,
+      "explorerPartiallyVerified": true,
+      "compilerVersion": "v0.8.30+commit.73712a01"
+    },
+    "cashcat": {
+      "apiDeployedBytecodeHash": "0x725781ccca82a0bf9b1f8920b2fe58ea1e4facf46d0db9f50226d6409de890fe",
+      "chainRuntimeCodeHash": "0x725781ccca82a0bf9b1f8920b2fe58ea1e4facf46d0db9f50226d6409de890fe",
+      "exactMatch": true,
+      "explorerVerified": true,
+      "explorerFullyVerified": false,
+      "explorerPartiallyVerified": true,
+      "compilerVersion": "v0.8.30+commit.73712a01"
+    },
+    "aapl-implementation": {
+      "apiDeployedBytecodeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7",
+      "chainRuntimeCodeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7",
+      "exactMatch": true,
+      "explorerVerified": true,
+      "explorerFullyVerified": true,
+      "explorerPartiallyVerified": false,
+      "compilerVersion": "v0.8.33+commit.64118f21"
+    },
+    "aapl-beacon": {
+      "apiDeployedBytecodeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e",
+      "chainRuntimeCodeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e",
+      "exactMatch": true,
+      "explorerVerified": true,
+      "explorerFullyVerified": true,
+      "explorerPartiallyVerified": false,
+      "compilerVersion": "v0.8.33+commit.64118f21"
+    }
+  },
+  "freshCompilationPerformed": false,
+  "limitation": "Exact RPC/API deployed-runtime match does not upgrade an explorer partial source verification to a full fresh compiler metadata match.",
+  "transactionsBroadcast": 0,
+  "keysAccessed": false
+}

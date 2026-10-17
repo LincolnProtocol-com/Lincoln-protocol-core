@@ -1,0 +1,21 @@
+{
+  "schema": "lincoln-new-pool-public-deployment-context/v1",
+  "chainId": 4663,
+  "blockNumber": "90836485",
+  "blockHash": "0xdb9ae65ce66c384fbb61de2c779b615fddd126bd7ccaad2723937b3c24a6b6e1",
+  "checkedAtUTC": "2026-10-17T09:55:03.767Z",
+  "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+  "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+  "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+  "routerBindingsMatched": true,
+  "deployer": "0x555998Ba2B2723C97d91FB20Da0ddb896749797e",
+  "deployerBalanceWei": "43521831516348000",
+  "gasQuoteWei": "20034000",
+  "baseFeePerGasWei": "20026000",
+  "newMaximumProposedGasWei": "4800000000000000",
+  "reserveWei": "3000000000000000",
+  "balanceMeetsWholeScopeWorstCase": true,
+  "ledgerRemainingBudgetNotRead": true,
+  "transactionsBroadcast": 0,
+  "keysAccessed": false
+}

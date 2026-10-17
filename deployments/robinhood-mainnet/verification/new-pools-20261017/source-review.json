@@ -1,0 +1,2521 @@
+{
+  "schema": "lincoln-new-assets-source-review/v1",
+  "chainId": 4663,
+  "reviewedAtUTC": "2026-10-17T09:49:58.238710+00:00",
+  "readOnly": true,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "frontendUnchanged": true,
+  "contractCodeUnchanged": true,
+  "productionDeploymentAuthorizedByThisReport": false,
+  "independentAudit": false,
+  "sourceEvidence": {
+    "aapl": {
+      "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xaf3d76f1834a1d425780943c99ea8a608f8a93f9?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0xaf3d76f1834a1d425780943c99ea8a608f8a93f9",
+      "snapshotFile": "aapl.json",
+      "snapshotSHA256": "81641e753f953bc16d4d5dc869b2f38cf9075f20f969ed85b71b2ff71f2164da",
+      "contractName": "BeaconProxy",
+      "compilerVersion": "v0.8.33+commit.64118f21",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": true,
+        "verified_at": "2026-07-01T19:09:20.614948Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/beacon/BeaconProxy.sol",
+          "sha256": "220626a31d80fb0d7a625f0c9ac741d40cd9f3c98ef74eb5b3dd43d224701282",
+          "bytes": 2311
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC1967.sol",
+          "sha256": "c4e901318ab6d4963582c62c62ce988a34c68dbae71846b67decacde79e9a317",
+          "bytes": 637
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol",
+          "sha256": "58c5b19893bf3d7f9e1aa0edc5b908b915eb7af4381800deb425a6e5331f4432",
+          "bytes": 6238
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/Proxy.sol",
+          "sha256": "fa8aae37b2939371fcbce48b814c0d5c7e57e3e267f348459f29941937746c98",
+          "bytes": 2697
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol",
+          "sha256": "c1c9726bbb0ec4c540c7c98059dcded69a8586b46c168036672381033ee76239",
+          "bytes": 473
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Address.sol",
+          "sha256": "73e54e15285455f0e01e136c3663732641537614723ae5dbd820eb3cb036b1fd",
+          "bytes": 6803
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Errors.sol",
+          "sha256": "0704b9d6c032cca8512a3bc3f30f49f86f1f03102d2896a3d23e794b82efea66",
+          "bytes": 896
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/LowLevelCall.sol",
+          "sha256": "9f8d9cc86dfa127c950545d7b569bd8fdec32dcce4c409ea04a3e3c5d8c9121d",
+          "bytes": 5505
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+          "sha256": "75704538dcb223239280c6726d9a31cf769a7816718517c997fc7d63bdb70778",
+          "bytes": 4182
+        }
+      ],
+      "runtimeFromExplorer": {
+        "lengthBytes": 283,
+        "keccak256": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+      },
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "usde": {
+      "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
+      "snapshotFile": "usde.json",
+      "snapshotSHA256": "68d21fa3de9e1a17a1112f6256198fe1e6fe9c5bdd2593be80aa4660beeb7a1f",
+      "contractName": "USDeOFT",
+      "compilerVersion": "v0.8.26+commit.8a97fa7a",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": false,
+        "verified_at": "2026-06-02T12:42:34.901945Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "contracts/usde/USDeOFT.sol",
+          "sha256": "cc8498e52fd99b600c3ae2b724584e5cdd43b2cf7957d05faaee963ccf21bc58",
+          "bytes": 2740
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/precrime/interfaces/IPreCrime.sol",
+          "sha256": "25a8f3b9257ed4f65fca276f7631cca3ead87c2f17c837e6eee90c8835433380",
+          "bytes": 1105
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/OApp.sol",
+          "sha256": "92b191c937374b6e76686245b7b98eb3bc0bfacff4d54b279b7ecf1321878e04",
+          "bytes": 1525
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/interfaces/IOAppMsgInspector.sol",
+          "sha256": "5bb1fd1038c648bff4e9c7b88f322c5cde41d355f03090ad1ec46f6712f09c4e",
+          "bytes": 909
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/OAppCore.sol",
+          "sha256": "286e84bfe8602cb427c2bbcfc0d6b860687d6b7a63dfc5322ea1031153cf1470",
+          "bytes": 2805
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
+          "sha256": "df936240c9a5d342582cbda70dd773b1c1d0e0dda3042b1c17b902ef0c36827b",
+          "bytes": 6538
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/PacketV1Codec.sol",
+          "sha256": "ed105f6e0e1ac7ef92b582e30d0d55d260cdcd6ca63057cd866f4c019c069b44",
+          "bytes": 3666
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oft/interfaces/IOFT.sol",
+          "sha256": "5c7365dbcb5f70acb3e81219d10c118368f786209a6fee589a97a87aea52c434",
+          "bytes": 6161
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/libs/AddressCast.sol",
+          "sha256": "e48211bfba874d0ce5c3b1fc4e4aac67450ac9539a75e814807745181d04e7dd",
+          "bytes": 1466
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+          "sha256": "9f906af4cba6e7e091dc12d45e6687e1239cf82d17678198424250fd64ab96bd",
+          "bytes": 10798
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+          "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+          "bytes": 2781
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/interfaces/IERC1363.sol",
+          "sha256": "9c3a75a925a6dac9e88b03cddc58d42fe3131b0aaaad84408521f3f7af2f991b",
+          "bytes": 4454
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFTCore.sol",
+          "sha256": "405df711fb167dfcd6ba5b55cbe7f9ca0c74facab658fcb1054564028147bad8",
+          "bytes": 18910
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/precrime/interfaces/IOAppPreCrimeSimulator.sol",
+          "sha256": "2db19c9641e81e5366c268c40506db56ee5434b5c874cffe02fb1e18034a9285",
+          "bytes": 1920
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oft/libs/OFTMsgCodec.sol",
+          "sha256": "3e6dfff6595f8af1c1618a80e30efd16f117652e1fd73ffb1f6795dcc443d658",
+          "bytes": 2906
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/precrime/libs/Packet.sol",
+          "sha256": "b95b1e7f7470306f41da606d0984b9384d2134fc19ee814d7d9f98c613836745",
+          "bytes": 2470
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol",
+          "sha256": "6dd499109a8dca4da0061314d853980b10b3790627675d0c9aa84b04fd7a696c",
+          "bytes": 3230
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/interfaces/IOAppReceiver.sol",
+          "sha256": "592d476607c4e4b4aa509eb7ac1854291e8498d59c2b2df730af6be140b88f12",
+          "bytes": 688
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/OAppSender.sol",
+          "sha256": "276f5d551ae7e478fb0c56002acf5476e628748c1f5ba0d63ea051e93813a137",
+          "bytes": 5631
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+          "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+          "bytes": 684
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLib.sol",
+          "sha256": "7a5733cf68663e1a924c5237adfdad5522a063e2214a81a7ca932242dc45481b",
+          "bytes": 805
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingComposer.sol",
+          "sha256": "5e7e5a47a477dcf05c034d5135bf6516119af881ea78d586805eee0ad5ab6b12",
+          "bytes": 1026
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol",
+          "sha256": "a88fb702b371527c3791d7e5c168c1157d39021ed29b51e627e02973e6a740e0",
+          "bytes": 2593
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol",
+          "sha256": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+          "bytes": 871
+        },
+        {
+          "path": "contracts/libs/OFTOwnable2Step.sol",
+          "sha256": "0681038dc80ac6d089beda607157127bb267655ad015e4fdd1d985c8c0280b89",
+          "bytes": 2645
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingContext.sol",
+          "sha256": "b7f081828b8d0d206833953ebd73101bb28ac62541e7e8365fddc38eb440a92a",
+          "bytes": 239
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingChannel.sol",
+          "sha256": "9d0100f7cede83d5a4f6c9e03d6bfd24f861e9331b298ca4c73f99b161c718d5",
+          "bytes": 1541
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/interfaces/IERC20.sol",
+          "sha256": "0158e2d3e0e28bedd99eec13dcf1a8aa3a70a5b7e4bb2ad709609c95fcc740d1",
+          "bytes": 182
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/libs/OAppOptionsType3.sol",
+          "sha256": "9f7ef8546cbbbcac658fd59182d99a259db572b99ec38d3bfb46cca402c2b2ec",
+          "bytes": 4015
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/precrime/OAppPreCrimeSimulator.sol",
+          "sha256": "b0fcd1e2da22197e21ff13a350ac9d0a7f7e5e8bb1528c5d9860a3b820f555f9",
+          "bytes": 5355
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/access/Ownable.sol",
+          "sha256": "38578bd71c0a909840e67202db527cc6b4e6b437e0f39f0c909da32c1e30cb81",
+          "bytes": 3102
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/interfaces/IERC165.sol",
+          "sha256": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+          "bytes": 193
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ISendLib.sol",
+          "sha256": "816acb88e015f130be9811b4e8efda8d829830ead2f009eb5a9444137af301b5",
+          "bytes": 923
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+          "sha256": "ac1fd9fa99b194a8db8dfa9ae8e3ff44feaa8f16668241fd2b66ae8b47d7c082",
+          "bytes": 10075
+        },
+        {
+          "path": "contracts/libs/RateLimiter.sol",
+          "sha256": "9b7a447f323d0c977e5c9aff0c41f0ec51d0d87950bf439962cb84963432bd53",
+          "bytes": 2870
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLibManager.sol",
+          "sha256": "ffc33e319ab5e9d1392d16f8716625bcfb1dc34b744551f87dad1c0eb3ad11f1",
+          "bytes": 2755
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oft/libs/OFTComposeMsgCodec.sol",
+          "sha256": "e73b5e5c53927a21e51dc7adaafd8d6fedf46e46b8ac084ca86f58c8e9697556",
+          "bytes": 2993
+        },
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/Context.sol",
+          "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+          "bytes": 963
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroReceiver.sol",
+          "sha256": "24e4add7dd95a72dad23e26c4fadfc1b6ce63148e0c7f4d6ad5dfaeda79db3e7",
+          "bytes": 519
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/interfaces/IOAppOptionsType3.sol",
+          "sha256": "c14d4f013045452583eae3baf14743e0628e24c146c3beea5a10b992b1171756",
+          "bytes": 1442
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/OAppReceiver.sol",
+          "sha256": "4f4e6f1dff00c4180f5ef79f94545def2e4cdb8f3fd68a549340ab8f325551b4",
+          "bytes": 5016
+        },
+        {
+          "path": "node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/interfaces/IOAppCore.sol",
+          "sha256": "041dd35f0a4a22425614414c05cd5aae6ce7e4b5b86b0350045e57c0ed3cbf1b",
+          "bytes": 1864
+        }
+      ],
+      "runtimeFromExplorer": {
+        "lengthBytes": 11267,
+        "keccak256": "0x43d4a9c80fe87d7d878b8c8bdcb419261a1cb037e6833918c67c9b74e8519ca4"
+      },
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "pons": {
+      "address": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0x39dbed3a2bd333467115de45665cc57f813c4571?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0x39dbed3a2bd333467115de45665cc57f813c4571",
+      "snapshotFile": "pons.json",
+      "snapshotSHA256": "a2964be111c92af0f4228c375fab52263e2f7fffeb0116b0ef5be2c79c627e35",
+      "contractName": "PonsLauncherToken",
+      "compilerVersion": "v0.8.30+commit.73712a01",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": false,
+        "verified_at": "2026-07-13T23:55:17.954502Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "contracts/src/PonsLauncherToken.sol",
+          "sha256": "a84c8a8903c87ef8607c3c78a53984be013ada84c0b8cd95b706138592be388a",
+          "bytes": 7522
+        },
+        {
+          "path": "contracts/lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol",
+          "sha256": "fa7068f56bc180571a6095be6eaef06d51dbe81e30cb128397d993c9599ecc30",
+          "bytes": 6540
+        },
+        {
+          "path": "contracts/lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
+          "sha256": "50f34ae16a067a41c2c1091445d11d63788e54c717677cb6d6b0e4cdea2ad21d",
+          "bytes": 10800
+        },
+        {
+          "path": "contracts/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+          "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+          "bytes": 2781
+        },
+        {
+          "path": "contracts/lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+          "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+          "bytes": 684
+        },
+        {
+          "path": "contracts/lib/openzeppelin-contracts/contracts/utils/Context.sol",
+          "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+          "bytes": 963
+        },
+        {
+          "path": "contracts/src/interfaces/ILaunchpad.sol",
+          "sha256": "8caa4061152c462a49afd495af3a9feb590d53b5551583049678e75df785cc5f",
+          "bytes": 4191
+        }
+      ],
+      "runtimeFromExplorer": {
+        "lengthBytes": 5274,
+        "keccak256": "0x16c3d3ede897688ddff79262606f13bead398332e65001f192460fbac4e1fb85"
+      },
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "cashcat": {
+      "address": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0x020bfc650a365f8bb26819deaabf3e21291018b4?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0x020bfc650a365f8bb26819deaabf3e21291018b4",
+      "snapshotFile": "cashcat.json",
+      "snapshotSHA256": "bf65f1d149a621ce868be46c6cabef8de511b2b28a5a0151c4a2e2e80965721c",
+      "contractName": "LaunchToken",
+      "compilerVersion": "v0.8.30+commit.73712a01",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": true,
+        "verified_at": "2026-07-14T20:01:16.559164Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "contracts/LaunchToken.sol",
+          "sha256": "f511b8ee4817caca8bc1c462b76344da060dd888ea48c7acc5e2992e10d3ab29",
+          "bytes": 5176
+        },
+        {
+          "path": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
+          "sha256": "fa7068f56bc180571a6095be6eaef06d51dbe81e30cb128397d993c9599ecc30",
+          "bytes": 6540
+        },
+        {
+          "path": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+          "sha256": "50f34ae16a067a41c2c1091445d11d63788e54c717677cb6d6b0e4cdea2ad21d",
+          "bytes": 10800
+        },
+        {
+          "path": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+          "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+          "bytes": 2781
+        },
+        {
+          "path": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+          "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+          "bytes": 684
+        },
+        {
+          "path": "@openzeppelin/contracts/utils/Context.sol",
+          "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+          "bytes": 963
+        }
+      ],
+      "runtimeFromExplorer": {
+        "lengthBytes": 4830,
+        "keccak256": "0x725781ccca82a0bf9b1f8920b2fe58ea1e4facf46d0db9f50226d6409de890fe"
+      },
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "aapl-implementation": {
+      "address": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xb35490d6f9163de4f80d88dc75c3516eb64c5ae2?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0xb35490d6f9163de4f80d88dc75c3516eb64c5ae2",
+      "snapshotFile": "aapl-implementation.json",
+      "snapshotSHA256": "2c6f4c67225cfd4dd658cd048f87842c8c4d353a76fd2af8f845c0c52bb2ecff",
+      "contractName": "Stock",
+      "compilerVersion": "v0.8.33+commit.64118f21",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": true,
+        "is_partially_verified": false,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": false,
+        "verified_at": "2026-06-15T23:47:14.941068Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "src/Stock.sol",
+          "sha256": "1adf698baba460f6babff2e0cd8d97ca4b8e6835b49e4d77deabdc46dfb81977",
+          "bytes": 5647
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol",
+          "sha256": "cd5e6a1a5c4409a2d02a1e69fd07d8f2ef07bc52351a2529f7080469a29cb1b5",
+          "bytes": 12165
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+          "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+          "bytes": 684
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/contracts/utils/cryptography/EIP712Upgradeable.sol",
+          "sha256": "662f348e44fd6dbec88936730e0685edb8f275606c6cadcf81975a6fe58840e9",
+          "bytes": 8580
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol",
+          "sha256": "41dcf1b633941aed8e0b5373bb5bdfa1c70dfa9aaa2f518acc69b4d18d1d82cd",
+          "bytes": 4251
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+          "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+          "bytes": 2781
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol",
+          "sha256": "96832b6e848020275ca4f4ef1ba32b7d2b541dc0daf26bca19ea8d0b1b3df68e",
+          "bytes": 12148
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+          "sha256": "d25099a6bea70f866039a5ec37c342789182b5184f4dce1b58e28bc6bd72d0f6",
+          "bytes": 3162
+        },
+        {
+          "path": "src/interfaces/IStock.sol",
+          "sha256": "791765a92924a939b5e6a5670b2bb1bed2aa437488aed5feb55c5720b7c3748a",
+          "bytes": 507
+        },
+        {
+          "path": "src/interfaces/IScaledUIAmountBalances.sol",
+          "sha256": "2eb71d8e091551cacc72ed5871d9847661e78d53dbe0122ea3d02aa2f0dc81f2",
+          "bytes": 330
+        },
+        {
+          "path": "src/Roles.sol",
+          "sha256": "022ba93f93da11b98896451137a24bb352b546806b2a839ef7ba7e6369ff9420",
+          "bytes": 930
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol",
+          "sha256": "fa7068f56bc180571a6095be6eaef06d51dbe81e30cb128397d993c9599ecc30",
+          "bytes": 6540
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol",
+          "sha256": "f527a063813c2bf60c153fb08e38539578935402894fcc36fac42324ca325d3b",
+          "bytes": 9279
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+          "sha256": "8219debc76137c8103ea66340ae04185e34d6f33d1d735d2e9a88288cc435f10",
+          "bytes": 32363
+        },
+        {
+          "path": "src/interfaces/IScaledUIAmountNewUIMultiplier.sol",
+          "sha256": "e7da30e7c072d6a81c184594a48a2ffc0004094941361b3a74a17f613ac75586",
+          "bytes": 450
+        },
+        {
+          "path": "src/interfaces/IAccessControlsRegistry.sol",
+          "sha256": "fd6958f0a89adf1843b6aa9836ae85a38dc176dfa90bfc47f501df0265ccc357",
+          "bytes": 629
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol",
+          "sha256": "caf06b4c93bbc1d54eb772e76e949bd4a2520c535cc591d07e57cbafaf90b2fd",
+          "bytes": 1215
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
+          "sha256": "c302edfbf7f396e1130be81278c5c994543868f0f5bf0c0fb3f557e166d8d3f2",
+          "bytes": 3808
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Strings.sol",
+          "sha256": "3de05dcb48f4e622fbe6af2ec9a157c11e536bd87e9ef0134c3ca83031620a52",
+          "bytes": 19883
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol",
+          "sha256": "1ed50b1056af886752f0fb48a0165d381e69bb4a4b18b893b066dc144a7e08d7",
+          "bytes": 2613
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/access/IAccessControl.sol",
+          "sha256": "140304b7e99d517c57a13f391dfd3b550ca633a507f7b2af130f391b6cd89cc5",
+          "bytes": 3343
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Panic.sol",
+          "sha256": "270fc8401c1a13fae6a7a4a2dd6e381b95d658896701e51f0d3e2688acab3dec",
+          "bytes": 1973
+        },
+        {
+          "path": "src/OraclePausable.sol",
+          "sha256": "f9407bc215d0bef9936197c2358b38348f8ba569ff5a5e4bc94ec02b2d6e06a9",
+          "bytes": 1149
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
+          "sha256": "9769274bf53f26a7c7896c526ea1980dc9bea5bf5c2a5fd04870008c4afc1de9",
+          "bytes": 34943
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+          "sha256": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+          "bytes": 871
+        },
+        {
+          "path": "src/interfaces/IScaledUIAmount.sol",
+          "sha256": "0561618d3150d6fc64bf3136cd900cc995807657ec307ffea7a66d48df1972c1",
+          "bytes": 516
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Bytes.sol",
+          "sha256": "4902950980da33a4d0c52dbbe22d5c65fd665717163dab7f5325f73810d71f20",
+          "bytes": 11344
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/contracts/utils/introspection/ERC165Upgradeable.sol",
+          "sha256": "73882072b1bd2744526f0ea1456ae0a53ae867d971ddf744d46b4a7c3c8eee57",
+          "bytes": 1169
+        },
+        {
+          "path": "src/ERC20ScaledUIUpgradeable.sol",
+          "sha256": "55bda5fe57498d44d65c97ada61b71fdae9cf6fd7d2745b8b52ecc5fd0695b42",
+          "bytes": 4057
+        },
+        {
+          "path": "src/interfaces/IOraclePausable.sol",
+          "sha256": "b4c7060277780206c11aa59eb5d3775fb12f35d66d3f484a39f457cf6f57f6f7",
+          "bytes": 201
+        },
+        {
+          "path": "src/AccessControlled.sol",
+          "sha256": "d611bedf485d83513317c3557d9281dfffb2eb010c5fc970769aee6aa65a954b",
+          "bytes": 1315
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/contracts/utils/NoncesUpgradeable.sol",
+          "sha256": "dac41db4d8a71e8bc3c96b8db7e16155f5dfc15445b3608fa922fd86a26e60d8",
+          "bytes": 2346
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol",
+          "sha256": "f89772d2d4fafcbef8b73bb10ee9a3373edec2eedb2f1b302320915b351dc3d1",
+          "bytes": 740
+        }
+      ],
+      "runtimeFromExplorer": {
+        "lengthBytes": 11614,
+        "keccak256": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7"
+      },
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "aapl-beacon": {
+      "address": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xe10b6f6b275de231345c20d14ab812db62151b00?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0xe10b6f6b275de231345c20d14ab812db62151b00",
+      "snapshotFile": "aapl-beacon.json",
+      "snapshotSHA256": "a6441f4d4f4a0840e14a4d8c98a33872ae57898c558ba3f654d7e435631f4e8a",
+      "contractName": "AccessControlsRegistry",
+      "compilerVersion": "v0.8.33+commit.64118f21",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": true,
+        "is_partially_verified": false,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": false,
+        "verified_at": "2026-06-15T23:41:00.253122Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "src/AccessControlsRegistry.sol",
+          "sha256": "e19b5f330da259ec931f1d5aac0215e6045b533f79fb4f18a9f588850a21f211",
+          "bytes": 1767
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/access/AccessControl.sol",
+          "sha256": "93c8ebfe7b36ef4d180f1660a5a741125691957726209720af476fdd5c7bac43",
+          "bytes": 7028
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/access/IAccessControl.sol",
+          "sha256": "140304b7e99d517c57a13f391dfd3b550ca633a507f7b2af130f391b6cd89cc5",
+          "bytes": 3343
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol",
+          "sha256": "c1c9726bbb0ec4c540c7c98059dcded69a8586b46c168036672381033ee76239",
+          "bytes": 473
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Context.sol",
+          "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+          "bytes": 963
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol",
+          "sha256": "61a2b12c96857aaa35f48aeda67a4281637a42494c0b3795be0ae976aa7b3793",
+          "bytes": 879
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+          "sha256": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+          "bytes": 871
+        },
+        {
+          "path": "src/Roles.sol",
+          "sha256": "022ba93f93da11b98896451137a24bb352b546806b2a839ef7ba7e6369ff9420",
+          "bytes": 930
+        },
+        {
+          "path": "src/interfaces/IAccessControlsRegistry.sol",
+          "sha256": "fd6958f0a89adf1843b6aa9836ae85a38dc176dfa90bfc47f501df0265ccc357",
+          "bytes": 629
+        }
+      ],
+      "runtimeFromExplorer": {
+        "lengthBytes": 2332,
+        "keccak256": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e"
+      },
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "spcx-source": {
+      "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea",
+      "snapshotFile": "spcx-source.json",
+      "snapshotSHA256": "fdc70f2ead8e2b030d7c62100af22c8d61c0d1cf239ccb01fdd12e9217173377",
+      "contractName": "BeaconProxy",
+      "compilerVersion": "v0.8.33+commit.64118f21",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": true,
+        "verified_at": "2026-07-01T18:14:13.610297Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/beacon/BeaconProxy.sol",
+          "sha256": "220626a31d80fb0d7a625f0c9ac741d40cd9f3c98ef74eb5b3dd43d224701282",
+          "bytes": 2311
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC1967.sol",
+          "sha256": "c4e901318ab6d4963582c62c62ce988a34c68dbae71846b67decacde79e9a317",
+          "bytes": 637
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol",
+          "sha256": "58c5b19893bf3d7f9e1aa0edc5b908b915eb7af4381800deb425a6e5331f4432",
+          "bytes": 6238
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/Proxy.sol",
+          "sha256": "fa8aae37b2939371fcbce48b814c0d5c7e57e3e267f348459f29941937746c98",
+          "bytes": 2697
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol",
+          "sha256": "c1c9726bbb0ec4c540c7c98059dcded69a8586b46c168036672381033ee76239",
+          "bytes": 473
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Address.sol",
+          "sha256": "73e54e15285455f0e01e136c3663732641537614723ae5dbd820eb3cb036b1fd",
+          "bytes": 6803
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Errors.sol",
+          "sha256": "0704b9d6c032cca8512a3bc3f30f49f86f1f03102d2896a3d23e794b82efea66",
+          "bytes": 896
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/LowLevelCall.sol",
+          "sha256": "9f8d9cc86dfa127c950545d7b569bd8fdec32dcce4c409ea04a3e3c5d8c9121d",
+          "bytes": 5505
+        },
+        {
+          "path": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+          "sha256": "75704538dcb223239280c6726d9a31cf769a7816718517c997fc7d63bdb70778",
+          "bytes": 4182
+        }
+      ],
+      "runtimeFromExplorer": null,
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "addon-hook-source": {
+      "address": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xb5babc5609de876d56662d066a0b5f63ef90a8cc?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0xb5babc5609de876d56662d066a0b5f63ef90a8cc",
+      "snapshotFile": "addon-hook-source.json",
+      "snapshotSHA256": "4af7efd31fe1a530dfce720afb20eebedd739883ec58c19190ba82832d5ef2c3",
+      "contractName": "HedgeFunV2Hook",
+      "compilerVersion": "v0.8.26+commit.8a97fa7a",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": false,
+        "verified_at": "2026-10-07T21:05:36.106486Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "src/hooks/HedgeFunV2Hook.sol",
+          "sha256": "68513de3f03ef7c64dea0c4b66f3168d360db2ad14a517612d9f62269d8e9940",
+          "bytes": 5258
+        },
+        {
+          "path": "lib/v4-core/src/libraries/NonzeroDeltaCount.sol",
+          "sha256": "0ae35ca64da2527b4e1f7afa4ca10c4b65af952dc473c33b6663101e8d199f40",
+          "bytes": 1460
+        },
+        {
+          "path": "lib/v4-core/src/types/BalanceDelta.sol",
+          "sha256": "320d9c13dec135c3903729e66d3a1040fe86d537a7ee53728915012ca183af32",
+          "bytes": 2339
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+          "sha256": "92fee281fd46a1b058b190cf21d6b1a528f0433a907850ae1c9bcf36c5c0cd98",
+          "bytes": 32145
+        },
+        {
+          "path": "lib/v4-core/src/libraries/CurrencyReserves.sol",
+          "sha256": "b38f1d3807d90bbccb865c0d96caf1ef92d6df9b69adbbe43b1d12e1241523c9",
+          "bytes": 1289
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+          "sha256": "ac1fd9fa99b194a8db8dfa9ae8e3ff44feaa8f16668241fd2b66ae8b47d7c082",
+          "bytes": 10075
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IExttload.sol",
+          "sha256": "c21643d2c7f48d2d2407438a64a3ff0f376324cf6a0c62608977713652308c9e",
+          "bytes": 699
+        },
+        {
+          "path": "lib/v4-core/src/libraries/CustomRevert.sol",
+          "sha256": "9d3dbe6b742cb1ac30f57df89d879ade9649389de1165fc637114bd062d39fca",
+          "bytes": 5174
+        },
+        {
+          "path": "lib/v4-core/src/libraries/LiquidityMath.sol",
+          "sha256": "67a39e58732340af4870342ba9230691f35501d89ed8725ca1b338deaa0eb26a",
+          "bytes": 742
+        },
+        {
+          "path": "lib/v4-core/src/libraries/LPFeeLibrary.sol",
+          "sha256": "e96c3fa7deac991dc09b6c5e560a340d01d6c68ccba483d4b29f8a66e5aa44e0",
+          "bytes": 3596
+        },
+        {
+          "path": "lib/v4-core/src/libraries/StateLibrary.sol",
+          "sha256": "eebdbc1b6e431072ce5521b9e1b603d43831e3b6e062743e6665e070d5cf8a1a",
+          "bytes": 16027
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/Panic.sol",
+          "sha256": "270fc8401c1a13fae6a7a4a2dd6e381b95d658896701e51f0d3e2688acab3dec",
+          "bytes": 1973
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol",
+          "sha256": "0158e2d3e0e28bedd99eec13dcf1a8aa3a70a5b7e4bb2ad709609c95fcc740d1",
+          "bytes": 182
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol",
+          "sha256": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+          "bytes": 193
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/callback/IUnlockCallback.sol",
+          "sha256": "2e4a514730654da2e08a82eff5b3eabae12dc1c6198951396e1d466d4c0e223e",
+          "bytes": 488
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+          "sha256": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+          "bytes": 871
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Hooks.sol",
+          "sha256": "297d577998cdede64d48b47b12f15e4f442eea032fbb9676bb3c2f89da89b83c",
+          "bytes": 16511
+        },
+        {
+          "path": "src/interfaces/IHedgeFunToken.sol",
+          "sha256": "ff084bfd2d054da24f23db80fc501718bfdfa48f126d7f7c3cba599dc99eca95",
+          "bytes": 216
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+          "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+          "bytes": 2781
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Position.sol",
+          "sha256": "3dc4e2ad1564fa94eddf3ff06ce9ac592c9d578ea64ca194050382da454c8fcb",
+          "bytes": 4813
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol",
+          "sha256": "9c3a75a925a6dac9e88b03cddc58d42fe3131b0aaaad84408521f3f7af2f991b",
+          "bytes": 4454
+        },
+        {
+          "path": "lib/v4-core/src/types/BeforeSwapDelta.sol",
+          "sha256": "6aee06f1553e879f5909e8f4c0eac26ec23dd4821a7e56e4d5077db39a227e12",
+          "bytes": 1466
+        },
+        {
+          "path": "lib/v4-core/src/libraries/SafeCast.sol",
+          "sha256": "c1a815a41607be5b4c86ca588a951f368156da8ee21bdfc18b5d51b58a0f27be",
+          "bytes": 2269
+        },
+        {
+          "path": "src/libraries/TwapRing.sol",
+          "sha256": "39e7486e55f709775ece8864af224c6be69c7e56f73ba907bfe7a3d4a1eba164",
+          "bytes": 5423
+        },
+        {
+          "path": "lib/v4-core/src/libraries/FullMath.sol",
+          "sha256": "a9607255a6fd604d9c92f6b7416811c38b9d86e5dfdb0c345a494ebd35f7a4a3",
+          "bytes": 5463
+        },
+        {
+          "path": "lib/v4-core/src/libraries/FixedPoint128.sol",
+          "sha256": "1ca2f55160697b73bd66fd27c8724d79a57108121ce1e8a0ab8b79f38bb58fbb",
+          "bytes": 297
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IExtsload.sol",
+          "sha256": "9421ef4ba198d94058cd9a4c9fd2d663c61fc682f7dafa449a873456853f0025",
+          "bytes": 1023
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/external/IERC20Minimal.sol",
+          "sha256": "5e966a2d22b3b234a56af4b17e36bf7be90f9b29b1ddb6a15bfefc0b6dab4282",
+          "bytes": 3041
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolOperation.sol",
+          "sha256": "cf72ad0c3e5e91662029e862acd841fabce8753040b0d4e802dee64ef1157232",
+          "bytes": 907
+        },
+        {
+          "path": "lib/v4-core/src/types/Currency.sol",
+          "sha256": "ba6726fd24fbc66848208dfbb2899116c10729c505e6e5552316ac2444f1dfc3",
+          "bytes": 5458
+        },
+        {
+          "path": "src/interfaces/IOwned.sol",
+          "sha256": "ba0635178442201ff7820f912b6c4c9e43d5fb15895288bb2a0e7f70bedb5e8b",
+          "bytes": 129
+        },
+        {
+          "path": "src/hooks/HedgeFunHook.sol",
+          "sha256": "9ec3c02c065d3e8bcbd0839d1c87dd4af5da87ffe10639544a3fe04a34e2f791",
+          "bytes": 50415
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IProtocolFees.sol",
+          "sha256": "807d68adea106ec2aa51a8009155de09ebfe09e1ee7053d5a5ae448d7e840654",
+          "bytes": 2489
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/external/IERC6909Claims.sol",
+          "sha256": "1cd65496c829036bc6aee67bc71363ab5fb6989c65e793087d0e1e2379f7d7d8",
+          "bytes": 3162
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IPoolManager.sol",
+          "sha256": "a98405333567e4ab344489728014795721cf0071c151536377d2fcc986e0600c",
+          "bytes": 12835
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
+          "sha256": "9769274bf53f26a7c7896c526ea1980dc9bea5bf5c2a5fd04870008c4afc1de9",
+          "bytes": 34943
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolId.sol",
+          "sha256": "548424ac50ad58212545da70207283fb8990731578c115c85d5acbcb0e1d3c9f",
+          "bytes": 539
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Lock.sol",
+          "sha256": "29cd41a53de22514164e638e7bc965ccf4d9f34b455b43a1a15e06a8cb86e7f1",
+          "bytes": 930
+        },
+        {
+          "path": "src/libraries/HedgeFunLimits.sol",
+          "sha256": "ea8fcc9624a8b9ebbd2c2a1a87f07a628811fa7b2782097b893ef76bfc060546",
+          "bytes": 825
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IHooks.sol",
+          "sha256": "6eb35c9c598eb932e963219f1ff180748bc4c30ac6a02d924893b3c29abb1d73",
+          "bytes": 8229
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolKey.sol",
+          "sha256": "99e1afe285b5c614ebc9586ab5196db9d24a63fd924a449f5d99f490a6a6d6a9",
+          "bytes": 805
+        },
+        {
+          "path": "lib/v4-core/src/libraries/ParseBytes.sol",
+          "sha256": "6a6f3d1cec0143fd70ea68c34e6dce3bde72f368b213f1a225ada23dbfd99bb8",
+          "bytes": 1200
+        },
+        {
+          "path": "src/libraries/HedgeFunMath.sol",
+          "sha256": "91b340c6c7464e0bad2e5cb7f800e047a9ed8702da11b396a25367e119e579f1",
+          "bytes": 1833
+        },
+        {
+          "path": "lib/v4-core/src/libraries/TransientStateLibrary.sol",
+          "sha256": "9835fca9df8b3f649def66835c5d7ee68de6a6cbe92bf255eb5d8b92a6a8d60e",
+          "bytes": 2361
+        }
+      ],
+      "runtimeFromExplorer": null,
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "addon-factory-source": {
+      "address": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xc78b6a83d75c5612a1a7323702b56038254a6459?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0xc78b6a83d75c5612a1a7323702b56038254a6459",
+      "snapshotFile": "addon-factory-source.json",
+      "snapshotSHA256": "45231cfd8c56e4744e2c03f3585ce3140895c7d84c17291d6ba24c2263e71c3b",
+      "contractName": "HedgeFunV2Factory",
+      "compilerVersion": "0.8.26+commit.8a97fa7a",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": true,
+        "verified_at": "2026-10-06T09:12:04.963157Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "src/v2/HedgeFunV2Factory.sol",
+          "sha256": "3fac8cf727457f03ec58b3c5407556e71269f4201730bb7634c98961bf4e2afc",
+          "bytes": 11022
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/Panic.sol",
+          "sha256": "270fc8401c1a13fae6a7a4a2dd6e381b95d658896701e51f0d3e2688acab3dec",
+          "bytes": 1973
+        },
+        {
+          "path": "src/interfaces/IHedgeFunTreasury.sol",
+          "sha256": "c7356b0f711e8fa09ab71c41d03b6977e70c5e88930e3bc530bb924086298568",
+          "bytes": 505
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Pool.sol",
+          "sha256": "59c493035ad25d56f24a457e8b40d9d1e3784504b8ff13d171db1eb25c6f128e",
+          "bytes": 30035
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol",
+          "sha256": "0158e2d3e0e28bedd99eec13dcf1a8aa3a70a5b7e4bb2ad709609c95fcc740d1",
+          "bytes": 182
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/proxy/Proxy.sol",
+          "sha256": "5f5081378d4bc82b814b0d64990b7f7b9c69697593b73a3341f4a269940ba540",
+          "bytes": 2670
+        },
+        {
+          "path": "src/v2/V2TreasuryDeployer.sol",
+          "sha256": "0a86bffa0ce545d2348a23da96cd4448d09ecf45da1bed16f8574a2de8de085b",
+          "bytes": 20504
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+          "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+          "bytes": 684
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IExtsload.sol",
+          "sha256": "9421ef4ba198d94058cd9a4c9fd2d663c61fc682f7dafa449a873456853f0025",
+          "bytes": 1023
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/external/IERC20Minimal.sol",
+          "sha256": "5e966a2d22b3b234a56af4b17e36bf7be90f9b29b1ddb6a15bfefc0b6dab4282",
+          "bytes": 3041
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolOperation.sol",
+          "sha256": "cf72ad0c3e5e91662029e862acd841fabce8753040b0d4e802dee64ef1157232",
+          "bytes": 907
+        },
+        {
+          "path": "lib/v4-core/src/types/Currency.sol",
+          "sha256": "ba6726fd24fbc66848208dfbb2899116c10729c505e6e5552316ac2444f1dfc3",
+          "bytes": 5458
+        },
+        {
+          "path": "src/v2/strategy/V2CreatorParams.sol",
+          "sha256": "84a61385630608c74ee7454cc2dfef77a540184fa8f0425285e2ec003fd42166",
+          "bytes": 463
+        },
+        {
+          "path": "src/hooks/HedgeFunV2Hook.sol",
+          "sha256": "68513de3f03ef7c64dea0c4b66f3168d360db2ad14a517612d9f62269d8e9940",
+          "bytes": 5258
+        },
+        {
+          "path": "src/interfaces/IOwned.sol",
+          "sha256": "ba0635178442201ff7820f912b6c4c9e43d5fb15895288bb2a0e7f70bedb5e8b",
+          "bytes": 129
+        },
+        {
+          "path": "lib/v4-core/src/types/Slot0.sol",
+          "sha256": "378b45486644dc7e49726358e83d0e2fffdaee088d18cac1a3df00d02c3635b4",
+          "bytes": 3404
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
+          "sha256": "9f906af4cba6e7e091dc12d45e6687e1239cf82d17678198424250fd64ab96bd",
+          "bytes": 10798
+        },
+        {
+          "path": "lib/v4-core/src/libraries/BitMath.sol",
+          "sha256": "e8a45eb3d57f9427fc47bbb2543c1a6a5f394113b378123ac7ca9f113a7502b4",
+          "bytes": 2609
+        },
+        {
+          "path": "lib/v4-core/src/libraries/TickMath.sol",
+          "sha256": "272d4f6d3ff9ae33596ebcdb84a71a3c2d4542ae8fb5c88ddf1aca8043f5d06b",
+          "bytes": 12382
+        },
+        {
+          "path": "src/hooks/HedgeFunHook.sol",
+          "sha256": "9ec3c02c065d3e8bcbd0839d1c87dd4af5da87ffe10639544a3fe04a34e2f791",
+          "bytes": 50415
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IProtocolFees.sol",
+          "sha256": "807d68adea106ec2aa51a8009155de09ebfe09e1ee7053d5a5ae448d7e840654",
+          "bytes": 2489
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Lock.sol",
+          "sha256": "29cd41a53de22514164e638e7bc965ccf4d9f34b455b43a1a15e06a8cb86e7f1",
+          "bytes": 930
+        },
+        {
+          "path": "lib/v4-core/src/libraries/ProtocolFeeLibrary.sol",
+          "sha256": "f8d96d9c8b5d12ab927b34551699bd7086750475f70254c9505e636f2cafe56a",
+          "bytes": 2113
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolKey.sol",
+          "sha256": "99e1afe285b5c614ebc9586ab5196db9d24a63fd924a449f5d99f490a6a6d6a9",
+          "bytes": 805
+        },
+        {
+          "path": "lib/v4-core/src/libraries/FixedPoint96.sol",
+          "sha256": "66ee26d4fb3ac639124bdfa27d3256d196970997fa127c09e9bf7154e30d4590",
+          "bytes": 366
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+          "sha256": "92fee281fd46a1b058b190cf21d6b1a528f0433a907850ae1c9bcf36c5c0cd98",
+          "bytes": 32145
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolId.sol",
+          "sha256": "548424ac50ad58212545da70207283fb8990731578c115c85d5acbcb0e1d3c9f",
+          "bytes": 539
+        },
+        {
+          "path": "lib/v4-core/src/libraries/NonzeroDeltaCount.sol",
+          "sha256": "0ae35ca64da2527b4e1f7afa4ca10c4b65af952dc473c33b6663101e8d199f40",
+          "bytes": 1460
+        },
+        {
+          "path": "src/interfaces/IUniswapV3.sol",
+          "sha256": "3439b9af40fa9d9cce62e6a8fe7eb2b6b61d52a81071c754ed1434cea1121a81",
+          "bytes": 933
+        },
+        {
+          "path": "lib/v4-core/src/types/BalanceDelta.sol",
+          "sha256": "320d9c13dec135c3903729e66d3a1040fe86d537a7ee53728915012ca183af32",
+          "bytes": 2339
+        },
+        {
+          "path": "lib/v4-core/src/libraries/TickBitmap.sol",
+          "sha256": "19b25dccfac8bd90f9d615fb182547eb7b5908a5cbf21a1c5920b92c47383cb6",
+          "bytes": 6266
+        },
+        {
+          "path": "lib/v4-core/src/libraries/CurrencyReserves.sol",
+          "sha256": "b38f1d3807d90bbccb865c0d96caf1ef92d6df9b69adbbe43b1d12e1241523c9",
+          "bytes": 1289
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+          "sha256": "ac1fd9fa99b194a8db8dfa9ae8e3ff44feaa8f16668241fd2b66ae8b47d7c082",
+          "bytes": 10075
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IExttload.sol",
+          "sha256": "c21643d2c7f48d2d2407438a64a3ff0f376324cf6a0c62608977713652308c9e",
+          "bytes": 699
+        },
+        {
+          "path": "lib/v4-core/src/libraries/CustomRevert.sol",
+          "sha256": "9d3dbe6b742cb1ac30f57df89d879ade9649389de1165fc637114bd062d39fca",
+          "bytes": 5174
+        },
+        {
+          "path": "lib/v4-core/src/libraries/LiquidityMath.sol",
+          "sha256": "67a39e58732340af4870342ba9230691f35501d89ed8725ca1b338deaa0eb26a",
+          "bytes": 742
+        },
+        {
+          "path": "lib/v4-core/src/libraries/LPFeeLibrary.sol",
+          "sha256": "e96c3fa7deac991dc09b6c5e560a340d01d6c68ccba483d4b29f8a66e5aa44e0",
+          "bytes": 3596
+        },
+        {
+          "path": "src/v2/V2LiquidityVault.sol",
+          "sha256": "dba91a2b6a9d0bf597b34095f159d33327055a30135815077a85f20ef98dba08",
+          "bytes": 12423
+        },
+        {
+          "path": "src/HedgeFunToken.sol",
+          "sha256": "ab343a61af31a283c71c32067f3712c5a91bd11f91b678fc52ebed15e7eebaad",
+          "bytes": 8070
+        },
+        {
+          "path": "src/v2/HedgeFunV2AllInTreasury.sol",
+          "sha256": "9b412afcd2feb6ef693cb84e0dcdb123471c208c7986bcdf928cba10a6bb0973",
+          "bytes": 5952
+        },
+        {
+          "path": "lib/v4-core/src/libraries/StateLibrary.sol",
+          "sha256": "eebdbc1b6e431072ce5521b9e1b603d43831e3b6e062743e6665e070d5cf8a1a",
+          "bytes": 16027
+        },
+        {
+          "path": "src/HedgeFunTreasuryBase.sol",
+          "sha256": "00b26a5a61293e3ff07deebbca8bb44c9768264f8e46f9eee62c9bba4c10baad",
+          "bytes": 43199
+        },
+        {
+          "path": "src/PoolTrader.sol",
+          "sha256": "f55800d349fe7d8cd7e8ee733f55333f886e49f01b0042d15d75cf9214bc3168",
+          "bytes": 8368
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/access/Ownable2Step.sol",
+          "sha256": "c75345d7b9feef17ae29f2a800ca2f65f8021cf80436a41d6ec00f57f5180f36",
+          "bytes": 2476
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol",
+          "sha256": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+          "bytes": 193
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/callback/IUnlockCallback.sol",
+          "sha256": "2e4a514730654da2e08a82eff5b3eabae12dc1c6198951396e1d466d4c0e223e",
+          "bytes": 488
+        },
+        {
+          "path": "src/interfaces/ITradingCalendar.sol",
+          "sha256": "fdf4ce0145664d168bd4102390fa2bb4f3ee397765d8f37b91d5c1e816eb465e",
+          "bytes": 414
+        },
+        {
+          "path": "lib/v4-core/src/libraries/UnsafeMath.sol",
+          "sha256": "2de236e7ca0b9572a6b0184557565b6fd54e177224e202c727fe248785ede427",
+          "bytes": 1165
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+          "sha256": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+          "bytes": 871
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Hooks.sol",
+          "sha256": "297d577998cdede64d48b47b12f15e4f442eea032fbb9676bb3c2f89da89b83c",
+          "bytes": 16511
+        },
+        {
+          "path": "src/interfaces/IHedgeFunToken.sol",
+          "sha256": "ff084bfd2d054da24f23db80fc501718bfdfa48f126d7f7c3cba599dc99eca95",
+          "bytes": 216
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+          "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+          "bytes": 2781
+        },
+        {
+          "path": "src/HedgeFunTreasury.sol",
+          "sha256": "a4677b80ae435244886c2bc908753516df73d5549e57223447f3de59ec1b90d9",
+          "bytes": 11242
+        },
+        {
+          "path": "src/interfaces/IHedgeFunHook.sol",
+          "sha256": "5e03f6436c5d4f14bfebfd9a2e6a56e21f4894a6a346b13573467792f97d3058",
+          "bytes": 302
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Position.sol",
+          "sha256": "3dc4e2ad1564fa94eddf3ff06ce9ac592c9d578ea64ca194050382da454c8fcb",
+          "bytes": 4813
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol",
+          "sha256": "9c3a75a925a6dac9e88b03cddc58d42fe3131b0aaaad84408521f3f7af2f991b",
+          "bytes": 4454
+        },
+        {
+          "path": "src/v2/HedgeFunV2Treasury.sol",
+          "sha256": "c318b786e1771930a459491f019da2137474f906eef8170cd5111387eeac303f",
+          "bytes": 15273
+        },
+        {
+          "path": "lib/v4-core/src/types/BeforeSwapDelta.sol",
+          "sha256": "6aee06f1553e879f5909e8f4c0eac26ec23dd4821a7e56e4d5077db39a227e12",
+          "bytes": 1466
+        },
+        {
+          "path": "lib/v4-core/src/libraries/SafeCast.sol",
+          "sha256": "c1a815a41607be5b4c86ca588a951f368156da8ee21bdfc18b5d51b58a0f27be",
+          "bytes": 2269
+        },
+        {
+          "path": "src/libraries/TwapRing.sol",
+          "sha256": "39e7486e55f709775ece8864af224c6be69c7e56f73ba907bfe7a3d4a1eba164",
+          "bytes": 5423
+        },
+        {
+          "path": "lib/v4-core/src/libraries/FullMath.sol",
+          "sha256": "a9607255a6fd604d9c92f6b7416811c38b9d86e5dfdb0c345a494ebd35f7a4a3",
+          "bytes": 5463
+        },
+        {
+          "path": "lib/v4-core/src/libraries/FixedPoint128.sol",
+          "sha256": "1ca2f55160697b73bd66fd27c8724d79a57108121ce1e8a0ab8b79f38bb58fbb",
+          "bytes": 297
+        },
+        {
+          "path": "src/interfaces/IStockToken.sol",
+          "sha256": "8ae12304306b7a18be8c006f7fe00c23669e8d0fe58abd7f54cd92a7b7e9fa1b",
+          "bytes": 565
+        },
+        {
+          "path": "src/v2/HedgeFunV2UpgradeableTreasury.sol",
+          "sha256": "963cb907138761e5c76470486a52769d6f00b3cd5fe3d3761b121bf663578408",
+          "bytes": 3987
+        },
+        {
+          "path": "src/HedgeFunDeployers.sol",
+          "sha256": "7c174f919c1dc55c59ba05bd2a73525132bac2f68ad9136a0eb7689c91529976",
+          "bytes": 3293
+        },
+        {
+          "path": "src/v2/V2TreasuryUpgradeController.sol",
+          "sha256": "d3bdc847b4dad1a4ed7192d99965d51155bee50fe2818320814ff1c1b346b3a9",
+          "bytes": 4080
+        },
+        {
+          "path": "src/v2/strategy/SpotEngineConfig.sol",
+          "sha256": "6345a8188ee750ed84c5b17dabd22fba06b548abcd74b44850e4edf93115a20f",
+          "bytes": 5343
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/external/IERC6909Claims.sol",
+          "sha256": "1cd65496c829036bc6aee67bc71363ab5fb6989c65e793087d0e1e2379f7d7d8",
+          "bytes": 3162
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+          "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+          "bytes": 963
+        },
+        {
+          "path": "lib/v4-core/src/libraries/SwapMath.sol",
+          "sha256": "eb3971ea0ba84ff0a01f2fbe43f62f9c393121ef1724774ed3f3ab7760780e4a",
+          "bytes": 6968
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IPoolManager.sol",
+          "sha256": "a98405333567e4ab344489728014795721cf0071c151536377d2fcc986e0600c",
+          "bytes": 12835
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol",
+          "sha256": "32fbb1c908ec1b4de85cc1bb10091aebd5816ffe80dfdd5ca5e084fbea67a462",
+          "bytes": 3384
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
+          "sha256": "9769274bf53f26a7c7896c526ea1980dc9bea5bf5c2a5fd04870008c4afc1de9",
+          "bytes": 34943
+        },
+        {
+          "path": "lib/v4-core/src/libraries/SqrtPriceMath.sol",
+          "sha256": "42440c21bbab86c7eed4716b281ed5ca281cf14af8b5e06dc6dc3bc6864bcfdf",
+          "bytes": 14076
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+          "sha256": "38578bd71c0a909840e67202db527cc6b4e6b437e0f39f0c909da32c1e30cb81",
+          "bytes": 3102
+        },
+        {
+          "path": "src/v2/strategy/IStrategyPolicy.sol",
+          "sha256": "f9939451a05979deafeed109428b006069ab6e22b6737f283593ecde9a447c18",
+          "bytes": 2530
+        },
+        {
+          "path": "src/PriceOracle.sol",
+          "sha256": "67c86b98a8fd3797ab0f24e78372c5e37d63e107e377f6000547d54d327077f8",
+          "bytes": 5102
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IHooks.sol",
+          "sha256": "6eb35c9c598eb932e963219f1ff180748bc4c30ac6a02d924893b3c29abb1d73",
+          "bytes": 8229
+        },
+        {
+          "path": "src/interfaces/IAggregatorV3.sol",
+          "sha256": "990ef5a8529e28019208128ead34d81498092ab4c2a16c26a0bfd1304b3c6bdb",
+          "bytes": 264
+        },
+        {
+          "path": "src/v2/V2SurplusLiquidity.sol",
+          "sha256": "5ea4b89882fa1edd2e52f1a24034cdcd21438963a04d269e3b1925ef78079855",
+          "bytes": 1642
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol",
+          "sha256": "df936240c9a5d342582cbda70dd773b1c1d0e0dda3042b1c17b902ef0c36827b",
+          "bytes": 6538
+        },
+        {
+          "path": "lib/v4-core/src/libraries/ParseBytes.sol",
+          "sha256": "6a6f3d1cec0143fd70ea68c34e6dce3bde72f368b213f1a225ada23dbfd99bb8",
+          "bytes": 1200
+        },
+        {
+          "path": "src/v2/HedgeFunBondingCurve.sol",
+          "sha256": "ec799932d152df58443b71a023ab7e12f185f4672bdaebf571801e4bb0d4aa2a",
+          "bytes": 14623
+        },
+        {
+          "path": "src/v2/CurveDeployer.sol",
+          "sha256": "cd3bbda6c4927febe03504f8318cb50662d6930b538efd4a7784020a5005fd88",
+          "bytes": 16589
+        },
+        {
+          "path": "src/libraries/HedgeFunMath.sol",
+          "sha256": "91b340c6c7464e0bad2e5cb7f800e047a9ed8702da11b396a25367e119e579f1",
+          "bytes": 1833
+        },
+        {
+          "path": "lib/v4-core/src/libraries/TransientStateLibrary.sol",
+          "sha256": "9835fca9df8b3f649def66835c5d7ee68de6a6cbe92bf255eb5d8b92a6a8d60e",
+          "bytes": 2361
+        },
+        {
+          "path": "src/libraries/HedgeFunLimits.sol",
+          "sha256": "ea8fcc9624a8b9ebbd2c2a1a87f07a628811fa7b2782097b893ef76bfc060546",
+          "bytes": 825
+        },
+        {
+          "path": "src/HedgeFunFactory.sol",
+          "sha256": "72a67b8b9bb08cab3dbd36c73635037c858a95c7dee19b7d15f729e4d4491917",
+          "bytes": 30288
+        }
+      ],
+      "runtimeFromExplorer": null,
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    },
+    "addon-creator-source": {
+      "address": "0x3945Fd880cb95592DBd78e419226EAf16f3F4e73",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0x3945fd880cb95592dbd78e419226eaf16f3f4e73?tab=contract",
+      "publicApiUrl": "https://robinhoodchain.blockscout.com/api/v2/smart-contracts/0x3945fd880cb95592dbd78e419226eaf16f3f4e73",
+      "snapshotFile": "addon-creator-source.json",
+      "snapshotSHA256": "862751e7a9152990aae699a730f13c4dae97f871c9fe1645ca6a8629ae3e3861",
+      "contractName": "TokenDeployer",
+      "compilerVersion": "0.8.26+commit.8a97fa7a",
+      "verification": {
+        "is_verified": true,
+        "is_fully_verified": false,
+        "is_partially_verified": true,
+        "is_changed_bytecode": false,
+        "is_verified_via_eth_bytecode_db": true,
+        "verified_at": "2026-10-08T06:42:15.452645Z"
+      },
+      "sourceFiles": [
+        {
+          "path": "src/HedgeFunDeployers.sol",
+          "sha256": "7c174f919c1dc55c59ba05bd2a73525132bac2f68ad9136a0eb7689c91529976",
+          "bytes": 3293
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IExttload.sol",
+          "sha256": "c21643d2c7f48d2d2407438a64a3ff0f376324cf6a0c62608977713652308c9e",
+          "bytes": 699
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+          "sha256": "92fee281fd46a1b058b190cf21d6b1a528f0433a907850ae1c9bcf36c5c0cd98",
+          "bytes": 32145
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+          "sha256": "ac1fd9fa99b194a8db8dfa9ae8e3ff44feaa8f16668241fd2b66ae8b47d7c082",
+          "bytes": 10075
+        },
+        {
+          "path": "lib/v4-core/src/libraries/SafeCast.sol",
+          "sha256": "c1a815a41607be5b4c86ca588a951f368156da8ee21bdfc18b5d51b58a0f27be",
+          "bytes": 2269
+        },
+        {
+          "path": "lib/v4-core/src/libraries/FullMath.sol",
+          "sha256": "a9607255a6fd604d9c92f6b7416811c38b9d86e5dfdb0c345a494ebd35f7a4a3",
+          "bytes": 5463
+        },
+        {
+          "path": "lib/v4-core/src/libraries/FixedPoint128.sol",
+          "sha256": "1ca2f55160697b73bd66fd27c8724d79a57108121ce1e8a0ab8b79f38bb58fbb",
+          "bytes": 297
+        },
+        {
+          "path": "lib/v4-core/src/types/BalanceDelta.sol",
+          "sha256": "320d9c13dec135c3903729e66d3a1040fe86d537a7ee53728915012ca183af32",
+          "bytes": 2339
+        },
+        {
+          "path": "src/interfaces/IUniswapV3.sol",
+          "sha256": "3439b9af40fa9d9cce62e6a8fe7eb2b6b61d52a81071c754ed1434cea1121a81",
+          "bytes": 933
+        },
+        {
+          "path": "lib/v4-core/src/libraries/CustomRevert.sol",
+          "sha256": "9d3dbe6b742cb1ac30f57df89d879ade9649389de1165fc637114bd062d39fca",
+          "bytes": 5174
+        },
+        {
+          "path": "lib/v4-core/src/libraries/LiquidityMath.sol",
+          "sha256": "67a39e58732340af4870342ba9230691f35501d89ed8725ca1b338deaa0eb26a",
+          "bytes": 742
+        },
+        {
+          "path": "src/HedgeFunToken.sol",
+          "sha256": "ab343a61af31a283c71c32067f3712c5a91bd11f91b678fc52ebed15e7eebaad",
+          "bytes": 8070
+        },
+        {
+          "path": "lib/v4-core/src/libraries/StateLibrary.sol",
+          "sha256": "eebdbc1b6e431072ce5521b9e1b603d43831e3b6e062743e6665e070d5cf8a1a",
+          "bytes": 16027
+        },
+        {
+          "path": "src/HedgeFunTreasuryBase.sol",
+          "sha256": "a8b0565bf5bb9f4f4d8def31f4a817e6652942318053d982b2aa3cfc303d1599",
+          "bytes": 40070
+        },
+        {
+          "path": "src/PoolTrader.sol",
+          "sha256": "f55800d349fe7d8cd7e8ee733f55333f886e49f01b0042d15d75cf9214bc3168",
+          "bytes": 8368
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/Panic.sol",
+          "sha256": "270fc8401c1a13fae6a7a4a2dd6e381b95d658896701e51f0d3e2688acab3dec",
+          "bytes": 1973
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol",
+          "sha256": "0158e2d3e0e28bedd99eec13dcf1a8aa3a70a5b7e4bb2ad709609c95fcc740d1",
+          "bytes": 182
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol",
+          "sha256": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+          "bytes": 193
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/callback/IUnlockCallback.sol",
+          "sha256": "2e4a514730654da2e08a82eff5b3eabae12dc1c6198951396e1d466d4c0e223e",
+          "bytes": 488
+        },
+        {
+          "path": "src/interfaces/ITradingCalendar.sol",
+          "sha256": "5cdfba5533d95062e47b6c2f73e9126892259d8d87dc9ba44ed1bb9f134a11c3",
+          "bytes": 227
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+          "sha256": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+          "bytes": 871
+        },
+        {
+          "path": "src/interfaces/IHedgeFunToken.sol",
+          "sha256": "ff084bfd2d054da24f23db80fc501718bfdfa48f126d7f7c3cba599dc99eca95",
+          "bytes": 216
+        },
+        {
+          "path": "src/interfaces/IStockToken.sol",
+          "sha256": "8ae12304306b7a18be8c006f7fe00c23669e8d0fe58abd7f54cd92a7b7e9fa1b",
+          "bytes": 565
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+          "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+          "bytes": 2781
+        },
+        {
+          "path": "src/HedgeFunTreasury.sol",
+          "sha256": "711634feafdb2edc2f5398e29827f9781097853b57545b7b79c05a6be5e2ef56",
+          "bytes": 10968
+        },
+        {
+          "path": "src/interfaces/IHedgeFunHook.sol",
+          "sha256": "5e03f6436c5d4f14bfebfd9a2e6a56e21f4894a6a346b13573467792f97d3058",
+          "bytes": 302
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+          "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+          "bytes": 684
+        },
+        {
+          "path": "lib/v4-core/src/libraries/Position.sol",
+          "sha256": "3dc4e2ad1564fa94eddf3ff06ce9ac592c9d578ea64ca194050382da454c8fcb",
+          "bytes": 4813
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol",
+          "sha256": "9c3a75a925a6dac9e88b03cddc58d42fe3131b0aaaad84408521f3f7af2f991b",
+          "bytes": 4454
+        },
+        {
+          "path": "lib/v4-core/src/types/BeforeSwapDelta.sol",
+          "sha256": "6aee06f1553e879f5909e8f4c0eac26ec23dd4821a7e56e4d5077db39a227e12",
+          "bytes": 1466
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IExtsload.sol",
+          "sha256": "9421ef4ba198d94058cd9a4c9fd2d663c61fc682f7dafa449a873456853f0025",
+          "bytes": 1023
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/external/IERC20Minimal.sol",
+          "sha256": "5e966a2d22b3b234a56af4b17e36bf7be90f9b29b1ddb6a15bfefc0b6dab4282",
+          "bytes": 3041
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolOperation.sol",
+          "sha256": "cf72ad0c3e5e91662029e862acd841fabce8753040b0d4e802dee64ef1157232",
+          "bytes": 907
+        },
+        {
+          "path": "lib/v4-core/src/types/Currency.sol",
+          "sha256": "ba6726fd24fbc66848208dfbb2899116c10729c505e6e5552316ac2444f1dfc3",
+          "bytes": 5458
+        },
+        {
+          "path": "src/interfaces/IOwned.sol",
+          "sha256": "ba0635178442201ff7820f912b6c4c9e43d5fb15895288bb2a0e7f70bedb5e8b",
+          "bytes": 129
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
+          "sha256": "9f906af4cba6e7e091dc12d45e6687e1239cf82d17678198424250fd64ab96bd",
+          "bytes": 10798
+        },
+        {
+          "path": "lib/v4-core/src/libraries/BitMath.sol",
+          "sha256": "e8a45eb3d57f9427fc47bbb2543c1a6a5f394113b378123ac7ca9f113a7502b4",
+          "bytes": 2609
+        },
+        {
+          "path": "lib/v4-core/src/libraries/TickMath.sol",
+          "sha256": "272d4f6d3ff9ae33596ebcdb84a71a3c2d4542ae8fb5c88ddf1aca8043f5d06b",
+          "bytes": 12382
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IProtocolFees.sol",
+          "sha256": "807d68adea106ec2aa51a8009155de09ebfe09e1ee7053d5a5ae448d7e840654",
+          "bytes": 2489
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/external/IERC6909Claims.sol",
+          "sha256": "1cd65496c829036bc6aee67bc71363ab5fb6989c65e793087d0e1e2379f7d7d8",
+          "bytes": 3162
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+          "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+          "bytes": 963
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IPoolManager.sol",
+          "sha256": "a98405333567e4ab344489728014795721cf0071c151536377d2fcc986e0600c",
+          "bytes": 12835
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol",
+          "sha256": "32fbb1c908ec1b4de85cc1bb10091aebd5816ffe80dfdd5ca5e084fbea67a462",
+          "bytes": 3384
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
+          "sha256": "9769274bf53f26a7c7896c526ea1980dc9bea5bf5c2a5fd04870008c4afc1de9",
+          "bytes": 34943
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolId.sol",
+          "sha256": "548424ac50ad58212545da70207283fb8990731578c115c85d5acbcb0e1d3c9f",
+          "bytes": 539
+        },
+        {
+          "path": "src/PriceOracle.sol",
+          "sha256": "67c86b98a8fd3797ab0f24e78372c5e37d63e107e377f6000547d54d327077f8",
+          "bytes": 5102
+        },
+        {
+          "path": "lib/v4-core/src/interfaces/IHooks.sol",
+          "sha256": "6eb35c9c598eb932e963219f1ff180748bc4c30ac6a02d924893b3c29abb1d73",
+          "bytes": 8229
+        },
+        {
+          "path": "src/interfaces/IAggregatorV3.sol",
+          "sha256": "990ef5a8529e28019208128ead34d81498092ab4c2a16c26a0bfd1304b3c6bdb",
+          "bytes": 264
+        },
+        {
+          "path": "lib/v4-core/src/types/PoolKey.sol",
+          "sha256": "99e1afe285b5c614ebc9586ab5196db9d24a63fd924a449f5d99f490a6a6d6a9",
+          "bytes": 805
+        },
+        {
+          "path": "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol",
+          "sha256": "df936240c9a5d342582cbda70dd773b1c1d0e0dda3042b1c17b902ef0c36827b",
+          "bytes": 6538
+        },
+        {
+          "path": "src/libraries/HedgeFunMath.sol",
+          "sha256": "91b340c6c7464e0bad2e5cb7f800e047a9ed8702da11b396a25367e119e579f1",
+          "bytes": 1833
+        },
+        {
+          "path": "src/libraries/HedgeFunLimits.sol",
+          "sha256": "ea8fcc9624a8b9ebbd2c2a1a87f07a628811fa7b2782097b893ef76bfc060546",
+          "bytes": 825
+        }
+      ],
+      "runtimeFromExplorer": null,
+      "notes": [
+        "Explorer verification status is preserved exactly; partial verification is not represented as an exact metadata/full compiler match."
+      ]
+    }
+  },
+  "issuerRegistryRoles": {
+    "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+    "eventFile": "aapl-registry-logs-all.json",
+    "eventFileSHA256": "2e56069da0ddbffefcd82aca57252d7b367e3f0a73fce85b30f54e087c2ce116",
+    "eventCount": 274,
+    "pagesFetched": 6,
+    "firstBlock": 7662,
+    "lastIndexedEventBlock": 657134,
+    "roleCandidates": [
+      {
+        "role": "MINTER_ROLE",
+        "hash": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6",
+        "accountsFromEventReplay": [
+          "0x2b94105fFf37630f98e1f24811daD588FC5C3A87"
+        ]
+      },
+      {
+        "role": "BURNER_ROLE",
+        "hash": "0x3c11d16cbaffd01df69ce1c404f6340ee057498f5f00246190ea54220576a848",
+        "accountsFromEventReplay": [
+          "0x6E40B50A40C1db42A85a0E8fe8FF7d9CbFc2D8C1"
+        ]
+      },
+      {
+        "role": "PAUSER_ROLE",
+        "hash": "0x65d7a28e3265b37a6474929f336521b332c1681b933f6cb9f3376673440d862a",
+        "accountsFromEventReplay": [
+          "0xe7BCB188254Bc6eBBfF63014DfED4cD4A024F22A"
+        ]
+      },
+      {
+        "role": "TOKEN_DEPLOYER_ROLE",
+        "hash": "0x5f077d4e72bed5b3b14877559c782788e60c3fbb27bf29d3586097d8fa36bbeb",
+        "accountsFromEventReplay": [
+          "0x5516B3451d4d6C9f63353Fe7Bc9537477ECCE000"
+        ]
+      },
+      {
+        "role": "BEACON_UPGRADER_ROLE",
+        "hash": "0x5ab8bd28475e0dc8d5764e9ce50f85ffe2f14ec40c5b74e45f541485ad510c39",
+        "accountsFromEventReplay": [
+          "0xCd8C6182e7C6Ca3B5156D6a90a67719d7e2Be094"
+        ]
+      },
+      {
+        "role": "FACTORY_UPGRADER_ROLE",
+        "hash": "0xb4e5de7340a2fee2ff9be79f5ec0e8feae4b633bc8cc663711520e08f24984f8",
+        "accountsFromEventReplay": [
+          "0x697e774d60c1a3769f2eD0b919AAcf17be0ae553"
+        ]
+      },
+      {
+        "role": "MULTIPLIER_UPDATER_ROLE",
+        "hash": "0x7158cf42e4a4f01c5456c8d75cdbd375748d45e9db7e812f5bcd18844122b615",
+        "accountsFromEventReplay": [
+          "0x92905e8d0e2301BA143215B8D86D63fFD4188143"
+        ]
+      },
+      {
+        "role": "METADATA_UPDATER_ROLE",
+        "hash": "0x7f5260842512b02356ff92de24be96e7e1aac2e234d9371b076ac2b4cddda61e",
+        "accountsFromEventReplay": [
+          "0xcba16C2b9048AF033c5b34E43dd1D47D1358524A"
+        ]
+      },
+      {
+        "role": "BLOCKER_ROLE",
+        "hash": "0x8f2e0057cd5e35397007bcc8f5418f73dd64cc6e4073a0276563f247c3079037",
+        "accountsFromEventReplay": [
+          "0x913cA87347391218e5De2C17c5A0AEba8B0b28fD"
+        ]
+      },
+      {
+        "role": "ADMIN_BURNER_ROLE",
+        "hash": "0x25e7ebc863fa4efd16243c82323b71f247c0cf439aca64c51b84a74afb738936",
+        "accountsFromEventReplay": [
+          "0x957B6de6525C63349f7619743Ef1E0ad93cd74D4"
+        ]
+      },
+      {
+        "role": "TOKEN_PAUSER_ROLE",
+        "hash": "0xe95e22ec6dbf4c911d1fae59680a3e9cb71dd35b3a1c697d232e4b01a8ff30a2",
+        "accountsFromEventReplay": [
+          "0xFCcF56B674113d9C4eb0F9B3370930ceD9E6Ab23"
+        ]
+      },
+      {
+        "role": "ORACLE_PAUSER_ROLE",
+        "hash": "0x155fc2c2b00b801014447f9d3a1522625740f8e592e4c0b0bb7c5867c150aa11",
+        "accountsFromEventReplay": [
+          "0x7369d100c00F28E45D779ac9d4b1c7afa61e4aBC"
+        ]
+      },
+      {
+        "role": "DEFAULT_ADMIN_ROLE",
+        "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "accountsFromEventReplay": [
+          "0xD6f8378F8e440c65F8382F5f2728c78DfD55B66d"
+        ]
+      }
+    ],
+    "currentChainHasRoleChecksRequired": false,
+    "limitation": "All replayed candidate role holders were confirmed hasRole at block 90833751. No claim is made that event indexing proves there are no other holders or future grants.",
+    "currentChainHasRoleChecks": {
+      "blockNumber": "90833751",
+      "allCandidatesConfirmed": true,
+      "file": "current-issuer-authorities.json"
+    }
+  },
+  "assets": {
+    "aapl": {
+      "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "symbol": "AAPL",
+      "decimals": 18,
+      "assessment": "compatible raw accounting with material existing-Stock issuer risks; fails a literal no-blacklist/no-freeze requirement",
+      "capabilities": {
+        "transferFeeBpsInReviewedImplementation": 0,
+        "rawBalanceRebaseInReviewedImplementation": false,
+        "amountUnit": "raw ERC20 base units, decimals 18",
+        "conclusionScope": "Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers.",
+        "proxy": {
+          "type": "EIP1967 beacon",
+          "beacon": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+          "upgradeAuthority": "BEACON_UPGRADER_ROLE on AccessControlsRegistry; DEFAULT_ADMIN_ROLE can grant/revoke roles",
+          "immutableBeaconButMutableImplementation": true
+        },
+        "canBlockAddress": true,
+        "canPauseAllTransfers": true,
+        "canPauseThisToken": true,
+        "canBurnArbitraryHolderBalance": true,
+        "adminBurnBypassesPausedAndBlocked": true,
+        "canAdminMint": true,
+        "rawBalanceCanChangeWithoutHolderConsent": "Issuer MINTER_ROLE/BURNER_ROLE/ADMIN_BURNER_ROLE can mint/burn. No automatic raw rebasing, but adminBurn can remove pool collateral.",
+        "transferChecks": [
+          "transfer: paused plus recipient/sender blocklist",
+          "transferFrom: paused plus source/recipient/operator blocklist",
+          "approve/permit: paused plus spender/owner/caller blocklist"
+        ],
+        "uiMultiplier": {
+          "exists": true,
+          "changesRawBalanceOf": false,
+          "changesBalanceOfUI": true,
+          "changesSharesPerRawToken": true,
+          "capMeaning": "7.2 or 100 raw tokens is not exactly 7.2 or 100 underlying shares when multiplier is not 1e18."
+        },
+        "requiredDisclosure": "Issuer can freeze/pause/burn pooled collateral and upgrade all Stock token implementation logic. Guardian/Ragequit cannot bypass an underlying issuer block or restore burned collateral.",
+        "sourceRefs": [
+          "aapl-implementation:src/Stock.sol",
+          "aapl-implementation:src/AccessControlled.sol",
+          "aapl-implementation:src/ERC20ScaledUIUpgradeable.sol",
+          "aapl-beacon:src/AccessControlsRegistry.sol"
+        ]
+      }
+    },
+    "usde": {
+      "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+      "symbol": "USDe",
+      "decimals": 18,
+      "assessment": "current local ERC20 code has no address blacklist/freeze/pause; OFT administration and bridge security remain material",
+      "capabilities": {
+        "transferFeeBpsInReviewedImplementation": 0,
+        "rawBalanceRebaseInReviewedImplementation": false,
+        "amountUnit": "raw ERC20 base units, decimals 18",
+        "conclusionScope": "Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers.",
+        "proxy": false,
+        "canBlockLocalERC20Address": false,
+        "canPauseLocalERC20Transfers": false,
+        "ownerCanDirectlyBurnThirdPartyLocalBalance": false,
+        "ownerCanDirectlyMintToArbitraryAddress": false,
+        "ownerPowers": [
+          "setPeer: choose/remove trusted remote message peers",
+          "setDelegate: configure LayerZero Endpoint authority",
+          "setRateLimiter/setRateLimits: outgoing bridge per-destination throughput",
+          "setEnforcedOptions: bridge execution requirements",
+          "setMsgInspector: bridge message inspection/rejection",
+          "setPreCrime: bridge simulation configuration",
+          "two-step transferOwnership; renounceOwnership always reverts"
+        ],
+        "crossChainSupplyPowers": "Authenticated LayerZero Endpoint + configured remote peer can credit/mint; send debits/burns msg.sender. Supply and bridge liveness depend on peer/endpoint/delegate configuration.",
+        "feeOnTransferDistinction": "Bridge gas/native messaging fees and bridge dust removal do not impose a fee on ERC20 transfer/transferFrom.",
+        "sourceRefs": [
+          "usde:contracts/usde/USDeOFT.sol",
+          "usde:contracts/libs/OFTOwnable2Step.sol",
+          "usde:node_modules/@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol",
+          "usde:node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol"
+        ]
+      },
+      "officialIdentityCoverage": "Ethena official key-address docs list this as the common L2 USDe address, but the fetched chain list does not explicitly name Robinhood; pinned on-chain owner/endpoint/peer provenance is recorded separately by the root probe.",
+      "currentBridgeAdministration": {
+        "blockNumber": "90833751",
+        "owner": "0x5B29AcbB51A1290ebda7f6A7a209Aa08cAA35901",
+        "pendingOwner": "0x0000000000000000000000000000000000000000",
+        "endpoint": "0x6F475642a6e85809B1c36Fa62763669b1b48DD5B",
+        "rateLimiter": "0x0000000000000000000000000000000000000000"
+      }
+    },
+    "pons": {
+      "address": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "symbol": "PONS",
+      "decimals": 18,
+      "assessment": "plain fixed-supply ERC20 after immutable launch restriction window; require current block greater than restrictionEndBlock",
+      "capabilities": {
+        "transferFeeBpsInReviewedImplementation": 0,
+        "rawBalanceRebaseInReviewedImplementation": false,
+        "amountUnit": "raw ERC20 base units, decimals 18",
+        "conclusionScope": "Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers.",
+        "proxy": false,
+        "owner": false,
+        "adminMint": false,
+        "adminFreezeOrBlacklist": false,
+        "adminPause": false,
+        "launchRestrictions": {
+          "blocks": 366,
+          "maxWalletBps": 200,
+          "maxTxBps": 220,
+          "activeThroughInclusive": "restrictionEndBlock",
+          "scope": "Buys from any factory-registered V3 pool paired with configured WETH, any fee tier; wallet and cumulative pool-buy limits plus launch-block initial-buy gate.",
+          "canAdministratorExtendOrReactivate": false,
+          "factoryOnlySetInitialBuyRecipient": "Affects the launchBlock-only atomic exemption; not an enduring freeze or supply privilege."
+        },
+        "sourceRefs": [
+          "pons:contracts/src/PonsLauncherToken.sol"
+        ]
+      }
+    },
+    "cashcat": {
+      "address": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "symbol": "CASHCAT",
+      "decimals": 18,
+      "assessment": "plain fixed-supply ERC20 after immutable launch restriction window; require current block greater than restrictionEndBlock",
+      "capabilities": {
+        "transferFeeBpsInReviewedImplementation": 0,
+        "rawBalanceRebaseInReviewedImplementation": false,
+        "amountUnit": "raw ERC20 base units, decimals 18",
+        "conclusionScope": "Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers.",
+        "proxy": false,
+        "owner": false,
+        "adminMint": false,
+        "adminFreezeOrBlacklist": false,
+        "adminPause": false,
+        "launchRestrictions": {
+          "blocks": 366,
+          "maxWalletBps": 200,
+          "maxTxBps": 10000,
+          "activeThroughInclusive": "restrictionEndBlock",
+          "scope": "Canonical V3 pool launch block buys; during the fixed window tx.origin cumulative buy and recipient max-wallet checks.",
+          "canAdministratorExtendOrReactivate": false
+        },
+        "sourceRefs": [
+          "cashcat:contracts/LaunchToken.sol"
+        ]
+      }
+    },
+    "lincoln": {
+      "address": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+      "symbol": "LINCOLN",
+      "decimals": 18,
+      "assessment": "Token runtime matches the local HedgeFunToken artifact after its declared immutable creator/launcher substitutions; explorer token itself is unverified. V4 exchange needs a separate adapter path.",
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0x2796cdf7328916e0a6c04c296a72c5c6d70b3aee?tab=contract",
+      "explorerDirectlyVerified": false,
+      "capabilities": {
+        "transferFeeBpsInReviewedImplementation": 0,
+        "rawBalanceRebaseInReviewedImplementation": false,
+        "amountUnit": "raw ERC20 base units, decimals 18",
+        "conclusionScope": "Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers.",
+        "proxy": false,
+        "adminMint": false,
+        "adminFreezeOrBlacklist": false,
+        "adminPause": false,
+        "selfBurn": true,
+        "metadata": {
+          "deployer": "0xD7d7284FF95BAaD76167D331E803847DF0470577",
+          "launcher": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+          "editor": "0x0000000000000000000000000000000000000000",
+          "locked": false
+        },
+        "metadataAuthorityCannotChangeSupplyOrBalances": true,
+        "sourceRefs": [
+          "addon-creator-source:src/HedgeFunToken.sol"
+        ]
+      },
+      "sourceMatch": {
+        "passed": true,
+        "matchesWholeRuntimeIncludingMetadata": true,
+        "onlyPatchesFoundryDeclaredImmutables": true,
+        "expectedKeccak256": "0x47ac9e2d06060f8967967485194b8107706bcab075cc3398674b1130353e7e21",
+        "actualKeccak256": "0x47ac9e2d06060f8967967485194b8107706bcab075cc3398674b1130353e7e21",
+        "artifactPath": "/Users/leo/Hedgefun-trade/contractV2/out/HedgeFunToken.sol/HedgeFunToken.json",
+        "artifactSHA256": "4fd537c779ac5cbc5440fb3b37ef31b7e045b6fb6ad772b920cd5f314a87b7f9",
+        "sourcePath": "src/HedgeFunToken.sol",
+        "localSourceSHA256": "ab343a61af31a283c71c32067f3712c5a91bd11f91b678fc52ebed15e7eebaad",
+        "matchesVerifiedTokenDeployerEmbeddedTokenSource": true,
+        "immutables": [
+          {
+            "astId": "112957",
+            "name": "deployer",
+            "value": "0xd7d7284ff95baad76167d331e803847df0470577",
+            "references": [
+              {
+                "start": 811,
+                "length": 32
+              },
+              {
+                "start": 1352,
+                "length": 32
+              },
+              {
+                "start": 2257,
+                "length": 32
+              },
+              {
+                "start": 2519,
+                "length": 32
+              },
+              {
+                "start": 3590,
+                "length": 32
+              },
+              {
+                "start": 3798,
+                "length": 32
+              }
+            ]
+          },
+          {
+            "astId": "112960",
+            "name": "launcher",
+            "value": "0xc78b6a83d75c5612a1a7323702b56038254a6459",
+            "references": [
+              {
+                "start": 398,
+                "length": 32
+              },
+              {
+                "start": 1235,
+                "length": 32
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "The token address is not directly verified on the explorer.",
+          "This is a local artifact/source and immutable-patched runtime comparison; no fresh compiler invocation or complete deployed-factory reproducibility build was performed."
+        ]
+      }
+    },
+    "spcx": {
+      "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "symbol": "SPCX",
+      "decimals": 18,
+      "assessment": "Same Robinhood Stock implementation/beacon and issuer powers as AAPL. New private SPCX pool and explicit caps needed for private-to-private LINCOLN/SPCX swaps.",
+      "capabilities": {
+        "transferFeeBpsInReviewedImplementation": 0,
+        "rawBalanceRebaseInReviewedImplementation": false,
+        "amountUnit": "raw ERC20 base units, decimals 18",
+        "conclusionScope": "Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers.",
+        "proxy": {
+          "type": "EIP1967 beacon",
+          "beacon": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+          "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+          "upgradeAuthority": "BEACON_UPGRADER_ROLE on AccessControlsRegistry; DEFAULT_ADMIN_ROLE can grant/revoke roles",
+          "immutableBeaconButMutableImplementation": true
+        },
+        "canBlockAddress": true,
+        "canPauseAllTransfers": true,
+        "canPauseThisToken": true,
+        "canBurnArbitraryHolderBalance": true,
+        "adminBurnBypassesPausedAndBlocked": true,
+        "canAdminMint": true,
+        "rawBalanceCanChangeWithoutHolderConsent": "Issuer MINTER_ROLE/BURNER_ROLE/ADMIN_BURNER_ROLE can mint/burn. No automatic raw rebasing, but adminBurn can remove pool collateral.",
+        "transferChecks": [
+          "transfer: paused plus recipient/sender blocklist",
+          "transferFrom: paused plus source/recipient/operator blocklist",
+          "approve/permit: paused plus spender/owner/caller blocklist"
+        ],
+        "uiMultiplier": {
+          "exists": true,
+          "changesRawBalanceOf": false,
+          "changesBalanceOfUI": true,
+          "changesSharesPerRawToken": true,
+          "capMeaning": "7.2 or 100 raw tokens is not exactly 7.2 or 100 underlying shares when multiplier is not 1e18."
+        },
+        "requiredDisclosure": "Issuer can freeze/pause/burn pooled collateral and upgrade all Stock token implementation logic. Guardian/Ragequit cannot bypass an underlying issuer block or restore burned collateral.",
+        "sourceRefs": [
+          "aapl-implementation:src/Stock.sol",
+          "aapl-implementation:src/AccessControlled.sol",
+          "aapl-implementation:src/ERC20ScaledUIUpgradeable.sol",
+          "aapl-beacon:src/AccessControlsRegistry.sol"
+        ]
+      },
+      "pinnedRuntime": {
+        "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+        "onchainKeccak256": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+        "explorerDeployedBytecodeKeccak256": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+        "matches": true,
+        "isFullyVerified": false,
+        "isPartiallyVerified": true
+      }
+    }
+  },
+  "officialPrimarySources": [
+    {
+      "url": "https://docs.robinhood.com/chain/stock-tokens/",
+      "supports": "18 decimals and the ERC-8056 UI multiplier changes shares-per-token while raw balances remain static until redemption."
+    },
+    {
+      "url": "https://docs.robinhood.com/chain/contracts/",
+      "supports": "Official token-identity entrypoint, WETH/USDG addresses; dynamic Stock token table was not rendered in retrieved content."
+    },
+    {
+      "url": "https://docs.ethena.fi/technical-design/key-addresses.md",
+      "supports": "Common L2 USDe address 0x5d3a...ef34. Fetched list does not explicitly attest chain4663."
+    },
+    {
+      "url": "https://docs.ponsfamily.com/",
+      "supports": "Official PONS token address, canonical 1% pool, launch transaction and V3 factory/router/quoter/WETH addresses. Per-deployment restriction values are taken from verified source/constructor, not current generic docs."
+    }
+  ],
+  "uniswapV3Pools": [
+    {
+      "id": "aapl-usdg-500",
+      "address": "0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d",
+      "expectedFee": 500,
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d?tab=contract",
+      "sourceSnapshot": "aapl-usdg-500.json",
+      "sourceSnapshotSHA256": "b444826107650b61f1702a5da40fb8443aed16d17cb212a89f88686ec168ebc6",
+      "sourceName": "UniswapV3Pool",
+      "isVerified": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true,
+      "runtimeFromExplorer": {
+        "lengthBytes": 22142,
+        "keccak256": "0xa488ede24eef95af56b0e7c171832ce207f070212584786d40acbfcecbe9b1d0"
+      },
+      "onchainBindingRequirement": [
+        "factory() equals pinned V3 factory",
+        "token0()/token1() match intended pair",
+        "fee() equals expected tier",
+        "factory.getPool(pair,tier) equals this address",
+        "liquidity/slot0 and both-direction amount-dependent quote; depth alone does not prove execution price"
+      ],
+      "sourceOnlyResult": "All five addresses expose verified UniswapV3Pool source; exact factory/token/fee association is established in the companion pinned root RPC probe."
+    },
+    {
+      "id": "pons-weth-3000",
+      "address": "0xed50bdeea8adc232f159486192a4157281d722ff",
+      "expectedFee": 3000,
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xed50bdeea8adc232f159486192a4157281d722ff?tab=contract",
+      "sourceSnapshot": "pons-weth-3000.json",
+      "sourceSnapshotSHA256": "1ac83fc7d9bff294fde613506d93fa49e7d242f954bc65e70859a8d60fc034b5",
+      "sourceName": "UniswapV3Pool",
+      "isVerified": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true,
+      "runtimeFromExplorer": {
+        "lengthBytes": 22142,
+        "keccak256": "0x195c7d777448794bd8ebe573f2d4a4007abf142d9fcb895ef38603f4de8c2672"
+      },
+      "onchainBindingRequirement": [
+        "factory() equals pinned V3 factory",
+        "token0()/token1() match intended pair",
+        "fee() equals expected tier",
+        "factory.getPool(pair,tier) equals this address",
+        "liquidity/slot0 and both-direction amount-dependent quote; depth alone does not prove execution price"
+      ],
+      "sourceOnlyResult": "All five addresses expose verified UniswapV3Pool source; exact factory/token/fee association is established in the companion pinned root RPC probe."
+    },
+    {
+      "id": "pons-weth-10000",
+      "address": "0x10cc6bd38112cac182db90b6a71d8bb5939526ba",
+      "expectedFee": 10000,
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0x10cc6bd38112cac182db90b6a71d8bb5939526ba?tab=contract",
+      "sourceSnapshot": "pons-weth-10000.json",
+      "sourceSnapshotSHA256": "d5efcd2f6680fd869b3f9f3ee4e255d2e273e00dd0d04a05209c2f76b187b8b0",
+      "sourceName": "UniswapV3Pool",
+      "isVerified": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true,
+      "runtimeFromExplorer": {
+        "lengthBytes": 22142,
+        "keccak256": "0x6b805cc147fb0d1392158bffce6dbdc926d32a88063ef74b9142efce5320d774"
+      },
+      "onchainBindingRequirement": [
+        "factory() equals pinned V3 factory",
+        "token0()/token1() match intended pair",
+        "fee() equals expected tier",
+        "factory.getPool(pair,tier) equals this address",
+        "liquidity/slot0 and both-direction amount-dependent quote; depth alone does not prove execution price"
+      ],
+      "sourceOnlyResult": "All five addresses expose verified UniswapV3Pool source; exact factory/token/fee association is established in the companion pinned root RPC probe."
+    },
+    {
+      "id": "cashcat-weth-3000",
+      "address": "0xd42a491087a15e5afd51feb3606066cc152d2b09",
+      "expectedFee": 3000,
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xd42a491087a15e5afd51feb3606066cc152d2b09?tab=contract",
+      "sourceSnapshot": "cashcat-weth-3000.json",
+      "sourceSnapshotSHA256": "e083481fd2777d16d33a880829e14b1b41d869fcbae9e0b3e7d77559b3b6a4db",
+      "sourceName": "UniswapV3Pool",
+      "isVerified": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true,
+      "runtimeFromExplorer": {
+        "lengthBytes": 22142,
+        "keccak256": "0x4b535b6f1b07cd80f7c9a8259b0856d8d832896b7fd3b11e32b9f89dafe5a3cf"
+      },
+      "onchainBindingRequirement": [
+        "factory() equals pinned V3 factory",
+        "token0()/token1() match intended pair",
+        "fee() equals expected tier",
+        "factory.getPool(pair,tier) equals this address",
+        "liquidity/slot0 and both-direction amount-dependent quote; depth alone does not prove execution price"
+      ],
+      "sourceOnlyResult": "All five addresses expose verified UniswapV3Pool source; exact factory/token/fee association is established in the companion pinned root RPC probe."
+    },
+    {
+      "id": "cashcat-weth-10000",
+      "address": "0xa70fc67c9f69da90b63a0e4c05d229954574e313",
+      "expectedFee": 10000,
+      "explorerUrl": "https://robinhoodchain.blockscout.com/address/0xa70fc67c9f69da90b63a0e4c05d229954574e313?tab=contract",
+      "sourceSnapshot": "cashcat-weth-10000.json",
+      "sourceSnapshotSHA256": "18f7569956b9794575f88287aa28906f0fee52942e6d541589fc935cacba9155",
+      "sourceName": "UniswapV3Pool",
+      "isVerified": true,
+      "isFullyVerified": false,
+      "isPartiallyVerified": true,
+      "runtimeFromExplorer": {
+        "lengthBytes": 22142,
+        "keccak256": "0xf54b18fdd4021731542b67112c0f0e745ca7ed610df17dae69a13b06dddf92f8"
+      },
+      "onchainBindingRequirement": [
+        "factory() equals pinned V3 factory",
+        "token0()/token1() match intended pair",
+        "fee() equals expected tier",
+        "factory.getPool(pair,tier) equals this address",
+        "liquidity/slot0 and both-direction amount-dependent quote; depth alone does not prove execution price"
+      ],
+      "sourceOnlyResult": "All five addresses expose verified UniswapV3Pool source; exact factory/token/fee association is established in the companion pinned root RPC probe."
+    }
+  ],
+  "limitations": [
+    "No compiler rerun or third-party security audit in this source review.",
+    "Explorer metadata is third-party indexed evidence; runtime codehash and contract state checks must use a pinned chain4663 block.",
+    "No single successful transfer can certify lack of admin freeze/upgrade rights.",
+    "No live mainnet deposit, transfer, swap or withdrawal was performed by this review.",
+    "Prices, market caps and frontend suggested cap USD equivalence are not established by this review.",
+    "AAPL/SPCX issuer freeze/burn powers are present regardless of whether any planned new pool is blocked today."
+  ],
+  "uniswapV4Extension": {
+    "schema": "lincoln-v4-route-research/v1",
+    "deploymentEnabled": false,
+    "reason": "Existing production V3/Router02 adapters cannot encode a V4 PoolKey or implement its unlock settlement. New typed adapter and separate acceptance are needed.",
+    "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+    "factory": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+    "strategyId": "2",
+    "blockNumber": "90832363",
+    "poolKey": {
+      "currency0": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+      "currency1": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "fee": 2000,
+      "tickSpacing": 60,
+      "hooks": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC"
+    },
+    "poolId": "0xec0d72f0c70983525d99f777303e92f82b3cbb2e89aede6d44c9f22f8abc3f55",
+    "initializeEvents": [
+      {
+        "blockNumber": "90821662",
+        "transactionHash": "0x26f9c373dece8f671319393ea2476bc2093f8322ab178bb55b2e23c86aa313e7",
+        "args": {
+          "id": "0xec0d72f0c70983525d99f777303e92f82b3cbb2e89aede6d44c9f22f8abc3f55",
+          "currency0": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+          "currency1": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+          "fee": 2000,
+          "tickSpacing": 60,
+          "hooks": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+          "sqrtPriceX96": "42650601405571385896432229",
+          "tick": -150549
+        }
+      }
+    ],
+    "hookRates": {
+      "taxBps": 100,
+      "spikeBps": 0,
+      "spikeSeconds": 0,
+      "protocolBps": 3000,
+      "creatorBps": 5000,
+      "sweepTipBps": 0,
+      "snipeBps": 0,
+      "snipeSeconds": 0
+    },
+    "hookLiquidityVault": "0xA6dF493aC0FCF58aa1acFB60FA2aB96a01c17E30",
+    "feeLayers": {
+      "poolLPFeePips": 2000,
+      "poolLPFeePercent": "0.2",
+      "hookTaxBps": 100,
+      "hookTaxPercent": "1",
+      "lincolnServiceFeeBps": 30,
+      "combinedPercentNotSimplyFlatSum": "Hook exact-input buy taxes specified stock first, LP fee applies to the net pool amount; output service fee must be applied to actual output."
+    },
+    "hookAuthority": {
+      "canChangeExistingTaxRates": false,
+      "canPauseInReviewedHook": false,
+      "canSetProtocolPayoutRecipient": true,
+      "creatorPayoutTakeover": "Factory owner proposes and waits 14 days; existing creator can veto, imposing 180-day quiet; acceptance window 14 days. Changes payout rights only, not tax rates.",
+      "factoryOwnerRecordedAtDeployment": "0x36437b878415EdA1a24186CF79AFffBc9ecEd298",
+      "currentOwnerRequiresPinnedRead": false,
+      "exactInputBuyPartialFill": "Rejected by V2 hook PartialFillRefused if taxed input not fully used.",
+      "exactOutputSell": "Rejected by base hook ExactOutputRefused. Start integration with exact-input only and test both directions.",
+      "currentOwner": "0x2910117dd2cB431173Ae9Fb6eAF30726321d1693",
+      "currentOwnerBlockNumber": "90833751",
+      "ownerChangedSinceDeployment": true
+    },
+    "requiredPlan": {
+      "newPrivatePools": [
+        "lincoln",
+        "spcx"
+      ],
+      "capParameters": {
+        "lincoln": null,
+        "spcx": null
+      },
+      "capApprovalRequired": true,
+      "newAdapter": "A dedicated V4 exact-input adapter implementing authenticated PoolManager unlockCallback, pinned PoolKey/hook and actual input/output balance deltas; no arbitrary calldata or arbitrary caller-selected hook.",
+      "invariantChecks": [
+        "Only expected PoolManager may invoke unlockCallback; require one in-flight expected operation",
+        "Settle only the pinned input asset and take only the pinned output asset; no arbitrary currency callback destinations",
+        "Validate pool ID matches keccak256(abi.encode(PoolKey)); static fee and tickSpacing plus hook codehash pinned",
+        "Fee accounting uses actual output; slippage/deadline bind to proof-authorized recipient and asset",
+        "Do not mark V4 hook tax as ERC20 fee-on-transfer; raw token transfer is plain ERC20",
+        "Validate SPCX issuer paused/blocklist status including PoolManager, route adapter, both privacy pools and recipient; surface freeze as external asset risk",
+        "Fork test both directions, minimum output, hook 1% tax, LP fee, 30bps treasury payment, partial-fill rejection, callback spoofing and full revert on failure",
+        "Both pools, indexer, ASP, relays, fee pricing and frontend route schema must be extended together before private-to-private release"
+      ]
+    },
+    "chainEvidenceFile": "addon-v4-chain-state.json",
+    "chainEvidenceSHA256": "117c24641e67b5f6d70f2adfbb89234e92531f102095556deb2141539acfa6b6",
+    "notIncluded": "No V4 adapter code, contract deployment, allowance, mainnet swap, or liquidity creation has been performed."
+  },
+  "currentAuthorities": {
+    "file": "current-issuer-authorities.json",
+    "sha256": "720b6fd87415f118dc8df6e88ecef1dfb5a4137a786450332f23be862ad2c26e",
+    "chainId": 4663,
+    "blockNumber": "90833751",
+    "roles": [
+      {
+        "role": "MINTER_ROLE",
+        "roleHash": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6",
+        "address": "0x2b94105fFf37630f98e1f24811daD588FC5C3A87",
+        "hasRole": true
+      },
+      {
+        "role": "BURNER_ROLE",
+        "roleHash": "0x3c11d16cbaffd01df69ce1c404f6340ee057498f5f00246190ea54220576a848",
+        "address": "0x6E40B50A40C1db42A85a0E8fe8FF7d9CbFc2D8C1",
+        "hasRole": true
+      },
+      {
+        "role": "PAUSER_ROLE",
+        "roleHash": "0x65d7a28e3265b37a6474929f336521b332c1681b933f6cb9f3376673440d862a",
+        "address": "0xe7BCB188254Bc6eBBfF63014DfED4cD4A024F22A",
+        "hasRole": true
+      },
+      {
+        "role": "TOKEN_DEPLOYER_ROLE",
+        "roleHash": "0x5f077d4e72bed5b3b14877559c782788e60c3fbb27bf29d3586097d8fa36bbeb",
+        "address": "0x5516B3451d4d6C9f63353Fe7Bc9537477ECCE000",
+        "hasRole": true
+      },
+      {
+        "role": "BEACON_UPGRADER_ROLE",
+        "roleHash": "0x5ab8bd28475e0dc8d5764e9ce50f85ffe2f14ec40c5b74e45f541485ad510c39",
+        "address": "0xCd8C6182e7C6Ca3B5156D6a90a67719d7e2Be094",
+        "hasRole": true
+      },
+      {
+        "role": "FACTORY_UPGRADER_ROLE",
+        "roleHash": "0xb4e5de7340a2fee2ff9be79f5ec0e8feae4b633bc8cc663711520e08f24984f8",
+        "address": "0x697e774d60c1a3769f2eD0b919AAcf17be0ae553",
+        "hasRole": true
+      },
+      {
+        "role": "MULTIPLIER_UPDATER_ROLE",
+        "roleHash": "0x7158cf42e4a4f01c5456c8d75cdbd375748d45e9db7e812f5bcd18844122b615",
+        "address": "0x92905e8d0e2301BA143215B8D86D63fFD4188143",
+        "hasRole": true
+      },
+      {
+        "role": "METADATA_UPDATER_ROLE",
+        "roleHash": "0x7f5260842512b02356ff92de24be96e7e1aac2e234d9371b076ac2b4cddda61e",
+        "address": "0xcba16C2b9048AF033c5b34E43dd1D47D1358524A",
+        "hasRole": true
+      },
+      {
+        "role": "BLOCKER_ROLE",
+        "roleHash": "0x8f2e0057cd5e35397007bcc8f5418f73dd64cc6e4073a0276563f247c3079037",
+        "address": "0x913cA87347391218e5De2C17c5A0AEba8B0b28fD",
+        "hasRole": true
+      },
+      {
+        "role": "ADMIN_BURNER_ROLE",
+        "roleHash": "0x25e7ebc863fa4efd16243c82323b71f247c0cf439aca64c51b84a74afb738936",
+        "address": "0x957B6de6525C63349f7619743Ef1E0ad93cd74D4",
+        "hasRole": true
+      },
+      {
+        "role": "TOKEN_PAUSER_ROLE",
+        "roleHash": "0xe95e22ec6dbf4c911d1fae59680a3e9cb71dd35b3a1c697d232e4b01a8ff30a2",
+        "address": "0xFCcF56B674113d9C4eb0F9B3370930ceD9E6Ab23",
+        "hasRole": true
+      },
+      {
+        "role": "ORACLE_PAUSER_ROLE",
+        "roleHash": "0x155fc2c2b00b801014447f9d3a1522625740f8e592e4c0b0bb7c5867c150aa11",
+        "address": "0x7369d100c00F28E45D779ac9d4b1c7afa61e4aBC",
+        "hasRole": true
+      },
+      {
+        "role": "DEFAULT_ADMIN_ROLE",
+        "roleHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "address": "0xD6f8378F8e440c65F8382F5f2728c78DfD55B66d",
+        "hasRole": true
+      }
+    ],
+    "usde": {
+      "owner": "0x5B29AcbB51A1290ebda7f6A7a209Aa08cAA35901",
+      "pendingOwner": "0x0000000000000000000000000000000000000000",
+      "endpoint": "0x6F475642a6e85809B1c36Fa62763669b1b48DD5B",
+      "rateLimiter": "0x0000000000000000000000000000000000000000"
+    },
+    "paused": {
+      "registry": false,
+      "aapl": false,
+      "spcx": false
+    },
+    "isBlocked": {
+      "relay": {
+        "address": "0x8d890058818EDbc222E6E01F501dC77FBFf6f4dC",
+        "blocked": false
+      },
+      "safe": {
+        "address": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "blocked": false
+      },
+      "v4PoolManager": {
+        "address": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+        "blocked": false
+      },
+      "v4Hook": {
+        "address": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+        "blocked": false
+      },
+      "hedgeFunTreasury": {
+        "address": "0x72aBbC490A18B5c0c61A9BeA4Ed091a74Eef991F",
+        "blocked": false
+      }
+    },
+    "hookOwner": "0x2910117dd2cB431173Ae9Fb6eAF30726321d1693",
+    "limitations": [
+      "hasRole results only validate replayed candidate addresses; no negative claim about unknown future grants.",
+      "Future new private pool and adapter addresses are not available yet and must be checked before activation.",
+      "Non-blocked now does not remove future issuer block/pause/adminBurn/upgrade powers."
+    ]
+  }
+}

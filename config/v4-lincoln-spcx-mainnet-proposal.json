@@ -1,0 +1,108 @@
+{
+  "schema": "lincoln-mainnet-v4-route-proposal/v1",
+  "chainId": 4663,
+  "status": "design-only-not-approved",
+  "signingEnabled": false,
+  "executionEnabled": false,
+  "adapterDeployed": false,
+  "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+  "poolKey": {
+    "currency0": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+    "currency1": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+    "fee": 2000,
+    "tickSpacing": 60,
+    "hooks": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC"
+  },
+  "poolId": "0xec0d72f0c70983525d99f777303e92f82b3cbb2e89aede6d44c9f22f8abc3f55",
+  "assets": [
+    {
+      "id": "lincoln",
+      "symbol": "LINCOLN",
+      "address": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+      "decimals": null,
+      "depositCaps": null,
+      "profile": null,
+      "reviewStatus": "pending-creation-source-and-transfer-review"
+    },
+    {
+      "id": "spcx",
+      "symbol": "SPCX",
+      "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "decimals": null,
+      "depositCaps": null,
+      "profile": null,
+      "reviewStatus": "pending-issuer-and-transfer-review"
+    }
+  ],
+  "adapterDesign": {
+    "kind": "immutable-single-pool-v4-exact-input",
+    "candidateContract": "Phase2FeeV4SinglePoolAdapter",
+    "candidateABI": "config/v4-lincoln-spcx-candidate-abi.json",
+    "preferredExecution": "dedicated-poolmanager-unlock",
+    "typedHedgeFunRouterAlternative": "pending-independent-runtime-and-strategy-pins",
+    "exactInputOnly": true,
+    "allowPartialFill": false,
+    "nativeAssets": false,
+    "arbitraryCalldata": false,
+    "hookData": "0x",
+    "serviceFeeBps": 30,
+    "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "gasLimit": null,
+    "maxFeePerGasWei": null,
+    "budgetWei": null,
+    "approval": null
+  },
+  "hookEconomics": {
+    "expectedFlatHookTaxBps": 100,
+    "taxAsset": "SPCX",
+    "buyTaxSide": "input",
+    "sellTaxSide": "output",
+    "lpFeePips": 2000,
+    "erc20TransferTax": false,
+    "snipeTaxExpected": false,
+    "sellSpikeMayChangeEffectiveRate": true,
+    "requireOnchainRateAndVaultVerification": true,
+    "feeExplanation": "Hook stock tax, V4 LP fee and Lincoln output fee are distinct. A quote must include the hook; ordinary ERC20 transfers are not assumed to carry its trade tax."
+  },
+  "localSourceReferences": [
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/v2/HedgeFunV2TradeRouter.sol",
+      "sha256": "480c78582e61eaaf1951084ddab5b89408ebc80e21ac063c71f2d6330dfadd1f",
+      "onchainSourceMatchVerified": false
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/hooks/HedgeFunV2Hook.sol",
+      "sha256": "68513de3f03ef7c64dea0c4b66f3168d360db2ad14a517612d9f62269d8e9940",
+      "onchainSourceMatchVerified": false
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/hooks/HedgeFunHook.sol",
+      "sha256": "9ec3c02c065d3e8bcbd0839d1c87dd4af5da87ffe10639544a3fe04a34e2f791",
+      "onchainSourceMatchVerified": false
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/libraries/HedgeFunMath.sol",
+      "sha256": "91b340c6c7464e0bad2e5cb7f800e047a9ed8702da11b396a25367e119e579f1",
+      "onchainSourceMatchVerified": false
+    }
+  ],
+  "requiredEvidence": [
+    "PoolKey-hash-and-live-initialization",
+    "manager-hook-and-token-runtime-pins",
+    "hook-version-registration-vault-and-effective-rate",
+    "LINCOLN-creation-initcode-and-ERC20-behavior",
+    "SPCX-issuer-controls-and-ERC20-behavior",
+    "both-privacy-pool-caps-user-approved",
+    "typed-adapter-source-and-audit-tests",
+    "both-direction-live-fork-with-tax-and-reshield",
+    "explicit-deployment-and-gas-budget-approval",
+    "indexer-ASP-relay-fee-and-Access-roster-coverage"
+  ],
+  "networkRequests": 0,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0
+}

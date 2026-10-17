@@ -1,0 +1,79 @@
+{
+  "schema": "lincoln-mainnet-new-pool-anchor-probe/v1",
+  "chainId": 4663,
+  "genesisHash": "0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c",
+  "checkedAtUTC": "2026-10-17T09:53:06.379Z",
+  "observation": {
+    "blockNumber": "90835340",
+    "blockHash": "0xe4146dea42199b8d2ab8e26e5da6057dc94cd738b331788130e6467d9425f657"
+  },
+  "inputs": {
+    "core": [
+      "deployments/robinhood-mainnet/rc3-eth-usdg.json",
+      "1a21465491f1036546383d812deb408a7dbe37bf4f9b2c0eabcd8e943263de1b"
+    ],
+    "contracts": [
+      "releases/rc3/artifacts/phase2-mainnet/contracts.json",
+      "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
+    ]
+  },
+  "sharedComponents": {
+    "PoseidonT3": {
+      "address": "0x4781B6D29Dd0CeFEf101049E23f31D2165a553fa",
+      "runtimeCodeHash": "0xcef6c31a694ac3823f4f66a8b44bc2f1547e21a01146eaa5dd28f078f39a22eb",
+      "startBlock": "90619701",
+      "blockHash": "0xaad47aaa9e1bd401f586d11bfc6ec858501e566a73ed3ff1568bbb5364f458ce",
+      "transactionHash": "0x3c52480d5f38a69fc2d72b431f4317800b90c7670824f268acbc1c32f064149f",
+      "nonce": "0",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "PoseidonT4": {
+      "address": "0x9096D809dc96BCeE1F9c7b64BAd8F79FA6dCF165",
+      "runtimeCodeHash": "0xf6553d07b5e1e362c4faf3b73c34109ac2cc201be0d0925917f2db0a19b3df43",
+      "startBlock": "90662073",
+      "blockHash": "0x0eef880fa9db457a46aab7ceed32fd1063b4bc0d627b1a6a01e3015bbec7730b",
+      "transactionHash": "0x33be2cadd8c05caad8da9fb9833a1f9cfec3ceb7c32c8c10e0ad0520da337c88",
+      "nonce": "1",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "Phase2ASPJoinSplitVerifier": {
+      "address": "0xA5bC542708D7fEBD706E7fD78caD2ACa785B9dF4",
+      "runtimeCodeHash": "0x53b6c748afbdf537440036d238752a874e918bb8128aa11d2df65926b271fb4a",
+      "startBlock": "90674412",
+      "blockHash": "0x8478f8726e9abeb771e7d269b34adc34ffc92822efc954f2e3e5d655f1ede473",
+      "transactionHash": "0x458572b4c8ab82e4ff605e5d559df311739ff8466675ec1d19294fcd6dd4edb9",
+      "nonce": "2",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "Phase2ASPExitVerifier": {
+      "address": "0xF430E5d1aa6d970de10C745DC04cb7e7E1F53Ab5",
+      "runtimeCodeHash": "0x25611eb4723ceab2d49339495042c2899d45e04de6fd503c5d07efe7f9015a60",
+      "startBlock": "90696074",
+      "blockHash": "0xa472b6878db7c335becbb3cbcf9ed9088bb998137eeda51a27079dba1dd645d1",
+      "transactionHash": "0x4bb886828346291b9f290068eea0f6aad7f81a6c68cfbba6e95fd7bdb22fa5ea",
+      "nonce": "3",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "Phase2ASPRegistry": {
+      "address": "0x89ad7Cce6c161A21323BE234d9924fEe915b2660",
+      "runtimeCodeHash": "0x063c89335f4b6aa87b57c02e6ab7914e0e77b369412d9beac33977a518fc0dbd",
+      "startBlock": "90696101",
+      "blockHash": "0x86a8809d1f29b67d4bb9066c09d6f9381db1ea3d07f7a0b90b86b926967e72f8",
+      "provider": "0xce6770154D793dF78FbfA0D3615B2946366E6612",
+      "guardian": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "transactionHash": "0x73527193d0d6b1872c5be33a84bc149b57ebc72cf65cfa9f7f1cbcb305a8471d",
+      "nonce": "4",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    }
+  },
+  "canonicalBlockRechecked": true,
+  "passed": true,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "keysAccessed": false
+}

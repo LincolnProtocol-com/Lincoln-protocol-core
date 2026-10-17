@@ -1,0 +1,398 @@
+{
+  "schema": "lincoln-mainnet-four-pool-review/v1",
+  "chainId": 4663,
+  "genesisHash": "0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c",
+  "policySHA256": "014066331584e59d42bab7d2ae3f6693a13d3425192b967bc56b690631dfcc02",
+  "observation": {
+    "blockNumber": "90835340",
+    "blockHash": "0xe4146dea42199b8d2ab8e26e5da6057dc94cd738b331788130e6467d9425f657",
+    "observedAt": "2026-10-17T09:53:06.379Z"
+  },
+  "supportingObservations": {
+    "tokensAndMarkets": {
+      "blockNumber": "90830759",
+      "blockHash": "0xf06616485b345b8f6a10735c0c8dd8de830925d914514779bfed32216d8eb106"
+    },
+    "safe": {
+      "blockNumber": "90836788",
+      "blockHash": "0x5086ad7529e41c52144adae317d4a46ef67cf981b4c6795cc04ffca7dc49d966"
+    }
+  },
+  "sharedComponents": {
+    "PoseidonT3": {
+      "address": "0x4781B6D29Dd0CeFEf101049E23f31D2165a553fa",
+      "runtimeCodeHash": "0xcef6c31a694ac3823f4f66a8b44bc2f1547e21a01146eaa5dd28f078f39a22eb",
+      "startBlock": "90619701",
+      "blockHash": "0xaad47aaa9e1bd401f586d11bfc6ec858501e566a73ed3ff1568bbb5364f458ce",
+      "transactionHash": "0x3c52480d5f38a69fc2d72b431f4317800b90c7670824f268acbc1c32f064149f",
+      "nonce": "0",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "PoseidonT4": {
+      "address": "0x9096D809dc96BCeE1F9c7b64BAd8F79FA6dCF165",
+      "runtimeCodeHash": "0xf6553d07b5e1e362c4faf3b73c34109ac2cc201be0d0925917f2db0a19b3df43",
+      "startBlock": "90662073",
+      "blockHash": "0x0eef880fa9db457a46aab7ceed32fd1063b4bc0d627b1a6a01e3015bbec7730b",
+      "transactionHash": "0x33be2cadd8c05caad8da9fb9833a1f9cfec3ceb7c32c8c10e0ad0520da337c88",
+      "nonce": "1",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "Phase2ASPJoinSplitVerifier": {
+      "address": "0xA5bC542708D7fEBD706E7fD78caD2ACa785B9dF4",
+      "runtimeCodeHash": "0x53b6c748afbdf537440036d238752a874e918bb8128aa11d2df65926b271fb4a",
+      "startBlock": "90674412",
+      "blockHash": "0x8478f8726e9abeb771e7d269b34adc34ffc92822efc954f2e3e5d655f1ede473",
+      "transactionHash": "0x458572b4c8ab82e4ff605e5d559df311739ff8466675ec1d19294fcd6dd4edb9",
+      "nonce": "2",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "Phase2ASPExitVerifier": {
+      "address": "0xF430E5d1aa6d970de10C745DC04cb7e7E1F53Ab5",
+      "runtimeCodeHash": "0x25611eb4723ceab2d49339495042c2899d45e04de6fd503c5d07efe7f9015a60",
+      "startBlock": "90696074",
+      "blockHash": "0xa472b6878db7c335becbb3cbcf9ed9088bb998137eeda51a27079dba1dd645d1",
+      "transactionHash": "0x4bb886828346291b9f290068eea0f6aad7f81a6c68cfbba6e95fd7bdb22fa5ea",
+      "nonce": "3",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    },
+    "Phase2ASPRegistry": {
+      "address": "0x89ad7Cce6c161A21323BE234d9924fEe915b2660",
+      "runtimeCodeHash": "0x063c89335f4b6aa87b57c02e6ab7914e0e77b369412d9beac33977a518fc0dbd",
+      "startBlock": "90696101",
+      "blockHash": "0x86a8809d1f29b67d4bb9066c09d6f9381db1ea3d07f7a0b90b86b926967e72f8",
+      "provider": "0xce6770154D793dF78FbfA0D3615B2946366E6612",
+      "guardian": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+      "transactionHash": "0x73527193d0d6b1872c5be33a84bc149b57ebc72cf65cfa9f7f1cbcb305a8471d",
+      "nonce": "4",
+      "creationReceiptMatched": true,
+      "creationInputMatched": true
+    }
+  },
+  "safeBindings": {
+    "singleton": "0xedd160febbd92e350d4d398fb636302fccd67c7e",
+    "singletonRuntimeCodeHash": "0x180193227186ccb85316c94db1f0d156ed932b14712cfaac78901899178572dc",
+    "ownerSetHash": "0x793c28b343a41f2376fc69f42937812bcdcd926831a4b6dd152d62f6751adcd7",
+    "threshold": 2,
+    "ownerCount": 3
+  },
+  "assets": [
+    {
+      "id": "aapl",
+      "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "symbol": "AAPL",
+      "decimals": 18,
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630",
+      "observedAtBlock": "90830759",
+      "sourceReview": {
+        "complete": true,
+        "sourceURL": "https://robinhoodchain.blockscout.com/address/0xaf3d76f1834a1d425780943c99ea8a608f8a93f9?tab=contract",
+        "sourceSHA256": "81641e753f953bc16d4d5dc869b2f38cf9075f20f969ed85b71b2ff71f2164da",
+        "runtimeMatchesReviewedSource": true,
+        "correspondenceMethod": "Explorer verified-source runtime record matched exact pinned RPC bytecode; no fresh full compiler reproduction. See source-runtime-correspondence.json and preserved partial-verification flags.",
+        "explorerVerification": {
+          "is_verified": true,
+          "is_fully_verified": false,
+          "is_partially_verified": true,
+          "is_changed_bytecode": false,
+          "is_verified_via_eth_bytecode_db": true,
+          "verified_at": "2026-07-01T19:09:20.614948Z"
+        },
+        "upgradeable": true,
+        "implementations": [
+          {
+            "address": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+            "runtimeCodeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e"
+          },
+          {
+            "address": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+            "runtimeCodeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7"
+          }
+        ],
+        "upgradeAuthority": "0xe10b6f6B275de231345c20D14Ab812db62151b00"
+      },
+      "transferBehavior": {
+        "forkTestPassed": true,
+        "evidenceSHA256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5",
+        "transferExact": true,
+        "transferFromExact": true,
+        "noTransferFee": true,
+        "noRebase": true,
+        "noRebaseBasis": "Current source has no raw balance scaling. Passive-time fork check alone is not proof; issuer mint/burn and upgrades are separate disclosed powers."
+      },
+      "controls": {
+        "freezeAuthority": true,
+        "blacklistAuthority": true,
+        "pauseAuthority": true,
+        "bridgeAuthority": false,
+        "adminBurnAuthority": true,
+        "poolAddressBlocking": "issuer-controlled",
+        "description": "compatible raw accounting with material existing-Stock issuer risks; fails a literal no-blacklist/no-freeze requirement; Issuer can freeze/pause/burn pooled collateral and upgrade all Stock token implementation logic. Guardian/Ragequit cannot bypass an underlying issuer block or restore burned collateral."
+      },
+      "liveBindings": {
+        "beacon": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+        "registry": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+        "implementation": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+        "registryRuntimeCodeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e",
+        "implementationRuntimeCodeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7"
+      }
+    },
+    {
+      "id": "usde",
+      "address": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
+      "symbol": "USDe",
+      "decimals": 18,
+      "runtimeCodeHash": "0x43d4a9c80fe87d7d878b8c8bdcb419261a1cb037e6833918c67c9b74e8519ca4",
+      "observedAtBlock": "90830759",
+      "sourceReview": {
+        "complete": true,
+        "sourceURL": "https://robinhoodchain.blockscout.com/address/0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34?tab=contract",
+        "sourceSHA256": "68d21fa3de9e1a17a1112f6256198fe1e6fe9c5bdd2593be80aa4660beeb7a1f",
+        "runtimeMatchesReviewedSource": true,
+        "correspondenceMethod": "Explorer verified-source runtime record matched exact pinned RPC bytecode; no fresh full compiler reproduction. See source-runtime-correspondence.json and preserved partial-verification flags.",
+        "explorerVerification": {
+          "is_verified": true,
+          "is_fully_verified": false,
+          "is_partially_verified": true,
+          "is_changed_bytecode": false,
+          "is_verified_via_eth_bytecode_db": false,
+          "verified_at": "2026-06-02T12:42:34.901945Z"
+        },
+        "upgradeable": false,
+        "implementations": []
+      },
+      "transferBehavior": {
+        "forkTestPassed": true,
+        "evidenceSHA256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5",
+        "transferExact": true,
+        "transferFromExact": true,
+        "noTransferFee": true,
+        "noRebase": true,
+        "noRebaseBasis": "Current source has no raw balance scaling. Passive-time fork check alone is not proof; issuer mint/burn and upgrades are separate disclosed powers."
+      },
+      "controls": {
+        "freezeAuthority": false,
+        "blacklistAuthority": false,
+        "pauseAuthority": false,
+        "bridgeAuthority": true,
+        "adminBurnAuthority": false,
+        "poolAddressBlocking": "absent",
+        "description": "current local ERC20 code has no address blacklist/freeze/pause; OFT administration and bridge security remain material; Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers."
+      },
+      "liveBindings": {
+        "owner": "0x5B29AcbB51A1290ebda7f6A7a209Aa08cAA35901",
+        "pendingOwner": "0x0000000000000000000000000000000000000000",
+        "endpoint": "0x6F475642a6e85809B1c36Fa62763669b1b48DD5B",
+        "rateLimiter": "0x0000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "id": "pons",
+      "address": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+      "symbol": "PONS",
+      "decimals": 18,
+      "runtimeCodeHash": "0x16c3d3ede897688ddff79262606f13bead398332e65001f192460fbac4e1fb85",
+      "observedAtBlock": "90830759",
+      "sourceReview": {
+        "complete": true,
+        "sourceURL": "https://robinhoodchain.blockscout.com/address/0x39dbed3a2bd333467115de45665cc57f813c4571?tab=contract",
+        "sourceSHA256": "a2964be111c92af0f4228c375fab52263e2f7fffeb0116b0ef5be2c79c627e35",
+        "runtimeMatchesReviewedSource": true,
+        "correspondenceMethod": "Explorer verified-source runtime record matched exact pinned RPC bytecode; no fresh full compiler reproduction. See source-runtime-correspondence.json and preserved partial-verification flags.",
+        "explorerVerification": {
+          "is_verified": true,
+          "is_fully_verified": false,
+          "is_partially_verified": true,
+          "is_changed_bytecode": false,
+          "is_verified_via_eth_bytecode_db": false,
+          "verified_at": "2026-07-13T23:55:17.954502Z"
+        },
+        "upgradeable": false,
+        "implementations": []
+      },
+      "transferBehavior": {
+        "forkTestPassed": true,
+        "evidenceSHA256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5",
+        "transferExact": true,
+        "transferFromExact": true,
+        "noTransferFee": true,
+        "noRebase": true,
+        "noRebaseBasis": "Current source has no raw balance scaling. Passive-time fork check alone is not proof; issuer mint/burn and upgrades are separate disclosed powers."
+      },
+      "controls": {
+        "freezeAuthority": false,
+        "blacklistAuthority": false,
+        "pauseAuthority": false,
+        "bridgeAuthority": false,
+        "adminBurnAuthority": false,
+        "poolAddressBlocking": "absent",
+        "description": "plain fixed-supply ERC20 after immutable launch restriction window; require current block greater than restrictionEndBlock; Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers."
+      },
+      "liveBindings": {
+        "restrictionEndBlock": "25526532"
+      }
+    },
+    {
+      "id": "cashcat",
+      "address": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+      "symbol": "CASHCAT",
+      "decimals": 18,
+      "runtimeCodeHash": "0x725781ccca82a0bf9b1f8920b2fe58ea1e4facf46d0db9f50226d6409de890fe",
+      "observedAtBlock": "90830759",
+      "sourceReview": {
+        "complete": true,
+        "sourceURL": "https://robinhoodchain.blockscout.com/address/0x020bfc650a365f8bb26819deaabf3e21291018b4?tab=contract",
+        "sourceSHA256": "bf65f1d149a621ce868be46c6cabef8de511b2b28a5a0151c4a2e2e80965721c",
+        "runtimeMatchesReviewedSource": true,
+        "correspondenceMethod": "Explorer verified-source runtime record matched exact pinned RPC bytecode; no fresh full compiler reproduction. See source-runtime-correspondence.json and preserved partial-verification flags.",
+        "explorerVerification": {
+          "is_verified": true,
+          "is_fully_verified": false,
+          "is_partially_verified": true,
+          "is_changed_bytecode": false,
+          "is_verified_via_eth_bytecode_db": true,
+          "verified_at": "2026-07-14T20:01:16.559164Z"
+        },
+        "upgradeable": false,
+        "implementations": []
+      },
+      "transferBehavior": {
+        "forkTestPassed": true,
+        "evidenceSHA256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5",
+        "transferExact": true,
+        "transferFromExact": true,
+        "noTransferFee": true,
+        "noRebase": true,
+        "noRebaseBasis": "Current source has no raw balance scaling. Passive-time fork check alone is not proof; issuer mint/burn and upgrades are separate disclosed powers."
+      },
+      "controls": {
+        "freezeAuthority": false,
+        "blacklistAuthority": false,
+        "pauseAuthority": false,
+        "bridgeAuthority": false,
+        "adminBurnAuthority": false,
+        "poolAddressBlocking": "absent",
+        "description": "plain fixed-supply ERC20 after immutable launch restriction window; require current block greater than restrictionEndBlock; Reviewed current source; issuer permissions and future upgrades are listed separately. A successful transfer simulation cannot disprove administrative powers."
+      },
+      "liveBindings": {
+        "restrictionEndBlock": "25347067"
+      }
+    }
+  ],
+  "markets": [
+    {
+      "id": "aapl-usdg",
+      "address": "0xaae0d815ee56e4092a5e5c2911e676fea50b2d6d",
+      "fee": 500,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+      "quoter": "0x33e885eD0Ec9bF04EcfB19341582aADCb4c8A9E7",
+      "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9"
+      ],
+      "runtimeCodeHash": "0xa488ede24eef95af56b0e7c171832ce207f070212584786d40acbfcecbe9b1d0",
+      "factoryGetPoolMatched": true,
+      "routerBindingsMatched": true,
+      "swapSimulationPassed": true,
+      "swapEvidenceSHA256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5",
+      "observedAtBlock": "90830759"
+    },
+    {
+      "id": "pons-eth",
+      "address": "0xed50bdeea8adc232f159486192a4157281d722ff",
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+      "quoter": "0x33e885eD0Ec9bF04EcfB19341582aADCb4c8A9E7",
+      "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "tokens": [
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "0x39dBED3a2bd333467115dE45665cC57F813C4571"
+      ],
+      "runtimeCodeHash": "0x195c7d777448794bd8ebe573f2d4a4007abf142d9fcb895ef38603f4de8c2672",
+      "factoryGetPoolMatched": true,
+      "routerBindingsMatched": true,
+      "swapSimulationPassed": true,
+      "swapEvidenceSHA256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5",
+      "observedAtBlock": "90830759"
+    },
+    {
+      "id": "cashcat-eth",
+      "address": "0xd42a491087a15e5afd51feb3606066cc152d2b09",
+      "fee": 3000,
+      "factory": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+      "quoter": "0x33e885eD0Ec9bF04EcfB19341582aADCb4c8A9E7",
+      "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "tokens": [
+        "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+      ],
+      "runtimeCodeHash": "0x4b535b6f1b07cd80f7c9a8259b0856d8d832896b7fd3b11e32b9f89dafe5a3cf",
+      "factoryGetPoolMatched": true,
+      "routerBindingsMatched": true,
+      "swapSimulationPassed": true,
+      "swapEvidenceSHA256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5",
+      "observedAtBlock": "90830759"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/SOURCE_REVIEW.md",
+      "sha256": "d131126ba335259b31bce2d270699f7d33ebe64c4c771a34402745a432cec229"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/chain-probe.json",
+      "sha256": "cb624bfbf9ad8203efaa613d62832783f19cdd2367f534b87a63a9a3613b7e1e"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/current-issuer-authorities.json",
+      "sha256": "720b6fd87415f118dc8df6e88ecef1dfb5a4137a786450332f23be862ad2c26e"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/deployment-context.json",
+      "sha256": "cc458b945af8fab6002396385f948e76ee597f98a9fe022b6d864e1c6d79d971"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/fork-owned-token-and-swaps.json",
+      "sha256": "f3bf308fcc34fce48129d53af7ca438a8ba54b7bbe04fd6be8f60d2d2be0c1a5"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/lincoln-spcx-v4-chain-state.json",
+      "sha256": "117c24641e67b5f6d70f2adfbb89234e92531f102095556deb2141539acfa6b6"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/safe-bindings.json",
+      "sha256": "64479d4927ff7f80adfc1b6409ed0224df4106831a04dd2d1134aaa1154909fa"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/shared-anchors.json",
+      "sha256": "afb3f5665f02e148a70faf0c259947b0845eefe02baa33d072df31cb4405e964"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/source-review.json",
+      "sha256": "6d54d73ff09283128998cd5613981bd6261bbe183920f201ca1d50d3a0283f1d"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/verification/new-pools-20261017/source-runtime-correspondence.json",
+      "sha256": "5f2c4bb3f4fcdde1855bc2fcc143fa82a3c7c0ec1ccf5d2a228694b55895c83f"
+    }
+  ],
+  "independentAudit": false,
+  "humanDeploymentApproved": false,
+  "limitations": [
+    "AAPL issuer can freeze, pause, burn pool collateral and upgrade; this remains an explicit human approval blocker.",
+    "Partial explorer source verification is preserved and is not a fresh full metadata/compiler rebuild.",
+    "Fork checks cover tokens and public router swaps, not private proof/adapters/funded acceptance.",
+    "LINCOLN/SPCX V4 is a separate unimplemented adapter scope with unset pool caps.",
+    "Every live binding must be rechecked before each new signature."
+  ],
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "keysAccessed": false
+}

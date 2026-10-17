@@ -1,0 +1,19 @@
+{
+  "schema": "lincoln-new-pool-safe-readonly-probe/v1",
+  "chainId": 4663,
+  "blockNumber": "90836788",
+  "blockHash": "0x5086ad7529e41c52144adae317d4a46ef67cf981b4c6795cc04ffca7dc49d966",
+  "safe": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+  "singleton": "0xedd160febbd92e350d4d398fb636302fccd67c7e",
+  "singletonRuntimeCodeHash": "0x180193227186ccb85316c94db1f0d156ed932b14712cfaac78901899178572dc",
+  "owners": [
+    "0x081CCa7d2cE12690Db30c3495be337905f611014",
+    "0x4759Ee4e4878bABE0680729dC1e1F185a4D2C3E8",
+    "0xF36156921Fc5F9c797C93Db92f0573Eb1163512A"
+  ],
+  "threshold": "2",
+  "version": "1.5.0",
+  "ownerSetHash": "0x793c28b343a41f2376fc69f42937812bcdcd926831a4b6dd152d62f6751adcd7",
+  "transactionsBroadcast": 0,
+  "keysAccessed": false
+}

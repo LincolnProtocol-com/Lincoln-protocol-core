@@ -1,0 +1,23 @@
+{
+  "schema": "lincoln-v4-approved-public-preflight/v1",
+  "chainId": 4663,
+  "checkedAt": "2026-10-17T20:45:19.765Z",
+  "planId": "f2625560ed140ccb953f93947dfa42393b059ed2b7189267c8628d6da0c73f3a",
+  "deployer": "0x555998Ba2B2723C97d91FB20Da0ddb896749797e",
+  "balanceWei": "42750021322456000",
+  "balanceETH": "0.042750021322456",
+  "pendingNonce": 42,
+  "blockNumber": "91219390",
+  "blockHash": "0xb67419798d1554d0e76e2c6cd8c302998861716da2add86d3d1897c3a83e88cb",
+  "baseFeeWei": "20030000",
+  "candidateGasPriceWei": "40060000",
+  "fourGasLimitsCeilingWei": "881320000000000",
+  "reserveWei": "3000000000000000",
+  "balanceCoversAllFourCurrentQuotedCeilingsAndReserve": true,
+  "venuePinsVerified": true,
+  "venueBlockHash": "0xb67419798d1554d0e76e2c6cd8c302998861716da2add86d3d1897c3a83e88cb",
+  "scopeBudgetWei": "2200000000000000",
+  "keysAccessed": false,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0
+}

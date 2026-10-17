@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawn} from 'node:child_process';
 import {fileURLToPath,pathToFileURL} from 'node:url';
-import {ROOT,RELEASE_DIRECTORY,ensureReleaseDependencies} from './runtime.mjs';
+import {ROOT,RELEASE_DIRECTORY,LEGACY_RELEASE_DIRECTORY,ensureReleaseDependencies} from './runtime.mjs';
 export async function checkPublicReview({root=ROOT}={}){
   root=await fs.realpath(root);const release=await ensureReleaseDependencies({root});
   const {syncReviewLayout}=await import('./layout.mjs');
@@ -31,6 +31,9 @@ export async function runReviewCommand(command,{root=ROOT}={}){
   if(legacy[command])await run(process.execPath,[path.join(release,legacy[command]),...(command==='abi'?['--check']:[])],release);
   else if(command==='node'){
     await run(process.execPath,['--test',...await nodeTests(path.join(release,'tests'))],release);
+    // Root tests also exercise the real archived planning/recovery tools. A
+    // fresh checkout has no historical dependency cache to rely on.
+    await ensureReleaseDependencies({root,releaseDirectory:LEGACY_RELEASE_DIRECTORY});
     const tests=await nodeTests(path.join(root,'test'));if(tests.length)await run(process.execPath,['--test',...tests],root);
   }else if(command==='contracts'||command==='contracts-deep'){
     await run('forge',['test','--root',path.join(release,'protocol/phase2-mainnet'),...(command==='contracts-deep'?['--match-contract','CapsTest|PoolInvariantTest']:[])],release,command==='contracts-deep'?{...process.env,FOUNDRY_PROFILE:'deep'}:process.env);

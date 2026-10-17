@@ -80,4 +80,4 @@ Run these at the repository root. Actual-proof acceptance uses fresh local chain
 
 See [tests](../test/README.md) for report scope and [releases](../releases/README.md) for original-path reproduction. New runs must retain their own identity and must not overwrite preserved release reports.
 
-The approved seven-stock integer caps are operational constructor configuration, not a circuit change. Stock fork/DEX acceptance remains pending. Mainnet broadcasts are paused, including until the old unknown library transaction is reconciled.
+The approved seven-stock integer caps are operational constructor configuration, not a circuit change. Stock fork/DEX acceptance remains pending. Both original libraries are now confirmed in the shared signer ledger; this does not establish a completed RC.3 mainnet deployment.

@@ -30,6 +30,8 @@ The wrappers validate the root review files before running preserved tooling wit
 
 This is **15 newly generated final proofs and 124 local transactions**, not public-mainnet execution. Parameter bytes and all ten ABIs match RC.2; only the pool bytecode changes. Mainnet stock liquidity and per-stock fork acceptance remain pending.
 
+The subsequent [clean-checkout tooling fix](../audit/acceptance/rc3-clean-checkout/validation.json) passed 17 targeted tests and all 79 root tests in a disposable checkout without pre-existing capsule dependency caches. It leaves both frozen capsules and the contract/proof evidence above unchanged.
+
 ## Recorded RC.2 results
 
 | Evidence | Result | Scope |
@@ -50,4 +52,4 @@ Recorded reports describe their exact build and run, not a fresh execution of a 
 
 RC.3 evidence above covers fresh default and deep-profile Foundry runs for the 12-hour delay and actual-proof acceptance against the revised pool. Boundary cases include `eta - 1`, exact `eta`, replacement proposals and cancellation; cap tests read the getter. Registry/invariant epoch validity durations are unrelated and remain unchanged.
 
-[Stock-cap tests](operations/stock-caps-mainnet.test.mjs) independently verify all seven approved integer caps and floor boundaries. The RC.3 target binds the same dataset by SHA-256, retains ETH/USDG as default deployment, and keeps a synthetic unresolved-stock negative case. These checks do not establish live stock liquidity or fork acceptance. Mainnet deployment remains paused while the old unknown library broadcast is reconciled.
+[Stock-cap tests](operations/stock-caps-mainnet.test.mjs) independently verify all seven approved integer caps and floor boundaries. The RC.3 target binds the same dataset by SHA-256, retains ETH/USDG as default deployment, and keeps a synthetic unresolved-stock negative case. These checks do not establish live stock liquidity or fork acceptance. Both original libraries are now confirmed in the shared ledger; the remaining RC.3 deployment requires explicit local execution and fresh component verification.

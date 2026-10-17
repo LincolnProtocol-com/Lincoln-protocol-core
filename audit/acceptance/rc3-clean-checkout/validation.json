@@ -1,0 +1,86 @@
+{
+  "schema": "lincoln-core-clean-checkout-validation/v1",
+  "recordedAt": "2026-10-17T05:02:50.761370+00:00",
+  "passed": true,
+  "candidate": "v0.1.0-rc.3",
+  "candidateRelease": {
+    "path": "releases/rc3/artifacts/phase2-mainnet/release-candidate-20261017-r3.json",
+    "sha256": "dea4a351f51a78e773ed37543b533bf7d0fdac31b81ad166bd4b1ac2692f9c1d"
+  },
+  "reviewManifest": {
+    "path": "review-manifest.json",
+    "sha256": "a62bb50f41156efb39705bdf91aaccf1bc4a3a96e94ee22928d2f515e8b49678"
+  },
+  "originalFailure": {
+    "path": "audit/acceptance/rc3-clean-checkout/original-ci-regression.json",
+    "sha256": "62479a44b515d3abe8cc6d3a3ea88a482bcf9d39d5b907bc7966dc99d7722477"
+  },
+  "change": "Prepare historical RC.2 dependency copies from the locked root installation; retain exact RC.3 lock equality and allow only the two fixed package-version labels to differ for RC.2.",
+  "inputs": [
+    {
+      "path": "scripts/review/runtime.mjs",
+      "sha256": "2d1a5ff58f4396946c18dab429b40c820b04f4b690853ca3779bd953091fbf15"
+    },
+    {
+      "path": "scripts/review/run.mjs",
+      "sha256": "a1f3ad10f365bbcece6fc790331f75dc8bd7e1173532e2d6f6ed877bf7e665d7"
+    },
+    {
+      "path": "scripts/core/mainnet-operations.mjs",
+      "sha256": "a84d47ca07da96ec2efdc58cedcd0758827d25c3d4efc7ed982dc643ceb1802d"
+    },
+    {
+      "path": "scripts/core/prepare-mainnet-deployment.mjs",
+      "sha256": "6db94d56c7fa2ff8ac5a5d67058c32d276062064abc38a49c94dd1a580d81b17"
+    },
+    {
+      "path": "scripts/operations/check-deployment.mjs",
+      "sha256": "9111a5e5e52e01a6d03807a0f40aa46c106d7d067612b2f6fe5b9fc42113bc57"
+    },
+    {
+      "path": "test/tooling/review-runtime.test.mjs",
+      "sha256": "075b38d8df82fb005736942827f85fa17b9317f7b0858e5c41174dce23cfad13"
+    }
+  ],
+  "targeted": {
+    "passed": 17,
+    "failed": 0,
+    "log": {
+      "path": "audit/acceptance/rc3-clean-checkout/targeted.log",
+      "sha256": "241e1f923f43f8d604d6cb8fcf8054a76d731743e909f8d0e1b7e78a2512321c"
+    }
+  },
+  "freshCheckout": {
+    "initialRootAndBothCapsuleDependenciesAbsent": true,
+    "installCommand": "npm ci --offline --ignore-scripts --cache /Users/leo/.npm",
+    "networkRequired": false,
+    "rootTests": 79,
+    "passed": 79,
+    "failed": 0,
+    "skipped": 0,
+    "rc2DependenciesAbsentImmediatelyBeforeRootTests": true,
+    "log": {
+      "path": "audit/acceptance/rc3-clean-checkout/fresh-root.log",
+      "sha256": "3da5181ba934f97e7a4cc2d1cca7a3128152ddf2f0a244425e52049de19b1a37"
+    }
+  },
+  "frozenScopesUnchanged": [
+    "releases/rc2",
+    "releases/rc3",
+    "contracts",
+    "zk",
+    "abi",
+    "review-manifest.json"
+  ],
+  "libraryVerification": {
+    "path": "audit/acceptance/rc3-clean-checkout/reused-libraries-readonly.json",
+    "sha256": "f8802e443f550ab2a0e612c67407ebd6fea428eeebfb5cf72998a8de6ccbb551"
+  },
+  "publicTransactions": 0,
+  "transactionsSigned": 0,
+  "walletKeysAccessed": false,
+  "limits": [
+    "This follow-up reruns the affected root tooling tests. It does not claim a new full proof/Foundry run; the unchanged candidate retains its separately identified evidence.",
+    "Both reused libraries were checked with read-only canonical receipts, CREATE intents and runtime verification. Remaining mainnet contracts require explicit local deployment."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "chainId": 4663,
+  "libraries": [
+    {
+      "library": "PoseidonT3",
+      "canonicalReceiptVerified": true,
+      "creationIntentVerified": true,
+      "rc3RuntimeVerified": true
+    },
+    {
+      "library": "PoseidonT4",
+      "canonicalReceiptVerified": true,
+      "creationIntentVerified": true,
+      "rc3RuntimeVerified": true
+    }
+  ],
+  "keysAccessed": false,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0
+}

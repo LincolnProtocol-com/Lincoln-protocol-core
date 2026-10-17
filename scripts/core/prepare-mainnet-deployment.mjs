@@ -9,6 +9,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {checkCore,RELEASE,EXPECTED_RELEASE_SHA256} from '../../releases/rc2/scripts/core/check.mjs';
 import {configureMainnetOperations} from './mainnet-operations.mjs';
+import {ensureReleaseDependencies,LEGACY_RELEASE_DIRECTORY} from '../review/runtime.mjs';
 
 const ROOT=fileURLToPath(new URL('../../',import.meta.url)),run=promisify(execFile);
 export const DEPLOYMENT_BASE_COMMIT='abe000c7acd9c26931a17961e1b4bdda083df84e';
@@ -43,7 +44,7 @@ export async function prepareMainnetDeployment({root=ROOT,directory=DEFAULT_DEPL
   root=await fs.realpath(root);
   const parent=path.join(root,'.phase1-private/mainnet-deployments'),output=path.resolve(root,directory);
   need(path.dirname(output)===parent&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(path.basename(output)),'MAINNET_PREPARE_OUTPUT_NOT_ALLOWED');
-  const capsuleRoot=path.join(root,'releases/rc2');await checkCore({root:capsuleRoot});
+  const capsuleRoot=await ensureReleaseDependencies({root,releaseDirectory:LEGACY_RELEASE_DIRECTORY});await checkCore({root:capsuleRoot});
   const operationsBytes=await regular(root,'config/mainnet-operations.json'),operations=JSON.parse(operationsBytes);
   const originalConfig=await regular(capsuleRoot,'config/phase2-mainnet.json');
   const effective=configureMainnetOperations({config:JSON.parse(originalConfig),operations});

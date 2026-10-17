@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // SPDX-License-Identifier: Apache-2.0
-// Public metadata planning only: no RPC, signer, keystore or file mutation.
+// Public metadata planning only: no RPC, signer, keystore or operator-state mutation.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -8,6 +8,7 @@ import {getAddress,isAddress} from 'viem';
 import {checkCore,RELEASE,EXPECTED_RELEASE_SHA256} from '../../releases/rc2/scripts/core/check.mjs';
 import {readPublicFile} from '../../releases/rc2/src/phase2-mainnet/release.mjs';
 import {buildMainnetPlan} from '../../releases/rc2/scripts/phase2-mainnet/plan.mjs';
+import {ensureReleaseDependencies,LEGACY_RELEASE_DIRECTORY} from '../review/runtime.mjs';
 const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 const need=(ok,code)=>{if(!ok)throw Object.assign(new Error(code),{code});};
 function exact(value,keys){
@@ -36,7 +37,7 @@ export function configureMainnetOperations({config,operations}={}){
   return effective;
 }
 export async function mainnetOperationsPlan({root=ROOT}={}){
-  root=await fs.realpath(root);const capsuleRoot=path.join(root,'releases/rc2');await checkCore({root:capsuleRoot});
+  root=await fs.realpath(root);const capsuleRoot=await ensureReleaseDependencies({root,releaseDirectory:LEGACY_RELEASE_DIRECTORY});await checkCore({root:capsuleRoot});
   const json=async relative=>JSON.parse(await readPublicFile(capsuleRoot,relative));
   const operations=JSON.parse(await readPublicFile(root,'config/mainnet-operations.json'));
   const config=configureMainnetOperations({config:await json('config/phase2-mainnet.json'),operations});
@@ -45,7 +46,8 @@ export async function mainnetOperationsPlan({root=ROOT}={}){
   return {schema:'lincoln-mainnet-operations-plan/v1',candidate:operations.candidate,deployer:plan.deployer,
     signingEnabled:false,keystoreOwnershipVerified:false,readiness:{...plan.readiness,broadcastImplemented:false},pending:plan.pending,
     unresolvedStockCaps:config.assets.filter(asset=>asset.depositCaps?.status==='valuation-required').map(asset=>asset.symbol),
-    limits:operations.limits,readOnly:true,offline:true,filesWritten:0,keysAccessed:false,transactionsSigned:0,transactionsBroadcast:0,
+    limits:operations.limits,readOnly:true,offline:true,filesWritten:0,filesWrittenScope:'operator-configuration-and-state',
+    dependencyPreparationWrites:'ignored-node-modules-only',keysAccessed:false,transactionsSigned:0,transactionsBroadcast:0,
     frozenConfigurationUnchanged:true,deploymentExecutorEnabled:false,
     localCoreDeploymentEntry:{path:'scripts/deploy.sh',prepare:'bash scripts/deploy.sh --prepare',scope:['ETH','USDG'],
       routes:false,stocks:false,interactiveOperatorRequired:true,explicitSpendingLimitsRequired:true},

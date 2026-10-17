@@ -1,0 +1,25 @@
+✔ registers the public account without changing frozen config or enabling spending (1.774584ms)
+✔ rejects signing and funding authorizations in a metadata-only target (0.311333ms)
+✔ rejects wrong release, chain and extra secret or override fields (0.196459ms)
+✔ rejects invalid deployer identities, role collisions and replacing a configured signer (0.586042ms)
+✔ operations plan reads the frozen capsule and separate root target without changing either (390.189959ms)
+✔ archive identity requires the exact immutable RC.2 commit (0.672375ms)
+✔ output cannot target the source checkout, keystores, parent paths or nested ids (5.367ms)
+✔ preparation archives only the fixed public release, preserves source configuration and never overwrites a snapshot (3705.406041ms)
+✔ current capsule dependencies require exact lock bytes and use independent regular copies (80.70375ms)
+✔ historical hydration accepts only the two release-version labels and leaves current capsule bytes unchanged (95.84725ms)
+✔ historical hydration rejects direct, transitive, integrity, URL, engine and unexpected metadata changes (266.459125ms)
+✔ current capsule does not inherit the historical semantic lock exception (28.1875ms)
+✔ an existing dependency directory never bypasses lock validation (63.235625ms)
+✔ dependency hydration rejects unrecognized release paths and symbolic-link destinations (23.167042ms)
+✔ dependency hydration rejects a linked lock file or linked root dependency directory (26.503833ms)
+✔ concurrent dependency preparation preserves one regular destination and removes temporary copies (29.200709ms)
+✔ real archived operations plan self-prepares missing RC.2 dependencies in an isolated public checkout (2947.0325ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4024.482833

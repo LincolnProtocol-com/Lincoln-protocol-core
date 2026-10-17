@@ -1,0 +1,30 @@
+{
+  "schema": "lincoln-core-ci-regression/v1",
+  "recordedAt": "2026-10-17T05:01:44.613276+00:00",
+  "run": "https://github.com/LincolnProtocol-com/Lincoln-protocol-core/actions/runs/39003750600",
+  "commit": "b2febe03c0604c1f0dbeeed393f2157f48f3dc1c",
+  "capsuleTests": {
+    "passed": 108,
+    "failed": 0
+  },
+  "rootTests": {
+    "total": 70,
+    "passed": 68,
+    "failed": 2
+  },
+  "failures": [
+    {
+      "test": "operations plan reads the frozen capsule and separate root target without changing either",
+      "code": "ENOENT",
+      "missing": "releases/rc2/node_modules/@openzeppelin/contracts/package.json"
+    },
+    {
+      "test": "preparation archives only the fixed public release, preserves source configuration and never overwrites a snapshot",
+      "code": "ENOENT",
+      "missing": "releases/rc2/node_modules/@openzeppelin/contracts/package.json"
+    }
+  ],
+  "cause": "RC.3 runtime prepared current dependencies only; archived RC.2 validation also requires its own regular dependency directory. Existing workstation caches concealed the missing setup.",
+  "frozenCodeChanged": false,
+  "publicChainTransactions": 0
+}

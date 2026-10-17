@@ -10,4 +10,6 @@ The RC.2 root deployment entry is disabled. The [RC.3 operator](MAINNET_OPERATIO
 
 The [validation report](../audit/acceptance/rc3/validation.json) records 178 Node tests, 69 default Foundry tests, 19 deep cap/invariant tests and 15 final proofs over 124 local transactions. Deep fuzz cases use 20,000 runs, and the invariant campaign executes 40,960 calls with zero reverts. Proof DEX liquidity is synthetic. These results do not establish a completed public-mainnet deployment, actual stock markets or an independent audit.
 
-This release work leaves mainnet deployment paused. It does not sign or broadcast the unresolved original PoseidonT4 transaction or any replacement pool deployment. Inspect and resolve that original hash explicitly before the local operator resumes with the RC.3 command.
+The original RC.3 validation left mainnet deployment paused and sent no public transaction. The local operator subsequently recovered the original PoseidonT4 transaction and recorded its canonical confirmation. Both original libraries are now eligible for fresh receipt/runtime verification and reuse; the verifiers, registry and ETH/USDG pools remain to be deployed.
+
+A subsequent [root-tooling fix](../audit/acceptance/rc3-clean-checkout/validation.json) prepares historical RC.2 dependencies on clean checkouts, with strict lock validation and regular compiler-source copies. Both frozen capsules, contract bytecode, final parameters, ABI exports and the release/review bindings remain unchanged.

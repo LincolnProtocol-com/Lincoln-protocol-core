@@ -84,3 +84,19 @@ A core deployment is not a completed launch. Fees and typed DEX route deployment
 The root wrappers prepare regular ignored dependency copies for the current RC.3 capsule and, when required, the historical RC.2 recovery/verification tooling. They use the already installed root dependencies without network access, private files or changes to either frozen capsule. RC.3 requires an identical lock file. RC.2 permits only the precisely checked root package-version labels to differ; the complete remaining lock and dependency metadata must match. A fresh checkout must pass the same legacy checks as an existing workstation.
 
 The [clean-checkout validation](../audit/acceptance/rc3-clean-checkout/validation.json) records the CI regression and fresh root-tooling tests. This follow-up changes only root tooling and documentation; an already prepared RC.3 snapshot continues to bind the same tagged capsule and shared signer ledger.
+
+## Existing-balance continuation: 2.8 gwei ceiling
+
+The later user decision to continue with the existing balance uses a second, separately pinned policy, [mainnet-gas-policy-20261017-existing-balance.json](../config/mainnet-gas-policy-20261017-existing-balance.json). It tightens the price ceiling from **4 to 2.8 gwei**. The **0.065 ETH cumulative budget**, **0.003 ETH reserve** and **100 times fresh-quote multiplier** remain unchanged. For the remaining four core contracts, the 14.5 million gas-limit total at this ceiling plus reserve requires at most **0.0436 ETH** before signing; the actual balance and fresh quote must still pass runtime checks.
+
+```sh
+node scripts/operations/mainnet-limits.mjs --status
+node scripts/operations/mainnet-limits.mjs --apply-existing-balance
+node scripts/operations/mainnet-limits.mjs --status
+bash scripts/deploy-mainnet.sh --deploy \
+  --budget-wei 65000000000000000 \
+  --max-fee-per-gas-wei 2800000000 \
+  --reserve-wei 3000000000000000
+```
+
+The explicit amendment sends no transaction. It requires settled existing reservations and checks that every historical entry remains valid under the tighter ceiling. It appends a second reference to the same physical signer ledger and existing RC.3 journal. The original 4 gwei policy and completed amendment record remain byte-for-byte intact; the second record binds the first record's digest and reference. All signed bytes, hashes, nonces, historical fees, the RC.2 journal, snapshot metadata and plan ID remain unchanged. Normal signing and recovery reject incomplete amendments; rerun the same explicit amendment to finish an interrupted write. A leftover process lock still requires manual investigation and is never automatically removed.

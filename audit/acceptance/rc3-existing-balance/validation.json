@@ -1,0 +1,46 @@
+{
+  "schema": "lincoln-operational-regression-validation/v1",
+  "supplemental": true,
+  "baseCommit": "c083d90b45363ee3b1273b8bd8d8e0c3fb6a7ed0",
+  "scope": "Second local limit amendment only: append 4 to 2.8 gwei tightening while retaining previous policy and completed proof.",
+  "evidence": {
+    "targetedCommand": "node --test --test-name-pattern='second tightening' test/operations/mainnet-limits.test.mjs",
+    "targetedPassed": 3,
+    "targetedFailed": 0,
+    "toolOutputChunk": "fc8562",
+    "correctedPendingRecoveryAssertion": {
+      "command": "node --test --test-name-pattern='second tightening amendment recovers' test/operations/mainnet-limits.test.mjs",
+      "passed": 1,
+      "failed": 0,
+      "toolOutputChunk": "fae2be"
+    },
+    "coverage": [
+      "six interrupted-write boundaries explicitly resumed",
+      "same-policy application idempotence",
+      "original policy and first amendment bytes preserved",
+      "signed prefix and original journal/snapshot metadata preserved",
+      "parent proof and signed payload tampering rejected",
+      "unknown reservations rejected before amendment"
+    ],
+    "finalHistoricalPriceGuard": {
+      "addedAfterTargetedRun": true,
+      "staticSyntaxCheckPassed": true,
+      "reason": "User requested no further test reruns; refuse historical gas prices above the new ceiling before any local amendment write."
+    },
+    "staticDiffCheckPassed": true,
+    "fullSuiteRerun": false
+  },
+  "originalPolicySHA256": "bf0401b295da43e7fda411c86b056246ca944e8ca2be92eff73932580c8bb770",
+  "newPolicySHA256": "515c4ef23140529b1ffce3b8e3e432570730814655c7e8cda6b0a6b9ac44d8fe",
+  "sources": {
+    "scripts/operations/mainnet-limits.mjs": "e73ad9c305625a0e80b5568677e10b046df7a68d5058ad9bf8aef94a09cb7972",
+    "test/operations/mainnet-limits.test.mjs": "cae9383b0dc5d0bf2eb66ffec740807a7bd5331cebbf9bb15f695c4201451dfb",
+    "config/mainnet-gas-policy-20261017-existing-balance.json": "515c4ef23140529b1ffce3b8e3e432570730814655c7e8cda6b0a6b9ac44d8fe"
+  },
+  "frozenScopeChanged": false,
+  "historicalLogsChanged": false,
+  "realPrivateLedgerAccessed": false,
+  "realWalletAccessed": false,
+  "networkRequests": 0,
+  "publicTransactions": 0
+}

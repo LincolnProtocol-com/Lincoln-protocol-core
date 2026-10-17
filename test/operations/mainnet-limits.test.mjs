@@ -10,7 +10,8 @@ import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {isDeepStrictEqual} from 'node:util';
 import {getAddress} from 'viem';
-import {createMainnetLimitsManager,readMainnetGasPolicy,MAINNET_GAS_POLICY_FILE,MAINNET_LIMITS_RECORD_DIRECTORY} from '../../scripts/operations/mainnet-limits.mjs';
+import {createMainnetLimitsManager,createExistingBalanceLimitsManager,readMainnetGasPolicy,MAINNET_GAS_POLICY_FILE,MAINNET_LIMITS_RECORD_DIRECTORY,
+  EXISTING_BALANCE_GAS_POLICY_FILE,EXISTING_BALANCE_LIMITS_RECORD_DIRECTORY} from '../../scripts/operations/mainnet-limits.mjs';
 import {createMainnetRC3Operator,configureRC3Operations,RC3_RELEASE_DIRECTORY,RC3_RELEASE_MANIFEST,RC3_RELEASE_SHA256,
   RC3_OPERATIONS_FILE,DEFAULT_RC3_DEPLOYMENT_DIRECTORY} from '../../scripts/operations/mainnet-rc3.mjs';
 
@@ -32,6 +33,7 @@ async function fixture(){
   async function put(file,bytes,mode=0o600){await fs.mkdir(path.dirname(file),{recursive:true,mode:0o700});await fs.writeFile(file,bytes,{mode});await fs.chmod(file,mode);}
   for(const [relative,bytes]of sourceMap)await put(path.join(root,RC3_RELEASE_DIRECTORY,relative),bytes,0o644);
   await put(path.join(root,RC3_OPERATIONS_FILE),encode(operations),0o644);await put(path.join(root,MAINNET_GAS_POLICY_FILE),policyBytes,0o644);
+  await put(path.join(root,EXISTING_BALANCE_GAS_POLICY_FILE),await fs.readFile(path.join(ROOT,EXISTING_BALANCE_GAS_POLICY_FILE)),0o644);
   const c=operations.continuation,signerDirectory=path.join(root,c.sharedSignerRelativePath),signerFile=path.join(signerDirectory,'signer.json');
   const signerIdentity=`lincoln-mainnet-signer:4663:${operations.deployer.address.toLowerCase()}`;
   const entries=c.adoptedDeployments.map((anchor,index)=>{
@@ -48,9 +50,15 @@ async function fixture(){
   await put(signerFile,envelope(signerIdentity,state));await put(sourceFile,envelope(sourceIdentity,source));
   const fault={stage:null,triggered:false},manager=createMainnetLimitsManager({checkSnapshot:options=>operator.check(options),
     afterWrite:async stage=>{if(fault.stage===stage&&!fault.triggered){fault.triggered=true;throw Object.assign(new Error('SYNTHETIC_CRASH'),{code:'SYNTHETIC_CRASH'});}}});
+  const childManager=createExistingBalanceLimitsManager({parentManager:manager,checkSnapshot:options=>operator.check(options),
+    afterWrite:async stage=>{if(fault.stage===stage&&!fault.triggered){fault.triggered=true;throw Object.assign(new Error('SYNTHETIC_CRASH'),{code:'SYNTHETIC_CRASH'});}}});
+  const childRecordFile=path.join(root,EXISTING_BALANCE_LIMITS_RECORD_DIRECTORY,'amendment.json');
   const archive={commit:'12'.repeat(20),tree:'34'.repeat(20),files:[...sourceMap].map(([relative,bytes])=>({path:relative,mode:'100644',blob:fileBlob(bytes)})),
     extract:async output=>{for(const [relative,bytes]of sourceMap)await put(path.join(output,relative),bytes,0o644);}};
-  const operator=createMainnetRC3Operator({verifyCandidate:async()=>{},archiveProvider:async()=>archive,verifyLimitsState:manager.verifyState});
+  const operator=createMainnetRC3Operator({verifyCandidate:async()=>{},archiveProvider:async()=>archive,verifyLimitsState:async options=>{
+    const child=await fs.lstat(childRecordFile).then(()=>true,error=>{if(error.code==='ENOENT')return false;throw error;});
+    return (child?childManager:manager).verifyState(options);
+  }});
   const prepared=await operator.prepare({root}),snapshot=prepared.directory;
   const effective=configureRC3Operations({config,operations}),adopted=c.adoptedDeployments.map(value=>({...value,address:getAddress(value.address)})).sort((a,b)=>a.id.localeCompare(b.id));
   const planId=hash({artifactSHA256:JSON.parse(manifest).coreArtifactSHA256,config:effective,routes:[],relayer:null,adoptedDeployments:adopted});
@@ -70,7 +78,7 @@ async function fixture(){
   const read=async file=>JSON.parse(await fs.readFile(file)),readValue=async file=>(await read(file)).value;
   const rewrite=async(file,mutate)=>{const old=await read(file);mutate(old.value);await put(file,envelope(old.identity,old.value));};
   return {root,operations,config,policy,policyBytes,state,journal,source,entry,manager,operator,signerFile,sourceFile,journalFile,recordFile,snapshot,
-    metadataFile:path.join(snapshot,'operations-snapshot.json'),fault,read,readValue,rewrite,put,
+    metadataFile:path.join(snapshot,'operations-snapshot.json'),fault,read,readValue,rewrite,put,childManager,childRecordFile,
     verify:async()=>manager.verifyRecoveryContext({root,state:await readValue(signerFile)}),cleanup:()=>fs.rm(root,{recursive:true,force:true})};
 }
 async function use(action){const f=await fixture();try{return await action(f);}finally{await f.cleanup();}}
@@ -79,6 +87,53 @@ test('approved policy is fixed to user-authorized 100x, 0.065 ETH cumulative bud
   const result=await readMainnetGasPolicy({root:ROOT});
   assert.deepEqual(result.gasPrice,{multiplierNumerator:'100',multiplierDenominator:'1',maxFeePerGasWei:'4000000000'});
   assert.deepEqual(result.effectiveLimits,{budgetWei:'65000000000000000',maxFeePerGasWei:'4000000000',reserveWei:'3000000000000000'});
+});
+test('second tightening amendment preserves the complete first proof and changes only 4 to 2.8 gwei',()=>use(async f=>{
+  await f.manager.amend({root:f.root,apply:true});
+  const parentBytes=await fs.readFile(f.recordFile),parentPolicy=await fs.readFile(path.join(f.root,MAINNET_GAS_POLICY_FILE));
+  const source=await fs.readFile(f.sourceFile),metadata=await fs.readFile(f.metadataFile),before=await f.readValue(f.signerFile);
+  assert.equal((await readMainnetGasPolicy({root:f.root})).effectiveLimits.maxFeePerGasWei,'4000000000');
+  const applied=await f.childManager.amend({root:f.root,apply:true});assert.equal(applied.applied,true);
+  const after=await f.readValue(f.signerFile),child=await f.readValue(f.childRecordFile);
+  assert.deepEqual(after.entries,before.entries);assert.deepEqual(after.limitAmendments[0],before.limitAmendments[0]);assert.equal(after.limitAmendments.length,2);
+  assert.deepEqual(limits(after),{...f.policy.effectiveLimits,maxFeePerGasWei:'2800000000'});
+  assert.deepEqual(await fs.readFile(f.recordFile),parentBytes);assert.deepEqual(await fs.readFile(path.join(f.root,MAINNET_GAS_POLICY_FILE)),parentPolicy);
+  assert.deepEqual(await fs.readFile(f.sourceFile),source);assert.deepEqual(await fs.readFile(f.metadataFile),metadata);
+  assert.equal(child.parent.recordStoreDigest,(await f.read(f.recordFile)).digest);
+  const checked=await f.operator.check({root:f.root,limits:limits(after)});assert.equal(checked.readiness.blocked,false);assert.deepEqual(checked.originalLimits,f.policy.originalLimits);
+  assert.equal((await readMainnetGasPolicy({root:f.root})).effectiveLimits.maxFeePerGasWei,'2800000000');
+  const bytes=await fs.readFile(f.childRecordFile);assert.equal((await f.childManager.amend({root:f.root,apply:true})).idempotent,true);
+  assert.deepEqual(await fs.readFile(f.childRecordFile),bytes);
+}));
+test('second tightening amendment recovers all write boundaries without rewriting the first record or signed prefix',async()=>{
+  for(const stage of ['prepared','signer-written','ledger-updated','journal-written','journal-updated','applied'])await use(async f=>{
+    await f.manager.amend({root:f.root,apply:true});const before=await fs.readFile(f.recordFile),entries=(await f.readValue(f.signerFile)).entries;
+    f.fault.stage=stage;await assert.rejects(()=>f.childManager.amend({root:f.root,apply:true}),{code:'SYNTHETIC_CRASH'});
+    if((await f.readValue(f.childRecordFile)).stage!=='applied'){
+      await assert.rejects(()=>f.operator.check({root:f.root}),{code:'MAINNET_LIMITS_AMENDMENT_INCOMPLETE'});
+      const pendingState=await f.readValue(f.signerFile);
+      await assert.rejects(()=>f.childManager.verifyRecoveryContext({root:f.root,state:pendingState}),{code:'MAINNET_LIMITS_AMENDMENT_INCOMPLETE'});
+    }
+    assert.equal((await f.childManager.amend({root:f.root,apply:true})).applied,true);
+    assert.deepEqual(await fs.readFile(f.recordFile),before);assert.deepEqual((await f.readValue(f.signerFile)).entries,entries);
+  });
+});
+test('second tightening amendment rejects changed parent proof, rewritten signed prefix and unknown transactions',async()=>{
+  await use(async f=>{
+    await f.manager.amend({root:f.root,apply:true});await f.childManager.amend({root:f.root,apply:true});
+    await f.rewrite(f.recordFile,record=>{record.after.signerStoreDigest='99'.repeat(32);record.history[1].signerStoreDigest='99'.repeat(32);});
+    await assert.rejects(()=>f.operator.check({root:f.root}),{code:'MAINNET_LIMITS_AMENDMENT_INVALID'});
+  });
+  await use(async f=>{
+    await f.manager.amend({root:f.root,apply:true});await f.childManager.amend({root:f.root,apply:true});
+    await f.rewrite(f.signerFile,state=>{state.entries[2].rawTransaction='CHANGED';});
+    await assert.rejects(()=>f.operator.check({root:f.root}),{code:'MAINNET_LIMITS_ENTRY_REWRITE'});
+  });
+  await use(async f=>{
+    await f.manager.amend({root:f.root,apply:true});await f.rewrite(f.signerFile,state=>{state.entries[2].status='unknown';});
+    await assert.rejects(()=>f.childManager.amend({root:f.root,apply:true}),{code:'MAINNET_LIMITS_ACCOUNT_PENDING_TRANSACTION'});
+    await assert.rejects(fs.access(f.childRecordFile),{code:'ENOENT'});
+  });
 });
 test('actual CLI status completes its default cyclic module imports instead of exiting with unsettled top-level await',async()=>{
   const root=await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(),'lincoln-limits-cli-import-')));

@@ -1,0 +1,194 @@
+{
+  "schema": "lincoln-stock-capacity-policy/v1",
+  "chainId": 4663,
+  "decidedBy": "user",
+  "decidedOn": "2026-10-17",
+  "status": "prepared-not-deployed",
+  "stockPoolsEnabled": false,
+  "stocksDeployed": false,
+  "contractCandidate": "v0.1.0-rc.3",
+  "replaces": {
+    "scope": "Future stock-pool constructor caps only. Existing ETH/USDG deployment and the frozen RC.3 dataset remain unchanged.",
+    "sourcePath": "config/stock-caps-mainnet-20261017.json",
+    "sourceSHA256": "45ad4a3d5beaabbd057726e67d5e9af4eab1a7612905e713b40e850155c70e43"
+  },
+  "policy": {
+    "maxTotalTokens": "100",
+    "unit": "robinhood-erc20-token",
+    "maxTotalMeaning": "Each stock pool has capacity for 100 native ERC-20 stock-token units, measured by accountedBalance; this is not a per-wallet or single-deposit limit.",
+    "underlyingShareEquivalence": "Issuer multipliers and corporate actions may change the underlying share exposure of one token. The cap does not recalculate automatically.",
+    "singleDepositRule": "Preserve the prior fixed approximately USD 2500 reference cap, bounded by the new total capacity.",
+    "singleDepositReference": "Historical full-precision tokenAsk from the original approved policy; not a live USD oracle.",
+    "priceUpdatesChangeCaps": false,
+    "issuerMultiplierUpdatesChangeCaps": false,
+    "capIncreaseDelaySeconds": 43200,
+    "newPoolsUseConstructorCaps": true,
+    "existingPoolsRequireGuardianGovernance": true
+  },
+  "verification": {
+    "schema": "lincoln-stock-precision-observation/v1",
+    "observedAt": "2026-10-17T05:58:15.962Z",
+    "rpcUrl": "https://rpc.mainnet.chain.robinhood.com/",
+    "chainId": 4663,
+    "genesisHash": "0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c",
+    "blockNumber": "90698458",
+    "blockHash": "0x5a4b9d6d65a39891a32444afd199e2d0ceda75a8718f4cd1884077990d4bbfa6",
+    "blockTimestamp": "1792216694",
+    "assets": [
+      {
+        "symbol": "NVDA",
+        "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "decimals": 18,
+        "codePresent": true,
+        "runtimeCodeBytes": 283
+      },
+      {
+        "symbol": "SPY",
+        "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+        "decimals": 18,
+        "codePresent": true,
+        "runtimeCodeBytes": 283
+      },
+      {
+        "symbol": "META",
+        "token": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+        "decimals": 18,
+        "codePresent": true,
+        "runtimeCodeBytes": 283
+      },
+      {
+        "symbol": "TSLA",
+        "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+        "decimals": 18,
+        "codePresent": true,
+        "runtimeCodeBytes": 283
+      },
+      {
+        "symbol": "GOOGL",
+        "token": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+        "decimals": 18,
+        "codePresent": true,
+        "runtimeCodeBytes": 283
+      },
+      {
+        "symbol": "QQQ",
+        "token": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+        "decimals": 18,
+        "codePresent": true,
+        "runtimeCodeBytes": 283
+      },
+      {
+        "symbol": "MSTR",
+        "token": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+        "decimals": 18,
+        "codePresent": true,
+        "runtimeCodeBytes": 283
+      }
+    ],
+    "transactionsSigned": 0,
+    "transactionsBroadcast": 0
+  },
+  "acceptance": {
+    "issuerImplementationHashVerified": false,
+    "mainnetForkAcceptance": "not-run",
+    "twoWayDexAcceptance": "not-run",
+    "stockDeploymentEntry": "scripts/deploy-stocks-mainnet.sh --deploy",
+    "signingEnabled": false,
+    "transactionsSigned": 0,
+    "transactionsBroadcast": 0,
+    "stockTradingEnabled": false
+  },
+  "assets": [
+    {
+      "symbol": "NVDA",
+      "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "decimals": 18,
+      "maxDepositTokens": "11.4",
+      "maxDepositRaw": "11400000000000000000",
+      "maxTotalTokens": "100",
+      "maxTotalRaw": "100000000000000000000",
+      "priorMaxTotalTokens": "114",
+      "priorMaxTotalRaw": "114000000000000000000",
+      "referenceTokenAsk": "219.069682341137637246",
+      "referenceQuotedAt": "2026-10-17T03:34:10.508047439Z"
+    },
+    {
+      "symbol": "SPY",
+      "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "decimals": 18,
+      "maxDepositTokens": "3.2",
+      "maxDepositRaw": "3200000000000000000",
+      "maxTotalTokens": "100",
+      "maxTotalRaw": "100000000000000000000",
+      "priorMaxTotalTokens": "32",
+      "priorMaxTotalRaw": "32000000000000000000",
+      "referenceTokenAsk": "763.098748506704297165",
+      "referenceQuotedAt": "2026-10-17T03:33:55.543005899Z"
+    },
+    {
+      "symbol": "META",
+      "token": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+      "decimals": 18,
+      "maxDepositTokens": "3.4",
+      "maxDepositRaw": "3400000000000000000",
+      "maxTotalTokens": "100",
+      "maxTotalRaw": "100000000000000000000",
+      "priorMaxTotalTokens": "34",
+      "priorMaxTotalRaw": "34000000000000000000",
+      "referenceTokenAsk": "715.877409129148850326",
+      "referenceQuotedAt": "2026-10-17T03:33:45.814628175Z"
+    },
+    {
+      "symbol": "TSLA",
+      "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "decimals": 18,
+      "maxDepositTokens": "7",
+      "maxDepositRaw": "7000000000000000000",
+      "maxTotalTokens": "100",
+      "maxTotalRaw": "100000000000000000000",
+      "priorMaxTotalTokens": "70",
+      "priorMaxTotalRaw": "70000000000000000000",
+      "referenceTokenAsk": "352.530000000000000000",
+      "referenceQuotedAt": "2026-10-17T03:34:11.713478100Z"
+    },
+    {
+      "symbol": "GOOGL",
+      "token": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+      "decimals": 18,
+      "maxDepositTokens": "7.3",
+      "maxDepositRaw": "7300000000000000000",
+      "maxTotalTokens": "100",
+      "maxTotalRaw": "100000000000000000000",
+      "priorMaxTotalTokens": "73",
+      "priorMaxTotalRaw": "73000000000000000000",
+      "referenceTokenAsk": "339.725868366497481300",
+      "referenceQuotedAt": "2026-10-17T03:33:57.407322462Z"
+    },
+    {
+      "symbol": "QQQ",
+      "token": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+      "decimals": 18,
+      "maxDepositTokens": "3.5",
+      "maxDepositRaw": "3500000000000000000",
+      "maxTotalTokens": "100",
+      "maxTotalRaw": "100000000000000000000",
+      "priorMaxTotalTokens": "35",
+      "priorMaxTotalRaw": "35000000000000000000",
+      "referenceTokenAsk": "710.997912177018554463",
+      "referenceQuotedAt": "2026-10-17T03:33:57.542198660Z"
+    },
+    {
+      "symbol": "MSTR",
+      "token": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+      "decimals": 18,
+      "maxDepositTokens": "18.3",
+      "maxDepositRaw": "18300000000000000000",
+      "maxTotalTokens": "100",
+      "maxTotalRaw": "100000000000000000000",
+      "priorMaxTotalTokens": "183",
+      "priorMaxTotalRaw": "183000000000000000000",
+      "referenceTokenAsk": "136.600000000000000000",
+      "referenceQuotedAt": "2026-10-17T03:34:15.954784165Z"
+    }
+  ]
+}

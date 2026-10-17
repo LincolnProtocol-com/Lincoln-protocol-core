@@ -1,5 +1,7 @@
 # Mainnet stock pool caps
 
+For future stock-pool deployments, the later user decision sets the total capacity to **100 tokens per pool** while retaining these single-deposit caps. See [the current operational policy](STOCK_CAPACITY_100_TOKENS.md). This document and its original dataset remain the historical RC.3 USD-based cap record; they do not enable stock pools.
+
 The user approved the following seven stock-token caps on 17 October 2026 for `v0.1.0-rc.3`. The machine-readable source is [stock-caps-mainnet-20261017.json](../config/stock-caps-mainnet-20261017.json). These are fixed ERC-20 unit limits, not live USD limits. A later price or corporate-action multiplier change does not update them automatically.
 
 All seven tokens have 18 decimals. The approved reference is the full-precision `tokenAsk` in the frontend handoff, quoted around `2026-10-17T03:34Z`; each exact quote and timestamp is preserved in the JSON. The rounded prices below are for reading only and must not be used to recompute caps.

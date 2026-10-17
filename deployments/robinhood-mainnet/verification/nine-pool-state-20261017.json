@@ -1,0 +1,275 @@
+{
+  "schema": "lincoln-mainnet-nine-pool-state-readonly-acceptance/v1",
+  "verifiedAt": "2026-10-17T06:15:37.587Z",
+  "mode": "rpc-only",
+  "chainId": 4663,
+  "implementationSource": "frozen RC3 src/phase2-asp/state.mjs",
+  "implementationSHA256": "8b6b363e7f5dda280ece36f05d5d0f033a07f04939908df1d935b5994767cf8d",
+  "pools": [
+    {
+      "id": "eth",
+      "pool": "0xf9c767cab9b9a7de8dd959967269787880267ab2",
+      "blockNumber": "90708481",
+      "blockHash": "0x4643ea62fdd852f71fa22b2e52d1e783ff3f7d845cbb734874ac04dee8665503",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "1000000000000000000",
+        "maxTotal": "20000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "usdg",
+      "pool": "0x5cd4c081eb747406dab66e22004324600f1928c9",
+      "blockNumber": "90708487",
+      "blockHash": "0xd91a233c3d64cd0c51cbc9f054c9c9e076aad89fb269adc3174856e853ef6d83",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "2500000000",
+        "maxTotal": "50000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "nvda",
+      "pool": "0x4c8baeb78b032ea3610e0f5d4c8b5bb4ff5995f7",
+      "blockNumber": "90708492",
+      "blockHash": "0x453709ba1c49d14fcf8148f5694fede825d3049984819d7b7165612ce351c9f4",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "11400000000000000000",
+        "maxTotal": "100000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "spy",
+      "pool": "0x8a29db84a20b0a3ca528fae0f69f50ffd39c6c39",
+      "blockNumber": "90708496",
+      "blockHash": "0x3b82f5d83dae99a70f39f74b793b99160e9f6fec4d888a3458347b5c6ebdb659",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "3200000000000000000",
+        "maxTotal": "100000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "meta",
+      "pool": "0xa2078e02a631ae9218dbaa84987a24741bd24d10",
+      "blockNumber": "90708501",
+      "blockHash": "0x7e67c6289ad7d1100a251b65aa0d66724ef5a036232371b44b52807b2aba2b4e",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "3400000000000000000",
+        "maxTotal": "100000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "tsla",
+      "pool": "0xe8c619705b7452c2281ca8fa675a355846d34bfe",
+      "blockNumber": "90708506",
+      "blockHash": "0x4df12dc60c933e397f60436ba5f99e209b20ea7cf67994f41ed284330cf25fd8",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "7000000000000000000",
+        "maxTotal": "100000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "googl",
+      "pool": "0x31bd720527d9875b444c0946c5795351a56d9d8b",
+      "blockNumber": "90708509",
+      "blockHash": "0x433ba604333f6d8a14ab597a5944b816679bd17c54d613e46a583fa10529063f",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "7300000000000000000",
+        "maxTotal": "100000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "qqq",
+      "pool": "0xd4375275f5fa231e238c9ff1237a8e8666be6b62",
+      "blockNumber": "90708514",
+      "blockHash": "0x2b5bb525b69c7dcfffd31777dc5bfbed47900000b0adf69919a414e7d75b47c0",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "3500000000000000000",
+        "maxTotal": "100000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    },
+    {
+      "id": "mstr",
+      "pool": "0x207dc4dd4e40ab280df9ec10cd5edf04685e9d88",
+      "blockNumber": "90708520",
+      "blockHash": "0x1a322462a1b9b62be9520090c0971fba301c301d9e164538039e27ddfdddc31b",
+      "root": "15019797232609675441998260052101280400536945603062888308240081994073687793470",
+      "notes": 0,
+      "reserve": "0",
+      "actualBalance": "0",
+      "depositCaps": {
+        "maxDeposit": "18300000000000000000",
+        "maxTotal": "100000000000000000000",
+        "accountedBalance": "0",
+        "pendingCaps": {
+          "maxDeposit": "0",
+          "maxTotal": "0",
+          "eta": "0"
+        },
+        "depositsPaused": false,
+        "capIncreaseDelaySeconds": "43200"
+      },
+      "asp": {
+        "epoch": "0",
+        "expired": true,
+        "spendable": false
+      },
+      "constructorCapsReceiptIncluded": true,
+      "passed": true
+    }
+  ],
+  "testsRun": false,
+  "keysAccessed": false,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0
+}

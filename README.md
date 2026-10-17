@@ -16,9 +16,92 @@ Read [audit scope](docs/AUDIT_SCOPE.md), [security model](docs/SECURITY_MODEL.md
 
 The candidate supports two-input/two-output private payments, recovery and respend, public withdrawal, ownership-based public exits, deposit caps with a 12-hour increase delay, deposit-only pause and fixed-route swaps that return net output to a privacy pool. The selected new-adapter fee is 30 bps; official-relay pricing is separate from a mandatory core-pool tax.
 
-**The seven-contract ETH/USDG mainnet core and seven stock pools are deployed. The product launch remains incomplete.** The [core manifest](deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](deployments/robinhood-mainnet/stocks-100-tokens.json) and [independent stock deployment verification](deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) record the public chain evidence. Keep the original journals and shared account-wide gas ledger. Live fee routes, stock fork/DEX acceptance, operations funding and real-market acceptance remain separate launch work. Independent audit is deferred. Publishing this repository does not authorize mainnet spending.
+**The seven-contract ETH/USDG mainnet core and seven stock pools are deployed.** The [core manifest](deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](deployments/robinhood-mainnet/stocks-100-tokens.json), [stock deployment verification](deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) and [nine-pool read-only state acceptance](deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json) record the public chain evidence. Cloud signing and ASP activation are separate operational work; this static repository does not attest their current readiness. DEX routes, live service fees and real-market acceptance remain launch work. Independent audit is deferred. Keep the original journals and shared account-wide gas ledger.
 
 The later [100-token capacity decision](docs/STOCK_CAPACITY_100_TOKENS.md) supersedes the historical stock total caps. Each deployed stock pool has a total capacity of 100 stock tokens, retaining its earlier approximately USD 2,500 single-deposit reference limit. Stock DEX trading remains disabled pending verified routes and acceptance. ETH/USDG retain their existing caps; the default core deployment includes no stocks or routes.
+
+## Mainnet address book
+
+These are **Robinhood Chain mainnet** addresses, recorded on **2026-10-17**. They are not Ethereum, Base or Robinhood testnet addresses. The machine-readable [address book](deployments/robinhood-mainnet/address-book.json) contains the same roster, creation transaction/block hashes, runtime code hashes, asset decimals, initial caps, ABI paths and source-manifest hashes. Deployment manifests are preserved as historical evidence; consult on-chain getters and service readiness for current policy and operating state.
+
+| Network field | Value |
+| --- | --- |
+| Chain ID | `4663` |
+| Native asset | ETH, 18 decimals |
+| Public RPC | `https://rpc.mainnet.chain.robinhood.com/` |
+| Genesis hash | `0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c` |
+| Contract / proof release | [`v0.1.0-rc.3`](releases/rc3/README.md) |
+| ABI catalog | [`abi/manifest.json`](abi/manifest.json) |
+
+### Custody pools and assets
+
+Every pool holds exactly one asset. ETH uses the zero address as its asset identifier and holds native ETH directly. All other entries are ERC20 token addresses. Every pool uses [`PrivacyPool.json`](abi/PrivacyPool.json).
+
+| Asset | Privacy pool | Underlying token | Decimals | Creation block |
+| --- | --- | --- | ---: | ---: |
+| ETH | `0xF9c767CAb9B9A7dE8Dd959967269787880267ab2` | Native ETH (`0x0000000000000000000000000000000000000000`) | 18 | 90,696,133 |
+| USDG | `0x5Cd4c081eb747406DAb66e22004324600f1928C9` | `0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168` | 6 | 90,696,170 |
+| NVDA | `0x4C8BAEb78b032EA3610E0F5D4C8B5Bb4fF5995f7` | `0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC` | 18 | 90,703,048 |
+| SPY | `0x8a29Db84A20B0A3CA528FAE0F69F50FfD39c6C39` | `0x117cc2133c37B721F49dE2A7a74833232B3B4C0C` | 18 | 90,703,092 |
+| META | `0xA2078e02A631ae9218DBAa84987a24741bD24d10` | `0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35` | 18 | 90,703,141 |
+| TSLA | `0xE8c619705B7452c2281cA8fA675a355846D34BFE` | `0x322F0929c4625eD5bAd873c95208D54E1c003b2d` | 18 | 90,703,190 |
+| GOOGL | `0x31Bd720527D9875b444c0946c5795351a56d9d8B` | `0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3` | 18 | 90,703,241 |
+| QQQ | `0xd4375275F5FA231e238c9FF1237A8e8666Be6B62` | `0xD5f3879160bc7c32ebb4dC785F8a4F505888de68` | 18 | 90,703,293 |
+| MSTR | `0x207Dc4DD4E40Ab280dF9eC10CD5Edf04685e9d88` | `0xec262a75e413fAfD0dF80480274532C79D42da09` | 18 | 90,703,349 |
+
+Initial single-deposit / total caps are **1 / 20 ETH**, **2,500 / 50,000 USDG**, and the following stock-token units. These are constructor values; read `maxDeposit()` and `maxTotal()` for current limits.
+
+| Stock token | Single deposit | Total note-backed capacity |
+| --- | ---: | ---: |
+| NVDA | 11.4 | 100 |
+| SPY | 3.2 | 100 |
+| META | 3.4 | 100 |
+| TSLA | 7 | 100 |
+| GOOGL | 7.3 | 100 |
+| QQQ | 3.5 | 100 |
+| MSTR | 18.3 | 100 |
+
+Stock caps count **issuer ERC20 tokens**, not a guaranteed number of underlying shares. They do not track live dollar prices or automatically adjust for issuer multipliers/corporate actions. See the [100-token decision](docs/STOCK_CAPACITY_100_TOKENS.md). Deposit pause and cap controls do not pause withdrawals or ownership-based public exits. Cap increases require **12 hours**; reductions are immediate.
+
+### Shared contracts
+
+| Component | Mainnet address | ABI |
+| --- | --- | --- |
+| Poseidon T3 library | `0x4781B6D29Dd0CeFEf101049E23f31D2165a553fa` | [PoseidonT3.json](abi/PoseidonT3.json) |
+| Poseidon T4 library | `0x9096D809dc96BCeE1F9c7b64BAd8F79FA6dCF165` | [PoseidonT4.json](abi/PoseidonT4.json) |
+| Join-split verifier | `0xA5bC542708D7fEBD706E7fD78caD2ACa785B9dF4` | [JoinSplitVerifier.json](abi/JoinSplitVerifier.json) |
+| Holder-exit verifier | `0xF430E5d1aa6d970de10C745DC04cb7e7E1F53Ab5` | [HolderExitVerifier.json](abi/HolderExitVerifier.json) |
+| ASP association-set registry | `0x89ad7Cce6c161A21323BE234d9924fEe915b2660` | [AssociationSetRegistry.json](abi/AssociationSetRegistry.json) |
+
+### Administrative and operating addresses
+
+These roles are separate from user custody pools and **must not be counted as TVL**. This is a public address roster, not a request to send funds.
+
+| Role | Address | Authority |
+| --- | --- | --- |
+| Original deployer | `0x555998Ba2B2723C97d91FB20Da0ddb896749797e` | Original contract creator; no owner sweep. |
+| Safe guardian | `0x9CF17a6E3c75D200f58283A165C442a8A3994555` | Deposit controls, ASP suspension and delayed provider rotation; no private-note ownership. |
+| ASP provider | `0xce6770154D793dF78FbfA0D3615B2946366E6612` | Publishes association roots; cannot withdraw user notes. |
+| Official relay | `0x8d890058818EDbc222E6E01F501dC77FBFf6f4dC` | Submits proof-bound transactions; does not own private notes. |
+
+Read the registry's `PROVIDER()` for the current ASP authority. The provider address may rotate after the immutable Guardian's proposal and a **three-day** delay. The registry accepts at most **16 epochs**, with a **one-hour** replacement grace period and independent expiry checks. Normal private spends require current-note ASP approval; `holderExit` and `ragequit` do not. The bootstrap policy is self-hosted **all-current-notes**, with **no original-source screening**. See [security model](docs/SECURITY_MODEL.md).
+
+The stock issuer registry and implementation observed during verification are external dependencies, not Lincoln custody contracts:
+
+| Observed dependency | Address |
+| --- | --- |
+| stock-issuer-registry | `0xe10b6f6B275de231345c20D14Ab812db62151b00` |
+| stock-issuer-implementation | `0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2` |
+
+Their code hashes and observation block are in the [stock verification record](deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json). An observed issuer implementation does not prevent future issuer changes.
+
+### Fees, routes and integration status
+
+The core pools do not impose a mandatory 0.3% tax. The selected policy for new fee adapters is **30 bps (0.3%)**; official-relay withdrawal / relayed holder-exit pricing is a separate proof-bound service policy. A policy selection is not evidence that live service fees are configured. **No mainnet DEX adapter or route is recorded in these deployment manifests**, and stock trading remains disabled. The adapter source supports ETH wrapping and 1–4 hops for future verified routes.
+
+For audit, start with [audit scope](docs/AUDIT_SCOPE.md), [review manifest](review-manifest.json), [RC.3 acceptance evidence](audit/acceptance/rc3/validation.json), [ABI catalog](abi/manifest.json) and [parameter provenance](docs/PARAMETER_PROVENANCE.md). Source review paths are `contracts/` and `zk/`; the preserved release paths exist to reproduce compiler and parameter identities. Neither deployment verification nor local proof acceptance is an independent audit.
+
+For **DefiLlama**, use the [address book JSON](deployments/robinhood-mainnet/address-book.json) and [TVL integration notes](docs/TVL_INTEGRATION.md). Count underlying custody at the nine pools once. Do not add note balances, `accountedBalance`, operator gas, the registry or external DEX liquidity to that same balance. Chain support, token price mappings and a DefiLlama adapter submission remain separate integration work; no listing or acceptance is claimed here.
 
 ## Reproduce
 

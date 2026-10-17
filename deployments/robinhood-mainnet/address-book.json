@@ -35,18 +35,28 @@
     {
       "path": "deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json",
       "sha256": "c2d100aa64dab43280b042e492d459f5a0317235a4bfb26d4d449b357ebb0ccb"
+    },
+    {
+      "path": "deployments/robinhood-mainnet/fee-adapters-30bps.json",
+      "sha256": "b99a10c17cc97d2d3e9690300668cb89295aae3a335c2c3af98cc2b71b3a73e0"
+    },
+    {
+      "path": "config/mainnet-fee-routes-20261017.json",
+      "sha256": "43f2929e6ae89c3c2edf1ddc8d9a18aa3e37dbea58f42aac518b15ab3bd0c760"
     }
   ],
   "status": {
     "coreContractsDeployed": true,
     "stockPoolsDeployed": true,
-    "dexRoutesDeployed": false,
+    "dexRoutesDeployed": true,
     "stockTradingEnabled": false,
     "liveServiceFeesAttested": false,
     "runtimeReadiness": "not-attested-by-this-static-address-book",
     "mainnetEndToEndAccepted": false,
     "independentAuditCompleted": false,
-    "defiLlamaAdapterSubmitted": false
+    "defiLlamaAdapterSubmitted": false,
+    "feeAdaptersDeployed": true,
+    "serviceRoutesConfigured": false
   },
   "contracts": [
     {
@@ -403,10 +413,754 @@
     "ragequitRequiresAspApproval": false
   },
   "dex": {
-    "adapters": [],
-    "routes": [],
+    "adapters": [
+      {
+        "id": "uniswap-eth-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x51BdAdcDC1B8B6Ed0EDe948EE4Ba1b1F48D22106",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752289",
+        "deploymentBlockHash": "0x4bfb1e2789ead51124074caf0372024c59560060e2957af8bd0cbe99d456861e",
+        "deploymentTransactionHash": "0x39bb1b357e6fa9dca3796710e7a7c31fc19dfc1470ffbc1969618dcc494f75b9",
+        "runtimeCodeHash": "0xd3a62aff1664117c99f40e214f6b62374aa4f192e3fdedf6bd305dba6a366d0e",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-eth",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xf4E0376E185177EbF38773fEA3F46089733cB029",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752344",
+        "deploymentBlockHash": "0xf3e7aab570998428732a1f79d72d08cbe35934d1fed0ceacb60ccbbe3b235132",
+        "deploymentTransactionHash": "0xaa2611a5e318e80b274a5adc28324e17aeaf83f3c24f3a60fb7408cf6d0fcc79",
+        "runtimeCodeHash": "0x327c42a7fb8095a5667fae35a29f3b8ddbdbee827be7a4d47e3b4fdb0b7bcbc8",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "up-eth-to-usdg",
+        "contract": "Phase2FeeRouteAdapter",
+        "address": "0xf75881f178D15fF44cC4B00dAdcEbCD5e04a9296",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xC062b870E813fcA720f1e002c234369Ab3aB9415",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752401",
+        "deploymentBlockHash": "0xd91e83690d32ec3694bff772329dbdc1f9a9ad6747667de29a374ac1bd9be60f",
+        "deploymentTransactionHash": "0x7ac52748fd99a6de78d32e54b918a143eb6a57c2e19db56824fd8b2b4f587a05",
+        "runtimeCodeHash": "0x887e2d811d39c63b2d667ba16fed46fd68171271f658852a74072c50a195fb38",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeV3RouteAdapter.json"
+      },
+      {
+        "id": "up-usdg-to-eth",
+        "contract": "Phase2FeeRouteAdapter",
+        "address": "0xF6d233367c3Adfa45047571BAAfBB1b3864c8eA8",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+        "router": "0xC062b870E813fcA720f1e002c234369Ab3aB9415",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752459",
+        "deploymentBlockHash": "0x92cb48dd819adcd98dcd183e5428d6ebc73fd4d31363cd2df8246c90e8a0ddde",
+        "deploymentTransactionHash": "0x137503c5aa1a511d2c448aacc243a004e7eb0d6dfe1c148719c10dba39ab34a9",
+        "runtimeCodeHash": "0xca9cd3d02eb738421dcc474c1559cd3c7df3e490ced570430d2b7d99802ab8ed",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeV3RouteAdapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-nvda",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x39c340f193C2f6D4131A9537f005Da3385d0e0fB",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0x4C8BAEb78b032EA3610E0F5D4C8B5Bb4fF5995f7",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752528",
+        "deploymentBlockHash": "0x7a7fea0d0c03bcec280c683f5b157fb65b017adc5768eb238c4323402f1b7bcf",
+        "deploymentTransactionHash": "0xbb5749d45d9783be5f7de1128fb6efd1444f9ac49c1a386b43e845843c6b67bd",
+        "runtimeCodeHash": "0xf4df597775b398ff9e7a0a27169f25929201601b043456c18f52ed53b873f07d",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-nvda-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x829eC924A39A110B0Ea59fcDD1164a2EE6d25f42",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x4C8BAEb78b032EA3610E0F5D4C8B5Bb4fF5995f7",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752600",
+        "deploymentBlockHash": "0x58ca988d12ee592b9f9021df3af6d501d7ad447737ad4032e964b8caca9c26ad",
+        "deploymentTransactionHash": "0x67c2527020ef879b9550e75070afdb13f94c24a0ee5f3f9b8b167ec08844303b",
+        "runtimeCodeHash": "0x280753202d02630bd1d6c10e3a6db41b09e683847b0cdbdcee9b890e97455bcd",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-spy",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x804a2f51a04c4c552FB03743409BCbA0C6485D92",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0x8a29Db84A20B0A3CA528FAE0F69F50FfD39c6C39",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752665",
+        "deploymentBlockHash": "0xac47ddcec8e86037542e6020a186911642a2840b2a689ea43a00cfd5e8c91c7e",
+        "deploymentTransactionHash": "0xae0c319842e35f2a1f08bc529669f92f0ac4116ace940227476f13ec4b16b82c",
+        "runtimeCodeHash": "0x2109366fa031c4ff94226509cd3d9172f958e65b2d597eada6db06a8c35cbe77",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-spy-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xDcD5b12c1dC1FfdC58045Fe306305Da705af00d9",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x8a29Db84A20B0A3CA528FAE0F69F50FfD39c6C39",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752734",
+        "deploymentBlockHash": "0x66e956b036e0f096dd12d61b0be5db5395650fd7aa6cbe048cbfb22c270a1cb0",
+        "deploymentTransactionHash": "0xbe507245bd238c7051fbd1cc80881e07108dd7a3e5532b6ef0092a64fdaa7574",
+        "runtimeCodeHash": "0xbe8a936ca849edb51c2ac8b5035edb65f09923b93fe0489a4e285e08da08d9e3",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-meta",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x7a8454953CC392b5Ce2E267Dc0570D4D1bC65490",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0xA2078e02A631ae9218DBAa84987a24741bD24d10",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752801",
+        "deploymentBlockHash": "0x2eca907ccb630eb7f6cc02581bd9da903277f4c4d125d10b388c886eae475b45",
+        "deploymentTransactionHash": "0x9dffda7842195871838f03a0daff90dfac04d7af7bbc1f393fb6aa1d47fbc6c9",
+        "runtimeCodeHash": "0x9d71257f6508673d7c9ecedbdb0ae12374772ccc32d5ff0f0abd36733bcc61fb",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-meta-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xA755940ca05Da17580982767607E42C801b7a897",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xA2078e02A631ae9218DBAa84987a24741bD24d10",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752880",
+        "deploymentBlockHash": "0x3b1cfd352dd96a595e974adb4d4366b81cebbdece97329f948eb28f77dd5e61d",
+        "deploymentTransactionHash": "0x120fd3018c649b81f4ffea923f72090db9cd7ac32b59dbd7c983889b145881db",
+        "runtimeCodeHash": "0x21396b8646239b3f65771ac74c1e4da2f4131b788a2f11f852bf72b6e39ea300",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-tsla",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xbF542B7195Eb402671aA30cED94114e0557ac1d5",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0xE8c619705B7452c2281cA8fA675a355846D34BFE",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90752952",
+        "deploymentBlockHash": "0x6f94b1673dbc152b14b4ab79038826b740d04ed073b2a1058a147dd404357646",
+        "deploymentTransactionHash": "0x95b8bd13f13399abecbb146902616436f10b0ecd009f0acbbd184c0a7064bedb",
+        "runtimeCodeHash": "0x0a2d32e241e01bbd164d0de256a8bd2e92ce1068737c19b58875c2a727edceed",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-tsla-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x3DaE2c98EB758685325417fc615e8980263970B3",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xE8c619705B7452c2281cA8fA675a355846D34BFE",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90753028",
+        "deploymentBlockHash": "0xf6765a042a364f1266dd4a4f8e7b5f5c0d0f2088c2a42722976696af667f4285",
+        "deploymentTransactionHash": "0xdb4604d5084829de66e7e6c59c99a085b8a5468c91f18d50fa57d6aa6840845e",
+        "runtimeCodeHash": "0x8a64b499925609d42abf87b2e022d3555993439f918fe5c382f4b522214c9b26",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-googl",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xa3eF05228fC562a7610B3d038B990f53de582862",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0x31Bd720527D9875b444c0946c5795351a56d9d8B",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90753104",
+        "deploymentBlockHash": "0x505fee2116dfe2546f365f5138bc390eda9a159231136ae0605e1e1a97392cb4",
+        "deploymentTransactionHash": "0x85ea1dd793f96bc958941356af720b2e4638b7fa43c27f538b1b42acb2a516d9",
+        "runtimeCodeHash": "0x495a5b7d9076f46f984a58322b21b11656741b3036db229ed89e88a785c9f694",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-googl-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xaC082BB3e0C4A6852516f25DBe0d85aB546F834A",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x31Bd720527D9875b444c0946c5795351a56d9d8B",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90753196",
+        "deploymentBlockHash": "0xbf9c4ca030ded26d57ab97b5872051823094fe6684118d556304895e142827b6",
+        "deploymentTransactionHash": "0x46ab3b90d539bd5a70a703a5dc0580561bff32fce79a7a07591099fc93e1da4b",
+        "runtimeCodeHash": "0x11487920908da43d62f0300429511f8992a383a81a542b813185b45cf2c79a78",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-qqq",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x10B002942c1dcf6E93951dC85b9A41D3dA30B690",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0xd4375275F5FA231e238c9FF1237A8e8666Be6B62",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90753276",
+        "deploymentBlockHash": "0x61e8f4a69472e5168f80656d521ae56d066c7b791b9b08e04902ca712ce12238",
+        "deploymentTransactionHash": "0xac03bb2e7167fb55ff250c98c7771bcc640ecebf804a8531b64e199b600bf76c",
+        "runtimeCodeHash": "0xc11073dfbe25fae1d56d3c3991837c5b24b7700e566319240818cc2046b7cb32",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-qqq-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x23C932B0B8C879D0D982353411D8e6Ba3Bac3aaa",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0xd4375275F5FA231e238c9FF1237A8e8666Be6B62",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90753369",
+        "deploymentBlockHash": "0x9fb87122c34d820a435ef4df85934770a973f4676add1d28e40a81630a8630d4",
+        "deploymentTransactionHash": "0xad3d24aec0e79eabd6bffd69e7f739eabb1e5beb6a9809eeb8a2fa81b16062f8",
+        "runtimeCodeHash": "0x5467f2ecf1c1e154f1f79a4cb5b68f85a39aca88a6e6377af24ba0c948163281",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-usdg-to-mstr",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0xb7e36f25FfDaFAbcB28DdE863C97C8ad7dC57bc2",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "targetPool": "0x207Dc4DD4E40Ab280dF9eC10CD5Edf04685e9d88",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90753458",
+        "deploymentBlockHash": "0x6ae90092302319d41b9387fd334b4954254ef9f95e6bf43f14504079c832bdb2",
+        "deploymentTransactionHash": "0x648ec6161c12180d8c17627aafb0901c517c829351c9c8f3a2ae7361b0e127e5",
+        "runtimeCodeHash": "0x55daa2bdc6558c752209ad8040be27cf1ae0d106ee54d7e64579bf5b21b1c69a",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      },
+      {
+        "id": "uniswap-mstr-to-usdg",
+        "contract": "Phase2FeeRouter02Adapter",
+        "address": "0x784a20CAC13Bedcc885AEb0c3B052644582Df2F1",
+        "feeBps": 30,
+        "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+        "sourcePool": "0x207Dc4DD4E40Ab280dF9eC10CD5Edf04685e9d88",
+        "targetPool": "0x5Cd4c081eb747406DAb66e22004324600f1928C9",
+        "router": "0xCaf681a66D020601342297493863E78C959E5cb2",
+        "wrappedNative": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "deploymentBlock": "90753539",
+        "deploymentBlockHash": "0xa102ab6816aaede305364b299cc75c6d4fbbc08ea515f1df3b4dd97c935db936",
+        "deploymentTransactionHash": "0xa7effca1c3b706012f457e20fcdfda2ec4f2ad7cf16801ae5c33f738dfee1547",
+        "runtimeCodeHash": "0x8f17903de7a73ef3082fff2876f210c1ff21b169cfb4a11f772428ca702889f6",
+        "source": "contracts/adapters/FeeAdapters.sol",
+        "abi": "abi/FeeRouter02Adapter.json"
+      }
+    ],
+    "routes": [
+      {
+        "id": "uniswap-eth-to-usdg",
+        "adapter": "0x51BdAdcDC1B8B6Ed0EDe948EE4Ba1b1F48D22106",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "eth",
+        "target": "usdg",
+        "tokens": [
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          100
+        ],
+        "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad730000645fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+            "parameter": 100,
+            "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-eth",
+        "adapter": "0xf4E0376E185177EbF38773fEA3F46089733cB029",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "eth",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+        ],
+        "parameters": [
+          100
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680000640bd7d308f8e1639fab988df18a8011f41eacad73",
+        "hops": [
+          {
+            "pool": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+            "parameter": 100,
+            "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "up-eth-to-usdg",
+        "adapter": "0xf75881f178D15fF44cC4B00dAdcEbCD5e04a9296",
+        "venue": "up",
+        "protocol": "up-slipstream",
+        "source": "eth",
+        "target": "usdg",
+        "tokens": [
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          10
+        ],
+        "path": "0x0bd7d308f8e1639fab988df18a8011f41eacad7300000a5fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0x16679e2ac1A798865eCf1c1639e67693ddB1C220",
+            "parameter": 10,
+            "runtimeCodeHash": "0xda57657ec68ddfb0987ba1352a44cefe40433e55585f3e4555b8ced4bbeb540d"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "up-usdg-to-eth",
+        "adapter": "0xF6d233367c3Adfa45047571BAAfBB1b3864c8eA8",
+        "venue": "up",
+        "protocol": "up-slipstream",
+        "source": "usdg",
+        "target": "eth",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+        ],
+        "parameters": [
+          10
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d16800000a0bd7d308f8e1639fab988df18a8011f41eacad73",
+        "hops": [
+          {
+            "pool": "0x16679e2ac1A798865eCf1c1639e67693ddB1C220",
+            "parameter": 10,
+            "runtimeCodeHash": "0xda57657ec68ddfb0987ba1352a44cefe40433e55585f3e4555b8ced4bbeb540d"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-nvda",
+        "adapter": "0x39c340f193C2f6D4131A9537f005Da3385d0e0fB",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "nvda",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680001f4d0601ce157db5bdc3162bbac2a2c8af5320d9eec",
+        "hops": [
+          {
+            "pool": "0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+            "parameter": 500,
+            "runtimeCodeHash": "0x20fbed0e49e9ac176e3220dc3c96a9b47d33c5f2b468f180afd7ff5ae00d4a8e"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-nvda-to-usdg",
+        "adapter": "0x829eC924A39A110B0Ea59fcDD1164a2EE6d25f42",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "nvda",
+        "target": "usdg",
+        "tokens": [
+          "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec0001f45fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+            "parameter": 500,
+            "runtimeCodeHash": "0x20fbed0e49e9ac176e3220dc3c96a9b47d33c5f2b468f180afd7ff5ae00d4a8e"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-spy",
+        "adapter": "0x804a2f51a04c4c552FB03743409BCbA0C6485D92",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "spy",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680001f4117cc2133c37b721f49de2a7a74833232b3b4c0c",
+        "hops": [
+          {
+            "pool": "0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+            "parameter": 500,
+            "runtimeCodeHash": "0xaed14af326e94c7e4f2e8a267c0a93346c5d66c5aec0772a6b1a0ecdf5b9f7c5"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-spy-to-usdg",
+        "adapter": "0xDcD5b12c1dC1FfdC58045Fe306305Da705af00d9",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "spy",
+        "target": "usdg",
+        "tokens": [
+          "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0x117cc2133c37b721f49de2a7a74833232b3b4c0c0001f45fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+            "parameter": 500,
+            "runtimeCodeHash": "0xaed14af326e94c7e4f2e8a267c0a93346c5d66c5aec0772a6b1a0ecdf5b9f7c5"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-meta",
+        "adapter": "0x7a8454953CC392b5Ce2E267Dc0570D4D1bC65490",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "meta",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d168000bb8c0d6457c16cc70d6790dd43521c899c87ce02f35",
+        "hops": [
+          {
+            "pool": "0x107a7Cb40d8665360ba10E59471Af06150A50922",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x6b35576f8f4dfb5bd54dde49026cbfa7ee2f038cd0f306cb4fff11de8babd988"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-meta-to-usdg",
+        "adapter": "0xA755940ca05Da17580982767607E42C801b7a897",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "meta",
+        "target": "usdg",
+        "tokens": [
+          "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0xc0d6457c16cc70d6790dd43521c899c87ce02f35000bb85fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0x107a7Cb40d8665360ba10E59471Af06150A50922",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x6b35576f8f4dfb5bd54dde49026cbfa7ee2f038cd0f306cb4fff11de8babd988"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-tsla",
+        "adapter": "0xbF542B7195Eb402671aA30cED94114e0557ac1d5",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "tsla",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0x322F0929c4625eD5bAd873c95208D54E1c003b2d"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d168000bb8322f0929c4625ed5bad873c95208d54e1c003b2d",
+        "hops": [
+          {
+            "pool": "0xf4ACdAEEB7022862A763C9B1B885e11191c889E3",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x3051864bf6341e841e6ee2a1bd7f5e5fe03b8f5ff633e02e00c6d13923b8ec19"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-tsla-to-usdg",
+        "adapter": "0x3DaE2c98EB758685325417fc615e8980263970B3",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "tsla",
+        "target": "usdg",
+        "tokens": [
+          "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          3000
+        ],
+        "path": "0x322f0929c4625ed5bad873c95208d54e1c003b2d000bb85fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0xf4ACdAEEB7022862A763C9B1B885e11191c889E3",
+            "parameter": 3000,
+            "runtimeCodeHash": "0x3051864bf6341e841e6ee2a1bd7f5e5fe03b8f5ff633e02e00c6d13923b8ec19"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-googl",
+        "adapter": "0xa3eF05228fC562a7610B3d038B990f53de582862",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "googl",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680001f42e0847e8910a9732eb3fb1bb4b70a580adad4fe3",
+        "hops": [
+          {
+            "pool": "0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+            "parameter": 500,
+            "runtimeCodeHash": "0xecd896ff68596f6159c069b13382ccb1453ee5fa6e5d2b0a85ad09a566095f59"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-googl-to-usdg",
+        "adapter": "0xaC082BB3e0C4A6852516f25DBe0d85aB546F834A",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "googl",
+        "target": "usdg",
+        "tokens": [
+          "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0x2e0847e8910a9732eb3fb1bb4b70a580adad4fe30001f45fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+            "parameter": 500,
+            "runtimeCodeHash": "0xecd896ff68596f6159c069b13382ccb1453ee5fa6e5d2b0a85ad09a566095f59"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-qqq",
+        "adapter": "0x10B002942c1dcf6E93951dC85b9A41D3dA30B690",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "qqq",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680001f4d5f3879160bc7c32ebb4dc785f8a4f505888de68",
+        "hops": [
+          {
+            "pool": "0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+            "parameter": 500,
+            "runtimeCodeHash": "0x416c4a3e4ab67095dd9418ea59a58c746c3ede92d128865f9d6136c3215fec88"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-qqq-to-usdg",
+        "adapter": "0x23C932B0B8C879D0D982353411D8e6Ba3Bac3aaa",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "qqq",
+        "target": "usdg",
+        "tokens": [
+          "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          500
+        ],
+        "path": "0xd5f3879160bc7c32ebb4dc785f8a4f505888de680001f45fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+            "parameter": 500,
+            "runtimeCodeHash": "0x416c4a3e4ab67095dd9418ea59a58c746c3ede92d128865f9d6136c3215fec88"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-usdg-to-mstr",
+        "adapter": "0xb7e36f25FfDaFAbcB28DdE863C97C8ad7dC57bc2",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "usdg",
+        "target": "mstr",
+        "tokens": [
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "0xec262a75e413fAfD0dF80480274532C79D42da09"
+        ],
+        "parameters": [
+          10000
+        ],
+        "path": "0x5fc5360d0400a0fd4f2af552add042d716f1d168002710ec262a75e413fafd0df80480274532c79d42da09",
+        "hops": [
+          {
+            "pool": "0x17578C0e0D15da44f31677263114F71aE76653EA",
+            "parameter": 10000,
+            "runtimeCodeHash": "0x86bf39b3c9ba461925d3aea70fceafacdbc8d8f9c147eaa19b13c0f07e1d9fc6"
+          }
+        ],
+        "executionEnabled": false
+      },
+      {
+        "id": "uniswap-mstr-to-usdg",
+        "adapter": "0x784a20CAC13Bedcc885AEb0c3B052644582Df2F1",
+        "venue": "uniswap",
+        "protocol": "uniswap-v3",
+        "source": "mstr",
+        "target": "usdg",
+        "tokens": [
+          "0xec262a75e413fAfD0dF80480274532C79D42da09",
+          "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+        ],
+        "parameters": [
+          10000
+        ],
+        "path": "0xec262a75e413fafd0df80480274532c79d42da090027105fc5360d0400a0fd4f2af552add042d716f1d168",
+        "hops": [
+          {
+            "pool": "0x17578C0e0D15da44f31677263114F71aE76653EA",
+            "parameter": 10000,
+            "runtimeCodeHash": "0x86bf39b3c9ba461925d3aea70fceafacdbc8d8f9c147eaa19b13c0f07e1d9fc6"
+          }
+        ],
+        "executionEnabled": false
+      }
+    ],
     "selectedNewAdapterFeeBps": 30,
-    "feeActivation": "Not established by deployment of core pools."
+    "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "manifest": "deployments/robinhood-mainnet/fee-adapters-30bps.json",
+    "deploymentPlanId": "136619070aa0a2d86d41e33b512f63445791c7fb863ffc2236b02e89356ba883",
+    "feeModel": "serviceFee = floor(measuredGrossOutput * 30 / 10000), paid to the Safe treasury in TOKEN_OUT (WETH for ETH targets); net output is reshielded into the target pool.",
+    "feeActivation": "Eighteen 30 bps adapters are deployed and verified on-chain (bytecode, immutable fee, treasury, pools, router and path). Fees are collected on any swap through them; official relay service routes, per-asset gas quotes and real-market end-to-end acceptance are separate operational steps and are not attested by this file."
   },
   "tvlAccounting": {
     "basis": "Underlying custody balances at the requested canonical block, once per listed pool.",
@@ -417,7 +1171,8 @@
       "deployer, guardian, provider and relay operating wallets",
       "registry, verifiers and Poseidon libraries",
       "notes, commitments, encrypted balances and their recovery copies",
-      "external DEX liquidity already counted by its owning protocol"
+      "external DEX liquidity already counted by its owning protocol",
+      "fee adapters: they hold no balances between transactions; fees settle directly to the Safe treasury"
     ],
     "stockUnit": "Native issuer ERC20 token, not a guaranteed one-to-one underlying share. Apply verified token-specific pricing and issuer multiplier/corporate-action rules.",
     "pricingStatus": "DefiLlama chain namespace, asset price mappings and adapter acceptance are not asserted by this address book."

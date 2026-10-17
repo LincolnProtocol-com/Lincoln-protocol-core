@@ -1,0 +1,350 @@
+{
+  "schema": "phase2-mainnet-route-selection/v1",
+  "chainId": 4663,
+  "description": "Selected 30 bps fee adapter routes: ETH/USDG on Uniswap V3 (0.01%) and UP Slipstream (tick spacing 10); USDG to each deployed stock pool on its deepest Uniswap V3 pool at block observed 2026-10-17. Creating this file deploys nothing.",
+  "observedBlock": "90739871",
+  "routes": [
+    {
+      "id": "uniswap-eth-to-usdg",
+      "venue": "uniswap",
+      "source": "eth",
+      "target": "usdg",
+      "tokens": [
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        100
+      ],
+      "hops": [
+        {
+          "address": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+          "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-eth",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "eth",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+      ],
+      "parameters": [
+        100
+      ],
+      "hops": [
+        {
+          "address": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+          "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+        }
+      ]
+    },
+    {
+      "id": "up-eth-to-usdg",
+      "venue": "up",
+      "source": "eth",
+      "target": "usdg",
+      "tokens": [
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        10
+      ],
+      "hops": [
+        {
+          "address": "0x16679e2ac1A798865eCf1c1639e67693ddB1C220",
+          "runtimeCodeHash": "0xda57657ec68ddfb0987ba1352a44cefe40433e55585f3e4555b8ced4bbeb540d"
+        }
+      ]
+    },
+    {
+      "id": "up-usdg-to-eth",
+      "venue": "up",
+      "source": "usdg",
+      "target": "eth",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+      ],
+      "parameters": [
+        10
+      ],
+      "hops": [
+        {
+          "address": "0x16679e2ac1A798865eCf1c1639e67693ddB1C220",
+          "runtimeCodeHash": "0xda57657ec68ddfb0987ba1352a44cefe40433e55585f3e4555b8ced4bbeb540d"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-nvda",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "nvda",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+          "runtimeCodeHash": "0x20fbed0e49e9ac176e3220dc3c96a9b47d33c5f2b468f180afd7ff5ae00d4a8e"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-nvda-to-usdg",
+      "venue": "uniswap",
+      "source": "nvda",
+      "target": "usdg",
+      "tokens": [
+        "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+          "runtimeCodeHash": "0x20fbed0e49e9ac176e3220dc3c96a9b47d33c5f2b468f180afd7ff5ae00d4a8e"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-spy",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "spy",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+          "runtimeCodeHash": "0xaed14af326e94c7e4f2e8a267c0a93346c5d66c5aec0772a6b1a0ecdf5b9f7c5"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-spy-to-usdg",
+      "venue": "uniswap",
+      "source": "spy",
+      "target": "usdg",
+      "tokens": [
+        "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0xa7Bb1AC63BBaB0C44316E6c8C455213441689167",
+          "runtimeCodeHash": "0xaed14af326e94c7e4f2e8a267c0a93346c5d66c5aec0772a6b1a0ecdf5b9f7c5"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-meta",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "meta",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35"
+      ],
+      "parameters": [
+        3000
+      ],
+      "hops": [
+        {
+          "address": "0x107a7Cb40d8665360ba10E59471Af06150A50922",
+          "runtimeCodeHash": "0x6b35576f8f4dfb5bd54dde49026cbfa7ee2f038cd0f306cb4fff11de8babd988"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-meta-to-usdg",
+      "venue": "uniswap",
+      "source": "meta",
+      "target": "usdg",
+      "tokens": [
+        "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        3000
+      ],
+      "hops": [
+        {
+          "address": "0x107a7Cb40d8665360ba10E59471Af06150A50922",
+          "runtimeCodeHash": "0x6b35576f8f4dfb5bd54dde49026cbfa7ee2f038cd0f306cb4fff11de8babd988"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-tsla",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "tsla",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x322F0929c4625eD5bAd873c95208D54E1c003b2d"
+      ],
+      "parameters": [
+        3000
+      ],
+      "hops": [
+        {
+          "address": "0xf4ACdAEEB7022862A763C9B1B885e11191c889E3",
+          "runtimeCodeHash": "0x3051864bf6341e841e6ee2a1bd7f5e5fe03b8f5ff633e02e00c6d13923b8ec19"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-tsla-to-usdg",
+      "venue": "uniswap",
+      "source": "tsla",
+      "target": "usdg",
+      "tokens": [
+        "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        3000
+      ],
+      "hops": [
+        {
+          "address": "0xf4ACdAEEB7022862A763C9B1B885e11191c889E3",
+          "runtimeCodeHash": "0x3051864bf6341e841e6ee2a1bd7f5e5fe03b8f5ff633e02e00c6d13923b8ec19"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-googl",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "googl",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+          "runtimeCodeHash": "0xecd896ff68596f6159c069b13382ccb1453ee5fa6e5d2b0a85ad09a566095f59"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-googl-to-usdg",
+      "venue": "uniswap",
+      "source": "googl",
+      "target": "usdg",
+      "tokens": [
+        "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7",
+          "runtimeCodeHash": "0xecd896ff68596f6159c069b13382ccb1453ee5fa6e5d2b0a85ad09a566095f59"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-qqq",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "qqq",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+          "runtimeCodeHash": "0x416c4a3e4ab67095dd9418ea59a58c746c3ede92d128865f9d6136c3215fec88"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-qqq-to-usdg",
+      "venue": "uniswap",
+      "source": "qqq",
+      "target": "usdg",
+      "tokens": [
+        "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        500
+      ],
+      "hops": [
+        {
+          "address": "0xD60A5d14dB690B7Afad71F76B108071D7175597d",
+          "runtimeCodeHash": "0x416c4a3e4ab67095dd9418ea59a58c746c3ede92d128865f9d6136c3215fec88"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-mstr",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "mstr",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0xec262a75e413fAfD0dF80480274532C79D42da09"
+      ],
+      "parameters": [
+        10000
+      ],
+      "hops": [
+        {
+          "address": "0x17578C0e0D15da44f31677263114F71aE76653EA",
+          "runtimeCodeHash": "0x86bf39b3c9ba461925d3aea70fceafacdbc8d8f9c147eaa19b13c0f07e1d9fc6"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-mstr-to-usdg",
+      "venue": "uniswap",
+      "source": "mstr",
+      "target": "usdg",
+      "tokens": [
+        "0xec262a75e413fAfD0dF80480274532C79D42da09",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        10000
+      ],
+      "hops": [
+        {
+          "address": "0x17578C0e0D15da44f31677263114F71aE76653EA",
+          "runtimeCodeHash": "0x86bf39b3c9ba461925d3aea70fceafacdbc8d8f9c147eaa19b13c0f07e1d9fc6"
+        }
+      ]
+    }
+  ]
+}

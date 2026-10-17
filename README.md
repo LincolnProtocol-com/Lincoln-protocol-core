@@ -16,9 +16,9 @@ Read [audit scope](docs/AUDIT_SCOPE.md), [security model](docs/SECURITY_MODEL.md
 
 The candidate supports two-input/two-output private payments, recovery and respend, public withdrawal, ownership-based public exits, deposit caps with a 12-hour increase delay, deposit-only pause and fixed-route swaps that return net output to a privacy pool. The selected new-adapter fee is 30 bps; official-relay pricing is separate from a mandatory core-pool tax.
 
-**The seven-contract ETH/USDG mainnet core and seven stock pools are deployed.** The [core manifest](deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](deployments/robinhood-mainnet/stocks-100-tokens.json), [stock deployment verification](deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) and [nine-pool read-only state acceptance](deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json) record the public chain evidence. Cloud signing and ASP activation are separate operational work; this static repository does not attest their current readiness. DEX routes, live service fees and real-market acceptance remain launch work. Independent audit is deferred. Keep the original journals and shared account-wide gas ledger.
+**The seven-contract ETH/USDG mainnet core and seven stock pools are deployed.** The [core manifest](deployments/robinhood-mainnet/rc3-eth-usdg.json), [stock manifest](deployments/robinhood-mainnet/stocks-100-tokens.json), [stock deployment verification](deployments/robinhood-mainnet/verification/stocks-100-tokens-20261017.json) and [nine-pool read-only state acceptance](deployments/robinhood-mainnet/verification/nine-pool-state-20261017.json) record the public chain evidence. Cloud signing and ASP activation are separate operational work; this static repository does not attest their current readiness. Eighteen 30 bps [fee adapters](deployments/robinhood-mainnet/fee-adapters-30bps.json) are deployed and verified; official-relay service routes, live service-fee configuration and real-market acceptance remain launch work. Independent audit is deferred. Keep the original journals and shared account-wide gas ledger.
 
-The later [100-token capacity decision](docs/STOCK_CAPACITY_100_TOKENS.md) supersedes the historical stock total caps. Each deployed stock pool has a total capacity of 100 stock tokens, retaining its earlier approximately USD 2,500 single-deposit reference limit. Stock DEX trading remains disabled pending verified routes and acceptance. ETH/USDG retain their existing caps; the default core deployment includes no stocks or routes.
+The later [100-token capacity decision](docs/STOCK_CAPACITY_100_TOKENS.md) supersedes the historical stock total caps. Each deployed stock pool has a total capacity of 100 stock tokens, retaining its earlier approximately USD 2,500 single-deposit reference limit. Fee adapters now connect USDG with every stock pool; relay service routes and end-to-end acceptance are still pending before official stock trading is offered. ETH/USDG retain their existing caps; the default core deployment includes no stocks or routes.
 
 ## Mainnet address book
 
@@ -97,7 +97,28 @@ Their code hashes and observation block are in the [stock verification record](d
 
 ### Fees, routes and integration status
 
-The core pools do not impose a mandatory 0.3% tax. The selected policy for new fee adapters is **30 bps (0.3%)**; official-relay withdrawal / relayed holder-exit pricing is a separate proof-bound service policy. A policy selection is not evidence that live service fees are configured. **No mainnet DEX adapter or route is recorded in these deployment manifests**, and stock trading remains disabled. The adapter source supports ETH wrapping and 1–4 hops for future verified routes.
+The core pools do not impose a mandatory 0.3% tax. The selected policy for new fee adapters is **30 bps (0.3%)**; official-relay withdrawal / relayed holder-exit pricing is a separate proof-bound service policy. A policy selection is not evidence that live service fees are configured. **Eighteen 30 bps fee adapters were deployed on 2026-10-17** by the same deployer and account ledger; the [fee adapter manifest](deployments/robinhood-mainnet/fee-adapters-30bps.json) records creation transactions, runtime code hashes and every verified immutable getter. Each adapter is a fixed one-hop exact-input route between two privacy pools with an immutable 30 bps fee paid to the Safe treasury `0x9CF17a6E3c75D200f58283A165C442a8A3994555` (as WETH for ETH targets); the net output is reshielded into the target pool. Deployment verification covers bytecode and constructor bindings only. Official relay service routes, per-asset gas quotes and real-market end-to-end acceptance are separate operational steps, so stock trading through the official relay is not yet offered. The adapter source supports ETH wrapping and 1–4 hops for future verified routes.
+
+| Route | Adapter | Venue / pool parameter | Hop pool |
+| --- | --- | --- | --- |
+| `uniswap-eth-to-usdg` | `0x51BdAdcDC1B8B6Ed0EDe948EE4Ba1b1F48D22106` | Uniswap V3 fee 100 | `0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca` |
+| `uniswap-usdg-to-eth` | `0xf4E0376E185177EbF38773fEA3F46089733cB029` | Uniswap V3 fee 100 | `0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca` |
+| `up-eth-to-usdg` | `0xf75881f178D15fF44cC4B00dAdcEbCD5e04a9296` | UP Slipstream tick spacing 10 | `0x16679e2ac1A798865eCf1c1639e67693ddB1C220` |
+| `up-usdg-to-eth` | `0xF6d233367c3Adfa45047571BAAfBB1b3864c8eA8` | UP Slipstream tick spacing 10 | `0x16679e2ac1A798865eCf1c1639e67693ddB1C220` |
+| `uniswap-usdg-to-nvda` | `0x39c340f193C2f6D4131A9537f005Da3385d0e0fB` | Uniswap V3 fee 500 | `0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3` |
+| `uniswap-nvda-to-usdg` | `0x829eC924A39A110B0Ea59fcDD1164a2EE6d25f42` | Uniswap V3 fee 500 | `0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3` |
+| `uniswap-usdg-to-spy` | `0x804a2f51a04c4c552FB03743409BCbA0C6485D92` | Uniswap V3 fee 500 | `0xa7Bb1AC63BBaB0C44316E6c8C455213441689167` |
+| `uniswap-spy-to-usdg` | `0xDcD5b12c1dC1FfdC58045Fe306305Da705af00d9` | Uniswap V3 fee 500 | `0xa7Bb1AC63BBaB0C44316E6c8C455213441689167` |
+| `uniswap-usdg-to-meta` | `0x7a8454953CC392b5Ce2E267Dc0570D4D1bC65490` | Uniswap V3 fee 3000 | `0x107a7Cb40d8665360ba10E59471Af06150A50922` |
+| `uniswap-meta-to-usdg` | `0xA755940ca05Da17580982767607E42C801b7a897` | Uniswap V3 fee 3000 | `0x107a7Cb40d8665360ba10E59471Af06150A50922` |
+| `uniswap-usdg-to-tsla` | `0xbF542B7195Eb402671aA30cED94114e0557ac1d5` | Uniswap V3 fee 3000 | `0xf4ACdAEEB7022862A763C9B1B885e11191c889E3` |
+| `uniswap-tsla-to-usdg` | `0x3DaE2c98EB758685325417fc615e8980263970B3` | Uniswap V3 fee 3000 | `0xf4ACdAEEB7022862A763C9B1B885e11191c889E3` |
+| `uniswap-usdg-to-googl` | `0xa3eF05228fC562a7610B3d038B990f53de582862` | Uniswap V3 fee 500 | `0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7` |
+| `uniswap-googl-to-usdg` | `0xaC082BB3e0C4A6852516f25DBe0d85aB546F834A` | Uniswap V3 fee 500 | `0x34D0dC122CF9A8Eb296fC5e0D3A233625D7d19b7` |
+| `uniswap-usdg-to-qqq` | `0x10B002942c1dcf6E93951dC85b9A41D3dA30B690` | Uniswap V3 fee 500 | `0xD60A5d14dB690B7Afad71F76B108071D7175597d` |
+| `uniswap-qqq-to-usdg` | `0x23C932B0B8C879D0D982353411D8e6Ba3Bac3aaa` | Uniswap V3 fee 500 | `0xD60A5d14dB690B7Afad71F76B108071D7175597d` |
+| `uniswap-usdg-to-mstr` | `0xb7e36f25FfDaFAbcB28DdE863C97C8ad7dC57bc2` | Uniswap V3 fee 10000 | `0x17578C0e0D15da44f31677263114F71aE76653EA` |
+| `uniswap-mstr-to-usdg` | `0x784a20CAC13Bedcc885AEb0c3B052644582Df2F1` | Uniswap V3 fee 10000 | `0x17578C0e0D15da44f31677263114F71aE76653EA` |
 
 For audit, start with [audit scope](docs/AUDIT_SCOPE.md), [review manifest](review-manifest.json), [RC.3 acceptance evidence](audit/acceptance/rc3/validation.json), [ABI catalog](abi/manifest.json) and [parameter provenance](docs/PARAMETER_PROVENANCE.md). Source review paths are `contracts/` and `zk/`; the preserved release paths exist to reproduce compiler and parameter identities. Neither deployment verification nor local proof acceptance is an independent audit.
 

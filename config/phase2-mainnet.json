@@ -1,0 +1,197 @@
+{
+  "schema": "lincoln-mainnet-target/v1",
+  "enabled": true,
+  "network": "mainnet",
+  "chain": {
+    "id": 4663,
+    "name": "Robinhood Chain Mainnet",
+    "rpcUrl": "https://rpc.mainnet.chain.robinhood.com/",
+    "explorerUrl": "https://robinhoodchain.blockscout.com"
+  },
+  "deployer": {
+    "address": "0x36437b878415EdA1a24186CF79AFffBc9ecEd298",
+    "signingAccount": "deployer",
+    "signerLocation": "user-local-keystore",
+    "privateKeyIncluded": false
+  },
+  "deployment": {
+    "policyMode": "asp",
+    "policyOptions": [
+      "asp",
+      "permissionless"
+    ],
+    "selectedPolicyPending": false,
+    "newImmutablePoolRequired": true,
+    "reuseDevelopmentVerifiers": false,
+    "broadcastImplemented": true,
+    "selected": "aspSelfHosted",
+    "deploymentBuildEnabled": true,
+    "sourceBuildPlanCommand": "node scripts/phase2-mainnet/build.mjs --plan",
+    "productionCompileImplemented": true,
+    "sourceBuildCommand": "node scripts/phase2-mainnet/build.mjs",
+    "deploymentPlanCommand": "node scripts/phase2-mainnet/deploy.mjs --plan",
+    "deploymentCommand": "node scripts/phase2-mainnet/deploy.mjs --deploy",
+    "productionRuntimeImplemented": true,
+    "productionRuntimeCommand": "node src/phase2-mainnet/server.mjs"
+  },
+  "productionArtifacts": {
+    "build": "artifacts/phase2-mainnet/contracts.json",
+    "joinsplitManifest": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+    "holderExitManifest": "protocol/phase2-mainnet/build/holder-exit/manifest.json"
+  },
+  "limits": {
+    "gasBudgetWei": null,
+    "maxTotalFundingWei": null,
+    "maxDepositWei": null,
+    "maxFeePerGasWei": null,
+    "maxSlippageBPS": 100,
+    "maxRelayGas": "5000000"
+  },
+  "assets": [
+    {
+      "symbol": "ETH",
+      "address": "0x0000000000000000000000000000000000000000",
+      "decimals": 18
+    },
+    {
+      "symbol": "USDG",
+      "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "decimals": 6
+    },
+    {
+      "symbol": "SPY",
+      "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true
+    },
+    {
+      "symbol": "NVDA",
+      "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true
+    },
+    {
+      "symbol": "AAPL",
+      "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "decimals": 18,
+      "issuerRiskAcceptedAsKnownBoundary": true
+    }
+  ],
+  "codePins": [
+    {
+      "role": "weth",
+      "address": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+      "runtimeCodeHash": "0x5706be52f64875fee65a2cec0d80e47a23d8793cbe85d214b48445e2d05f5353"
+    },
+    {
+      "role": "usdg",
+      "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+      "runtimeCodeHash": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6"
+    },
+    {
+      "role": "uniFactory",
+      "address": "0x1f7d7550B1b028f7571E69A784071F0205FD2EfA",
+      "runtimeCodeHash": "0xec72b1abd1f2faee020cfea9c646bd8994f9fb389054f6e574f103a895091739"
+    },
+    {
+      "role": "uniRouter",
+      "address": "0xCaf681a66D020601342297493863E78C959E5cb2",
+      "runtimeCodeHash": "0x6f36c378e272c6324c48f045182bcb54bd8ad654cf9ebd42e8893d52c4cb25dc"
+    },
+    {
+      "role": "uniQuoter",
+      "address": "0x33e885eD0Ec9bF04EcfB19341582aADCb4c8A9E7",
+      "runtimeCodeHash": "0x3db0868d945e9304c9bc6a8b2181948109ea617647142f3c4083e14393496a28"
+    },
+    {
+      "role": "upFactory",
+      "address": "0x1ac9dB4a2608ba45D6127B1737949b51Bb54B7F3",
+      "runtimeCodeHash": "0x4350c8fcdf90361969542249d76c25d6afbd31f10bebf0134bfe21beba1e8f4c"
+    },
+    {
+      "role": "upRouter",
+      "address": "0xC062b870E813fcA720f1e002c234369Ab3aB9415",
+      "runtimeCodeHash": "0x11ea7d3599ef56eda32c0ce7ca26e9aae71bec13bfcbd3ad0e83826c1a2defe4"
+    },
+    {
+      "role": "upQuoter",
+      "address": "0x03983AB2C057a2eac211ff01738a1e49ff325B49",
+      "runtimeCodeHash": "0x1ed81396c831d69a6c59384019850c21ac672d24ae83b4b26304a7384e1e4096"
+    },
+    {
+      "role": "stock-SPY",
+      "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-NVDA",
+      "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-AAPL",
+      "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+      "runtimeCodeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    {
+      "role": "stock-issuer-registry",
+      "address": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+      "runtimeCodeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e"
+    },
+    {
+      "role": "stock-issuer-implementation",
+      "address": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "runtimeCodeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7"
+    }
+  ],
+  "audit": {
+    "status": "deferred",
+    "blocking": false,
+    "independentReviewCompleted": false
+  },
+  "sources": [
+    "https://docs.robinhood.com/chain/connecting/",
+    "https://docs.robinhood.com/chain/contracts/",
+    "https://docs.robinhood.com/chain/building-with-stock-tokens/",
+    "https://developers.uniswap.org/deployments"
+  ],
+  "limitations": [
+    "Mainnet is an enabled target configuration, not a production artifact or deployment claim.",
+    "Existing development contracts and SDK guards remain unchanged; their 31341/46630 allowance does not become mainnet support.",
+    "Stock issuer pause, block, upgrade and administrative burn are accepted known boundaries, not a new prerequisite imposed by this plan.",
+    "Code hashes only describe the addresses queried. Proxy runtime matching does not freeze its current or future implementation.",
+    "A local keystore account name is metadata only; this planner never reads, unlocks or invokes it."
+  ],
+  "provider": {
+    "kind": "self-hosted",
+    "address": "0xce6770154D793dF78FbfA0D3615B2946366E6612",
+    "signerAccountName": null,
+    "bootstrapPolicy": "all-current-notes",
+    "sourceScreening": false,
+    "providerAddressImmutable": false,
+    "hotRotationSupported": false,
+    "futureSignerOrProviderChange": "Guardian proposes a provider; the new provider accepts after the on-chain three-day delay. Update pinned profiles and runtime configuration after rotation.",
+    "signerKeystoreFile": ".phase1-private/asp-provider-next/provider.keystore.json",
+    "signerPasswordFile": ".phase1-private/asp-provider-next/provider.password",
+    "fundingStatus": "not-funded-by-this-task",
+    "dedicated": true,
+    "delayedRotationSupported": true,
+    "rotationDelaySeconds": 259200
+  },
+  "guardian": {
+    "address": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "kind": "safe",
+    "chainId": 4663,
+    "version": "1.5.0",
+    "threshold": 2,
+    "ownerCount": 3,
+    "runtimeCodeHash": "0x4e381985ca68b3e5d27b4425fa581c19cf33146d3f887a3cfca96f55528ea46f",
+    "verificationReport": "artifacts/phase2-mainnet/safe-verification-20261016.json"
+  },
+  "treasury": {
+    "address": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+    "kind": "safe",
+    "chainId": 4663,
+    "sameAsGuardian": true
+  }
+}

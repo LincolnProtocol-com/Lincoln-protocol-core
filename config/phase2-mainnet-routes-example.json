@@ -1,0 +1,133 @@
+{
+  "schema": "phase2-mainnet-route-selection/v1",
+  "chainId": 4663,
+  "description": "Optional explicit route selection. No adapter or stock pool has been deployed by creating this file.",
+  "routes": [
+    {
+      "id": "uniswap-eth-to-usdg",
+      "venue": "uniswap",
+      "source": "eth",
+      "target": "usdg",
+      "tokens": [
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        100
+      ],
+      "hops": [
+        {
+          "address": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+          "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-usdg-to-eth",
+      "venue": "uniswap",
+      "source": "usdg",
+      "target": "eth",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+      ],
+      "parameters": [
+        100
+      ],
+      "hops": [
+        {
+          "address": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+          "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+        }
+      ]
+    },
+    {
+      "id": "up-eth-to-usdg",
+      "venue": "up",
+      "source": "eth",
+      "target": "usdg",
+      "tokens": [
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168"
+      ],
+      "parameters": [
+        10
+      ],
+      "hops": [
+        {
+          "address": "0x16679e2ac1A798865eCf1c1639e67693ddB1C220",
+          "runtimeCodeHash": "0xda57657ec68ddfb0987ba1352a44cefe40433e55585f3e4555b8ced4bbeb540d"
+        }
+      ]
+    },
+    {
+      "id": "up-usdg-to-eth",
+      "venue": "up",
+      "source": "usdg",
+      "target": "eth",
+      "tokens": [
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+      ],
+      "parameters": [
+        10
+      ],
+      "hops": [
+        {
+          "address": "0x16679e2ac1A798865eCf1c1639e67693ddB1C220",
+          "runtimeCodeHash": "0xda57657ec68ddfb0987ba1352a44cefe40433e55585f3e4555b8ced4bbeb540d"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-eth-to-nvda",
+      "venue": "uniswap",
+      "source": "eth",
+      "target": "nvda",
+      "tokens": [
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC"
+      ],
+      "parameters": [
+        100,
+        500
+      ],
+      "hops": [
+        {
+          "address": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+          "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+        },
+        {
+          "address": "0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+          "runtimeCodeHash": "0x20fbed0e49e9ac176e3220dc3c96a9b47d33c5f2b468f180afd7ff5ae00d4a8e"
+        }
+      ]
+    },
+    {
+      "id": "uniswap-nvda-to-eth",
+      "venue": "uniswap",
+      "source": "nvda",
+      "target": "eth",
+      "tokens": [
+        "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+        "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+        "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73"
+      ],
+      "parameters": [
+        500,
+        100
+      ],
+      "hops": [
+        {
+          "address": "0xd4EB21209C4D6093f80B5b84f5C45cc093EA14a3",
+          "runtimeCodeHash": "0x20fbed0e49e9ac176e3220dc3c96a9b47d33c5f2b468f180afd7ff5ae00d4a8e"
+        },
+        {
+          "address": "0x52e65B17fB6E5BA00Ed806f37Afcd2DaA50271Ca",
+          "runtimeCodeHash": "0x3298b5dd4e6f115074c526a55ad05a36fd73a0034ac22ec6cbaab32cc9c1e8d2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "phase2-asp-production-circuits/v1",
+  "protocol": "groth16",
+  "curve": "bn128",
+  "testOnly": false,
+  "productionReady": false,
+  "allowedChainIds": [
+    4663
+  ],
+  "inputs": {
+    "sources": [
+      {
+        "path": "protocol/phase2-asp/circuits/holder-exit/main.circom",
+        "bytes": 2139,
+        "sha256": "371f12dec64568726cc816dee3767df685ad48738de84a5da8c118a217b32136"
+      }
+    ],
+    "sourceSetSHA256": "573ccb45ed57d7b6ac36b323734bffe42b855479f04373a523b4aab912bac9cf",
+    "circomlibVersion": "2.0.5",
+    "circomlibSourceSetSHA256": "783ea25b4e1f0a19181ad83a91511c75091a3a98ee8d79dc8a36bc0d2a7a5612",
+    "compilerPackageVersion": "0.2.22",
+    "compilerVersion": "circom2 npm package 0.2.22\ncircom compiler 2.2.2",
+    "compilerEntrypointSHA256": "5e36c6153c416e17b1fa822411b1fb9e4ab9b5cd4a0249cc3b5be3259315f5ad",
+    "compilerWasmSHA256": "91fa82b3621c4f4aa4fe51cb7507a296a8332432e79cc49772bce98963f9e2fe",
+    "dependencyLockSHA256": "da570567d77761a94a2f56ad17c601e9e7acfb91f7a484fab97ed4ebb3ae4f6e",
+    "snarkjsVersion": "0.7.5",
+    "optimization": "O2",
+    "circuit": "holder-exit",
+    "maxTreeDepth": null,
+    "noteModel": "factorized-v1",
+    "publicSignalNames": [
+      "commitment",
+      "nullifier",
+      "value",
+      "scope",
+      "context"
+    ],
+    "policyMode": "asp"
+  },
+  "counts": {
+    "constraints": 1328,
+    "wires": 1333,
+    "publicInputs": 5,
+    "outputs": 0,
+    "privateInputs": 2
+  },
+  "phase1": {
+    "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+    "bytes": 37831832,
+    "power": 15,
+    "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+    "blake2b512": "982372c867d229c236091f767e703253249a9b432c1710b4f326306bfa2428a17b06240359606cfe4d580b10a5a1f63fbed499527069c18ae17060472969ae6e",
+    "publishedChecksumMatches": true
+  },
+  "setup": {
+    "kind": "multi-party-phase2",
+    "verifyFromR1cs": true,
+    "embeddedContributionCount": 3,
+    "nonBeaconContributors": 2,
+    "finalBeacon": true,
+    "transcriptBound": true,
+    "independentOperatorIdentityAuthenticated": false
+  },
+  "beaconEvidence": {
+    "schema": "phase2-production-beacon-binding/v1",
+    "application": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.applied.json",
+      "sha256": "acab415decdb47ddf681ad0e62c8196504f8d2c69dd6088860145c14974f134f",
+      "bytes": 5225
+    },
+    "commitment": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.json",
+      "sha256": "9fec88e4aabf6522f2a0f648e72cde8b1725691f2b643d8a1153d56f09fd99b0",
+      "bytes": 6908
+    },
+    "publication": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.publication.json",
+      "sha256": "35f3f2e166796b6a77762f91b161fc2555fceddebe41ff0fa0a6437ec2995277",
+      "bytes": 2719
+    },
+    "observation": {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.observation.json",
+      "sha256": "dedfc10cf0d6284d4062fb9fc63971ec10472e7d3dfdb85a4f1f9ff3eeb3c2a4",
+      "bytes": 2474
+    },
+    "beaconHash": "0x5b9e2e64568bf74f5892c0d26211590d3159ddcca3b6c3a922abbc940ed48ed1",
+    "iterations": 20,
+    "independentOperatorIdentityAuthenticated": false,
+    "publicPrecommitTimingCryptographicallyAuthenticated": false
+  },
+  "artifacts": {
+    "r1cs": {
+      "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+      "bytes": 593640,
+      "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b"
+    },
+    "wasm": {
+      "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+      "bytes": 2384051,
+      "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f"
+    },
+    "zkey": {
+      "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+      "bytes": 799334,
+      "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3"
+    },
+    "vkey": {
+      "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+      "bytes": 3939,
+      "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea"
+    },
+    "verifier": {
+      "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+      "bytes": 8613,
+      "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51"
+    },
+    "ceremonyTranscript": {
+      "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+      "bytes": 2360,
+      "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d"
+    }
+  },
+  "limitations": [
+    "The embedded contribution chain was verified. Operator identities, independence and secret destruction are not authenticated by this exporter.",
+    "This parameter manifest does not attest an independent audit, a deployment, or an end-to-end mainnet test."
+  ]
+}

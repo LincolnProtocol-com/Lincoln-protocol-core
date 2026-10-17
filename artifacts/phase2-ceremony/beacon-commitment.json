@@ -1,0 +1,145 @@
+{
+  "schema": "phase2-future-beacon-commitment/v1",
+  "body": {
+    "schema": "phase2-future-beacon-inputs/v1",
+    "freezeSHA256": "72922c85f0877f9eb45f1ac7b15f16a9ecb92194fded598079c3435740798398",
+    "circuits": {
+      "joinsplit": {
+        "circuit": "joinsplit",
+        "zkey": {
+          "path": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/joinsplit.zkey",
+          "sha256": "f804a5a87014a68e384315b314f87e8800b4b55e69b7d5deee4324a3731f1488",
+          "bytes": 14169226
+        },
+        "r1cs": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+          "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d",
+          "bytes": 11210792
+        },
+        "wasm": {
+          "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+          "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf",
+          "bytes": 2559210
+        },
+        "ptau": {
+          "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+          "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+          "bytes": 37831832
+        },
+        "sources": [
+          {
+            "path": "protocol/phase2-asp/circuits/joinsplit/joinsplit.circom",
+            "bytes": 7972,
+            "sha256": "1e08fe7552092bc186fc28128b9a4650a14f56b562e49849cff2e0a00bd01a3e"
+          },
+          {
+            "path": "protocol/phase2-asp/circuits/joinsplit/main.circom",
+            "bytes": 214,
+            "sha256": "dae1a04201ecf4b33f70906e1d0cf92e965ec55e1edbe172f55ee42dc7205dc6"
+          }
+        ],
+        "contributions": [
+          {
+            "type": 0,
+            "name": "lincoln-local-20261016",
+            "transcriptHex": "0xb22986a2b8394bd6818878c6e9dc4a10dfb3bc0b1cfa7dc1f5c5e7b7eb5764a14492f4d0c67c75aef2c986df3a576a29a52be0bc6af427468f4a29ab9b4b86b6",
+            "contributionHashHex": "0xbd6927de8d7ef7892c2cea1c7d67eb0c6f175f06f1330d43676edd70b44c4520da9eb986d14f7f7af7dc7ebffb9e523b92e36c3ada51115d0a706bff953317ef"
+          },
+          {
+            "type": 0,
+            "name": "leo-independent-20261016",
+            "transcriptHex": "0x3800a14b820c2c8632d5f18822399726ff11490844e9251e9197f0c1d9a39d041c543408ba7608f0ad6524185dda78cce3123fe0d02518e16f239bc83746327e",
+            "contributionHashHex": "0x3f3bd9188ee5a0edd3991a2894853d2ea546a5d0730bd210f476f7a8e99b0d4141107fe0711712208b74a7d40695cc37b5b33ebe5ec38293a980ea0aeb5d51f1"
+          }
+        ]
+      },
+      "holder-exit": {
+        "circuit": "holder-exit",
+        "zkey": {
+          "path": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/holder-exit.zkey",
+          "sha256": "997745765177181fa3b7823b48f71025789ace3aa182167d1d4ed8875fffe421",
+          "bytes": 798870
+        },
+        "r1cs": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+          "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b",
+          "bytes": 593640
+        },
+        "wasm": {
+          "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+          "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f",
+          "bytes": 2384051
+        },
+        "ptau": {
+          "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+          "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+          "bytes": 37831832
+        },
+        "sources": [
+          {
+            "path": "protocol/phase2-asp/circuits/holder-exit/main.circom",
+            "bytes": 2139,
+            "sha256": "371f12dec64568726cc816dee3767df685ad48738de84a5da8c118a217b32136"
+          }
+        ],
+        "contributions": [
+          {
+            "type": 0,
+            "name": "lincoln-local-20261016",
+            "transcriptHex": "0x1fcbb89d6938ca3a87cb0f80f95d7fddc79138928a21cb4ed74a30a4840c75951a23f6ab124b1235abfef05fa1fe5c007d1450372c2effee18935c2c05abecd9",
+            "contributionHashHex": "0x49fbaa08a862398a6bff718f920d1ccb8a2b1651368f4dfb2316612a0a665fc86fec6ec8cc3cd4c52a09b9e947fac6073e41d87af6261c98b180cee0b02751ee"
+          },
+          {
+            "type": 0,
+            "name": "leo-independent-20261016",
+            "transcriptHex": "0x118d42bdfe4632e56be8e3945100d0c9d4f96436ca14981fe5aa9a97cedfde0eec9fb3f06452701d6eadb636000a5b01cf52297bd766a2ff6fe980fcfcd6f52c",
+            "contributionHashHex": "0xa35f1424fce77c06fdfaf5f5d6f5c461f4c7e7401d67631e1c483d6ae52e42759f86114effd4bbd25db39932e35abffe481cf89cd2d4d00be0ec35cfa22f31c7"
+          }
+        ]
+      }
+    },
+    "source": {
+      "chainId": 1,
+      "genesisHash": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3",
+      "rpcHosts": [
+        "rpc.mevblocker.io",
+        "eth.drpc.org"
+      ],
+      "observedTips": [
+        {
+          "number": "0x18fd3dd",
+          "hash": "0xd023ffeb48e935c8f7af866581489d102d99b5a733a3537559aedf60f7a94396",
+          "parentHash": "0x424452af523902fd1efab0b641b4ffcd588566ba3d1dab1329e125dfdecba7a6",
+          "timestamp": "0x6ad1bab3",
+          "stateRoot": "0xa33fe2d29bcc1d57cca543359816d0ca51ceccfb796ae9f869d253b43e101960",
+          "receiptsRoot": "0x83204e99b7d33dc5efec51d619ced5944a535670febe853a5afc8a0dabc80870",
+          "transactionsRoot": "0xada223a48ac5583db87c8532db7db29950b6cd9af3c0f2dc5159063dc65a34dd"
+        },
+        {
+          "number": "0x18fd3dd",
+          "hash": "0xd023ffeb48e935c8f7af866581489d102d99b5a733a3537559aedf60f7a94396",
+          "parentHash": "0x424452af523902fd1efab0b641b4ffcd588566ba3d1dab1329e125dfdecba7a6",
+          "timestamp": "0x6ad1bab3",
+          "stateRoot": "0xa33fe2d29bcc1d57cca543359816d0ca51ceccfb796ae9f869d253b43e101960",
+          "receiptsRoot": "0x83204e99b7d33dc5efec51d619ced5944a535670febe853a5afc8a0dabc80870",
+          "transactionsRoot": "0xada223a48ac5583db87c8532db7db29950b6cd9af3c0f2dc5159063dc65a34dd"
+        }
+      ],
+      "commonHeader": {
+        "number": "0x18fd3dd",
+        "hash": "0xd023ffeb48e935c8f7af866581489d102d99b5a733a3537559aedf60f7a94396",
+        "parentHash": "0x424452af523902fd1efab0b641b4ffcd588566ba3d1dab1329e125dfdecba7a6",
+        "timestamp": "0x6ad1bab3",
+        "stateRoot": "0xa33fe2d29bcc1d57cca543359816d0ca51ceccfb796ae9f869d253b43e101960",
+        "receiptsRoot": "0x83204e99b7d33dc5efec51d619ced5944a535670febe853a5afc8a0dabc80870",
+        "transactionsRoot": "0xada223a48ac5583db87c8532db7db29950b6cd9af3c0f2dc5159063dc65a34dd"
+      },
+      "blockNumber": "0x18fd4ae",
+      "minimumFutureBlocks": 128,
+      "independentRPCOperatorsAuthenticated": false,
+      "localTimeProvesPublicCommitment": false
+    },
+    "iterations": 20
+  },
+  "sha256": "c232d2b5b42f9a34a615e21dc2c9cbc9f6d365c2a55b75ed48192c858fabe01c"
+}

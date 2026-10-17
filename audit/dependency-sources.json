@@ -1,0 +1,61 @@
+{
+  "schema": "lincoln-core-dependency-source-snapshots/v1",
+  "description": "Review-only copies of every npm dependency file pinned in the frozen release. Compilation retains the original node_modules source paths.",
+  "releaseManifestSHA256": "b4290759e353e434aaa539fe5b2adcbae456aa56339a28980019d157a0f1ddc8",
+  "files": [
+    {
+      "snapshotPath": "vendor/solidity/@openzeppelin/contracts/package.json",
+      "compilerPath": "node_modules/@openzeppelin/contracts/package.json",
+      "bytes": 786,
+      "sha256": "7e5965609fbc7c48253296f94dde1d456385f407c6879ada17240dffa43fbd71"
+    },
+    {
+      "snapshotPath": "vendor/solidity/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+      "compilerPath": "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol",
+      "bytes": 3803,
+      "sha256": "912509e0e9bf74e0f8a8c92d031b5b26d2d35c6d4abf3f56251be1ea9ca946bf"
+    },
+    {
+      "snapshotPath": "vendor/solidity/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "compilerPath": "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "bytes": 2779,
+      "sha256": "6f2faae462e286e24e091d7718575179644dc60e79936ef0c92e2d1ab3ca3cee"
+    },
+    {
+      "snapshotPath": "vendor/solidity/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+      "compilerPath": "node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+      "bytes": 5770,
+      "sha256": "471157c89111d7b9eab456b53ebe9042bc69504a64cb5cc980d38da9103379ae"
+    },
+    {
+      "snapshotPath": "vendor/solidity/@openzeppelin/contracts/utils/Address.sol",
+      "compilerPath": "node_modules/@openzeppelin/contracts/utils/Address.sol",
+      "bytes": 6262,
+      "sha256": "b3710b1712637eb8c0df81912da3450da6ff67b0b3ed18146b033ed15b1aa3b9"
+    },
+    {
+      "snapshotPath": "vendor/solidity/@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+      "compilerPath": "node_modules/@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+      "bytes": 3240,
+      "sha256": "8d0bac508a25133c9ff80206f65164cef959ec084645d1e7b06050c2971ae0fc"
+    },
+    {
+      "snapshotPath": "vendor/solidity/poseidon-solidity/package.json",
+      "compilerPath": "node_modules/poseidon-solidity/package.json",
+      "bytes": 477,
+      "sha256": "77320824b3034f940d88c6ba4c87f2acb1e532bc2af497a9d08e1b531f45b499"
+    },
+    {
+      "snapshotPath": "vendor/solidity/poseidon-solidity/PoseidonT3.sol",
+      "compilerPath": "node_modules/poseidon-solidity/PoseidonT3.sol",
+      "bytes": 44165,
+      "sha256": "08a7493be37838166954af6c77d583d797cc17d37673196498fc70cbf557831c"
+    },
+    {
+      "snapshotPath": "vendor/solidity/poseidon-solidity/PoseidonT4.sol",
+      "compilerPath": "node_modules/poseidon-solidity/PoseidonT4.sol",
+      "bytes": 27353,
+      "sha256": "289e22a19a20bcec7519e29d172b8c1624b65ac6140d1982fe029254e1600a8f"
+    }
+  ]
+}

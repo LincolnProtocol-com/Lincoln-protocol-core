@@ -1,0 +1,646 @@
+{
+  "schema": "lincoln-core-upstream-extraction/v1",
+  "upstreamRepository": "https://github.com/LincolnProtocol-com/LincolnProtocol",
+  "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
+  "releaseManifest": "artifacts/phase2-mainnet/release-candidate-20261016.json",
+  "releaseManifestSHA256": "b4290759e353e434aaa539fe5b2adcbae456aa56339a28980019d157a0f1ddc8",
+  "extraction": "Selected committed public files, unchanged; no upstream Git history or runtime state copied.",
+  "files": [
+    {
+      "path": "abi/manifest.json",
+      "bytes": 317278,
+      "sha256": "6db6da46d371cd08119705f9d6c911231fc73d5a5355c758baa7eb4b6158f05b",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-fees-mainnet/Phase2FeeRouteAdapter.json",
+      "bytes": 17296,
+      "sha256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-fees-mainnet/Phase2FeeRouter02Adapter.json",
+      "bytes": 17296,
+      "sha256": "4a85c675abf66e5cd7973eb51f53c032b6599406f30ba605c03f549f56050f6e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPExitVerifier.json",
+      "bytes": 672,
+      "sha256": "4fad9212460f2528b274bbdf5c1911e4690569227a8ea1e9737f991f4fb30f41",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPJoinSplitVerifier.json",
+      "bytes": 672,
+      "sha256": "b48de91bf3da1ab0e4c9033a6d92dd4579c0f11336d2ba100a89a23fc5430e12",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPPool.json",
+      "bytes": 23375,
+      "sha256": "b93e203bef0dded77f4cdd24eeb02bfc3524062da6fec185f121f0cd62c02ed5",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2ASPRegistry.json",
+      "bytes": 9204,
+      "sha256": "26bcff3c56fe5c261b0f8f69e2f49b87c942e5336f938add0bdc134a3a072be7",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2RouteAdapter.json",
+      "bytes": 14524,
+      "sha256": "79308abdac61eaebd902e6bb2fdc58236829168650cc1fee4089d28a9fe253cb",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/Phase2Router02Adapter.json",
+      "bytes": 14349,
+      "sha256": "7aa5fa3d3d110989ccb1116e648e2cf1a244608ea8417eb4d206af903864b6c2",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/PoseidonT3.json",
+      "bytes": 333,
+      "sha256": "604d68e02f21308d1dd3f4d079eec44481bcdd7942015f98824e62f916e6a0d0",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "abi/phase2-mainnet/PoseidonT4.json",
+      "bytes": 333,
+      "sha256": "ceb0cbb415a74f7f7633336b128e54490ec077937bf3172fd66ddafeb84e19c3",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-asp/circuits/holder-exit/manifest.json",
+      "bytes": 3577,
+      "sha256": "6b10efa1a627fbb6d9ef88c4a756318187f4053b66e35939a6a27b3c9954f374",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-asp/circuits/joinsplit/manifest.json",
+      "bytes": 3881,
+      "sha256": "eb26b2beeb49db2fd2a66562978d6f1b48a1797717b2766708534263f5fd743f",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.applied.json",
+      "bytes": 5225,
+      "sha256": "acab415decdb47ddf681ad0e62c8196504f8d2c69dd6088860145c14974f134f",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.json",
+      "bytes": 6908,
+      "sha256": "9fec88e4aabf6522f2a0f648e72cde8b1725691f2b643d8a1153d56f09fd99b0",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.observation.json",
+      "bytes": 2474,
+      "sha256": "dedfc10cf0d6284d4062fb9fc63971ec10472e7d3dfdb85a4f1f9ff3eeb3c2a4",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/beacon-commitment.publication.json",
+      "bytes": 2719,
+      "sha256": "35f3f2e166796b6a77762f91b161fc2555fceddebe41ff0fa0a6437ec2995277",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/holder-exit.zkey",
+      "bytes": 798870,
+      "sha256": "997745765177181fa3b7823b48f71025789ace3aa182167d1d4ed8875fffe421",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-ceremony/contributions/leo-independent-20261016/joinsplit.zkey",
+      "bytes": 14169226,
+      "sha256": "f804a5a87014a68e384315b314f87e8800b4b55e69b7d5deee4324a3731f1488",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-fees-mainnet/contracts.json",
+      "bytes": 184624,
+      "sha256": "a171065c1d29c86f25227298137e6952ac2d135e18ea4a7cbf959efaed09c65d",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-fees-mainnet/launch-plan.json",
+      "bytes": 60019,
+      "sha256": "dbc310f1d50705265f4d3a79c448c4fd045324e4b8188e9f71ac547986ede5ca",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/contracts.json",
+      "bytes": 434989,
+      "sha256": "f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/final-fee-parameter-acceptance.json",
+      "bytes": 69704,
+      "sha256": "e16e0082f53b25457f88c94821f3169d03f849109080ee63a62c61ac706ae306",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/final-parameter-acceptance.json",
+      "bytes": 31135,
+      "sha256": "7c7d6e71d57f9fb2aec3acda9ff15a6e055729c2b655b7e5d657b665ef7f5190",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/release-candidate-20261016.json",
+      "bytes": 16220,
+      "sha256": "b4290759e353e434aaa539fe5b2adcbae456aa56339a28980019d157a0f1ddc8",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/safe-verification-20261016.json",
+      "bytes": 850,
+      "sha256": "6e764a263bf0a751fa70ca0225c3ed1332d8d03551cabcc96b289e2eff3e5122",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "artifacts/phase2-mainnet/window16-governance-acceptance-20261016.json",
+      "bytes": 8735,
+      "sha256": "e49f897aa60f16250f55849dd906abf13cc26d8808e52dc530de9ec9660b1d8f",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "config/phase2-asp-service-eth-testnet.json",
+      "bytes": 2439,
+      "sha256": "bc1e4d27b6028c43602ea5532b2e9a96df06a12229978405dba1c4791cf9714d",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "config/phase2-mainnet-routes-example.json",
+      "bytes": 3736,
+      "sha256": "ad1aa46520a488b1014883b5259da175389933d73963fd21b4f0fa903d6d5752",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "config/phase2-mainnet.json",
+      "bytes": 7354,
+      "sha256": "e9667c6f716344ec007b8e094c32b5b582090ebc57e2cd50b254f941a6f2ec2b",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "contracts/MAINNET_RELEASE_CANDIDATE.md",
+      "bytes": 4462,
+      "sha256": "0abbc484ed8660e25fccece2ce766b70727f542b3732441647cd5bb8d07be905",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "contracts/phase2-fees-mainnet.manifest.json",
+      "bytes": 3371,
+      "sha256": "668f50dc40b7f5d5d3aa889931d36d96acf380a3c61a23a6c08c57b60118f87e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "contracts/phase2-fees-mainnet.standard-input.json",
+      "bytes": 74982,
+      "sha256": "8753daf03f5c54741feca7e7613d6a4bafd40d9d45a3a77b820e946f5e0a8bf4",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "docs/LATENCY_TARGETS.md",
+      "bytes": 2520,
+      "sha256": "68773a72be299ef555a134b30d98a9fa3661a2e1251cee37489b3e0cc8a42dd8",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "docs/MAINNET_FEE_COMPONENT.md",
+      "bytes": 3652,
+      "sha256": "84aeed75d6a625d655572a2a875d37be633e0c9f5c82bf198541e9e5b37c9ee9",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-asp/circuits/holder-exit/main.circom",
+      "bytes": 2139,
+      "sha256": "371f12dec64568726cc816dee3767df685ad48738de84a5da8c118a217b32136",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-asp/circuits/joinsplit/joinsplit.circom",
+      "bytes": 7972,
+      "sha256": "1e08fe7552092bc186fc28128b9a4650a14f56b562e49849cff2e0a00bd01a3e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-asp/circuits/joinsplit/main.circom",
+      "bytes": 214,
+      "sha256": "dae1a04201ecf4b33f70906e1d0cf92e965ec55e1edbe172f55ee42dc7205dc6",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-asp/contracts/Phase2ASPPool.sol",
+      "bytes": 18576,
+      "sha256": "9147b035b1b68b39a48dca4569e72bc6dbeeb42252c2bdabb7dd439b14d77819",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-asp/contracts/Phase2ASPRegistry.sol",
+      "bytes": 7458,
+      "sha256": "a01174a2ce12f3126f356a751c2225516008963c35e4dcc52d8c52d8761fe2f6",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-fees/contracts/Phase2FeeRouteAdapter.sol",
+      "bytes": 18405,
+      "sha256": "9ffd41f9140295343225f2d9c4995a33c515e409460a4ec9ed5bbd7a05e7bfbd",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-fees/mainnet/Phase2FeeRouteAdapter.sol",
+      "bytes": 18353,
+      "sha256": "cf718c0a4b34a03c7beda661400d6cff4a0acaddac4bbbdc1b03e8ce87c66244",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-fees/test/FeeFixtures.sol",
+      "bytes": 6782,
+      "sha256": "28a8b7c016d86e7ac0336fd9776258dc62901868ad9001740df36377667f3989",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/ceremony-transcript.json",
+      "bytes": 2360,
+      "sha256": "fe66974588fe0f9131c0f3a8826bdc201bcb5f5492781e108c6f50aed26f917d",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/final.zkey",
+      "bytes": 799334,
+      "sha256": "d17b8e06b15c48b97dc4dc18a1d0a89014fbc4d807c222792edda7f271d500d3",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/main.r1cs",
+      "bytes": 593640,
+      "sha256": "899c9e5e9feb4db2184cd14a0d0f44b0a552abc706879a238e4bf67df8d4f87b",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/main_js/main.wasm",
+      "bytes": 2384051,
+      "sha256": "fb570f26df068248b980b0460bb13ce5fc886462201206fcdafea26e6901ae3f",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/manifest.json",
+      "bytes": 4822,
+      "sha256": "b80c9987281b10a20697511b31716bd2c1fd6c0b08887ad6c7af4cb8f64b0cba",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/holder-exit/verification_key.json",
+      "bytes": 3939,
+      "sha256": "82a79ea566d549a9035782e93cec60f3c2a826e46e6cb36b49f0f6b29d3725ea",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/ceremony-transcript.json",
+      "bytes": 2358,
+      "sha256": "0530ed030192273662f4896e9ca7e9192fd5522d5304254128168732c32d6018",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/final.zkey",
+      "bytes": 14169690,
+      "sha256": "36a228e5cf8b81e6930bcb42b82fb60bbfa2fe7e7039d450b1e49e2fa31059ed",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/main.r1cs",
+      "bytes": 11210792,
+      "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/main_js/main.wasm",
+      "bytes": 2559210,
+      "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",
+      "bytes": 5132,
+      "sha256": "ff7dd97461c7190b13808add36cc73254f0c1b1c9b3bb03cceb39d3019bd59b0",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/build/joinsplit/verification_key.json",
+      "bytes": 4721,
+      "sha256": "3d56acc68775b4a7db3ddb35c36e0ac815cf8ad3c53987c8d209da534f34e92e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2ASPPool.sol",
+      "bytes": 18562,
+      "sha256": "baafbcde87d10794e9c1851d48a645490270f0da53aec61af3a58f4a4458f611",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2ASPRegistry.sol",
+      "bytes": 7431,
+      "sha256": "5d7367d6b4addf0823339cf3a636dfa9632e752e22538e3dcc152d4cb78539eb",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2RouteAdapter.sol",
+      "bytes": 16243,
+      "sha256": "d4b7d0c2e0585223d3f5890438ba3c0f43117f2fe853c5e3b083ebca27434719",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/contracts/Phase2Router02Adapter.sol",
+      "bytes": 15960,
+      "sha256": "e48d4a2cda65c016c10beefcb0ced1bce27e2702a70430d455542652ea0b6f5d",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/foundry.toml",
+      "bytes": 1288,
+      "sha256": "5372ed7adb12b481ca1a8cd1052c58de025c073f18326b1b88189aaa9f6829a9",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/README.md",
+      "bytes": 1914,
+      "sha256": "6ff2773dca7bd6f0237caf8f22a4082af1a379e3bc75c2043293e6725a84d309",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Adapter.t.sol",
+      "bytes": 10086,
+      "sha256": "a13a4405ad27c036f8989dad2cb53def9ef114ca234e5f118b3e6f9bb80ba973",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Base.sol",
+      "bytes": 4276,
+      "sha256": "91eb8794394ee61cd777a9da2534c5a83d92defb6ef16bb38eb21a894135b907",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/FeeAdapter.t.sol",
+      "bytes": 15475,
+      "sha256": "843f59c130d672c84d5398a88915d73ecd69b69daf8121f0e1087dd1bffed26c",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Invariant.t.sol",
+      "bytes": 9961,
+      "sha256": "351f53d7c69607a5d1826037cb3b00d7b85ca32ca44767077bb9b98c200678c4",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Pool.t.sol",
+      "bytes": 16839,
+      "sha256": "78f129fcab3df9ba57ffbba36de233b44eac524a080db8de29bf71ddbbaa30b6",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/fuzz/test/Registry.t.sol",
+      "bytes": 7901,
+      "sha256": "96a0cc921df0953c77769dd17ac340ad1c0172b780860e1dbbf5c9e7d233fbe7",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/generated/Phase2ASPExitVerifier.sol",
+      "bytes": 8613,
+      "sha256": "7123a28975858cc41888c681e29f5ed08e5b334280bc982c25e0a46c09adca51",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-mainnet/generated/Phase2ASPJoinSplitVerifier.sol",
+      "bytes": 10172,
+      "sha256": "c1216ccf994f092ba4f458d03cea67e58525052e51a4f1209a163981a168af82",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-router02/contracts/Phase2Router02Adapter.sol",
+      "bytes": 15984,
+      "sha256": "8b4a83e8607acb3cb120cd92a21ebde572c5e03e83f48ecf926e17020a4248f2",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "protocol/phase2-routes/contracts/Phase2RouteAdapter.sol",
+      "bytes": 16267,
+      "sha256": "774e2b3904fae21d3425021d10b623b84903b2006b9d59739603b068dc394bff",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-ceremony/beacon.mjs",
+      "bytes": 21737,
+      "sha256": "715954d2a2120086e1dff4d1bdb08ff377784d5cb45a601073734de9c483920a",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-ceremony/contribute.mjs",
+      "bytes": 16935,
+      "sha256": "33c393ebabe4ebf353bc562bb36f362c5c9723d76169cb51c84cf1a043566467",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-ceremony/evidence.mjs",
+      "bytes": 11447,
+      "sha256": "d2eb865f13e7f8e9c997ef0bc4ac404089d8c38137c4204a644c1f5f0245fefd",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-ceremony/prepare.mjs",
+      "bytes": 30098,
+      "sha256": "39a005bea43ff92cf465fcc8eb1a4ed74532c80b185e8b81d6299b04a43e02d0",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-fees/build-mainnet.mjs",
+      "bytes": 3295,
+      "sha256": "e4b2b0719204d824ed5d34502697a337a64cca95b8e528f750e4455ed91c7ed3",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-fees/plan-adapters.mjs",
+      "bytes": 9653,
+      "sha256": "042356ae49afa3a2cd8ccb52b67e3235b15db6ea30add7871eb92a62c6aa53d5",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-fees/plan-mainnet.mjs",
+      "bytes": 8633,
+      "sha256": "f23f1211ebe1f08138c3952478a007bb74eb1f7d17c4091c9644c8a86a6f255e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-mainnet/build.mjs",
+      "bytes": 24220,
+      "sha256": "7a40d862105f183b748a59425ed15715a0755e27a4b2d5e1f328a9b32833040e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-mainnet/check-safe.mjs",
+      "bytes": 781,
+      "sha256": "f63b4cc4fddbeb19576e867332afd511079ac1e2ce5a2c257ec07c53ef8cb963",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-mainnet/deploy.mjs",
+      "bytes": 29741,
+      "sha256": "53dd5919802635a40ec3da50b4723706ef70442395ccb73051667c6e72e82763",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-mainnet/freeze-release.mjs",
+      "bytes": 8607,
+      "sha256": "8ae2cb95212c9255c7eda4f3449490755d176189af250a3cdde8d6d130c2c130",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-mainnet/plan.mjs",
+      "bytes": 9798,
+      "sha256": "a31f23b719287503155bb66be2cf36775dbd1c7573999c59eefbfe664a75c713",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-mainnet/verify-fee-parameters.mjs",
+      "bytes": 31996,
+      "sha256": "ea1589bb1e122871f6c2706c6159c086c733f699d5f46471cf3fb7f1bbcf9d32",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/phase2-mainnet/verify-final-parameters.mjs",
+      "bytes": 24353,
+      "sha256": "8b3acdc7b7dc7fe7dd7069cc5c70b1a3f2fb6a0f236d6eeca0b8080f34eaeb2b",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/private-transfer/deps/package-lock.json",
+      "bytes": 30012,
+      "sha256": "da570567d77761a94a2f56ad17c601e9e7acfb91f7a484fab97ed4ebb3ae4f6e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "scripts/private-transfer/deps/package.json",
+      "bytes": 359,
+      "sha256": "e02d6f9e60af5b32d31baabbdd8becc440e0ddd2b7b3ddc94fa552cbefab098d",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase1-service/store.mjs",
+      "bytes": 5187,
+      "sha256": "3a55dc6cc01fa534374596e0f9a1cda0557e16777d7b4fcbf8ee6107300c7f46",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-asp/sdk.mjs",
+      "bytes": 53189,
+      "sha256": "a5e27601cdceb7d9d3c878f63474fe493806980715a39ad602c65d72580c16cb",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-asp/state.mjs",
+      "bytes": 24852,
+      "sha256": "102f7be2ec8da7b9315110742fc49855fabf53c371b68ce0af2077746f6cd101",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-fees/mainnet-release.mjs",
+      "bytes": 11433,
+      "sha256": "ce310e68621cf280a40aecd19de5b3ba5dbff1ebff323e60d6c89e3aaa60dc89",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-fees/sdk.mjs",
+      "bytes": 6192,
+      "sha256": "b4d97a725862b64e98c2b82b4e952a9674f580a63b0516bdccf68c08496a9a06",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-mainnet/artifacts.mjs",
+      "bytes": 10259,
+      "sha256": "32e375c76a030827ba24146139dcdc34d62fc84330e397b3c9ee246d894889cd",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-mainnet/release.mjs",
+      "bytes": 4094,
+      "sha256": "c0409086682ad2adbb073200f12a8460d7125d5564abb0b37786819ddf6be1b8",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-mainnet/safe.mjs",
+      "bytes": 2417,
+      "sha256": "03664726eefbd27ea3b6616ef346659d26bc3946787f0e0d44aa0c2a37ee705e",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-mainnet/sdk.mjs",
+      "bytes": 1389,
+      "sha256": "fca4d9ca80747702818a3c90bed4d2be99974a9a4ac2da79b27d56bd20d503f6",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-mainnet/signer.mjs",
+      "bytes": 15332,
+      "sha256": "43958902dffeab52e68c5fd1690721e656e0cd1f623cddee0cd94617874baea8",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "src/phase2-routes/sdk.mjs",
+      "bytes": 42327,
+      "sha256": "4dac10df6eecce8edcbc3960380d9fbb0277e4e806028e45f18e3bdd321cb0f2",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "tests/phase2-fees-mainnet.test.mjs",
+      "bytes": 11423,
+      "sha256": "4fc9b524c90975e6c2d4763851e008e829814b7add3250d3153a66db9f2fb484",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "tests/phase2-fees-sdk.test.mjs",
+      "bytes": 6987,
+      "sha256": "ae46641acb5044ee82bc2ec12c4dec61d57abafdb4faa33e4fdfe0edf8b76e44",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "tests/phase2-final-fee-parameter-acceptance.test.mjs",
+      "bytes": 4045,
+      "sha256": "edd52b708d8ca55c5000ed1dea0081a0162a979482a61b36baccf4e41b7b8c14",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "tests/phase2-final-parameter-acceptance.test.mjs",
+      "bytes": 2493,
+      "sha256": "45b513f567ab0e3d741faf6c07b4926e79ab017dd6624ba37a14419849ea06cd",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "tests/phase2-mainnet-deploy.test.mjs",
+      "bytes": 19746,
+      "sha256": "335ab3ab9ccd64ce2bb538b30440154fbc518ed93782c87a8dc445cc9ada2bdc",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "tests/phase2-mainnet-safe.test.mjs",
+      "bytes": 2195,
+      "sha256": "44404a0e5632bded33a82319dac19a1e4e33a673b60acf316abc4d895f0e4335",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "tests/phase2-mainnet-signer.test.mjs",
+      "bytes": 9766,
+      "sha256": "b1333fd4b12f0aea103af1b00cf9dc553d581badd2c8da102f76c768ed4ebce5",
+      "origin": "upstream-git"
+    },
+    {
+      "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+      "bytes": 37831832,
+      "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+      "origin": "public-parameter"
+    }
+  ]
+}

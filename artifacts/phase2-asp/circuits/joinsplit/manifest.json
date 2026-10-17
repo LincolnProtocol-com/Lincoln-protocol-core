@@ -1,0 +1,106 @@
+{
+  "schema": "phase2-asp-dev-circuits/v1",
+  "createdAtUTC": "2026-10-15T23:01:05.833Z",
+  "testOnly": true,
+  "allowedChainIds": [
+    31341,
+    46630
+  ],
+  "productionReady": false,
+  "officialFinalKey": false,
+  "protocol": "groth16",
+  "curve": "bn128",
+  "inputs": {
+    "sources": [
+      {
+        "path": "protocol/phase2-asp/circuits/joinsplit/joinsplit.circom",
+        "bytes": 7972,
+        "sha256": "1e08fe7552092bc186fc28128b9a4650a14f56b562e49849cff2e0a00bd01a3e"
+      },
+      {
+        "path": "protocol/phase2-asp/circuits/joinsplit/main.circom",
+        "bytes": 214,
+        "sha256": "dae1a04201ecf4b33f70906e1d0cf92e965ec55e1edbe172f55ee42dc7205dc6"
+      }
+    ],
+    "sourceSetSHA256": "8de5e0c4eb72aee1a3a0f56c5ca60385f89dfdb6d81cc0f002afdc593ca781a7",
+    "circomlibVersion": "2.0.5",
+    "circomlibSourceSetSHA256": "783ea25b4e1f0a19181ad83a91511c75091a3a98ee8d79dc8a36bc0d2a7a5612",
+    "compilerPackageVersion": "0.2.22",
+    "compilerVersion": "circom2 npm package 0.2.22\ncircom compiler 2.2.2",
+    "compilerEntrypointSHA256": "5e36c6153c416e17b1fa822411b1fb9e4ab9b5cd4a0249cc3b5be3259315f5ad",
+    "compilerWasmSHA256": "91fa82b3621c4f4aa4fe51cb7507a296a8332432e79cc49772bce98963f9e2fe",
+    "dependencyLockSHA256": "da570567d77761a94a2f56ad17c601e9e7acfb91f7a484fab97ed4ebb3ae4f6e",
+    "snarkjsVersion": "0.7.5",
+    "optimization": "O2",
+    "circuit": "joinsplit",
+    "maxTreeDepth": 20,
+    "noteModel": "factorized-v1",
+    "publicSignalNames": [
+      "root",
+      "publicIn",
+      "publicOut",
+      "context",
+      "scope",
+      "inputNullifiers[0]",
+      "inputNullifiers[1]",
+      "outputCommitments[0]",
+      "outputCommitments[1]"
+    ]
+  },
+  "counts": {
+    "constraints": 24221,
+    "wires": 24305,
+    "publicInputs": 9,
+    "outputs": 0,
+    "privateInputs": 100
+  },
+  "requiredPower": 15,
+  "phase1": {
+    "path": "vendor/nocturne-protocol/packages/circuits/data/powersOfTau28_hez_final_15.ptau",
+    "bytes": 37831832,
+    "power": 15,
+    "sha256": "3ef2ecc5b75d687048cf2d59195119b42fb07c5af639c5f283d84bfa69829e7f",
+    "blake2b512": "982372c867d229c236091f767e703253249a9b432c1710b4f326306bfa2428a17b06240359606cfe4d580b10a5a1f63fbed499527069c18ae17060472969ae6e",
+    "publishedChecksumMatches": true
+  },
+  "setup": {
+    "kind": "self-generated-test-development-phase2",
+    "randomContributions": 1,
+    "entropyPersisted": false,
+    "verifyFromR1cs": true,
+    "officialCeremony": false
+  },
+  "artifacts": {
+    "r1cs": {
+      "path": "artifacts/phase2-asp/circuits/joinsplit/joinsplit.r1cs",
+      "bytes": 11210792,
+      "sha256": "f5e6448b8c432cd28027f9b6f09f3ae1721c0648caf1a54b1368caced6bc5f2d"
+    },
+    "wasm": {
+      "path": "artifacts/phase2-asp/circuits/joinsplit/joinsplit.wasm",
+      "bytes": 2559210,
+      "sha256": "54dd12b723c5a3da1b3bae05b554404aa13b3cbaedbbd07f08a26957a6294fdf"
+    },
+    "zkey": {
+      "path": "artifacts/phase2-asp/circuits/joinsplit/joinsplit.dev.zkey",
+      "bytes": 14168820,
+      "sha256": "529d7b8cf382274e39de3fc0ae05ab52e89868dbf286a857423c15f47bf15ca7"
+    },
+    "vkey": {
+      "path": "artifacts/phase2-asp/circuits/joinsplit/joinsplit.vkey.json",
+      "bytes": 4721,
+      "sha256": "ac205ae69e093b8d5f106a33108da3c10f0dc2ba0d56eaac380a2b0bda4b89e6"
+    },
+    "verifier": {
+      "path": "protocol/phase2-asp/generated/Phase2ASPJoinSplitVerifier.sol",
+      "bytes": 10259,
+      "sha256": "adb84546e792f187a94cebd27f14196fb9ff6d578e833b558324e376ef20c58d"
+    }
+  },
+  "limitations": [
+    "Experimental 20-layer circuit and self-generated development Phase-2 key; never use for real funds.",
+    "No production audit, multi-party Phase-2 ceremony or funded lifecycle is established by this build.",
+    "The existing Phase1, permissionless Phase2, Phase2-routes, Privacy Pools and Nocturne parameters and deployments are not changed."
+  ]
+}

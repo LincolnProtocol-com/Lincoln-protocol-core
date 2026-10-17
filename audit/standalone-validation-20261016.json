@@ -1,0 +1,99 @@
+{
+  "schema": "lincoln-core-standalone-validation/v1",
+  "snapshotDate": "2026-10-16",
+  "snapshotTimezone": "America/New_York",
+  "repository": "https://github.com/LincolnProtocol-com/Lincoln-protocol-core",
+  "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
+  "releaseManifest": {
+    "path": "artifacts/phase2-mainnet/release-candidate-20261016.json",
+    "sha256": "b4290759e353e434aaa539fe5b2adcbae456aa56339a28980019d157a0f1ddc8"
+  },
+  "builds": {
+    "coreSHA256": "f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414",
+    "feesSHA256": "a171065c1d29c86f25227298137e6952ac2d135e18ea4a7cbf959efaed09c65d",
+    "byteForByteReproduced": true,
+    "finalKeyMathematicsVerified": true
+  },
+  "environment": {
+    "os": "Darwin",
+    "architecture": "arm64",
+    "node": "v26.10.0",
+    "npm": "11.19.1",
+    "foundry": "1.8.4"
+  },
+  "installation": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "freshStandaloneDependencyTree": true,
+    "lockfileSHA256": "7d9406a8f74ba12f65e5caf078cabf82c4df8ad4803cd518869a277e84ef075f"
+  },
+  "circuits": {
+    "recompiledR1csAndWasmMatch": true,
+    "compilerPackage": "circom2@0.2.22",
+    "circomCompiler": "2.2.2",
+    "circomlib": "2.0.5",
+    "provingKeysReplaced": false
+  },
+  "nodeTests": {
+    "passed": 62,
+    "failed": 0,
+    "skipped": 0,
+    "command": "npm test"
+  },
+  "foundryTests": {
+    "passed": 47,
+    "failed": 0,
+    "skipped": 0,
+    "fuzzRuns": 1000,
+    "invariantRuns": 128,
+    "invariantDepth": 40,
+    "command": "npm run test:foundry",
+    "mockVerifiers": true
+  },
+  "integration": {
+    "native": {
+      "path": "audit/acceptance/standalone-20261016/native.json",
+      "sha256": "24dfecb935c12248d294866e4acad4582b4118f0ba991411bb32d92bf7803f0b",
+      "runId": "8af4b610-0c5b-4601-a070-d73949b85723",
+      "checks": 36,
+      "proofs": 11,
+      "transactions": 43,
+      "passed": true,
+      "publicTransactions": 0
+    },
+    "fees": {
+      "path": "audit/acceptance/standalone-20261016/fees.json",
+      "sha256": "5c170bb22209c3c15d4243a4cb2e104e6fd2b63ff2ed30d743140d839bc35190",
+      "runId": "5056f166-975e-4f16-be3d-cf01fa8438f3",
+      "checks": 22,
+      "proofs": 4,
+      "transactions": 73,
+      "passed": true,
+      "publicTransactions": 0
+    }
+  },
+  "acceptanceRunner": {
+    "isolatedPublicInventoryCopy": true,
+    "canonicalTemporaryPath": true,
+    "historicalReportRemovedBeforeRun": true,
+    "freshRunIdRequired": true,
+    "historicalReportsUnchanged": true
+  },
+  "packaging": {
+    "upstreamFilesUnchanged": 106,
+    "frozenReferences": 74,
+    "abiContracts": 10,
+    "dependencySourceSnapshots": 9,
+    "testAdaptations": 2,
+    "dependencyAndTestTamperRejected": true,
+    "runtimeSecretsIncluded": false
+  },
+  "remoteCIAtPackaging": "Not yet run; workflow is committed separately from local validation evidence.",
+  "mainnetDeployed": false,
+  "mainnetFundingAuthorized": false,
+  "auditCompleted": false,
+  "limitations": [
+    "All integration transactions in this report ran on disposable local Anvil chains.",
+    "Fee integration uses explicit mock tokens, routers, factories and liquidity.",
+    "This report does not attest a successful public mainnet deployment or an independent audit."
+  ]
+}

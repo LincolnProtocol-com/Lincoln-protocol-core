@@ -1,0 +1,52 @@
+{
+  "schema": "phase2-beacon-publication-observation/v1",
+  "body": {
+    "commitmentSHA256": "c232d2b5b42f9a34a615e21dc2c9cbc9f6d365c2a55b75ed48192c858fabe01c",
+    "commitmentFileSHA256": "9fec88e4aabf6522f2a0f648e72cde8b1725691f2b643d8a1153d56f09fd99b0",
+    "url": "https://raw.githubusercontent.com/LincolnProtocol-com/beacon/1229e4e1a0259bce86fa6b5c4edc030b3069eea5/artifacts/phase2-ceremony/beacon-commitment.json",
+    "source": {
+      "chainId": 1,
+      "genesisHash": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3",
+      "rpcHosts": [
+        "rpc.mevblocker.io",
+        "eth.drpc.org"
+      ],
+      "observedTips": [
+        {
+          "number": "0x18fd3e5",
+          "hash": "0x4fade21b209a18f907195f368e998192892d7b244e4fc7c6b5927ffdbbc6687a",
+          "parentHash": "0xb747378adf93e203dcbe4c3c4a6b8c1c41ccc9d5a1c89814c76e99e6ae2a33a7",
+          "timestamp": "0x6ad1bb13",
+          "stateRoot": "0xb9b04dd3ae63bd68e7254ca2ca0977af34bda31178e854987f9d5c2dab90eb29",
+          "receiptsRoot": "0x9601eb8cc1cb7a4d34411a84d46031005c4bba921303d17052bc8ab82d4e386d",
+          "transactionsRoot": "0xdc44d86a7074390c5712fcbd2175d5aced70fe80f7ff598bae5630b606000538"
+        },
+        {
+          "number": "0x18fd3e5",
+          "hash": "0x4fade21b209a18f907195f368e998192892d7b244e4fc7c6b5927ffdbbc6687a",
+          "parentHash": "0xb747378adf93e203dcbe4c3c4a6b8c1c41ccc9d5a1c89814c76e99e6ae2a33a7",
+          "timestamp": "0x6ad1bb13",
+          "stateRoot": "0xb9b04dd3ae63bd68e7254ca2ca0977af34bda31178e854987f9d5c2dab90eb29",
+          "receiptsRoot": "0x9601eb8cc1cb7a4d34411a84d46031005c4bba921303d17052bc8ab82d4e386d",
+          "transactionsRoot": "0xdc44d86a7074390c5712fcbd2175d5aced70fe80f7ff598bae5630b606000538"
+        }
+      ],
+      "commonHeader": {
+        "number": "0x18fd3e5",
+        "hash": "0x4fade21b209a18f907195f368e998192892d7b244e4fc7c6b5927ffdbbc6687a",
+        "parentHash": "0xb747378adf93e203dcbe4c3c4a6b8c1c41ccc9d5a1c89814c76e99e6ae2a33a7",
+        "timestamp": "0x6ad1bb13",
+        "stateRoot": "0xb9b04dd3ae63bd68e7254ca2ca0977af34bda31178e854987f9d5c2dab90eb29",
+        "receiptsRoot": "0x9601eb8cc1cb7a4d34411a84d46031005c4bba921303d17052bc8ab82d4e386d",
+        "transactionsRoot": "0xdc44d86a7074390c5712fcbd2175d5aced70fe80f7ff598bae5630b606000538"
+      },
+      "blockNumber": "0x18fd4ae",
+      "minimumFutureBlocks": 128,
+      "independentRPCOperatorsAuthenticated": false,
+      "localTimeProvesPublicCommitment": false
+    },
+    "publicPrecommitTimingCryptographicallyAuthenticated": false,
+    "observedAtUTC": "2026-10-16T05:50:20.797Z"
+  },
+  "sha256": "39b2900cc53ca0e53f1781295f2dfa2bb68eb0f1269f2c84657c304e1d2b8b0d"
+}

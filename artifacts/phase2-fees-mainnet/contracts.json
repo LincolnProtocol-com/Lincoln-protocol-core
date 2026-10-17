@@ -40,9 +40,9 @@
     "coreRelease": {
       "build": {
         "path": "artifacts/phase2-mainnet/contracts.json",
-        "sha256": "f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414"
+        "sha256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e"
       },
-      "sourceSetSHA256": "e6cc6ae47eaee4e15f8cdfadec4756a41b85b609b80d8eb7af107749156e7b36",
+      "sourceSetSHA256": "d6d6047e22f4b982d4358e49a0b8eee04f9b73a54aa60bb82398eb35a2aedcf9",
       "manifests": {
         "joinsplit": {
           "path": "protocol/phase2-mainnet/build/joinsplit/manifest.json",

@@ -14,7 +14,8 @@ Verifiers are mocks that accept every proof. These tests cover contract accounti
 | --- | --- |
 | `Registry.t.sol` | Guardian rotation and suspension (M1); epoch acceptance checked against a reference model (M2) |
 | `Pool.t.sol` | In-flight proofs across policy updates, the grace bound and the window cap; deposits; the Merkle tree against a from-scratch reference; signal, field and context tampering; fees; exits |
-| `Invariant.t.sol` | Random deposit, transfer, withdraw, exit, ragequit, policy and time sequences, plus replay attacks. Invariants: custody equals the sum of unspent notes, no double spend, and tree accounting |
+| `Caps.t.sol` | Per-deposit and accounted-TVL caps; Guardian authority; 24-hour delayed increases; proposal replacement/cancellation; deposit-only pause; donations and exits below lowered caps |
+| `Invariant.t.sol` | Random deposit, transfer, withdraw, exit, ragequit, policy and time sequences, donation, deposit-cap and pause sequences, plus replay attacks. Invariants: accounted balance equals unspent notes; custody equals notes plus unsolicited donations, no double spend, and tree accounting |
 | `Adapter.t.sol` | Real pools with a misbehaving router: swaps are exact or revert atomically, actions are bound to the proof, and only the adapter can submit |
 | `FeeAdapter.t.sol` | `protocol/phase2-fees` fee adapter on the mainnet pools: exact fee/net/treasury accounting or atomic revert, tight `minimumGrossOutput`, fee terms bound to one adapter, ETH-output fees paid in WETH, in-flight swaps across a policy update |
 

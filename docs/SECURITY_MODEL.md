@@ -1,6 +1,6 @@
 # Security model
 
-This document describes the contract candidate extracted from upstream commit `99e0be62475ac95bb5f8030659c782d5275475a1`. It does not assert completed independent audit, production anonymity or a live mainnet deployment. Exact sources, parameters and artifacts are identified by `artifacts/phase2-mainnet/release-candidate-20261016.json`.
+This document describes the RC.2 changes to the core candidate originally extracted from upstream commit `99e0be62475ac95bb5f8030659c782d5275475a1`. The pushed `v0.1.0-rc.1` snapshot is historical; RC.2 has passed fresh native/fee real-proof acceptance against the changed builds; the inventory, ABI and standalone reproduction checks have also passed. Existing RC.1 hashes/reports must not certify changed RC.2 bytecode. The RC.2 inventory path is `artifacts/phase2-mainnet/release-candidate-20261016-r2.json`; its frozen SHA256 is `abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3`. This document does not assert completed independent audit, production anonymity or a live mainnet deployment. See [mainnet status](MAINNET_STATUS.md) for current evidence and unresolved inputs.
 
 ## Custody, ownership and authorization
 
@@ -8,7 +8,7 @@ Each immutable pool holds one asset: native ETH or a fixed ERC20 address. A priv
 
 A nullifier derived from the note, ownership secret and pool scope prevents a note from being spent twice. Normal spending, holder exit and ragequit consume the same nullifier. Observing a commitment, a public deposit or an original-depositor record alone does not convey spending authority. After a successful private transfer, the sender's old note is spent; its original depositor cannot reclaim the recipient's new note merely by knowing the funding source.
 
-There is no pool owner sweep, upgrade proxy or arbitrary administrator withdrawal. An incorrect immutable pool or verifier cannot be repaired in place; a replacement deployment and an explicit migration would be necessary. Contracts and adapters do not make compromised client keys or malicious proof-building software safe.
+There is no pool owner sweep, upgrade proxy or arbitrary administrator withdrawal. The Guardian can govern deposit caps and pause only new deposits; it does not acquire note ownership or an administrative payout path. An incorrect immutable pool or verifier cannot be repaired in place; a replacement deployment and an explicit migration would be necessary. Contracts and adapters do not make compromised client keys or malicious proof-building software safe.
 
 ## Current-note ASP policy
 
@@ -26,9 +26,21 @@ At most the newest **16 epochs**, including the latest, are eligible. A supersed
 
 Proofs created before an update can remain executable during the acceptance window. Consequently, a note removed from the newest set may still be spent using a previously accepted set. Publishing a newer set is not immediate global revocation.
 
-The immutable Guardian can suspend the provider and immediately revoke **all epochs published through that point**. It cannot publish a root or take pool funds. Suspension halts normal spending, including pending proofs, while public deposits and ownership-based exits remain outside ASP approval. Resuming the provider does not revive revoked epochs; a fresh policy is required.
+The immutable Guardian can suspend the provider and immediately revoke **all epochs published through that point**. It cannot publish a root or take pool funds. Suspension halts normal spending, including pending proofs. Deposits remain outside ASP approval but are separately subject to deposit caps and Guardian deposit pause; ownership-based exits remain outside both ASP approval and deposit restrictions. Resuming the provider does not revive revoked epochs; a fresh policy is required.
 
 The Guardian can propose a new provider, with a public **three-day delay**, after which the proposed provider must accept. It can cancel the proposal. The pool's normal authorization context binds the registry's provider identity; operations must update pinned profiles and publisher configuration after rotation. The Guardian itself is not replaceable through a registry setter. The proposed deployment uses a separately verified 2-of-3 Safe as Guardian and DEX fee treasury; the Safe signers and their key custody are external trust dependencies.
+
+## Deposit caps and pause
+
+Each pool constructor requires positive `uint128 initialMaxDeposit` and `uint128 initialMaxTotal`, with the single-deposit cap no greater than the total. Zero does not mean unlimited. The getters are `maxDeposit()`, `maxTotal()`, `accountedBalance()`, `pendingCaps()` returning `(uint128 maxDeposit, uint128 maxTotal, uint64 eta)`, and `depositsPaused()`.
+
+Caps apply only at `depositDynamic`, including an adapter's target-pool deposit. The `accountedBalance` records note-backed liabilities: deposits add measured value, `transact` subtracts gross `publicOut` exactly once, and public exits subtract the full note value. Recipient payout and fee split the same outgoing value; the fee is not subtracted a second time. Private-only transfers do not change liabilities. Unsolicited ETH/ERC20 donations increase actual custody but do not create notes or consume headroom. Exact-transfer solvency requires `actualBalance >= accountedBalance`, not universal equality after donations. Issuer burns or unusual token behavior may violate solvency despite correct internal accounting.
+
+The registry's immutable Guardian is also the pool cap administrator. `setCaps` can immediately lower either cap, never raise one, and may put the total below current liabilities. Such a reduction blocks only further deposits while the pool is over cap; it does not constrain spending or exits. `proposeCapIncrease` accepts a non-decreasing change with at least one higher cap, and `acceptCapIncrease` requires the Guardian and a full **24 hours** after that proposal. Mixed increases/reductions require applying reductions first and making a fresh delayed proposal. A replacement proposal starts a new delay; any applied cap change, including a no-op `setCaps`, clears the earlier proposal. The Guardian can cancel a pending increase.
+
+`pauseDeposits` and `unpauseDeposits` emit `DepositsPaused(bool)`. Pause and cap changes do not invalidate note ownership or alter proof statements. Normal withdrawals, private transfers, holder exits and ragequit are not gated by the deposit pause or caps, although normal spends still need accepted ASP policy. A full or paused DEX target pool reverts the entire source-spend/swap/target-deposit transaction, including fee movements, leaving the source note unspent. Quote-time headroom is advisory and can change before execution.
+
+Initial target caps are 1/20 ETH and 2,500/50,000 USDG in the asset's own raw units. Stock dollar targets still need fixed-block raw-token valuation and liquidity evidence; unresolved stock caps remain null and may not silently become unlimited. Caps do not use an on-chain USD oracle, maintain constant dollar exposure, reserve DEX liquidity or bound loss against every other failure mode.
 
 ## Public exits
 
@@ -42,7 +54,11 @@ DEX adapters are recorded as the original depositor when they dynamically deposi
 
 Adapters are immutable typed exact-input routes for supported UP/Uniswap router ABIs. Their path, router, factory, wrapped-native address and pools are fixed per deployment. There is no generic arbitrary-calldata executor. Supported routes have one to four hops and can wrap ETH or unwrap WETH when the target pool holds native ETH. External liquidity, router behavior and token behavior remain dependencies.
 
-Fee adapters measure the actual gross output, compute `floor(gross * feeBps / 10000)`, pay treasury and deposit the net output into the target pool atomically. `minAmountOut` is the **net** target-note minimum; the absolute `maxServiceFee` and treasury terms are proof-bound. The selected launch rate is 20 bps, with immutable fee and treasury per adapter. Native-output fees are paid to treasury in WETH. Ordinary official-relay transfer/withdrawal service fees have a different settlement path and are not automatically paid directly to this DEX treasury.
+Fee adapters measure the actual gross output, compute `floor(gross * feeBps / 10000)`, pay treasury and deposit the net output into the target pool atomically. `minAmountOut` is the **net** target-note minimum; the absolute `maxServiceFee` and treasury terms are proof-bound. The RC.2 selected launch rate is **30 bps**, with immutable fee and treasury per new adapter; it does not change a previously deployed adapter's rate. Native-output fees are paid to treasury in WETH.
+
+Official relay pricing is a separate commercial policy, not a mandatory core-pool percentage tax. The v2 launch component selects 30 bps for withdrawal and relayed holder exit plus a fixed gas quote in the current pool asset, bound before proving. Its `includesGas` field means adding that prequoted amount, not repricing at execution. Private-transfer and ragequit service fees and note-deducted gas are zero at launch; the operator subsidizes their relay gas. A public wallet deposit still needs transaction gas from its sender. For ERC20 pools, explicitly priced raw-asset gas quotes are required: applying an ETH wei preset would be invalid. Fee configuration must never reprice an already proved, signed, submitted or recovering job.
+
+The v2 module validates newly submitted fees and immutable swap-rate/treasury selection; introducing it does not configure or deploy the live relayer. Existing v1 records keep historical semantics and are not silently upgraded. Normal relay fees have a separate recipient/accounting path and are not automatically paid directly to the DEX treasury. See [fee policy v2](FEE_POLICY_V2.md).
 
 Public DEX execution reveals the traded assets, route, amounts, fees and timing. Reshielding the output does not make an external exchange trade confidential. Public deposits, exits, approvals, membership documents, ciphertext traffic, network metadata and fees may also provide correlation signals. Neither two-input support nor a successful end-to-end test measures the practical anonymity set.
 
@@ -57,5 +73,7 @@ Previously observed Merkle roots remain known permanently. The 100-entry public 
 ## Off-chain and cryptographic dependencies
 
 The security argument assumes sound Groth16 and Poseidon implementations, appropriate contribution randomness, correct final-key/verifier binding, canonical-chain execution and uncompromised user secrets. Verification records do not prove destruction of contributor randomness or identify independently controlled contribution environments.
+
+The RC.2 mainnet deployer address and signing-account configuration are null, awaiting a new dedicated key outside the testnet machine. Mainnet funding and spending limits remain unapproved. Neither a configured pool cap nor publishing a public artifact grants permission to fund or sign a mainnet transaction.
 
 RPC/indexer completeness, public association-data availability, relay service and gas funding determine the quality and liveness of the product. The official relay can refuse service but does not gain note ownership merely by receiving proofs and ciphertexts. Client-side recovery, independent state checks and direct public exits must not be confused with a guarantee that hosted services always remain available.

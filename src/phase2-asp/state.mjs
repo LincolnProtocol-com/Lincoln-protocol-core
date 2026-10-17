@@ -10,6 +10,28 @@ import { normalizeProfile, NOTE_MODEL, associationSetDigest, profileReleaseFlags
 const FIELD = 21888242871839275222246405745257275088548364400416034343698204186575808495617n;
 const ZERO = '0x0000000000000000000000000000000000000000';
 const balanceABI = parseAbi(['function balanceOf(address) view returns (uint256)']);
+const CAP_EVENTS = new Set(['CapsUpdated','CapIncreaseProposed','CapIncreaseCancelled','DepositsPaused']);
+const CAP_GETTERS = [
+  ['maxDeposit',['uint128']],['maxTotal',['uint128']],['accountedBalance',['uint256']],
+  ['pendingCaps',['uint128','uint128','uint64']],['depositsPaused',['bool']],['CAP_INCREASE_DELAY',['uint64']],
+];
+function hasDepositCaps(abi) {
+  const functions=CAP_GETTERS.map(([name])=>abi.filter(item=>item.type==='function'&&item.name===name));
+  if(functions.every(items=>items.length===0))return false;
+  check(functions.every((items,index)=>items.length===1&&items[0].inputs?.length===0
+    &&['view','pure'].includes(items[0].stateMutability)
+    &&JSON.stringify(items[0].outputs?.map(output=>output.type))===JSON.stringify(CAP_GETTERS[index][1])),
+    'POOL_CAPS_ARTIFACT_ABI_INVALID');
+  return true;
+}
+function capQuantity(value,bits=128) {
+  const n=qty(value);check(n<(1n<<BigInt(bits)),'INVALID_POOL_CAPS');return n;
+}
+function capPair(deposit,total) {
+  const maxDeposit=capQuantity(deposit),maxTotal=capQuantity(total);
+  check(maxDeposit>0n&&maxDeposit<=maxTotal,'INVALID_POOL_CAPS');return {maxDeposit,maxTotal};
+}
+const emptyCapProposal=()=>({maxDeposit:0n,maxTotal:0n,eta:0n});
 // Guardian registry surface (audit M1/M2). Merged into the artifact ABI so these
 // events decode even with an artifact built before the guardian registry.
 const GOVERNANCE_ABI = parseAbi([
@@ -103,25 +125,28 @@ async function verifyReceipts(client,streams) {
 }
 function validatePoolSequences(groups,deposits) {
   for(const group of groups.values()) {
+    // Keep management logs in receipt verification, while allowing a guardian
+    // contract to emit them during an otherwise valid pool transaction.
+    const events=group.events.filter(event=>!CAP_EVENTS.has(event.eventName));
     let cursor=0;
-    while(cursor<group.events.length) {
-      const first=group.events[cursor];
+    while(cursor<events.length) {
+      const first=events[cursor];
       if(first.eventName==='NewCommitment') {
-        const dynamic=group.events[cursor+1];
+        const dynamic=events[cursor+1];
         check(dynamic?.eventName==='DynamicDeposited'&&first.args.commitment===dynamic.args.commitment&&first.args.encryptedOutput===dynamic.args.encryptedTemplate,'INCOMPLETE_DYNAMIC_DEPOSIT_EVENTS');cursor+=2;
       } else {
         check(first.eventName==='NewNullifier','INCOMPLETE_TRANSACTION_EVENTS');
-        const second=group.events[cursor+1];
+        const second=events[cursor+1];
         if(second?.eventName==='HolderExited') {
           check(first.args.nullifier===second.args.nullifier,'HOLDER_EXIT_NULLIFIER_MISMATCH');cursor+=2;
-          if(group.events[cursor]?.eventName==='Ragequit') {
-            const a=group.events[cursor++].args,b=second.args,deposit=deposits.find(d=>d.commitment===String(a.commitment));
+          if(events[cursor]?.eventName==='Ragequit') {
+            const a=events[cursor++].args,b=second.args,deposit=deposits.find(d=>d.commitment===String(a.commitment));
             check(a.commitment===b.commitment&&a.nullifier===b.nullifier&&a.value===b.value&&deposit&&deposit.originalDepositor.toLowerCase()===a.depositor.toLowerCase()&&b.recipient.toLowerCase()===a.depositor.toLowerCase()&&b.fee===0n,'INVALID_RAGEQUIT_EVENTS');
           }
         } else {
           check(second?.eventName==='NewNullifier','INCOMPLETE_TRANSACTION_EVENTS');cursor+=2;
-          let inserted=0;while(group.events[cursor]?.eventName==='NewCommitment'){cursor++;inserted++;}
-          const transaction=group.events[cursor++],flow=group.events[cursor++];
+          let inserted=0;while(events[cursor]?.eventName==='NewCommitment'){cursor++;inserted++;}
+          const transaction=events[cursor++],flow=events[cursor++];
           check(inserted<=2&&transaction?.eventName==='Transacted'&&flow?.eventName==='PublicFlow','INCOMPLETE_TRANSACTION_EVENTS');
           const a=transaction.args,b=flow.args;
           check(a.processor.toLowerCase()===b.processor.toLowerCase()&&a.publicIn===b.publicIn&&a.publicOut===b.publicOut&&a.fee===b.fee,'PUBLIC_FLOW_MISMATCH');
@@ -136,6 +161,7 @@ export async function syncPhase2State({client,profile,artifacts,checkpoint=null,
   const identity=phase2Identity(profile),p=normalizeProfile(profile),pool=p.pool,registry=p.registry;
   const poolABI=artifacts?.Phase2ASPPool?.abi,artifactRegistryABI=artifacts?.Phase2ASPRegistry?.abi;
   check(Array.isArray(poolABI)&&poolABI.some(a=>a.type==='event'&&a.name==='HolderExited')&&Array.isArray(artifactRegistryABI),'ASP_ARTIFACT_ABI_REQUIRED');
+  const cappedPool=hasDepositCaps(poolABI),caps={current:null,pending:emptyCapProposal(),paused:false};
   const registryABI=withGovernance(artifactRegistryABI);
   const [chainId,genesis,head]=await Promise.all([client.getChainId(),readPinnedBlock(client,0n),client.getBlockNumber()]);
   check(chainId===p.chainId,'CHAIN_ID_MISMATCH');check(genesis.hash===profile.genesisHash,'GENESIS_MISMATCH');
@@ -168,7 +194,21 @@ export async function syncPhase2State({client,profile,artifacts,checkpoint=null,
     let event;try{event=decodeEventLog({abi:poolABI,topics:log.topics,data:log.data,strict:true});}catch{throw new Error('UNKNOWN_POOL_LOG');}
     addGroup(groups,log,event);
     const a=event.args,meta=metadata(log);
-    if(event.eventName==='NewCommitment') {
+    if(CAP_EVENTS.has(event.eventName)) {
+      check(cappedPool,'POOL_CAPS_ARTIFACT_ABI_OUTDATED');
+      if(event.eventName==='CapsUpdated') {
+        caps.current=capPair(a.maxDeposit,a.maxTotal);caps.pending=emptyCapProposal();
+      } else if(event.eventName==='CapIncreaseProposed') {
+        const proposed=capPair(a.maxDeposit,a.maxTotal),eta=capQuantity(a.eta,64);
+        check(caps.current&&eta>0n&&proposed.maxDeposit>=caps.current.maxDeposit&&proposed.maxTotal>=caps.current.maxTotal
+          &&(proposed.maxDeposit>caps.current.maxDeposit||proposed.maxTotal>caps.current.maxTotal),'INVALID_POOL_CAPS_EVENT');
+        caps.pending={...proposed,eta};
+      } else if(event.eventName==='CapIncreaseCancelled') {
+        check(caps.pending.eta>0n,'INVALID_POOL_CAPS_EVENT');caps.pending=emptyCapProposal();
+      } else {
+        check(typeof a.paused==='boolean','INVALID_POOL_CAPS_EVENT');caps.paused=a.paused;
+      }
+    } else if(event.eventName==='NewCommitment') {
       const c=String(a.commitment),index=Number(a.index);
       check(index===commitments.length&&!seen.has(c)&&BigInt(c)>0n&&BigInt(c)<FIELD&&/^0x[0-9a-f]{512}$/i.test(a.encryptedOutput),'INVALID_COMMITMENT_EVENT');
       seen.add(c);commitments.push(c);receipts.push({commitment:c,index,encryptedOutput:a.encryptedOutput,...meta});
@@ -224,15 +264,31 @@ export async function syncPhase2State({client,profile,artifacts,checkpoint=null,
   }
   const tree=phase2Tree(commitments),read=functionName=>client.readContract({address:pool,abi:poolABI,functionName,blockNumber:head});
   const readRegistry=(functionName,args)=>client.readContract({address:registry,abi:registryABI,functionName,args,blockNumber:head});
-  const [,poolValues,registryValues,actualBalance]=await Promise.all([
+  const [,poolValues,registryValues,actualBalance,capValues]=await Promise.all([
     verifyReceipts(client,[[pool,groups],[registry,policyGroups]]),
     Promise.all(['currentRoot','nextLeafIndex','SCOPE','VERIFIER','HOLDER_EXIT_VERIFIER','ASSET','ASP_REGISTRY'].map(read)),
     Promise.all(['PROVIDER','latestPolicy','cidDigest'].map(name=>readRegistry(name))),
     p.asset===ZERO?client.getBalance({address:pool,blockNumber:head}):client.readContract({address:p.asset,abi:balanceABI,functionName:'balanceOf',args:[pool],blockNumber:head}),
+    cappedPool?Promise.all(CAP_GETTERS.map(([name])=>read(name))):null,
   ]);
   const [root,index,scope,verifier,exitVerifier,asset,aspRegistry]=poolValues;
   check(root===tree.root&&BigInt(index)===BigInt(commitments.length),'INCOMPLETE_OR_INCONSISTENT_LOGS');
   check(String(scope)===String(p.scope)&&verifier.toLowerCase()===profile.verifier.address.toLowerCase()&&exitVerifier.toLowerCase()===profile.exitVerifier.address.toLowerCase()&&asset.toLowerCase()===p.asset&&aspRegistry.toLowerCase()===registry,'POOL_IDENTITY_MISMATCH');
+  let depositCaps=null;
+  if(cappedPool) {
+    const [deposit,total,accounted,proposal,paused,delay]=capValues,current=capPair(deposit,total);
+    const accountedBalance=capQuantity(accounted,256),capIncreaseDelaySeconds=capQuantity(delay,64);
+    check(Array.isArray(proposal)&&proposal.length===3&&typeof paused==='boolean'&&capIncreaseDelaySeconds>0n,'INVALID_POOL_CAPS');
+    const eta=capQuantity(proposal[2],64),pending=eta===0n?emptyCapProposal():{...capPair(proposal[0],proposal[1]),eta};
+    if(eta===0n)check(capQuantity(proposal[0])===0n&&capQuantity(proposal[1])===0n,'INVALID_POOL_CAPS');
+    else check(pending.maxDeposit>=current.maxDeposit&&pending.maxTotal>=current.maxTotal
+      &&(pending.maxDeposit>current.maxDeposit||pending.maxTotal>current.maxTotal),'INVALID_POOL_CAPS');
+    check(accountedBalance===reserve,'POOL_ACCOUNTED_BALANCE_MISMATCH');
+    check(caps.current&&current.maxDeposit===caps.current.maxDeposit&&current.maxTotal===caps.current.maxTotal
+      &&paused===caps.paused&&pending.maxDeposit===caps.pending.maxDeposit&&pending.maxTotal===caps.pending.maxTotal
+      &&pending.eta===caps.pending.eta,'POOL_CAPS_STATE_MISMATCH');
+    depositCaps=wire({...current,accountedBalance,pendingCaps:pending,depositsPaused:paused,capIncreaseDelaySeconds});
+  }
   const [provider,onchainPolicy,cidDigest]=registryValues;
   // The pinned provider may only differ after a rotation observed in canonical logs.
   const liveProvider=provider.toLowerCase(),providerCurrent=liveProvider===p.provider;
@@ -282,7 +338,7 @@ export async function syncPhase2State({client,profile,artifacts,checkpoint=null,
   const body={schema:'phase2-asp-public-checkpoint/v1',identity,blockNumber:String(head),blockHash:block.hash,logs,registryLogs};
   return {schema:'phase2-asp-public-state/v1',noteModel:NOTE_MODEL,chainId:p.chainId,pool,scope:String(p.scope),...profileReleaseFlags(profile),identity,
     blockNumber:String(head),blockHash:block.hash,blockTimestamp:String(timestamp),root:String(tree.root),commitments,receipts,nullifiers,deposits,exits,flows,policies,asp,
-    reserve:String(reserve),actualBalance:String(actualBalance),resumed,checkpoint:{...body,digest:sha(body)},
+    reserve:String(reserve),actualBalance:String(actualBalance),depositCaps,resumed,checkpoint:{...body,digest:sha(body)},
     trustAssumptions:['Pinned RPC supplies complete canonical logs; no independent storage proof.','Association-set root and ABI digest match the pinned registry; provider policy remains a trust assumption.','Checkpoints are trusted local files, not HTTP imports.']};
 }
 export async function createPhase2Indexer({client,profile,artifacts,directory,associationSet,associationSetLoader}) {

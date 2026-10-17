@@ -199,7 +199,8 @@ export async function compileMainnetSources({root=ROOT,sources}={}){
     need(proof&&JSON.stringify(proof.inputs.map(item=>item.type))===JSON.stringify(['uint256[2]','uint256[2][2]','uint256[2]',`uint256[${count}]`]),'MAINNET_VERIFIER_ABI_MISMATCH');
   }
   for(const name of ['Phase2ASPPool','Phase2RouteAdapter','Phase2Router02Adapter'])
-    need(!contracts[name].abi.some(item=>item.type==='function'&&/^(owner|admin|upgrade|set|pause|grant|revoke|sweep)/i.test(item.name)),'MAINNET_PRIVILEGED_FUNCTION_REJECTED');
+    need(!contracts[name].abi.some(item=>item.type==='function'&&/^(owner|admin|upgrade|set|pause|grant|revoke|sweep)/i.test(item.name)
+      &&!(name==='Phase2ASPPool'&&['setCaps','pauseDeposits'].includes(item.name))),'MAINNET_PRIVILEGED_FUNCTION_REJECTED');
   return {contracts,compiler:solc.version(),sourceDigests,sourceSetSHA256:hash(JSON.stringify(Object.entries(sourceDigests).sort())),
     inputSHA256:hash(JSON.stringify({input,libraryInput})),diagnostics:diagnostics.map(({severity,formattedMessage})=>({severity,formattedMessage}))};
 }

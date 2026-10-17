@@ -156,7 +156,7 @@ export async function runFinalParameterAcceptance({root=ROOT,onProgress=()=>{}}=
     assert.equal(await client.readContract({address:registry.address,abi:registryABI,functionName:'ACCEPTED_POLICY_WINDOW'}),16n);
     await reject('deployer-cannot-use-guardian-authority',()=>client.call({account:actors.deployer.address,to:registry.address,
       data:encodeFunctionData({abi:registryABI,functionName:'suspendProvider'})}));
-    const pool=await deploy('Phase2ASPPool',[verifier.address,exitVerifier.address,registry.address,ZERO]);
+    const pool=await deploy('Phase2ASPPool',[verifier.address,exitVerifier.address,registry.address,ZERO,5n,12n]);
     const pin=async item=>({address:item.address,runtimeCodeHash:keccak256(await client.getCode({address:item.address}))});
     profile={schema:sdk.PRODUCTION_PROFILE_SCHEMA,releaseCandidate:true,testOnly:false,productionReady:false,
       chain:{id:4663,rpcUrl},genesisHash:(await client.getBlock({blockNumber:0n})).hash,
@@ -167,8 +167,24 @@ export async function runFinalParameterAcceptance({root=ROOT,onProgress=()=>{}}=
     profile.pool.scope=String(sdk.normalizeProfile(profile).scope);report.profile=profile;
     const loaded=await sdk.loadProductionRelease({rootDirectory:root,profile});assert.equal(loaded.artifactSHA256,release.artifactSHA256);
     pass('production-loader-accepts-actual-final-parameters-and-recompiled-build');
+    const poolRead=functionName=>client.readContract({address:profile.pool.address,abi,functionName});
+    assert.equal(await poolRead('maxDeposit'),5n);assert.equal(await poolRead('maxTotal'),12n);
+    assert.equal(await poolRead('accountedBalance'),0n);assert.equal(await poolRead('depositsPaused'),false);
+    pass('real-pool-constructor-binds-explicit-raw-unit-deposit-caps');
     const a3=await deposit('A-public-deposit-3','A',3n),a4=await deposit('A-public-deposit-4','A',4n),c5=await deposit('C-public-unapproved-deposit-5','C',5n);
     pass('public-deposits-and-canonical-note-recovery');
+    assert.equal(await poolRead('accountedBalance'),12n);
+    const blockedReceive=sdk.createDynamicReceive(accounts.A,profile);
+    const depositCall=value=>({account:actors.A.address,to:profile.pool.address,value,
+      data:encodeFunctionData({abi,functionName:'depositDynamic',args:[value,blockedReceive.precommitment,blockedReceive.encryptedTemplate]})});
+    await reject('full-accounted-pool-rejects-another-public-deposit',()=>client.call(depositCall(1n)));
+    await reject('non-guardian-cannot-pause-new-deposits',()=>client.call({account:actors.A.address,to:profile.pool.address,
+      data:encodeFunctionData({abi,functionName:'pauseDeposits'})}));
+    await send('guardian-pause-public-deposits',{to:profile.pool.address,data:encodeFunctionData({abi,functionName:'pauseDeposits'})},'guardian');
+    await send('guardian-lower-caps-below-accounted-tvl',{to:profile.pool.address,data:encodeFunctionData({abi,functionName:'setCaps',args:[1n,1n]})},'guardian');
+    await reject('paused-pool-rejects-new-deposits',()=>client.call(depositCall(1n)));
+    assert.equal((await snapshot()).depositCaps.accountedBalance,'12');
+    pass('paused-and-lowered-caps-do-not-restrict-the-following-real-proof-spends-and-exits');
     assert.equal((await snapshot()).asp.epoch,'0');
     await assert.rejects(()=>proveNormal('A',[{receiver:sdk.receiverAddress(accounts.B,profile),value:6n}]),{message:'Integer outside allowed range.'});
     pass('normal-spending-fails-without-ASP');
@@ -240,8 +256,19 @@ export async function runFinalParameterAcceptance({root=ROOT,onProgress=()=>{}}=
       const tx=await proveExit('A',note);await send('A-holder-exit-'+note.value,{to:profile.pool.address,data:exitCall(tx)},'R');
     }
     const state=await snapshot();assert.equal(state.reserve,'0');assert.equal(state.actualBalance,'0');
+    assert.equal(state.depositCaps.accountedBalance,'0');assert.equal(state.depositCaps.depositsPaused,true);
     for(const who of ['A','B','C'])assert.equal(sdk.recoverAccount(accounts[who],profile,state).balance,0n);
     pass('all-private-wallet-balances-and-native-pool-reserve-zero');
+    await send('guardian-propose-cap-increase',{to:profile.pool.address,
+      data:encodeFunctionData({abi,functionName:'proposeCapIncrease',args:[5n,12n]})},'guardian');
+    await reject('cap-increase-cannot-be-accepted-before-24-hours',()=>client.call({account:actors.guardian.address,to:profile.pool.address,
+      data:encodeFunctionData({abi,functionName:'acceptCapIncrease'})}));
+    await client.request({method:'evm_increaseTime',params:[86401]});await client.request({method:'evm_mine',params:[]});
+    await send('guardian-accept-cap-increase-after-delay',{to:profile.pool.address,data:encodeFunctionData({abi,functionName:'acceptCapIncrease'})},'guardian');
+    assert.equal(await poolRead('maxDeposit'),5n);assert.equal(await poolRead('maxTotal'),12n);assert.equal(await poolRead('depositsPaused'),true);
+    await send('guardian-unpause-deposits',{to:profile.pool.address,data:encodeFunctionData({abi,functionName:'unpauseDeposits'})},'guardian');
+    const capsAfter=(await snapshot()).depositCaps;assert.equal(capsAfter.depositsPaused,false);assert.equal(capsAfter.pendingCaps.eta,'0');
+    pass('independent-guardian-delayed-cap-increase-preserves-exit-accounting');
     await send('guardian-propose-provider',{to:profile.registry.address,
       data:encodeFunctionData({abi:registryABI,functionName:'proposeProvider',args:[actors.nextProvider.address]})},'guardian');
     const claim=encodeFunctionData({abi:registryABI,functionName:'acceptProvider'});

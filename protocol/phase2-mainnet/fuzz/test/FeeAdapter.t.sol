@@ -57,7 +57,7 @@ contract FeeMockRouter {
 
 contract FeeAdapterTest is Base {
     address internal constant TREASURY = address(0x7EA5);
-    uint16 internal constant BPS = 20;
+    uint16 internal constant BPS = 30;
 
     Phase2ASPRegistry internal registry;
     MockJoinSplitVerifier internal verifier;
@@ -83,8 +83,8 @@ contract FeeAdapterTest is Base {
         hop = new FeeHop(weth);
         factory = new MockFactory(address(hop));
         router = new FeeMockRouter(address(factory), address(weth), hop);
-        source = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0));
-        target = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(tokenOut));
+        source = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0), type(uint128).max, type(uint128).max);
+        target = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(tokenOut), type(uint128).max, type(uint128).max);
         adapter = deployAdapter(source, target, abi.encodePacked(address(weth), uint24(3000), address(tokenOut)), BPS, TREASURY);
         publish(registry, 1, 7 days);
         vm.deal(address(this), 1_000_000 ether);
@@ -192,8 +192,8 @@ contract FeeAdapterTest is Base {
         rate = bound(rate, 1e17, 5e18);
         router.configure(0, rate);
         MockToken tokenIn = new MockToken('IN');
-        Phase2ASPPool erc20Source = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(tokenIn));
-        Phase2ASPPool ethTarget = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0));
+        Phase2ASPPool erc20Source = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(tokenIn), type(uint128).max, type(uint128).max);
+        Phase2ASPPool ethTarget = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0), type(uint128).max, type(uint128).max);
         Phase2FeeRouteAdapter a = deployAdapter(erc20Source, ethTarget,
             abi.encodePacked(address(tokenIn), uint24(3000), address(weth)), BPS, TREASURY);
         uint256 gross = uint256(amountIn) * rate / 1e18;
@@ -245,6 +245,28 @@ contract FeeAdapterTest is Base {
         publish(registry, 2, 7 days);
         (uint256 net,) = adapter.swap(p.action, p.proof, p.data, p.out);
         eq(net, 1 ether - feeOf(1 ether, BPS), 'settled against the superseded epoch');
+    }
+
+    function test_targetCapRestoresSourceAndTreasuryAtomically() public {
+        vm.prank(GUARDIAN);
+        target.setCaps(1 ether, 1 ether);
+        fund(target, 0.1 ether);
+        Prepared memory p = prepare(adapter, source, 5 ether, 1 ether, 1, 1 ether);
+        uint256 sourceRoot = source.currentRoot();
+        uint256 targetRoot = target.currentRoot();
+        vm.expectRevert(Phase2ASPPool.PoolCapExceeded.selector);
+        adapter.swap(p.action, p.proof, p.data, p.out);
+        check(!source.spentNullifiers(p.proof.pubSignals[5]), 'source note remains spendable');
+        eq(source.currentRoot(), sourceRoot, 'source tree restored');
+        eq(target.currentRoot(), targetRoot, 'target tree restored');
+        eq(source.accountedBalance(), 5 ether, 'source liabilities restored');
+        eq(address(source).balance, 5 ether, 'source custody restored');
+        eq(target.accountedBalance(), 0.1 ether, 'target liabilities restored');
+        eq(tokenOut.balanceOf(address(target)), 0.1 ether, 'target custody restored');
+        eq(tokenOut.balanceOf(TREASURY), 0, 'no service fee on reverted swap');
+        eq(tokenOut.balanceOf(address(adapter)), 0, 'no adapter output');
+        eq(weth.balanceOf(address(adapter)), 0, 'no adapter WETH');
+        eq(tokenOut.allowance(address(adapter), address(target)), 0, 'target allowance restored');
     }
 
     /// Finding F1: a cap equal to the quoted fee made any better-than-quoted

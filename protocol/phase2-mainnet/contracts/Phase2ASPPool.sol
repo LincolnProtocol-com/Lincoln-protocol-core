@@ -18,6 +18,7 @@ interface IPhase2ASPHolderExitVerifier {
 
 interface IPhase2ASPPolicyRegistry {
     function PROVIDER() external view returns (address);
+    function GUARDIAN() external view returns (address);
     function ACCEPTED_POLICY_WINDOW() external view returns (uint64);
     function latestPolicy() external view returns (uint256 root, uint64 epoch, uint64 validUntil);
     function acceptedPolicy(uint64 epoch) external view returns (uint256 root, uint64 validUntil);
@@ -35,6 +36,7 @@ contract Phase2ASPPool is ReentrancyGuard {
     uint256 public constant TREE_DEPTH = 20;
     uint256 public constant ROOT_HISTORY_SIZE = 100;
     uint256 public constant CIPHERTEXT_BYTES = 256;
+    uint64 public constant CAP_INCREASE_DELAY = 24 hours;
     bytes32 public constant DOMAIN = keccak256('CHENG_PHASE2_ASP_V1');
     bytes32 public constant EXIT_DOMAIN = keccak256('CHENG_PHASE2_ASP_EXIT_V1');
     address public immutable ASSET;
@@ -42,6 +44,20 @@ contract Phase2ASPPool is ReentrancyGuard {
     uint256 public immutable SCOPE;
     IPhase2ASPHolderExitVerifier public immutable HOLDER_EXIT_VERIFIER;
     IPhase2ASPPolicyRegistry public immutable ASP_REGISTRY;
+
+    struct CapProposal {
+        uint128 maxDeposit;
+        uint128 maxTotal;
+        uint64 eta;
+    }
+
+    uint128 public maxDeposit;
+    uint128 public maxTotal;
+    // Only note-backed liabilities count. Unsolicited ETH/ERC20 donations must
+    // not consume deposit capacity, and publicOut already includes its fee.
+    uint256 public accountedBalance;
+    CapProposal public pendingCaps;
+    bool public depositsPaused;
 
     struct ExtData {
         address recipient;
@@ -101,6 +117,13 @@ contract Phase2ASPPool is ReentrancyGuard {
     error PublicFundingRequiresDynamicDeposit();
     error InvalidCommitment();
     error InvalidRagequit();
+    error UnauthorizedGuardian();
+    error InvalidCaps();
+    error DepositCapExceeded();
+    error PoolCapExceeded();
+    error DepositsArePaused();
+    error UnavailableCapProposal();
+    error CapIncreaseNotReady();
 
     event NewCommitment(uint256 indexed commitment, uint256 indexed index, bytes encryptedOutput);
     event NewNullifier(uint256 indexed nullifier);
@@ -114,11 +137,19 @@ contract Phase2ASPPool is ReentrancyGuard {
         uint256 nullifier, uint256 value, uint256 fee, address feeRecipient);
     event Ragequit(address indexed depositor, uint256 indexed commitment, uint256 nullifier, uint256 value);
 
-    constructor(address verifier, address holderExitVerifier, address aspRegistry, address asset) {
+    event CapsUpdated(uint128 maxDeposit, uint128 maxTotal);
+    event CapIncreaseProposed(uint128 maxDeposit, uint128 maxTotal, uint64 eta);
+    event CapIncreaseCancelled();
+    event DepositsPaused(bool paused);
+
+    constructor(address verifier, address holderExitVerifier, address aspRegistry, address asset,
+        uint128 initialMaxDeposit, uint128 initialMaxTotal)
+    {
         if (verifier.code.length == 0 || holderExitVerifier.code.length == 0) revert InvalidVerifier();
         if (aspRegistry.code.length == 0) revert InvalidASPRegistry();
         ASP_REGISTRY = IPhase2ASPPolicyRegistry(aspRegistry);
-        if (ASP_REGISTRY.PROVIDER() == address(0) || ASP_REGISTRY.ACCEPTED_POLICY_WINDOW() == 0) revert InvalidASPRegistry();
+        if (ASP_REGISTRY.PROVIDER() == address(0) || ASP_REGISTRY.GUARDIAN() == address(0)
+            || ASP_REGISTRY.ACCEPTED_POLICY_WINDOW() == 0) revert InvalidASPRegistry();
         HOLDER_EXIT_VERIFIER = IPhase2ASPHolderExitVerifier(holderExitVerifier);
         if (asset != address(0) && asset.code.length == 0) revert InvalidAsset();
         // This mainnet build binds separately finalized Groth16 verifiers. A chain
@@ -126,6 +157,10 @@ contract Phase2ASPPool is ReentrancyGuard {
         if (block.chainid != 4663) revert UnsupportedChainId();
         ASSET = asset;
         VERIFIER = IPhase2ASPJoinSplitVerifier(verifier);
+        _validateCaps(initialMaxDeposit, initialMaxTotal);
+        maxDeposit = initialMaxDeposit;
+        maxTotal = initialMaxTotal;
+        emit CapsUpdated(initialMaxDeposit, initialMaxTotal);
         SCOPE = uint256(keccak256(abi.encode(DOMAIN, block.chainid, address(this)))) % FIELD;
         uint256 zero;
         for (uint256 level; level < TREE_DEPTH; level++) {
@@ -138,6 +173,66 @@ contract Phase2ASPPool is ReentrancyGuard {
         _knownRoots[zero] = true;
     }
 
+    modifier onlyGuardian() {
+        if (msg.sender != ASP_REGISTRY.GUARDIAN()) revert UnauthorizedGuardian();
+        _;
+    }
+
+    function _validateCaps(uint128 depositCap, uint128 totalCap) internal pure {
+        if (depositCap == 0 || totalCap == 0 || depositCap > totalCap) revert InvalidCaps();
+    }
+
+    /// @notice Lower either cap immediately; never restricts a holder's exit.
+    /// @dev A total cap below current liabilities only prevents new deposits.
+    /// Every change clears an older proposal, so it cannot bypass a fresh delay.
+    function setCaps(uint128 depositCap, uint128 totalCap) external onlyGuardian {
+        _validateCaps(depositCap, totalCap);
+        if (depositCap > maxDeposit || totalCap > maxTotal) revert InvalidCaps();
+        _setCaps(depositCap, totalCap);
+    }
+
+    /// @notice Queue a non-decreasing cap change with a new 24-hour delay.
+    /// @dev Apply reductions with setCaps first; mixed changes are not accepted.
+    function proposeCapIncrease(uint128 depositCap, uint128 totalCap) external onlyGuardian {
+        _validateCaps(depositCap, totalCap);
+        if (depositCap < maxDeposit || totalCap < maxTotal
+            || (depositCap == maxDeposit && totalCap == maxTotal)) revert InvalidCaps();
+        if (block.timestamp > type(uint64).max - CAP_INCREASE_DELAY) revert InvalidCaps();
+        uint64 eta = uint64(block.timestamp + CAP_INCREASE_DELAY);
+        pendingCaps = CapProposal(depositCap, totalCap, eta);
+        emit CapIncreaseProposed(depositCap, totalCap, eta);
+    }
+
+    function acceptCapIncrease() external onlyGuardian {
+        CapProposal memory proposal = pendingCaps;
+        if (proposal.eta == 0) revert UnavailableCapProposal();
+        if (block.timestamp < proposal.eta) revert CapIncreaseNotReady();
+        _setCaps(proposal.maxDeposit, proposal.maxTotal);
+    }
+
+    function cancelCapIncrease() external onlyGuardian {
+        if (pendingCaps.eta == 0) revert UnavailableCapProposal();
+        delete pendingCaps;
+        emit CapIncreaseCancelled();
+    }
+
+    function _setCaps(uint128 depositCap, uint128 totalCap) internal {
+        delete pendingCaps;
+        maxDeposit = depositCap;
+        maxTotal = totalCap;
+        emit CapsUpdated(depositCap, totalCap);
+    }
+
+    function pauseDeposits() external onlyGuardian {
+        depositsPaused = true;
+        emit DepositsPaused(true);
+    }
+
+    function unpauseDeposits() external onlyGuardian {
+        depositsPaused = false;
+        emit DepositsPaused(false);
+    }
+
     function knownRoot(uint256 root) external view returns (bool) {
         return _knownRoots[root];
     }
@@ -148,13 +243,18 @@ contract Phase2ASPPool is ReentrancyGuard {
     function depositDynamic(uint128 value, uint256 precommitment, bytes calldata encryptedTemplate)
         external payable nonReentrant returns (uint256 commitment)
     {
+        if (depositsPaused) revert DepositsArePaused();
         if (value == 0 || precommitment == 0 || precommitment >= FIELD) revert InvalidPublicInputs();
+        if (value > maxDeposit) revert DepositCapExceeded();
+        uint256 nextBalance = accountedBalance + value;
+        if (nextBalance > maxTotal) revert PoolCapExceeded();
         if (encryptedTemplate.length != CIPHERTEXT_BYTES) revert InvalidCiphertextLength();
         if (nextLeafIndex >= 1 << TREE_DEPTH) revert TreeFull();
         commitment = PoseidonT3.hash([uint256(value), precommitment]);
         if (commitment == 0) revert InvalidPublicInputs();
         if (commitments[commitment]) revert DuplicateCommitment();
         _pull(value);
+        accountedBalance = nextBalance;
         originalDepositor[commitment] = msg.sender;
         _insert(commitment, encryptedTemplate);
         emit DynamicDeposited(msg.sender, value, precommitment, commitment, encryptedTemplate);
@@ -250,6 +350,7 @@ contract Phase2ASPPool is ReentrancyGuard {
         if (proof.pubSignals[4] != holderExitContext(data)) revert ContextMismatch();
         if (!HOLDER_EXIT_VERIFIER.verifyProof(proof.pA, proof.pB, proof.pC, proof.pubSignals)) revert InvalidProof();
         spentNullifiers[nullifier] = true;
+        accountedBalance -= value;
         emit NewNullifier(nullifier);
         uint256 payout = value - data.fee;
         if (payout != 0) _push(data.recipient, payout);
@@ -292,6 +393,7 @@ contract Phase2ASPPool is ReentrancyGuard {
         if (signals[7] != 0) _insert(signals[7], encryptedOutputs[0]);
         if (signals[8] != 0) _insert(signals[8], encryptedOutputs[1]);
         _pull(data.publicIn);
+        accountedBalance -= data.publicOut;
         if (payout != 0) _push(data.recipient, payout);
         if (data.fee != 0) _push(data.feeRecipient, data.fee);
         emit Transacted(data.processor, data.publicIn, data.publicOut, data.fee, currentRoot);

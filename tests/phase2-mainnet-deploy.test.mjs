@@ -141,6 +141,7 @@ test('optional UP/Router02 adapters and NVDA multi-hop actually deploy and publi
     const compiled=await fixtureContracts(),account=privateKeyToAccount(generatePrivateKey()),fixtureConfig=structuredClone(config),selected=structuredClone(routes);
     await client.request({method:'anvil_setBalance',params:[account.address,'0x56bc75e2d63100000']});
     fixtureConfig.deployer.address=account.address;fixtureConfig.provider.address=account.address;fixtureConfig.guardian={address:privateKeyToAccount(generatePrivateKey()).address};
+    fixtureConfig.assets.find(a=>a.symbol==='NVDA').depositCaps={schema:'lincoln-pool-deposit-caps/v1',unit:'asset-base-units',status:'configured',maxDepositUnits:'1000000000000000000',maxTotalUnits:'10000000000000000000'};
     const {default:solc}=await import('solc'),literal=address=>`address(bytes20(hex"${address.slice(2)}"))`;
     const role=name=>fixtureConfig.codePins.find(p=>p.role===name),weth=role('weth').address,usd=role('usdg').address,nvda=fixtureConfig.assets.find(a=>a.symbol==='NVDA').address;
     const unihop=selected[0].hops[0].address,uphop=selected[2].hops[0].address,nvhop=selected[4].hops[1].address;

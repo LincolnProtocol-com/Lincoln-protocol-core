@@ -81,8 +81,8 @@ contract AdapterTest is Base {
         MockExitVerifier exitVerifier = new MockExitVerifier();
         tokenOut = new MockToken('OUT');
         weth = new MockWETH();
-        source = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0));
-        target = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(tokenOut));
+        source = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0), type(uint128).max, type(uint128).max);
+        target = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(tokenOut), type(uint128).max, type(uint128).max);
         HopPool hop = new HopPool();
         router = new MockRouter(address(new MockFactory(address(hop))), address(weth), address(hop));
         adapter = new Phase2RouteAdapter(address(source), address(target), address(router), address(weth), 0,
@@ -176,6 +176,46 @@ contract AdapterTest is Base {
             processor: address(adapter), publicIn: 0, publicOut: 1 ether, fee: 0});
         vm.expectRevert(Phase2ASPPool.InvalidProcessor.selector);
         source.transact(p.proof.pA, p.proof.pB, p.proof.pC, p.proof.pubSignals, poolData, p.out);
+    }
+
+    function test_targetCapRevertsEntireSwap() public {
+        vm.prank(GUARDIAN);
+        target.setCaps(1 ether, 1 ether);
+        tokenOut.mint(address(this), 0.1 ether);
+        tokenOut.approve(address(target), 0.1 ether);
+        target.depositDynamic(0.1 ether, 12345, cipher(12345));
+        Prepared memory p = prepare(5 ether, 1 ether, 1);
+        uint256 root = source.currentRoot();
+        vm.expectRevert(Phase2ASPPool.PoolCapExceeded.selector);
+        adapter.swap(p.action, p.proof, p.data, p.out);
+        eq(source.accountedBalance(), 5 ether, 'source liabilities restored');
+        eq(address(source).balance, 5 ether, 'source custody restored');
+        eq(source.currentRoot(), root, 'source tree restored');
+        check(!source.spentNullifiers(p.proof.pubSignals[5]), 'source note remains spendable');
+        eq(target.accountedBalance(), 0.1 ether, 'target liabilities restored');
+        eq(tokenOut.balanceOf(address(target)), 0.1 ether, 'target custody restored');
+        eq(tokenOut.allowance(address(adapter), address(target)), 0, 'no target allowance');
+        eq(weth.balanceOf(address(adapter)), 0, 'no adapter residual');
+    }
+
+    function test_pausedTargetRevertsEntireSwap() public {
+        Prepared memory p = prepare(5 ether, 1 ether, 1);
+        vm.prank(GUARDIAN);
+        target.pauseDeposits();
+        vm.expectRevert(Phase2ASPPool.DepositsArePaused.selector);
+        adapter.swap(p.action, p.proof, p.data, p.out);
+        check(!source.spentNullifiers(p.proof.pubSignals[5]), 'source note remains spendable');
+        eq(source.accountedBalance(), 5 ether, 'source liabilities restored');
+        eq(target.accountedBalance(), 0, 'no target deposit');
+    }
+
+    function test_pausedSourceDoesNotPreventSwapOut() public {
+        Prepared memory p = prepare(5 ether, 1 ether, 1);
+        vm.prank(GUARDIAN);
+        source.pauseDeposits();
+        adapter.swap(p.action, p.proof, p.data, p.out);
+        eq(source.accountedBalance(), 4 ether, 'swap out allowed');
+        eq(target.accountedBalance(), 1 ether, 'target funded');
     }
 
     /// PoC for audit finding L1 (unchanged): ragequit of an adapter-created

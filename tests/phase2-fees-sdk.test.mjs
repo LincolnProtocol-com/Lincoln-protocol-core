@@ -4,7 +4,7 @@ import {AbiCoder,keccak256 as ethersHash} from 'ethers';
 import {keccak256} from 'viem';
 import * as sdk from '../src/phase2-asp/sdk.mjs';
 import {FEE_SWAP_DOMAIN,normalizeFeeSwapRoute,normalizeFeeSwapAction,feeSwapActionHash,feeSwapActionEnvelope,
-  prepareFeeSwap,feeSwapTransaction,minimumGrossOutput,serviceFee} from '../src/phase2-fees/sdk.mjs';
+  prepareFeeSwap,feeSwapTransaction,minimumGrossOutput,serviceFee,DEFAULT_SERVICE_FEE_BPS} from '../src/phase2-fees/sdk.mjs';
 
 const addr=n=>'0x'+n.toString(16).padStart(40,'0');
 function fixture(){
@@ -78,7 +78,7 @@ test('fee rate is explicit, capped and immutable route/treasury role collisions 
 });
 
 test('inverse net minimum is exact for floor fees including tiny fills and uint128 limits',()=>{
-  for(const bps of [1,20,25,100])for(const net of [1n,2n,499n,500n,999n,9980n,10000n,999999999999999999n]){
+  for(const bps of [1,20,25,30,100])for(const net of [1n,2n,499n,500n,999n,9980n,10000n,999999999999999999n]){
     const gross=minimumGrossOutput(net,bps);
     assert.ok(gross-serviceFee(gross,bps)>=net);
     if(gross>0n)assert.ok(gross-1n-serviceFee(gross-1n,bps)<net);
@@ -86,4 +86,14 @@ test('inverse net minimum is exact for floor fees including tiny fills and uint1
   assert.equal(minimumGrossOutput(1n,20),1n);
   assert.equal(minimumGrossOutput(9980n,20),9999n);
   assert.throws(()=>minimumGrossOutput(sdk.MAX_VALUE,100),/GROSS_OUTPUT_EXCEEDS_UINT128/);
+});
+
+// Explicit 20bps fixtures above remain compatibility coverage for older routes.
+test('new launch helpers default to 30bps and bind 9970 net / 30 cap actions',()=>{
+  assert.equal(DEFAULT_SERVICE_FEE_BPS,30);assert.equal(serviceFee(10000n),30n);
+  assert.equal(minimumGrossOutput(9970n),9999n);
+  const f=fixture(),route={...f.route,feeBps:30},action={...f.action,minAmountOut:9970n,maxServiceFee:30n};
+  const prepared=prepareFeeSwap({account:f.a,...f,route,action});
+  assert.equal(prepared.route.feeBps,30);assert.equal(prepared.action.minAmountOut,9970n);assert.equal(prepared.action.maxServiceFee,30n);
+  assert.notEqual(prepared.actionHash,feeSwapActionHash(f));
 });

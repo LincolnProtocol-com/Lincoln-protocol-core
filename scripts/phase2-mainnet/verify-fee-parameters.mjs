@@ -16,6 +16,7 @@ import {createPublicClient,createWalletClient,http,encodeDeployData,encodeFuncti
 import {generatePrivateKey,privateKeyToAccount} from 'viem/accounts';
 import * as sdk from '../../src/phase2-mainnet/sdk.mjs';
 import * as fees from '../../src/phase2-fees/sdk.mjs';
+import {createLaunchServiceFeePolicy,normalizeServiceFeePolicy,quoteServiceFee,validateCommercialFee} from '../../src/phase2-fees/policy.mjs';
 import {syncPhase2State} from '../../src/phase2-asp/state.mjs';
 import {loadVerifiedMainnetRelease} from '../../src/phase2-mainnet/release.mjs';
 import {verifyMainnetFeeComponent,MAINNET_FEE_ARTIFACT} from '../../src/phase2-fees/mainnet-release.mjs';
@@ -32,7 +33,7 @@ export function parseFinalFeeParameterAcceptanceArgs(args){
 export function finalFeeParameterAcceptancePlan(){
   return {schema:'phase2-final-fee-acceptance-plan/v1',localOnly:true,chainId:CHAIN_ID,publicTransactions:0,
     usesPublicRPC:false,usesLocalDeployer:false,usesKeystore:false,usesFork:false,parameters:'final-production-only',
-    realCoreAndFeeArtifacts:true,actualDEX:false,mockRouter:true,mockSourcePool:false,feeBps:20,relayMaxGas:'5000000',
+    realCoreAndFeeArtifacts:true,actualDEX:false,mockRouter:true,mockSourcePool:false,feeBps:30,relayMaxGas:'5000000',withdrawalServicePolicyApplied:true,syntheticWithdrawalGasFeeUnits:'3',
     checks:['verify-final-core-and-reproduce-production-fee-component','independent-local-provider-guardian-and-A-B-wallets',
       'UP-Slipstream-two-hop-native-input-wrap','Router02-two-hop-native-output-unwrap',
       'proof-bound-action-cap-and-treasury-reverts','oldest-of-16-epoch-fee-route-padded-gas-cap','measured-output-fee-and-net-B-note',
@@ -120,10 +121,11 @@ export async function runFinalFeeParameterAcceptance(options={}){
       'UP/Router02 ABI compatibility, wrapping, accounting and proof binding are exercised; no real market prices, deployed DEX or production liquidity is validated.',
       'The independent synthetic guardian tests separation of roles; the configured mainnet Safe is verified separately.',
       'Each fee gas sample spends one positive input note plus a dummy and has no source change; it does not establish the gas maximum for every two-real-input or two-output shape.',
+      'The v2 withdrawal uses a synthetic fixed gas quote of 3 raw asset units, not the mainnet ETH preset or a deployed relayer configuration: gross 9970, percentage 29, quoted gas 3, fee 32, net 9938.',
       'This is integration acceptance, not independent audit or an anonymity measurement.']};
   const pass=(name,detail={})=>{report.checks.push({name,passed:true,detail:wire(detail)});onProgress(name);};
   const chain={id:CHAIN_ID,name:'isolated final production fee acceptance',nativeCurrency:{name:'ETH',symbol:'ETH',decimals:18},rpcUrls:{default:{http:[rpcUrl]}}};
-  const actors=Object.fromEntries(['deployer','provider','guardian','A','B','processor','treasury','otherTreasury'].map(name=>[name,privateKeyToAccount(generatePrivateKey())]));
+  const actors=Object.fromEntries(['deployer','provider','guardian','A','B','processor','treasury','otherTreasury','withdrawalFeeRecipient'].map(name=>[name,privateKeyToAccount(generatePrivateKey())]));
   let activeSet=null;
   async function send(name,request,who='deployer',{mayRevert=false,gasLimit}={}){
     need(await client.getChainId()===CHAIN_ID,'FINAL_FEE_ACCEPTANCE_WRONG_CHAIN');
@@ -153,7 +155,10 @@ export async function runFinalFeeParameterAcceptance(options={}){
   const snapshot=pool=>syncPhase2State({client,profile:pool.profile,artifacts,...(activeSet?{associationSet:activeSet}:{})});
   let verifier,exitVerifier,registry,genesisHash;
   async function pool(name,asset){
-    const contract=await deploy(name,artifacts.Phase2ASPPool,[verifier.address,exitVerifier.address,registry.address,asset],{ASSET:asset,ASP_REGISTRY:registry.address});
+    // Explicit synthetic-asset limits: these are local fixture units, not market caps.
+    const maxDeposit=1000000n,maxTotal=10000000n;
+    const contract=await deploy(name,artifacts.Phase2ASPPool,[verifier.address,exitVerifier.address,registry.address,asset,maxDeposit,maxTotal],
+      {ASSET:asset,ASP_REGISTRY:registry.address,maxDeposit,maxTotal});
     const profile={schema:sdk.PRODUCTION_PROFILE_SCHEMA,releaseCandidate:true,testOnly:false,productionReady:false,chain:{id:CHAIN_ID,rpcUrl},genesisHash,
       artifactSHA256:release.artifactSHA256,sourceSetSHA256:release.sourceSetSHA256,production:release.production,relayer:actors.processor.address,
       pool:{...await pin(contract),asset,noteModel:sdk.NOTE_MODEL,treeDepth:20,startBlock:String(contract.receipt.blockNumber)},
@@ -189,10 +194,10 @@ export async function runFinalFeeParameterAcceptance(options={}){
       const factory=await deploy(label('mock-factory'),f.FeeTestFactory,[A.address,B.address,C.address,first.address,second.address]);
       const router=await deploy(label('mock-router'),f.FeeTestRouter,[factory.address,W.address,A.address,B.address,C.address,first.address,second.address]);
       const packedPath=`0x${A.address.slice(2)}000bb8${B.address.slice(2)}000bb8${C.address.slice(2)}`;
-      const args=[source.address,target.address,router.address,W.address,scenario.protocol,packedPath,20,actors.treasury.address];
-      const adapter=await deploy(label('production-fee-adapter'),adapters[scenario.adapterType],args,{FEE_BPS:20,TREASURY:actors.treasury.address,SOURCE_NATIVE:scenario.nativeIn,TARGET_NATIVE:scenario.nativeOut,HOPS:2n});
+      const args=[source.address,target.address,router.address,W.address,scenario.protocol,packedPath,30,actors.treasury.address];
+      const adapter=await deploy(label('production-fee-adapter'),adapters[scenario.adapterType],args,{FEE_BPS:30,TREASURY:actors.treasury.address,SOURCE_NATIVE:scenario.nativeIn,TARGET_NATIVE:scenario.nativeOut,HOPS:2n});
       const twinArgs=[...args];twinArgs[7]=actors.otherTreasury.address;const twin=await deploy(label('different-treasury-adapter'),adapters[scenario.adapterType],twinArgs);
-      const route={adapter:adapter.address,adapterType:scenario.adapterType,router:router.address,wrappedNative:W.address,factory:factory.address,protocol:scenario.protocol,path:packedPath,feeBps:20,treasury:actors.treasury.address};
+      const route={adapter:adapter.address,adapterType:scenario.adapterType,router:router.address,wrappedNative:W.address,factory:factory.address,protocol:scenario.protocol,path:packedPath,feeBps:30,treasury:actors.treasury.address};
       const a=sdk.createAccount();let b=sdk.createAccount();assert.notEqual(a.seed,b.seed);
       const password=randomBytes(24).toString('hex'),backup=sdk.sealAccount(b,password),receiver=sdk.receiverAddress(b,target.profile);b=null;
       if(scenario.nativeOut){await write(label('back-wrapped-output'),W,'deposit',[],'deployer',20000n);await write(label('fund-mock-output-liquidity'),W,'transfer',[second.address,20000n]);}
@@ -202,7 +207,7 @@ export async function runFinalFeeParameterAcceptance(options={}){
       const deposited=event(deposit,source,'DynamicDeposited');assert.equal(deposited.value,1000n);await approve(label('ASP-approves-A'),source,deposited.commitment);
       const sourceState=await snapshot(source);assert.equal(sdk.recoverAccount(a,source.profile,sourceState).balance,1000n);
       const prepared=fees.prepareFeeSwap({account:a,sourceProfile:source.profile,targetProfile:target.profile,sourceState,route,receiver,
-        action:{processor:actors.processor.address,amountIn:1000n,minAmountOut:9980n,maxServiceFee:20n,deadline:(await client.getBlock()).timestamp+3600n}});
+        action:{processor:actors.processor.address,amountIn:1000n,minAmountOut:9970n,maxServiceFee:30n,deadline:(await client.getBlock()).timestamp+3600n}});
       assert.equal(prepared.route.hops,2);assert.equal(prepared.route.wrapNative,scenario.nativeIn);assert.equal(prepared.route.unwrapNative,scenario.nativeOut);
       assert.equal(await call(adapter,'actionHash',[prepared.action]),prepared.actionHash);assert.equal(await call(adapter,'actionEnvelope',[prepared.action]),prepared.actionEnvelope);
       await write(label('configure-mock-output'),router,'configure',[0,10000n,99999n,ZERO]);
@@ -225,7 +230,7 @@ export async function runFinalFeeParameterAcceptance(options={}){
         for(const nf of tx.pubSignals.slice(5,7))assert.equal(await call(source,'spentNullifiers',[BigInt(nf)]),false);
         pass(label(name),{executionRevert:signature,sourceUnspent:true,privateReservesAndTreasuriesUnchanged:true});
       }
-      const changedCap={...prepared.action,maxServiceFee:21n};
+      const changedCap={...prepared.action,maxServiceFee:31n};
       await rejection('original-envelope-rejects-fee-cap-tampering',adapter,changedCap,tx,'ActionMismatch()');
       const changedEnvelope=fees.feeSwapActionEnvelope({sourceProfile:source.profile,targetProfile:target.profile,route,action:changedCap});
       await rejection('original-proof-rejects-rebound-fee-cap',adapter,changedCap,{...tx,encryptedOutputs:[tx.encryptedOutputs[0],changedEnvelope]},'ContextMismatch()');
@@ -246,31 +251,47 @@ export async function runFinalFeeParameterAcceptance(options={}){
       const swap=await send(label('A-private-fee-swap-to-B'),{to:adapter.address,data:actualSwapData},'processor',{gasLimit:paddedGas});
       pass(label('real-fee-swap-estimate-and-relay-padding-fit-cap'),{estimate:String(estimate),paddedGas:String(paddedGas),padding:'estimate * 12 / 10 + 10000',relayMaxGas:String(relayMaxGas),actualGasUsed:String(swap.gasUsed),oldestWindowProof});
       const feePaid=event(swap,adapter,'ServiceFeePaid'),received=event(swap,target,'DynamicDeposited');
-      assert.equal(feePaid.grossAmountOut,10000n);assert.equal(feePaid.serviceFee,20n);assert.equal(feePaid.netAmountOut,9980n);assert.equal(received.value,9980n);
-      assert.equal(await call(C,'balanceOf',[actors.treasury.address]),treasuryBefore+20n);assert.equal(await sourceBalance(),0n);
+      assert.equal(feePaid.grossAmountOut,10000n);assert.equal(feePaid.serviceFee,30n);assert.equal(feePaid.netAmountOut,9970n);assert.equal(received.value,9970n);
+      assert.equal(await call(C,'balanceOf',[actors.treasury.address]),treasuryBefore+30n);assert.equal(await sourceBalance(),0n);
       assert.equal(await call(router,scenario.adapterType==='Phase2FeeRouter02Adapter'?'router02Calls':'deadlineCalls'),1n);
-      pass(label('two-hop-measured-20bps-fee-and-net-private-output'),{gross:'10000',fee:'20',net:'9980',routerReported:'99999',wrapNative:scenario.nativeIn,unwrapNative:scenario.nativeOut,feeAsset:scenario.nativeOut?'wrapped-native':'output-ERC20'});
+      pass(label('two-hop-measured-30bps-fee-and-net-private-output'),{gross:'10000',fee:'30',net:'9970',routerReported:'99999',wrapNative:scenario.nativeIn,unwrapNative:scenario.nativeOut,feeAsset:scenario.nativeOut?'wrapped-native':'output-ERC20'});
       const restored=sdk.openAccount(backup,password);assert.equal(restored.notes.length,0);
       const direct=sdk.decryptDynamicReceipt(restored,target.profile,wire(received));let targetState=await snapshot(target),recovered=sdk.recoverAccount(restored,target.profile,targetState);
-      assert.equal(recovered.balance,9980n);assert.equal(recovered.notes.length,1);assert.equal(direct.commitment,recovered.notes[0].commitment);
+      assert.equal(recovered.balance,9970n);assert.equal(recovered.notes.length,1);assert.equal(direct.commitment,recovered.notes[0].commitment);
       assert.ok(recovered.notes.every(note=>!Object.hasOwn(note,'originalDepositor')&&!Object.hasOwn(note,'label')));
-      const withdrawalData={processor:actors.processor.address,recipient:actors.B.address,feeRecipient:ZERO,publicIn:0n,publicOut:9980n,fee:0n};
+      // Three is an explicit synthetic quote in this fixture's asset units. It
+      // is not an ETH mainnet gas quote and is never obtained from an RPC estimate.
+      const launchPolicy=createLaunchServiceFeePolicy({asset:scenario.nativeOut?'ETH':'TESTC',gasFeeUnits:'3',id:'synthetic-fee-acceptance-v2'});
+      const withdrawalPolicy=normalizeServiceFeePolicy({...launchPolicy,swap:{...launchPolicy.swap,treasury:actors.treasury.address}});
+      const withdrawalQuote=quoteServiceFee({policy:withdrawalPolicy,kind:'withdrawal',grossAmount:'9970'});
+      assert.equal(withdrawalQuote.percentageServiceFee,'29');assert.equal(withdrawalQuote.quotedGasFee,'3');
+      assert.equal(withdrawalQuote.totalFee,'32');assert.equal(withdrawalQuote.netRecipientAmount,'9938');
+      const withdrawalData={processor:actors.processor.address,recipient:actors.B.address,feeRecipient:actors.withdrawalFeeRecipient.address,
+        publicIn:0n,publicOut:9970n,fee:BigInt(withdrawalQuote.totalFee)};
+      validateCommercialFee({kind:'transact',extData:withdrawalData},withdrawalPolicy);
       assert.throws(()=>sdk.prepareJoinSplit({account:restored,profile:target.profile,state:targetState,inputs:[recovered.notes[0]],externalData:withdrawalData}),/pending ASP approval/);
-      pass(label('B-backup-only-recovery-and-pending-current-note-ASP'),{recoveredNet:'9980',savedNotesBeforeRecovery:0});
+      pass(label('B-backup-only-recovery-and-pending-current-note-ASP'),{recoveredNet:'9970',savedNotesBeforeRecovery:0});
       await approve(label('ASP-approves-B-recovered-note'),target,recovered.notes[0].commitment);targetState=await snapshot(target);
       const withdrawal=sdk.prepareJoinSplit({account:restored,profile:target.profile,state:targetState,inputs:[recovered.notes[0]],externalData:withdrawalData});
       const spent=await prove(label('B-final-normal-withdrawal-proof'),withdrawal,target.profile),t=spent.transaction,p=proofArgs(t);
       const bBalance=()=>scenario.nativeOut?client.getBalance({address:actors.B.address}):call(C,'balanceOf',[actors.B.address]),beforeB=await bBalance();
+      const withdrawalFeeBalance=()=>scenario.nativeOut?client.getBalance({address:actors.withdrawalFeeRecipient.address}):call(C,'balanceOf',[actors.withdrawalFeeRecipient.address]);
+      const beforeWithdrawalFee=await withdrawalFeeBalance();
+      assert.equal(await call(target,'accountedBalance'),9970n);
       await write(label('B-restored-note-normal-withdrawal'),target,'transact',[p.pA,p.pB,p.pC,p.pubSignals,extArgs(t),t.encryptedOutputs],'processor');
-      assert.equal(await bBalance(),beforeB+9980n);assert.equal(await targetBalance(),0n);
+      assert.equal(await bBalance(),beforeB+9938n);assert.equal(await withdrawalFeeBalance(),beforeWithdrawalFee+32n);
+      assert.equal(await targetBalance(),0n);assert.equal(await call(target,'accountedBalance'),0n);
       assert.equal(sdk.recoverAccount(restored,target.profile,await snapshot(target)).balance,0n);assert.equal(sdk.recoverAccount(a,source.profile,await snapshot(source)).balance,0n);
       for(const token of [A,B,C,W])for(const holder of [adapter.address,twin.address,router.address])assert.equal(await call(token,'balanceOf',[holder]),0n);
       for(const holder of [adapter.address,twin.address,router.address])assert.equal(await client.getBalance({address:holder}),0n);
       assert.equal(await call(A,'allowance',[adapter.address,router.address]),0n);assert.equal(await call(C,'allowance',[adapter.address,target.address]),0n);
-      if(scenario.nativeOut)assert.equal(await call(W,'balanceOf',[actors.treasury.address]),20n);
-      pass(label('B-final-proof-withdrawal-and-zero-private-reserves-allowances'),{withdrawal:'9980',privateReserves:'0',adapterAndRouterBalances:'0',allowances:'0'});
-      report.scenarios.push({...scenario,feeBps:20,sourceProfile:source.profile,targetProfile:target.profile,route:wire(route),adapterRuntimeCodeHash:(await pin(adapter)).runtimeCodeHash,
-        sourceReserve:'0',targetReserve:'0',BRecoveredAmount:'9980',BWithdrawnAmount:'9980',serviceFee:'20',gas:{estimate:String(estimate),paddedGas:String(paddedGas),actualGasUsed:String(swap.gasUsed),relayMaxGas:String(relayMaxGas),oldestWindowProof},passed:true});
+      if(scenario.nativeOut)assert.equal(await call(W,'balanceOf',[actors.treasury.address]),30n);
+      pass(label('B-final-proof-withdrawal-and-zero-private-reserves-allowances'),{withdrawalGross:'9970',withdrawal:'9938',withdrawalFee:'32',
+        withdrawalPercentageFee:'29',syntheticQuotedGasFee:'3',feeRecipient:actors.withdrawalFeeRecipient.address,accountedBalance:'0',privateReserves:'0',adapterAndRouterBalances:'0',allowances:'0'});
+      report.scenarios.push({...scenario,feeBps:30,sourceProfile:source.profile,targetProfile:target.profile,route:wire(route),adapterRuntimeCodeHash:(await pin(adapter)).runtimeCodeHash,
+        sourceReserve:'0',targetReserve:'0',BRecoveredAmount:'9970',BWithdrawnAmount:'9938',withdrawalGross:'9970',withdrawalFee:'32',
+        withdrawalPolicy,withdrawalQuote,withdrawalFeeRecipient:actors.withdrawalFeeRecipient.address,withdrawalAccountedBalance:'0',serviceFee:'30',
+        gas:{estimate:String(estimate),paddedGas:String(paddedGas),actualGasUsed:String(swap.gasUsed),relayMaxGas:String(relayMaxGas),oldestWindowProof},passed:true});
     }
     for(const pool of allPools){const state=await snapshot(pool);assert.equal(state.reserve,'0');assert.equal(state.actualBalance,'0');}
     pass('all-four-production-private-pools-reconcile-to-zero-reserves');report.passed=true;

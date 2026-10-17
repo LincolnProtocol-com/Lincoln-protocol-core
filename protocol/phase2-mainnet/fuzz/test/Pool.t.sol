@@ -19,7 +19,7 @@ contract PoolTest is Base {
         registry = deployRegistry();
         verifier = new MockJoinSplitVerifier();
         exitVerifier = new MockExitVerifier();
-        pool = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0));
+        pool = new Phase2ASPPool(address(verifier), address(exitVerifier), address(registry), address(0), type(uint128).max, type(uint128).max);
         publish(registry, 1, 7 days);
         vm.deal(address(this), 1_000_000 ether);
     }

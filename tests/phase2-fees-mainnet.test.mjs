@@ -65,12 +65,12 @@ test('cached production components still reject source changes and different cor
   assert.throws(()=>verifyMainnetFeeComponent(f),/MAINNET_FEE_COMPONENT_SOURCE_CHANGED/);
   assert.throws(()=>verifyMainnetFeeComponent({...f,coreRelease:{...core,artifactSHA256:'b'.repeat(64)}}),/MAINNET_FEE_CORE_RELEASE_MISMATCH/);
 });
-test('Safe 20bps mainnet plan keeps pool addresses and create calls unset before core deployment',()=>{
-  const plan=planMainnetFeeDeployment({coreRelease:core,feeArtifactBytes:built.artifactBytes,selection,treasury:SAFE,feeBps:20});
+test('Safe 30bps launch default mainnet plan keeps pool addresses and create calls unset before core deployment',()=>{
+  const plan=planMainnetFeeDeployment({coreRelease:core,feeArtifactBytes:built.artifactBytes,selection,treasury:SAFE});
   assert.equal(plan.coreDeploymentRequired,true);assert.equal(plan.transactionsBroadcast,0);assert.equal(plan.deploymentExecutorImplemented,false);assert.equal(plan.plannedAdapters.length,selection.routes.length);
-  assert.equal(plan.treasury,SAFE);assert.equal(plan.feeBps,20);
+  assert.equal(plan.treasury,SAFE);assert.equal(plan.feeBps,30);
   for(const item of plan.plannedAdapters){assert.equal(item.unsignedCreateTransaction,null);assert.equal(item.newAdapter.address,null);assert.equal(item.newAdapter.runtimeCodeHash,null);assert.equal(item.executionEnabled,false);assert.ok(item.runtimeTemplateSHA256);
-    assert.equal(item.requiredImmutableGetters.FEE_BPS,20);assert.equal(item.requiredImmutableGetters.TREASURY,SAFE);
+    assert.equal(item.requiredImmutableGetters.FEE_BPS,30);assert.equal(item.requiredImmutableGetters.TREASURY,SAFE);
     assert.equal(item.requiredImmutableGetters.HOPS,selection.routes.find(r=>r.id===item.id).hops.length);
     assert.equal(Object.hasOwn(item.requiredImmutableGetters,'SOURCE_POOL'),false);
     assert.equal(item.routerABIStyle,item.adapterType==='Phase2FeeRouter02Adapter'?'router02-exactInput-without-deadline':'exactInput-with-deadline');
@@ -93,7 +93,7 @@ async function deployedFixture(){
   }
   return {schema:'phase2-mainnet-deployed/v1',chainId:4663,testOnly:false,releaseId:core.artifactSHA256,production,profiles,routesByPool};
 }
-test('verified core deployment profiles materialize exact eight-argument unsigned fee CREATEs',async()=>{
+test('explicit legacy 20bps core profiles still materialize exact eight-argument unsigned fee CREATEs',async()=>{
   const coreDeployment=await deployedFixture(),plan=planMainnetFeeDeployment({coreRelease:core,feeArtifactBytes:built.artifactBytes,selection,treasury:SAFE,feeBps:20,coreDeployment});
   assert.equal(plan.coreDeploymentRequired,false);assert.deepEqual(plan.pending,[]);
   for(const p of plan.plannedAdapters){const c=built.artifact[p.adapterType],tx=p.unsignedCreateTransaction;assert.equal(tx.chainId,4663);assert.equal(tx.to,null);assert.equal(tx.nonce,null);assert.ok(tx.data.startsWith(c.bytecode));
@@ -103,6 +103,15 @@ test('verified core deployment profiles materialize exact eight-argument unsigne
     assert.equal(p.requiredImmutableGetters.TARGET_POOL,coreDeployment.profiles[p.targetAssetId].pool.address);
   }
   coreDeployment.releaseId='b'.repeat(64);assert.throws(()=>planMainnetFeeDeployment({coreRelease:core,feeArtifactBytes:built.artifactBytes,selection,treasury:SAFE,coreDeployment}),/MAINNET_FEE_DEPLOYMENT_RELEASE_MISMATCH/);
+});
+test('launch default materializes 30bps in the actual adapter constructor payload',async()=>{
+  const coreDeployment=await deployedFixture(),plan=planMainnetFeeDeployment({coreRelease:core,feeArtifactBytes:built.artifactBytes,selection,treasury:SAFE,coreDeployment});
+  assert.equal(plan.feeBps,30);
+  for(const item of plan.plannedAdapters){
+    const contract=built.artifact[item.adapterType],args=decodeAbiParameters(contract.abi.find(x=>x.type==='constructor').inputs,
+      '0x'+item.unsignedCreateTransaction.data.slice(contract.bytecode.length));
+    assert.equal(Number(args[6]),30);assert.equal(args[7].toLowerCase(),SAFE);
+  }
 });
 test('mainnet fee plans reject changed deployed adapter interfaces and treasury route collisions',async()=>{
   const coreDeployment=await deployedFixture();coreDeployment.routesByPool.eth[0].route.adapterType='Phase2RouteAdapter';

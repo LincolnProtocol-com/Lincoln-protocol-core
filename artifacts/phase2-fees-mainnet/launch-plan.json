@@ -5,13 +5,13 @@
   "executionEnabled": false,
   "productionReady": false,
   "releaseCandidate": true,
-  "coreArtifactSHA256": "f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414",
+  "coreArtifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
   "feeArtifact": {
     "path": "artifacts/phase2-fees-mainnet/contracts.json",
-    "sha256": "a171065c1d29c86f25227298137e6952ac2d135e18ea4a7cbf959efaed09c65d"
+    "sha256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a"
   },
   "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
-  "feeBps": 20,
+  "feeBps": 30,
   "coreDeploymentRequired": true,
   "plannedAdapters": [
     {
@@ -19,7 +19,7 @@
       "sourceAssetId": "eth",
       "targetAssetId": "usdg",
       "adapterType": "Phase2FeeRouter02Adapter",
-      "feeBps": 20,
+      "feeBps": 30,
       "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
       "routerABIStyle": "router02-exactInput-without-deadline",
       "constructorABI": [
@@ -458,7 +458,7 @@
         "PATH_HASH": "0x009514e01a6a764422d7c7249a6f787f10eb04bc975b5bca07b47490cf24e110",
         "PROTOCOL": 0,
         "PATH": "0x0bd7d308f8e1639fab988df18a8011f41eacad730000645fc5360d0400a0fd4f2af552add042d716f1d168",
-        "FEE_BPS": 20,
+        "FEE_BPS": 30,
         "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
       },
       "executionEnabled": false,
@@ -475,7 +475,7 @@
       "sourceAssetId": "usdg",
       "targetAssetId": "eth",
       "adapterType": "Phase2FeeRouter02Adapter",
-      "feeBps": 20,
+      "feeBps": 30,
       "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
       "routerABIStyle": "router02-exactInput-without-deadline",
       "constructorABI": [
@@ -914,7 +914,7 @@
         "PATH_HASH": "0x53cd3b81a3cfa24cf3f3287e5dae535430380552cd08997974aa9f996ae77dff",
         "PROTOCOL": 0,
         "PATH": "0x5fc5360d0400a0fd4f2af552add042d716f1d1680000640bd7d308f8e1639fab988df18a8011f41eacad73",
-        "FEE_BPS": 20,
+        "FEE_BPS": 30,
         "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
       },
       "executionEnabled": false,
@@ -931,7 +931,7 @@
       "sourceAssetId": "eth",
       "targetAssetId": "usdg",
       "adapterType": "Phase2FeeRouteAdapter",
-      "feeBps": 20,
+      "feeBps": 30,
       "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
       "routerABIStyle": "exactInput-with-deadline",
       "constructorABI": [
@@ -1370,7 +1370,7 @@
         "PATH_HASH": "0x28b619dab196ee5f73d5190b1ec5ddadfaf7a5e4b77d130d780800a50eea0f7d",
         "PROTOCOL": 1,
         "PATH": "0x0bd7d308f8e1639fab988df18a8011f41eacad7300000a5fc5360d0400a0fd4f2af552add042d716f1d168",
-        "FEE_BPS": 20,
+        "FEE_BPS": 30,
         "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
       },
       "executionEnabled": false,
@@ -1387,7 +1387,7 @@
       "sourceAssetId": "usdg",
       "targetAssetId": "eth",
       "adapterType": "Phase2FeeRouteAdapter",
-      "feeBps": 20,
+      "feeBps": 30,
       "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
       "routerABIStyle": "exactInput-with-deadline",
       "constructorABI": [
@@ -1826,7 +1826,7 @@
         "PATH_HASH": "0x7b39c7a0674b347b1b1bd0946cdbb3a839c340a4bfe2a746802c78efc249e119",
         "PROTOCOL": 1,
         "PATH": "0x5fc5360d0400a0fd4f2af552add042d716f1d16800000a0bd7d308f8e1639fab988df18a8011f41eacad73",
-        "FEE_BPS": 20,
+        "FEE_BPS": 30,
         "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
       },
       "executionEnabled": false,
@@ -1843,7 +1843,7 @@
       "sourceAssetId": "eth",
       "targetAssetId": "nvda",
       "adapterType": "Phase2FeeRouter02Adapter",
-      "feeBps": 20,
+      "feeBps": 30,
       "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
       "routerABIStyle": "router02-exactInput-without-deadline",
       "constructorABI": [
@@ -2282,7 +2282,7 @@
         "PATH_HASH": "0x671a930cf2a4e985acf52f8beb2cf1863323c56b72de0d0b2274c9229ea93814",
         "PROTOCOL": 0,
         "PATH": "0x0bd7d308f8e1639fab988df18a8011f41eacad730000645fc5360d0400a0fd4f2af552add042d716f1d1680001f4d0601ce157db5bdc3162bbac2a2c8af5320d9eec",
-        "FEE_BPS": 20,
+        "FEE_BPS": 30,
         "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
       },
       "executionEnabled": false,
@@ -2299,7 +2299,7 @@
       "sourceAssetId": "nvda",
       "targetAssetId": "eth",
       "adapterType": "Phase2FeeRouter02Adapter",
-      "feeBps": 20,
+      "feeBps": 30,
       "treasury": "0x9cf17a6e3c75d200f58283a165c442a8a3994555",
       "routerABIStyle": "router02-exactInput-without-deadline",
       "constructorABI": [
@@ -2738,7 +2738,7 @@
         "PATH_HASH": "0x8150199ea5b2a21db7886557ca8af379a0aec101638f6ad36b52a72b0a72f191",
         "PROTOCOL": 0,
         "PATH": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec0001f45fc5360d0400a0fd4f2af552add042d716f1d1680000640bd7d308f8e1639fab988df18a8011f41eacad73",
-        "FEE_BPS": 20,
+        "FEE_BPS": 30,
         "TREASURY": "0x9cf17a6e3c75d200f58283a165c442a8a3994555"
       },
       "executionEnabled": false,

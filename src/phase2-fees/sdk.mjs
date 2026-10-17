@@ -9,7 +9,7 @@ import {
 } from '../phase2-asp/sdk.mjs';
 
 export const FEE_SWAP_DOMAIN=keccak256(stringToHex('LINCOLN_PHASE2_FEE_ROUTES_V1'));
-export const DEFAULT_SERVICE_FEE_BPS=20;
+export const DEFAULT_SERVICE_FEE_BPS=30;
 export const MAX_SERVICE_FEE_BPS=100;
 export const FEE_ADAPTER_TYPES=Object.freeze(['Phase2FeeRouteAdapter','Phase2FeeRouter02Adapter']);
 const need=(ok,code)=>{if(!ok)throw Object.assign(new Error(code),{code});};

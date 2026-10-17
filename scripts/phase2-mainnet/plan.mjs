@@ -15,13 +15,15 @@ const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 /** Metadata review only; presence never claims ceremony verification or deployment safety. */
 export function buildMainnetPlan({config,productionBuild=null,joinManifest=null,exitManifest=null}={}){
   need(config?.schema==='lincoln-mainnet-target/v1'&&config.enabled===true&&config.network==='mainnet'&&config.chain?.id===4663,'MAINNET_TARGET_CHAIN_MISMATCH');
-  need(config.chain.rpcUrl==='https://rpc.mainnet.chain.robinhood.com/'&&ADDRESS.test(config.deployer?.address??''),'MAINNET_TARGET_INVALID');
+  need(config.chain.rpcUrl==='https://rpc.mainnet.chain.robinhood.com/'&&config.deployer
+    &&(config.deployer.address===null||ADDRESS.test(config.deployer.address)),'MAINNET_TARGET_INVALID');
   const mode=config.deployment?.policyMode;
   need(mode===null||['asp','permissionless'].includes(mode),'MAINNET_POLICY_INVALID');
   if(mode==='asp')need(config.provider?.kind==='self-hosted'&&ADDRESS.test(config.provider.address)
     &&config.provider.bootstrapPolicy==='all-current-notes'&&config.provider.sourceScreening===false,'MAINNET_PROVIDER_INVALID');
   need(Array.isArray(config.codePins)&&config.codePins.length>0&&config.codePins.every(pin=>ADDRESS.test(pin.address)&&HASH.test(pin.runtimeCodeHash)),'MAINNET_PINS_INVALID');
   const pending=[],add=(code,detail)=>pending.push({code,detail});
+  if(config.deployer.address===null)add('MAINNET_DEPLOYER_UNSET','Provide a new dedicated mainnet deployer address; no testnet account is selected by default.');
   if(mode===null)add('POLICY_SELECTION_PENDING','Select ASP or a separately specified permissionless circuit; neither is selected automatically.');
   let buildStatus='missing';
   if(!productionBuild)add('PRODUCTION_BUILD_MISSING','Build a separately named mainnet binary; current development constructors remain unchanged.');
@@ -86,6 +88,7 @@ export async function readMainnetPlan({root=ROOT}={}){
 /** Only public-client read methods are used; caller-supplied clients are for tests. */
 export async function checkMainnetReadOnly({plan,client}={}){
   need(plan?.schema==='lincoln-mainnet-plan/v1'&&plan.chain?.id===4663,'MAINNET_PLAN_REQUIRED');
+  need(ADDRESS.test(plan.deployer?.address??''),'MAINNET_DEPLOYER_UNSET');
   need(client&&['getChainId','getBlockNumber','getBlock','getBalance','getTransactionCount','getCode'].every(name=>typeof client[name]==='function'),'MAINNET_READ_CLIENT_REQUIRED');
   need(await client.getChainId()===4663,'MAINNET_RPC_WRONG_CHAIN');
   const blockNumber=await client.getBlockNumber(),block=await client.getBlock({blockNumber});

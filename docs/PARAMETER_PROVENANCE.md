@@ -1,23 +1,46 @@
 # Proving parameter provenance
 
-This repository packages the Robinhood mainnet contract candidate extracted from
+The initial RC.1 import of this Robinhood mainnet core repository came from
 `LincolnProtocol-com/LincolnProtocol` commit
-`99e0be62475ac95bb5f8030659c782d5275475a1`. It preserves final public proving
-materials and their byte-level bindings. It does not contain wallet keys, private
-notes, private witnesses, contributor entropy, or an assertion that an
-independent security audit has been completed.
+`99e0be62475ac95bb5f8030659c782d5275475a1`. The pushed `v0.1.0-rc.1` remains a
+historical snapshot; RC.2 changes deposit caps, planning and fee policy while
+preserving final public proving materials and their byte-level identities.
+`audit/upstream-files.json` records the initial import, and
+`audit/source-changes-r2.json` is the explicit RC.2 change ledger. RC.2 is not a
+claim that every imported file remains byte-for-byte unchanged. The repository
+does not contain wallet keys, private notes, private witnesses, contributor
+entropy, or an assertion that an independent security audit has been completed.
 
-## Current frozen candidate
+## RC.2 candidate and historical RC.1 identity
 
-The source release inventory is
-`artifacts/phase2-mainnet/release-candidate-20261016.json` with SHA256
+RC.2 real-proof native/fee acceptance has passed. Its release-inventory path is
+`artifacts/phase2-mainnet/release-candidate-20261016-r2.json`; its frozen SHA256 is
+`abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3`. The actually compiled RC.2 core
+artifact `artifacts/phase2-mainnet/contracts.json` has SHA256
+`6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e`.
+The RC.2 fee artifact binds that changed core and has SHA256
+`52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a`.
+Standalone integrity, core/fee bytecode reproduction, circuit recompilation and a second public-only native/fee acceptance run have passed.
+
+For provenance, the **historical RC.1** source inventory is
+`artifacts/phase2-mainnet/release-candidate-20261016.json`, SHA256
 `b4290759e353e434aaa539fe5b2adcbae456aa56339a28980019d157a0f1ddc8`.
-It binds the current core artifact
-`artifacts/phase2-mainnet/contracts.json` (`f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414`)
-and fee artifact `artifacts/phase2-fees-mainnet/contracts.json`
-(`a171065c1d29c86f25227298137e6952ac2d135e18ea4a7cbf959efaed09c65d`).
-The inventory and final parameter manifests, rather than an older ceremony
-summary referring to a previous contract build, identify this candidate.
+It bound the RC.1 core artifact SHA256
+`f3c286de48fa33a3025e3d6f5fec6987b5caa10ca1091d14f0b838a1a516f414`
+and RC.1 fee artifact SHA256
+`a171065c1d29c86f25227298137e6952ac2d135e18ea4a7cbf959efaed09c65d`.
+These old bindings do not validate the RC.2 artifacts now occupying the current
+artifact paths. Preserved RC.1 build/report copies are under
+`audit/baselines/v0.1.0-rc.1/`; validate an old release against its historical
+snapshot rather than substituting new artifacts under old hashes.
+
+The final R1CS, WASM, zkeys and parameter manifests listed below are unchanged
+between RC.1 and RC.2. Caps, deposit-only pause and a new 30-bps adapter selection
+do not change the circuit statements or require a new contribution ceremony.
+The changed pool has passed fresh real-final-proof acceptance; new
+source/artifact/ABI bindings must be included in the final RC.2 inventory.
+Unchanged key identity cannot make an old passed contract report certify a new
+pool.
 
 The selected system uses Groth16 over BN128, a current-note ASP policy, two note
 inputs and two note outputs, and a Merkle depth of 20. JoinSplit has nine public
@@ -149,10 +172,21 @@ of every historical ceremony-stage file check. The original full tool-freeze
 verifier can require files intentionally outside this repository's scope.
 
 The local final-proof acceptance reports cover actual final proof generation,
-verification and contract execution on an isolated Anvil chain. Fee acceptance
-uses explicit synthetic DEX router/liquidity fixtures. These reports do not
-establish public mainnet execution, real market liquidity, production capacity,
-or a measured anonymity set.
+verification and contract execution on an isolated Anvil chain for their exact
+recorded build. RC.1 reports remain historical evidence in
+`audit/baselines/v0.1.0-rc.1/` and the original tag. RC.2 copies are in
+`audit/acceptance/standalone-20261016-r2/`: native acceptance passed 43 checks,
+11 actual final proofs and 48 local transactions (run
+`d2172cda-01bc-4b26-8d43-95b1d0e241c3`); fee acceptance passed 22 checks,
+four actual final proofs and 73 local transactions (run
+`e7cf5b6d-36ec-41cc-9e68-2dcde9f48d3d`). This totals 15 actual proofs and
+121 local transactions, with zero public-chain transactions. Native acceptance
+keeps deposits paused and caps below existing reserve while exercising the
+following actual-proof spends and exits. Fee acceptance uses explicit synthetic
+DEX router/liquidity fixtures. Mock-verifier cap/governance tests are
+separate contract-accounting evidence and do not prove Groth16 soundness. None
+of these reports establishes public mainnet execution, real market liquidity,
+production capacity, or a measured anonymity set.
 
 Use the repository's audit verification commands for current checks. Run
 acceptance procedures that regenerate reports in an isolated copy: fresh local

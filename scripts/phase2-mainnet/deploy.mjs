@@ -6,12 +6,13 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {isDeepStrictEqual} from 'node:util';
 import {randomUUID} from 'node:crypto';
-import {createPublicClient,http,getAddress,isAddress,encodeDeployData,encodeAbiParameters,encodePacked,getContractAddress,keccak256,toHex,parseAbi} from 'viem';
+import {createPublicClient,http,getAddress,isAddress,encodeDeployData,encodeAbiParameters,encodePacked,getContractAddress,keccak256,toHex,parseAbi,decodeEventLog} from 'viem';
 import {openServiceStore} from '../../src/phase1-service/store.mjs';
 import {createMainnetSigner,MAINNET_RPC} from '../../src/phase2-mainnet/signer.mjs';
 import {loadVerifiedMainnetRelease,readPublicFile,sha256} from '../../src/phase2-mainnet/release.mjs';
 import {readMainnetPlan} from './plan.mjs';
 import {verifyMainnetSafe} from '../../src/phase2-mainnet/safe.mjs';
+import {poolDeploymentCaps,CAP_INCREASE_DELAY_SECONDS} from '../../src/phase2-mainnet/caps.mjs';
 
 const ROOT=fileURLToPath(new URL('../../',import.meta.url));
 const ZERO='0x0000000000000000000000000000000000000000',FIELD=21888242871839275222246405745257275088548364400416034343698204186575808495617n;
@@ -41,13 +42,27 @@ function comparableRuntime(code,artifact,address,{expected=false}={}){
   }
   return out;
 }
-export async function verifyMainnetDeployment({client,step,artifact,libraries,expectedGetters={}}){
+export async function verifyMainnetDeployment({client,step,artifact,libraries,expectedGetters={},expectedInitialCaps=null}){
   const receipt=await client.getTransactionReceipt({hash:step.hash}),tx=await client.getTransaction({hash:step.hash});
   need(receipt.status==='success'&&same(receipt.contractAddress,step.address)&&same(receipt.from,step.deployer)
     &&receipt.transactionHash===step.hash&&receipt.to===null,'MAINNET_DEPLOYMENT_RECEIPT_MISMATCH');
   need((await client.getBlock({blockNumber:receipt.blockNumber})).hash===receipt.blockHash,'MAINNET_DEPLOYMENT_REORG');
   need(Number(tx.chainId)===4663&&same(tx.from,step.deployer)&&tx.to===null&&BigInt(tx.value)===0n&&BigInt(tx.nonce)===BigInt(step.nonce)
     &&same(tx.input,step.data),'MAINNET_DEPLOYMENT_TRANSACTION_MISMATCH');
+  if(expectedInitialCaps!==null){
+    // Mutable storage may have legitimately changed before first verification
+    // or recovery. Initial caps are instead bound to the exact CREATE calldata
+    // above and the constructor's own canonical CapsUpdated receipt event.
+    const expected=poolDeploymentCaps({depositCaps:{schema:'lincoln-pool-deposit-caps/v1',unit:'asset-base-units',status:'configured',
+      maxDepositUnits:String(expectedInitialCaps.maxDeposit),maxTotalUnits:String(expectedInitialCaps.maxTotal)}},{required:true});
+    const topic=keccak256(toHex('CapsUpdated(uint128,uint128)'));
+    const events=receipt.logs.filter(log=>same(log.address,step.address)&&same(log.topics?.[0],topic));
+    need(events.length===1&&events[0].removed!==true,'MAINNET_DEPLOYMENT_INITIAL_CAPS_MISMATCH');
+    let event;try{event=decodeEventLog({abi:artifact.abi,topics:events[0].topics,data:events[0].data,strict:true});}
+    catch{throw Object.assign(new Error('MAINNET_DEPLOYMENT_INITIAL_CAPS_MISMATCH'),{code:'MAINNET_DEPLOYMENT_INITIAL_CAPS_MISMATCH'});}
+    need(event.eventName==='CapsUpdated'&&event.args.maxDeposit===expected.maxDeposit&&event.args.maxTotal===expected.maxTotal,
+      'MAINNET_DEPLOYMENT_INITIAL_CAPS_MISMATCH');
+  }
   const code=await client.getCode({address:step.address});need(code&&code!=='0x','MAINNET_DEPLOYED_CODE_MISSING');
   const expected=linkMainnetBytecode(artifact,libraries,{runtime:true});
   need(comparableRuntime(code,artifact,step.address)===comparableRuntime(expected,artifact,step.address,{expected:true}),'MAINNET_DEPLOYED_CODE_MISMATCH');
@@ -66,7 +81,8 @@ export function guardianReady(config){
 }
 export function deploymentSpecs({config,routes=[]}){
   need(config.enabled===true&&config.chain?.id===4663&&config.network==='mainnet'&&config.deployment?.policyMode==='asp'
-    &&config.deployment.selected==='aspSelfHosted'&&isAddress(config.deployer?.address)&&isAddress(config.provider?.address),'MAINNET_DEPLOYMENT_TARGET_INVALID');
+    &&config.deployment.selected==='aspSelfHosted'&&(config.deployer?.address===null||isAddress(config.deployer?.address))
+    &&isAddress(config.provider?.address),'MAINNET_DEPLOYMENT_TARGET_INVALID');
   need(new URL(config.chain.rpcUrl).href===MAINNET_RPC,'MAINNET_OFFICIAL_RPC_REQUIRED');
   const assets=new Map(config.assets.map(asset=>[asset.symbol.toLowerCase(),asset]));
   need(assets.get('eth')?.address===ZERO&&assets.get('eth').decimals===18&&assets.get('usdg')?.decimals===6,'MAINNET_CORE_ASSETS_INVALID');
@@ -93,7 +109,8 @@ export function deploymentSpecs({config,routes=[]}){
       wrappedNative:pins.weth.address,contract:r.venue==='up'?'Phase2RouteAdapter':'Phase2Router02Adapter'};
   });
   const specs=['PoseidonT3','PoseidonT4','Phase2ASPJoinSplitVerifier','Phase2ASPExitVerifier','Phase2ASPRegistry'].map(name=>({id:name,contract:name}));
-  for(const assetId of selected)specs.push({id:`pool:${assetId}`,contract:'Phase2ASPPool',assetId,asset:assets.get(assetId)});
+  for(const assetId of selected){const asset=assets.get(assetId),caps=poolDeploymentCaps(asset);
+    specs.push({id:`pool:${assetId}`,contract:'Phase2ASPPool',assetId,asset,depositCaps:caps?{maxDepositUnits:String(caps.maxDeposit),maxTotalUnits:String(caps.maxTotal)}:null});}
   for(const route of normalized)specs.push({id:`route:${route.id}`,contract:route.contract,route});
   return specs.map(s=>({...s,gasCap:CAPS[s.contract].toString()}));
 }
@@ -121,14 +138,18 @@ export async function checkMainnetDependencies({client,config,specs}){
 }
 function argumentsFor(spec,addresses,config){
   if(spec.contract==='Phase2ASPRegistry')return [config.provider.address,config.guardian.address];
-  if(spec.contract==='Phase2ASPPool')return [addresses.Phase2ASPJoinSplitVerifier,addresses.Phase2ASPExitVerifier,addresses.Phase2ASPRegistry,spec.asset.address];
+  if(spec.contract==='Phase2ASPPool'){const caps=poolDeploymentCaps(spec.asset,{required:true});
+    return [addresses.Phase2ASPJoinSplitVerifier,addresses.Phase2ASPExitVerifier,addresses.Phase2ASPRegistry,spec.asset.address,caps.maxDeposit,caps.maxTotal];}
   if(spec.route){const r=spec.route;return [addresses['pool:'+r.source],addresses['pool:'+r.target],r.router,r.wrappedNative,r.protocol,r.path];}
   return [];
 }
 function gettersFor(spec,addresses,config){
-  if(spec.contract==='Phase2ASPRegistry')return {PROVIDER:config.provider.address,GUARDIAN:config.guardian.address};
+  // PROVIDER is deliberately mutable. Its initial value is bound by the exact
+  // constructor calldata; current provider/policy identity belongs to indexing.
+  if(spec.contract==='Phase2ASPRegistry')return {GUARDIAN:config.guardian.address};
   if(spec.contract==='Phase2ASPPool')return {ASSET:spec.asset.address,VERIFIER:addresses.Phase2ASPJoinSplitVerifier,HOLDER_EXIT_VERIFIER:addresses.Phase2ASPExitVerifier,
-    ASP_REGISTRY:addresses.Phase2ASPRegistry,SCOPE:scopeFor(addresses[spec.id]),TREE_DEPTH:20n,ROOT_HISTORY_SIZE:100n,CIPHERTEXT_BYTES:256n};
+    ASP_REGISTRY:addresses.Phase2ASPRegistry,SCOPE:scopeFor(addresses[spec.id]),TREE_DEPTH:20n,ROOT_HISTORY_SIZE:100n,CIPHERTEXT_BYTES:256n,
+    CAP_INCREASE_DELAY:BigInt(CAP_INCREASE_DELAY_SECONDS)};
   if(spec.route){const r=spec.route;return {SOURCE_POOL:addresses['pool:'+r.source],TARGET_POOL:addresses['pool:'+r.target],ROUTER:r.router,WRAPPED_NATIVE:r.wrappedNative,
     FACTORY:r.factory,SOURCE_ASSET:config.assets.find(a=>a.symbol.toLowerCase()===r.source).address,TARGET_ASSET:config.assets.find(a=>a.symbol.toLowerCase()===r.target).address,
     SOURCE_NATIVE:r.source==='eth',TARGET_NATIVE:r.target==='eth',TOKEN_IN:r.tokens[0],TOKEN_OUT:r.tokens.at(-1),PROTOCOL:r.protocol,HOPS:BigInt(r.parameters.length),
@@ -183,7 +204,9 @@ async function publishExact(root,relative,value){
 /** Low-level engine receives an already verified release. CLI always uses the final-key gate. */
 export async function runMainnetDeployment({root=ROOT,release,client,signer,routes=[],budgetWei,maxFeePerGasWei,reserveWei,relayer=null}={}){
   root=await fs.realpath(root);const {config,artifacts,artifactSHA256,sourceSetSHA256,production}=release;
+  need(isAddress(config.deployer?.address)&&config.deployer.address!==ZERO,'MAINNET_DEPLOYER_UNSET');
   need(guardianReady(config),'MAINNET_GUARDIAN_INVALID');const specs=deploymentSpecs({config,routes}),budget=numeric(budgetWei),price=numeric(maxFeePerGasWei);numeric(reserveWei,true);
+  for(const spec of specs)if(spec.asset)poolDeploymentCaps(spec.asset,{required:true});
   need(relayer===null||isAddress(relayer)&&relayer!==ZERO,'MAINNET_RELAYER_ADDRESS_INVALID');
   const maximum=specs.reduce((s,spec)=>s+BigInt(spec.gasCap)*price,0n);
   need(budget>=maximum,'MAINNET_DEPLOYMENT_BUDGET_BELOW_GAS_CAPS');
@@ -243,7 +266,8 @@ export async function runMainnetDeployment({root=ROOT,release,client,signer,rout
       catch{throw Object.assign(new Error('MAINNET_DEPLOYMENT_PENDING_NO_RESEND'),{code:'MAINNET_DEPLOYMENT_PENDING_NO_RESEND',transactionHash:hash});}
       const settled=await signer.reconcile(),entry=settled.entries.find(e=>e.id===id);
       need(entry?.status==='confirmed','MAINNET_DEPLOYMENT_REVERTED');
-      runtimes[spec.id]=await verifyMainnetDeployment({client,step,artifact,libraries,expectedGetters:gettersFor(spec,addresses,config)});
+      runtimes[spec.id]=await verifyMainnetDeployment({client,step,artifact,libraries,expectedGetters:gettersFor(spec,addresses,config),
+        expectedInitialCaps:spec.contract==='Phase2ASPPool'?poolDeploymentCaps(spec.asset,{required:true}):null});
       step.status='verified';step.runtime=runtimes[spec.id];await store.write(journal);
     }
     const profiles=productionProfiles({config,specs,runtimes,addresses,genesisHash,artifactSHA256,sourceSetSHA256,production,relayer,planId});
@@ -273,8 +297,9 @@ export async function mainnetDeploymentPlan({root=ROOT,routes=[]}={}){
   return {schema:'phase2-mainnet-deploy-plan/v1',mode:'offline-plan',chainId:4663,rpcUrl:MAINNET_RPC,transactionsSigned:0,transactionsBroadcast:0,
     deployer:config.deployer.address,provider:config.provider,productionReady:false,audit:config.audit,guardian:config.guardian??null,
     treasury:config.treasury??null,readiness:plan.readiness,
-    pending:guardianReady(config)?plan.pending:[...plan.pending,{code:'MAINNET_GUARDIAN_REQUIRED',detail:'Set config.guardian.address to a multisig distinct from the deployer and provider.'}],
-    productionArtifacts:config.productionArtifacts,steps:specs.map(({id,contract,gasCap,asset,route})=>({id,contract,gasCap,...(asset?{asset}:{}),...(route?{route}:{}),status:'not-deployed'})),
+    pending:[...(guardianReady(config)?plan.pending:[...plan.pending,{code:'MAINNET_GUARDIAN_REQUIRED',detail:'Set config.guardian.address to a multisig distinct from the deployer and provider.'}]),
+      ...specs.filter(s=>s.asset&&!s.depositCaps).map(s=>({code:'MAINNET_POOL_CAPS_UNSET',detail:s.asset.symbol+': fixed-block raw-asset cap valuation is required.'}))],
+    productionArtifacts:config.productionArtifacts,steps:specs.map(({id,contract,gasCap,asset,route,depositCaps})=>({id,contract,gasCap,...(asset?{asset,depositCaps}:{}),...(route?{route}:{}),status:'not-deployed'})),
     outputs:{manifest:'config/phase2-mainnet-deployed.json',profiles:specs.filter(s=>s.asset).map(s=>`config/phase2-mainnet-profiles/${s.assetId}.json`),
       aspPublisherConfig:'config/phase2-asp-publisher-mainnet.json',aspSigningEnabled:false,associationMirror:'docker/runtime/phase2-mainnet-public/association/current.json'},
     totalGasCap:specs.reduce((sum,s)=>sum+BigInt(s.gasCap),0n).toString(),
@@ -304,6 +329,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
     else{
       const release=await loadVerifiedMainnetRelease(),client=createPublicClient({transport:http(MAINNET_RPC,{retryCount:0,timeout:30000})});
       const {config}=release;need(new URL(config.chain.rpcUrl).href===MAINNET_RPC,'MAINNET_OFFICIAL_RPC_REQUIRED');
+      need(isAddress(config.deployer?.address)&&config.deployer.address!==ZERO,'MAINNET_DEPLOYER_UNSET');
       const budgetWei=values['--budget-wei'],maxFeePerGasWei=values['--max-fee-per-gas-wei'],reserveWei=values['--reserve-wei'];
       const signer=createMainnetSigner({client,address:config.deployer.address,account:values['--keystore-file']?undefined:values['--account']??config.deployer.signingAccount,
         keystoreFile:values['--keystore-file'],passwordFile:values['--password-file'],budgetWei,maxFeePerGasWei,reserveWei});

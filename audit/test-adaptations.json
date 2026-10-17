@@ -1,5 +1,5 @@
 {
-  "schema": "lincoln-core-test-adaptations/v1",
+  "schema": "lincoln-core-test-adaptations/v2",
   "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
   "adaptations": [
     {
@@ -12,9 +12,11 @@
     {
       "path": "tests/phase2-mainnet-plan.test.mjs",
       "upstreamSHA256": "6f9d2e6d737353123cc046ecd7e87a7294e9e9d5e8f472a94c080db85125769f",
-      "packagedSHA256": "eb4b734ab7025ef68480cee368404b91294c346c4a170a3bb7b767d36d3ca5ba",
+      "packagedSHA256": "eb3f2719aa94b1c56b93f4b68a01056ad456b9fdc9615e6e958b9835eef0b6e5",
       "change": "Add provenance header; replace only the development-zkey MPC case with binary inspection of the final holder-exit zkey (two non-beacon records and a beacon), retaining rejection of a one-record truncated chain. Other cases unchanged.",
-      "reason": "Development zkeys are intentionally absent from the standalone mainnet audit scope."
+      "reason": "Development zkeys are intentionally absent from the standalone mainnet audit scope.",
+      "r2Change": "Require a new mainnet deployer (unset in the candidate), preserve offline build/planning, and use an explicit synthetic configured address only in read-only RPC fixtures."
     }
-  ]
+  ],
+  "baselineTag": "v0.1.0-rc.1"
 }

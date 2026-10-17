@@ -1,0 +1,16 @@
+✔ valid native and fee evidence binds the selected release and compares fresh current-release reruns (2.646834ms)
+✔ a previous-release passed fee report cannot become current evidence by changing its run ID (1.047042ms)
+✔ false proof checks, unknown circuit and wrong final manifest are rejected (0.259875ms)
+✔ schema, chain, public transaction and release metadata must agree (0.418959ms)
+✔ counts, unique passed check names and mandatory real-proof cap checks cannot be omitted (0.809166ms)
+✔ transaction hashes must be valid and unique, including case-insensitive duplicates and historical reuse (0.462917ms)
+✔ current-release reruns preserve the exact check and proof scenario multisets (0.331917ms)
+✔ fee evidence rejects legacy economics, unsupported execution claims and unexited reserves (1.383625ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81.151708

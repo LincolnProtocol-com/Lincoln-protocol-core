@@ -9,10 +9,11 @@
     "explorerUrl": "https://robinhoodchain.blockscout.com"
   },
   "deployer": {
-    "address": "0x36437b878415EdA1a24186CF79AFffBc9ecEd298",
-    "signingAccount": "deployer",
-    "signerLocation": "user-local-keystore",
-    "privateKeyIncluded": false
+    "address": null,
+    "signingAccount": null,
+    "signerLocation": "dedicated-mainnet-keystore-not-configured",
+    "privateKeyIncluded": false,
+    "status": "awaiting-new-public-address"
   },
   "deployment": {
     "policyMode": "asp",
@@ -51,30 +52,89 @@
     {
       "symbol": "ETH",
       "address": "0x0000000000000000000000000000000000000000",
-      "decimals": 18
+      "decimals": 18,
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "1000000000000000000",
+        "maxTotalUnits": "20000000000000000000"
+      }
     },
     {
       "symbol": "USDG",
       "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
-      "decimals": 6
+      "decimals": 6,
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "configured",
+        "maxDepositUnits": "2500000000",
+        "maxTotalUnits": "50000000000"
+      }
     },
     {
       "symbol": "SPY",
       "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
       "decimals": 18,
-      "issuerRiskAcceptedAsKnownBoundary": true
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "valuation-required",
+        "maxDepositUnits": null,
+        "maxTotalUnits": null,
+        "valuationTargets": {
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "fixedBlock": null,
+          "rawTokenPriceUsd": null,
+          "uiMultiplierChecked": false,
+          "liveLiquidityAccepted": false
+        }
+      }
     },
     {
       "symbol": "NVDA",
       "address": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
       "decimals": 18,
-      "issuerRiskAcceptedAsKnownBoundary": true
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "valuation-required",
+        "maxDepositUnits": null,
+        "maxTotalUnits": null,
+        "valuationTargets": {
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "fixedBlock": null,
+          "rawTokenPriceUsd": null,
+          "uiMultiplierChecked": false,
+          "liveLiquidityAccepted": false
+        }
+      }
     },
     {
       "symbol": "AAPL",
       "address": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
       "decimals": 18,
-      "issuerRiskAcceptedAsKnownBoundary": true
+      "issuerRiskAcceptedAsKnownBoundary": true,
+      "depositCaps": {
+        "schema": "lincoln-pool-deposit-caps/v1",
+        "unit": "asset-base-units",
+        "status": "valuation-required",
+        "maxDepositUnits": null,
+        "maxTotalUnits": null,
+        "valuationTargets": {
+          "singleDepositUsd": "2500",
+          "poolTotalUsd": "25000",
+          "fixedBlock": null,
+          "rawTokenPriceUsd": null,
+          "uiMultiplierChecked": false,
+          "liveLiquidityAccepted": false
+        }
+      }
     }
   ],
   "codePins": [
@@ -193,5 +253,14 @@
     "kind": "safe",
     "chainId": 4663,
     "sameAsGuardian": true
+  },
+  "launchFees": {
+    "dexFeeBps": 30,
+    "withdrawalBps": 30,
+    "holderExitBps": 30,
+    "privateTransferUnits": "0",
+    "ragequitUnits": "0",
+    "gasQuote": "fixed-in-current-pool-asset-before-proof",
+    "mainnetRuntimeConfigured": false
   }
 }

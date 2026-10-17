@@ -1,0 +1,190 @@
+{
+  "schema": "lincoln-core-standalone-validation/v2",
+  "recordedAt": "2026-10-17T01:54:39.351Z",
+  "passed": true,
+  "candidateTag": "v0.1.0-rc.2",
+  "baseTag": "v0.1.0-rc.1",
+  "baseCommit": "4be4de18c9b416bef36bb85795330b2732257504",
+  "upstreamCommit": "99e0be62475ac95bb5f8030659c782d5275475a1",
+  "release": {
+    "path": "artifacts/phase2-mainnet/release-candidate-20261016-r2.json",
+    "sha256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
+    "frozenFiles": 105
+  },
+  "changeLedger": {
+    "path": "audit/source-changes-r2.json",
+    "sha256": "c229471af88f158faf66ec3872459a80ac851ce41cf32adc3cea633073517a60"
+  },
+  "artifacts": {
+    "coreSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+    "feeSHA256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a"
+  },
+  "node": {
+    "passed": 96,
+    "failed": 0,
+    "skipped": 0,
+    "runs": [
+      {
+        "command": "npm test",
+        "passed": 88,
+        "report": {
+          "path": "audit/acceptance/standalone-20261016-r2/node-suite.log",
+          "bytes": 9615,
+          "sha256": "eaf147cfe369470ec63816b91107733501ddbbedc43d0fda5df6a0987642ad16"
+        }
+      },
+      {
+        "command": "node --test tests/core-acceptance-report.test.mjs",
+        "passed": 8,
+        "report": {
+          "path": "audit/acceptance/standalone-20261016-r2/report-validator.log",
+          "bytes": 939,
+          "sha256": "6eaf6ac79eb47869d0dd04390b97865d5a8ad89890f38c0656f5c5361b97b9b9"
+        }
+      }
+    ],
+    "note": "The complete 88-case suite passed before the eight new pure validator regressions were added. The latter then passed as a targeted run; no unchanged suite was rerun merely to combine its count."
+  },
+  "foundry": {
+    "passed": 68,
+    "failed": 0,
+    "skipped": 0,
+    "fuzzRunsPerCase": 1000,
+    "invariantRuns": 128,
+    "invariantDepth": 40,
+    "invariantCalls": 5120,
+    "invariantReverts": 0,
+    "mockVerifiers": true,
+    "report": {
+      "path": "audit/acceptance/standalone-20261016-r2/foundry.json",
+      "bytes": 1507257,
+      "sha256": "6f8fa45075944b83bdb16cf38c8fb2101e05d86883c87b99495b9b6895cab029"
+    }
+  },
+  "reproduction": {
+    "coreBuild": true,
+    "feeBuild": true,
+    "circuitR1CSAndWASM": true,
+    "publicOnlyWrapper": true,
+    "wrapperRuns": {
+      "native": {
+        "passed": true,
+        "mode": "native",
+        "chainId": 4663,
+        "runId": "ea1c21fd-f796-4564-9652-d6fa22e2759d",
+        "coreArtifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "checks": 43,
+        "proofs": 11,
+        "transactions": 48,
+        "referenceCompared": true,
+        "localOnly": true,
+        "publicTransactions": 0,
+        "report": "audit/acceptance/standalone-20261016-r2/reproduction-native.json",
+        "sha256": "375dfdc92100462373ce1acafcec69d2ec73e2038cf41406bb3aef67bd32716a"
+      },
+      "fees": {
+        "passed": true,
+        "mode": "fees",
+        "chainId": 4663,
+        "runId": "b43da6ee-f2d5-4156-92a0-baf7bb6ebc04",
+        "coreArtifactSHA256": "6bea6c23a5a6e80aec8411d8269978a584058e40a4cdf14e4eb231e4f7b7f41e",
+        "feeArtifactSHA256": "52f71b538b613ec315727afce2eb4f86604adcce698be58a1ff12d8ab256a36a",
+        "checks": 22,
+        "proofs": 4,
+        "transactions": 73,
+        "referenceCompared": true,
+        "localOnly": true,
+        "publicTransactions": 0,
+        "report": "audit/acceptance/standalone-20261016-r2/reproduction-fees.json",
+        "sha256": "6fdd3475be8edafd9660737e46bc365504c8e04acf01230508a6798053d6e6d0"
+      }
+    }
+  },
+  "canonicalAcceptance": {
+    "native": {
+      "checks": 43,
+      "proofs": 11,
+      "transactions": 48,
+      "report": {
+        "path": "audit/acceptance/standalone-20261016-r2/native.json",
+        "bytes": 33783,
+        "sha256": "38b12b139f073e67971b3d5a75e2d0a4bd1d16ea8f85f31c5dd79a0e98c2fc3c"
+      }
+    },
+    "fees": {
+      "checks": 22,
+      "proofs": 4,
+      "transactions": 73,
+      "actualDEX": false,
+      "feeBps": 30,
+      "report": {
+        "path": "audit/acceptance/standalone-20261016-r2/fees.json",
+        "bytes": 73530,
+        "sha256": "e747824d2fdc0e02a97a582c9c5f064095db3a15f10b99e5183c881da0eeef91"
+      }
+    }
+  },
+  "evidence": {
+    "build-reproduction.log": {
+      "path": "audit/acceptance/standalone-20261016-r2/build-reproduction.log",
+      "bytes": 876,
+      "sha256": "ef81df469c45032ba7ca0629ca196bca5f0024c886aa7de36bb7252a1f79f24e"
+    },
+    "circuit-rebuild.log": {
+      "path": "audit/acceptance/standalone-20261016-r2/circuit-rebuild.log",
+      "bytes": 729,
+      "sha256": "f5cf3f8fa5c568fd0f272f844bcac0cd32f6a92b0d94826c84c840643aa7a336"
+    },
+    "fees.json": {
+      "path": "audit/acceptance/standalone-20261016-r2/fees.json",
+      "bytes": 73530,
+      "sha256": "e747824d2fdc0e02a97a582c9c5f064095db3a15f10b99e5183c881da0eeef91"
+    },
+    "foundry.json": {
+      "path": "audit/acceptance/standalone-20261016-r2/foundry.json",
+      "bytes": 1507257,
+      "sha256": "6f8fa45075944b83bdb16cf38c8fb2101e05d86883c87b99495b9b6895cab029"
+    },
+    "native.json": {
+      "path": "audit/acceptance/standalone-20261016-r2/native.json",
+      "bytes": 33783,
+      "sha256": "38b12b139f073e67971b3d5a75e2d0a4bd1d16ea8f85f31c5dd79a0e98c2fc3c"
+    },
+    "node-suite.log": {
+      "path": "audit/acceptance/standalone-20261016-r2/node-suite.log",
+      "bytes": 9615,
+      "sha256": "eaf147cfe369470ec63816b91107733501ddbbedc43d0fda5df6a0987642ad16"
+    },
+    "report-validator.log": {
+      "path": "audit/acceptance/standalone-20261016-r2/report-validator.log",
+      "bytes": 939,
+      "sha256": "6eaf6ac79eb47869d0dd04390b97865d5a8ad89890f38c0656f5c5361b97b9b9"
+    },
+    "reproduction-fees.json": {
+      "path": "audit/acceptance/standalone-20261016-r2/reproduction-fees.json",
+      "bytes": 73530,
+      "sha256": "6fdd3475be8edafd9660737e46bc365504c8e04acf01230508a6798053d6e6d0"
+    },
+    "reproduction-native.json": {
+      "path": "audit/acceptance/standalone-20261016-r2/reproduction-native.json",
+      "bytes": 33785,
+      "sha256": "375dfdc92100462373ce1acafcec69d2ec73e2038cf41406bb3aef67bd32716a"
+    },
+    "wrapper-reproduction.log": {
+      "path": "audit/acceptance/standalone-20261016-r2/wrapper-reproduction.log",
+      "bytes": 4712,
+      "sha256": "6912388b9816a332d9eac7c851c94b11d35a2daab9f66d65731aa1fe44c7f0be"
+    }
+  },
+  "mainnetDeployed": false,
+  "productionReady": false,
+  "publicTransactions": 0,
+  "newMainnetDeployerConfigured": false,
+  "mainnetFundingAuthorized": false,
+  "cloudServicesChanged": false,
+  "limitations": [
+    "Acceptance is local and uses synthetic temporary accounts, final production parameters and explicit mock DEX liquidity.",
+    "Foundry verifier mocks do not verify proof mathematics; actual proof acceptance is recorded separately.",
+    "Independent audit is deferred. Stock raw caps, fee deployment/activation and operational mainnet rollout remain separate work."
+  ]
+}

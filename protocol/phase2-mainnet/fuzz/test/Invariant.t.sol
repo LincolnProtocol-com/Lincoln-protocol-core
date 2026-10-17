@@ -21,6 +21,7 @@ contract PoolHandler is Base {
     Phase2ASPRegistry public immutable registry;
     Note[] internal notes;
     uint256 public ghostBalance;
+    uint256 public ghostDonations;
     uint256 public ghostLeaves;
     uint256 public violations;
     uint256 public calls;
@@ -76,7 +77,11 @@ contract PoolHandler is Base {
 
     function deposit(uint256 valueSeed) external {
         calls++;
-        uint128 value = uint128(bound(valueSeed, 1, 10 ether));
+        if (pool.depositsPaused() || pool.accountedBalance() >= pool.maxTotal()) return;
+        uint256 capacity = uint256(pool.maxTotal()) - pool.accountedBalance();
+        if (capacity > pool.maxDeposit()) capacity = pool.maxDeposit();
+        if (capacity > 10 ether) capacity = 10 ether;
+        uint128 value = uint128(bound(valueSeed, 1, capacity));
         // An EOA depositor: ragequit refuses contract depositors (audit L1).
         vm.deal(DEPOSITOR, value);
         uint256 precommitment = fresh();
@@ -165,6 +170,38 @@ contract PoolHandler is Base {
         skip(bound(gap, 0, 1 days));
     }
 
+    /// Donations must not consume capacity or become note-backed liabilities.
+    function donate(uint256 valueSeed) external {
+        calls++;
+        uint256 value = bound(valueSeed, 1, 10 ether);
+        vm.deal(address(pool), address(pool).balance + value);
+        ghostDonations += value;
+    }
+
+    /// Model immediate emergency reductions, including below current TVL, and
+    /// delayed increases. Spends/exits continue through the same action set.
+    function manageCaps(uint256 perSeed, uint256 totalSeed, bool paused, bool increase) external {
+        calls++;
+        vm.prank(GUARDIAN);
+        if (paused) pool.pauseDeposits(); else pool.unpauseDeposits();
+        if (increase) {
+            uint128 nextDeposit = pool.maxDeposit() + uint128(bound(perSeed, 1, 10 ether));
+            uint128 nextTotal = pool.maxTotal() + uint128(bound(totalSeed, 1, 100 ether));
+            if (nextDeposit > nextTotal) nextTotal = nextDeposit;
+            vm.prank(GUARDIAN);
+            pool.proposeCapIncrease(nextDeposit, nextTotal);
+            skip(1 days);
+            vm.prank(GUARDIAN);
+            pool.acceptCapIncrease();
+        } else {
+            uint128 nextTotal = uint128(bound(totalSeed, 1, pool.maxTotal()));
+            uint128 depositLimit = pool.maxDeposit() < nextTotal ? pool.maxDeposit() : nextTotal;
+            uint128 nextDeposit = uint128(bound(perSeed, 1, depositLimit));
+            vm.prank(GUARDIAN);
+            pool.setCaps(nextDeposit, nextTotal);
+        }
+    }
+
     /// Adversarial: replay a spent note through transact or holderExit.
     function replaySpent(uint256 seed, bool viaExit) external {
         calls++;
@@ -204,7 +241,7 @@ contract PoolInvariantTest is Base {
 
     function setUp() public {
         registry = deployRegistry();
-        pool = new Phase2ASPPool(address(new MockJoinSplitVerifier()), address(new MockExitVerifier()), address(registry), address(0));
+        pool = new Phase2ASPPool(address(new MockJoinSplitVerifier()), address(new MockExitVerifier()), address(registry), address(0), 10 ether, 100 ether);
         handler = new PoolHandler(pool, registry);
         publish(registry, 1, 7 days);
     }
@@ -215,7 +252,8 @@ contract PoolInvariantTest is Base {
     }
 
     function invariant_custodyEqualsUnspentNotes() public view {
-        eq(address(pool).balance, handler.ghostBalance(), 'pool balance != sum of unspent notes');
+        eq(pool.accountedBalance(), handler.ghostBalance(), 'liabilities != sum of unspent notes');
+        eq(address(pool).balance, handler.ghostBalance() + handler.ghostDonations(), 'custody != notes plus donations');
     }
 
     function invariant_noDoubleSpend() public view {

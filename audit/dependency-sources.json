@@ -1,7 +1,7 @@
 {
   "schema": "lincoln-core-dependency-source-snapshots/v1",
   "description": "Review-only copies of every npm dependency file pinned in the frozen release. Compilation retains the original node_modules source paths.",
-  "releaseManifestSHA256": "b4290759e353e434aaa539fe5b2adcbae456aa56339a28980019d157a0f1ddc8",
+  "releaseManifestSHA256": "abbb1064147919a7936569cd6f8105b39f885835ba19c002be75960b69aa58e3",
   "files": [
     {
       "snapshotPath": "vendor/solidity/@openzeppelin/contracts/package.json",
@@ -57,5 +57,6 @@
       "bytes": 27353,
       "sha256": "289e22a19a20bcec7519e29d172b8c1624b65ac6140d1982fe029254e1600a8f"
     }
-  ]
+  ],
+  "previousReleaseManifestSHA256": "b4290759e353e434aaa539fe5b2adcbae456aa56339a28980019d157a0f1ddc8"
 }

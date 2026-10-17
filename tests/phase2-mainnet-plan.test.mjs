@@ -13,7 +13,8 @@ const config=JSON.parse(await fs.readFile(new URL('../config/phase2-mainnet.json
 test('mainnet target is actually enabled without claiming production build or parameter readiness',async()=>{
   const plan=buildMainnetPlan({config});
   assert.equal(plan.chain.id,4663);assert.equal(plan.mainnetTargetEnabled,true);
-  assert.equal(plan.deployer.address.toLowerCase(),'0x36437b878415eda1a24186cf79afffbc9eced298');
+  assert.equal(plan.deployer.address,null);assert.equal(plan.deployer.signingAccount,null);
+  assert.ok(plan.pending.some(item=>item.code==='MAINNET_DEPLOYER_UNSET'));
   assert.equal(plan.readiness.productionReady,false);assert.equal(plan.readiness.broadcastImplemented,true);
   assert.equal(plan.transactionsBroadcast,0);assert.equal(plan.audit.blocking,false);
   assert.equal(plan.policyMode,'asp');assert.equal(plan.selected,'aspSelfHosted');assert.equal(plan.deploymentBuildEnabled,true);
@@ -101,7 +102,7 @@ function readClient(){const code='0x6000',hash='0x'+'ab'.repeat(32),calls=[];
     async getBlock(){calls.push('block');return {number:100n,hash};},async getBalance(){calls.push('balance');return 123n;},
     async getTransactionCount(){calls.push('nonce');return 4;},async getCode(){calls.push('code');return code;},
     sendTransaction(){throw new Error('SIGNER_FORBIDDEN');},request(){throw new Error('RAW_RPC_FORBIDDEN');}};
-  const plan=buildMainnetPlan({config});plan.codePins=[{role:'fixture',address:config.codePins[0].address,runtimeCodeHash:keccak256(code)}];
+  const plan=buildMainnetPlan({config:{...config,deployer:{...config.deployer,address:'0x'+'12'.repeat(20)}}});plan.codePins=[{role:'fixture',address:config.codePins[0].address,runtimeCodeHash:keccak256(code)}];
   return {client,calls,plan};}
 test('optional onchain check only reads fixed-chain balance nonce and code with no signer',async()=>{
   const f=readClient(),result=await checkMainnetReadOnly(f);

@@ -16,7 +16,7 @@ const equal=(a,b)=>typeof a==='string'&&typeof b==='string'&&a.toLowerCase()===b
 const json=x=>JSON.stringify(x,null,2)+'\n';
 
 /** A missing core deployment is represented explicitly, never as dummy pool addresses. */
-export function planMainnetFeeDeployment({coreRelease,feeArtifactBytes,selection,coreDeployment=null,treasury,feeBps=20}={}){
+export function planMainnetFeeDeployment({coreRelease,feeArtifactBytes,selection,coreDeployment=null,treasury,feeBps=30}={}){
   check(isAddress(treasury)&&treasury.toLowerCase()!== '0x'+'00'.repeat(20),'MAINNET_FEE_TREASURY_REQUIRED');
   check(Number.isInteger(feeBps)&&feeBps>=1&&feeBps<=100,'INVALID_SERVICE_FEE_BPS');
   const payee=treasury.toLowerCase(),artifact=JSON.parse(Buffer.from(feeArtifactBytes)),meta=artifact._meta;
@@ -69,7 +69,7 @@ export function planMainnetFeeDeployment({coreRelease,feeArtifactBytes,selection
       'Current free adapters and existing testnet services remain unchanged.']};
 }
 
-export async function runMainnetFeePlan({rootDirectory=ROOT,selectionPath='config/phase2-mainnet-routes-example.json',deploymentPath=null,treasury=SAFE,feeBps=20}={}){
+export async function runMainnetFeePlan({rootDirectory=ROOT,selectionPath='config/phase2-mainnet-routes-example.json',deploymentPath=null,treasury=SAFE,feeBps=30}={}){
   const root=await fs.realpath(rootDirectory),coreRelease=await loadVerifiedMainnetRelease({root});
   const bytes=await readPublicFile(root,MAINNET_FEE_ARTIFACT);
   verifyMainnetFeeComponent({rootDirectory:root,artifactBytes:bytes,coreRelease});

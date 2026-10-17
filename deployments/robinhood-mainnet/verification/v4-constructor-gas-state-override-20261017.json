@@ -1,0 +1,214 @@
+{
+  "schema": "lincoln-v4-constructor-state-override-estimates/v1",
+  "chainId": 4663,
+  "planId": "90fcfc6b9c1a6fd86dbd349e2ae1158550b7e4cff5a32969746556b041d7741e",
+  "observation": {
+    "blockNumber": "90866150",
+    "blockHash": "0xba6984dcafeec2c227b990780f7e3d13916fe2edb043748f1bfa4fc50ab9ea0e",
+    "blockTimestamp": "1792233927",
+    "recordedAt": "2026-10-17T10:45:28.837Z"
+  },
+  "from": "0x555998Ba2B2723C97d91FB20Da0ddb896749797e",
+  "nonceObservation": "42",
+  "nonceReserved": false,
+  "anchor": {
+    "address": "0xF9c767CAb9B9A7dE8Dd959967269787880267ab2",
+    "runtimeCodeHash": "0x1a8366f958889052b162ea6e717ed328b66b30293076737d1c9fbad89d1caa96",
+    "matchesCompleteFrozenRuntimeWithDeclaredImmutables": true
+  },
+  "overrides": [
+    {
+      "id": "pool:lincoln",
+      "address": "0x8f75638C296E9334B509495a53F8BD7e4E6eBDCc",
+      "nonce": "42",
+      "asset": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+      "scope": "19343865623549232297420574012379992958593872378809073080313689922933575727122",
+      "overrideRuntimeKeccak256": "0x786db4c289544009f57b59dd28ca7d0909f94d624b146a695330c5f96c4b009d",
+      "changedDeclaredImmutables": [
+        {
+          "immutable": "ASSET",
+          "start": 6463,
+          "length": 32,
+          "before": "0000000000000000000000000000000000000000000000000000000000000000",
+          "after": "0000000000000000000000002796cdf7328916e0a6c04c296a72c5c6d70b3aee"
+        },
+        {
+          "immutable": "ASSET",
+          "start": 13185,
+          "length": 32,
+          "before": "0000000000000000000000000000000000000000000000000000000000000000",
+          "after": "0000000000000000000000002796cdf7328916e0a6c04c296a72c5c6d70b3aee"
+        },
+        {
+          "immutable": "ASSET",
+          "start": 13688,
+          "length": 32,
+          "before": "0000000000000000000000000000000000000000000000000000000000000000",
+          "after": "0000000000000000000000002796cdf7328916e0a6c04c296a72c5c6d70b3aee"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 3517,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "2ac43d6d7d492d4d2a81df118825f8256a882dc5a01724ffbbb365fc7e713812"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 4508,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "2ac43d6d7d492d4d2a81df118825f8256a882dc5a01724ffbbb365fc7e713812"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 7368,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "2ac43d6d7d492d4d2a81df118825f8256a882dc5a01724ffbbb365fc7e713812"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 9492,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "2ac43d6d7d492d4d2a81df118825f8256a882dc5a01724ffbbb365fc7e713812"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 10486,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "2ac43d6d7d492d4d2a81df118825f8256a882dc5a01724ffbbb365fc7e713812"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 11196,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "2ac43d6d7d492d4d2a81df118825f8256a882dc5a01724ffbbb365fc7e713812"
+        }
+      ]
+    },
+    {
+      "id": "pool:spcx",
+      "address": "0xd5Fc86f3251cE49F0Bd7B94b28B0334f21F6E42b",
+      "nonce": "43",
+      "asset": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "scope": "5116302936792101338563103810045238183983465734604910242316150414180444023507",
+      "overrideRuntimeKeccak256": "0x9d5f10e32efdd39a64f3b37dc6c3485facd7dbe307753070f805ca104a490623",
+      "changedDeclaredImmutables": [
+        {
+          "immutable": "ASSET",
+          "start": 6463,
+          "length": 32,
+          "before": "0000000000000000000000000000000000000000000000000000000000000000",
+          "after": "0000000000000000000000004a0e65a3eccec6dbe60ae065f2e7bb85fae35eea"
+        },
+        {
+          "immutable": "ASSET",
+          "start": 13185,
+          "length": 32,
+          "before": "0000000000000000000000000000000000000000000000000000000000000000",
+          "after": "0000000000000000000000004a0e65a3eccec6dbe60ae065f2e7bb85fae35eea"
+        },
+        {
+          "immutable": "ASSET",
+          "start": 13688,
+          "length": 32,
+          "before": "0000000000000000000000000000000000000000000000000000000000000000",
+          "after": "0000000000000000000000004a0e65a3eccec6dbe60ae065f2e7bb85fae35eea"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 3517,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "0b4fb98f3823a36282aeea0fd080dfb6045a2ec52e035afa0cdc66d8b33c2ad3"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 4508,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "0b4fb98f3823a36282aeea0fd080dfb6045a2ec52e035afa0cdc66d8b33c2ad3"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 7368,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "0b4fb98f3823a36282aeea0fd080dfb6045a2ec52e035afa0cdc66d8b33c2ad3"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 9492,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "0b4fb98f3823a36282aeea0fd080dfb6045a2ec52e035afa0cdc66d8b33c2ad3"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 10486,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "0b4fb98f3823a36282aeea0fd080dfb6045a2ec52e035afa0cdc66d8b33c2ad3"
+        },
+        {
+          "immutable": "SCOPE",
+          "start": 11196,
+          "length": 32,
+          "before": "004ae61b32b1d288668aadc4fe873b0faaec51169c36e1ee9734ce0f6912c986",
+          "after": "0b4fb98f3823a36282aeea0fd080dfb6045a2ec52e035afa0cdc66d8b33c2ad3"
+        }
+      ]
+    }
+  ],
+  "overrideScope": "Only future privacy-pool runtime ASSET and SCOPE declared immutable words; no venue, market, hook, token, beacon, implementation, balance or storage override.",
+  "estimates": [
+    {
+      "direction": "lincoln-to-spcx",
+      "constructorArguments": [
+        "0x8f75638C296E9334B509495a53F8BD7e4E6eBDCc",
+        "0xd5Fc86f3251cE49F0Bd7B94b28B0334f21F6E42b"
+      ],
+      "estimated": false,
+      "error": "Missing or invalid parameters.\nDouble check you have provided the correct parameters.",
+      "stateOverride": true
+    },
+    {
+      "direction": "spcx-to-lincoln",
+      "constructorArguments": [
+        "0xd5Fc86f3251cE49F0Bd7B94b28B0334f21F6E42b",
+        "0x8f75638C296E9334B509495a53F8BD7e4E6eBDCc"
+      ],
+      "estimated": false,
+      "error": "Missing or invalid parameters.\nDouble check you have provided the correct parameters.",
+      "stateOverride": true
+    }
+  ],
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "deployed": false,
+  "receiptVerified": false,
+  "privateRPCUsed": true,
+  "privateRPCURLStored": false,
+  "privateRPCEstimates": [
+    {
+      "direction": "lincoln-to-spcx",
+      "estimated": false,
+      "errorName": "InvalidInputRpcError",
+      "rpcCode": -32000,
+      "stateOverride": true,
+      "blockNumber": "90866150"
+    },
+    {
+      "direction": "spcx-to-lincoln",
+      "estimated": false,
+      "errorName": "InvalidInputRpcError",
+      "rpcCode": -32000,
+      "stateOverride": true,
+      "blockNumber": "90866150"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schema": "lincoln-v4-typed-router-offline-plan/v1",
+  "chainId": 4663,
+  "status": "compiled-untested-unapproved-not-deployed",
+  "candidateContract": "Phase2FeeHedgeFunV4Adapter",
+  "source": "contracts/adapters/HedgeFunV4Adapter.candidate.sol",
+  "sourceSHA256": "edc4de2de41e3daadb9d86b0d8d2fe026afcca1d624c3e6745fee3ca84cb8490",
+  "abi": "config/hedgefun-v4-candidate-abi.json",
+  "deployedRouter": "0x5f3e9D177231527D56fB62aCc398f22cc8F2c328",
+  "strategyId": "2",
+  "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+  "poolId": "0xec0d72f0c70983525d99f777303e92f82b3cbb2e89aede6d44c9f22f8abc3f55",
+  "poolKey": {
+    "currency0": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+    "currency1": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+    "fee": 2000,
+    "tickSpacing": 60,
+    "hooks": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC"
+  },
+  "serviceFeeBps": 30,
+  "hookFlatStockTaxBps": 100,
+  "lpFeePips": 2000,
+  "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+  "constructorIntents": [
+    {
+      "direction": "lincoln-to-spcx",
+      "sourcePool": null,
+      "targetPool": null,
+      "sourceProfile": "lincoln",
+      "targetProfile": "spcx",
+      "sqrtPriceLimitX96": "4295128740"
+    },
+    {
+      "direction": "spcx-to-lincoln",
+      "sourcePool": null,
+      "targetPool": null,
+      "sourceProfile": "spcx",
+      "targetProfile": "lincoln",
+      "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341"
+    }
+  ],
+  "assets": [
+    {
+      "id": "lincoln",
+      "asset": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+      "decimals": 18,
+      "maxDeposit": "340282366920938463463374607431768211455",
+      "maxTotal": "340282366920938463463374607431768211455"
+    },
+    {
+      "id": "spcx",
+      "asset": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "decimals": 18,
+      "maxDeposit": "340282366920938463463374607431768211455",
+      "maxTotal": "340282366920938463463374607431768211455"
+    }
+  ],
+  "capsMode": "protocol-uint128-maximum-no-additional-business-cap",
+  "capSelectionStatus": "Prepared from latest user steering; final deployment scope approval pending.",
+  "capsUnits": "raw ERC20 base units; not a claim of exact underlying share count",
+  "supersededCapProposal": [
+    {
+      "id": "lincoln",
+      "maxDeposit": "48000000000000000000000000",
+      "maxTotal": "670000000000000000000000000",
+      "status": "superseded-do-not-deploy"
+    },
+    {
+      "id": "spcx",
+      "maxDeposit": "17000000000000000000",
+      "maxTotal": "100000000000000000000",
+      "status": "superseded-do-not-deploy"
+    }
+  ],
+  "guardianControls": {
+    "emergencyDepositPause": true,
+    "lowerCaps": true,
+    "increaseDelayHours": 12
+  },
+  "issuerRiskApproval": null,
+  "deploymentApproval": null,
+  "gasBudgetProposal": {
+    "scopeBudgetWei": "2200000000000000",
+    "maxFeePerGasWei": "100000000",
+    "lifetimeBudgetWei": "65000000000000000",
+    "reserveWei": "3000000000000000",
+    "approved": false,
+    "scope": "Two new frozen-RC3 privacy pools plus two typed V4 adapters; cumulative deployer history preserved.",
+    "gasLimitHints": {
+      "privacyPool": "5500000",
+      "adapter": "5500000",
+      "sumGas": "22000000"
+    },
+    "ceilingAtProposedPriceWei": "2200000000000000",
+    "limitations": "Gas limits are conservative proposals, not eth_estimateGas results. Adapter constructor needs the two deployed privacy-pool addresses. Actual RPC estimates and approval are required before signing."
+  },
+  "exactInputOnly": true,
+  "partialFill": false,
+  "nativeAssets": false,
+  "newManagerCallback": false,
+  "arbitraryCalldata": false,
+  "quote": null,
+  "quoteStatus": "No live quote is implied by this offline plan. Quote must include V4 LP and hook economics with a non-exempt router sender.",
+  "fixedLimitOnly": true,
+  "proofBoundMinimumNetOutput": true,
+  "signingEnabled": false,
+  "executionEnabled": false,
+  "compiled": true,
+  "tested": false,
+  "keysAccessed": false,
+  "networkRequests": 0,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0
+}

@@ -1,0 +1,281 @@
+{
+  "schema": "lincoln-mainnet-v4-typed-router-review/v1",
+  "status": "read-only-candidate-no-deployment-approval",
+  "chainId": 4663,
+  "blockNumber": "90855909",
+  "publicRPC": "https://rpc.mainnet.chain.robinhood.com/",
+  "contracts": {
+    "router": {
+      "address": "0x5f3e9D177231527D56fB62aCc398f22cc8F2c328",
+      "codeHash": "0x6d11e519938778d5081784d8ee319dcbf5489a41e19dedfe005357c67550f17c",
+      "factory": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+      "poolManager": "0x8366a39CC670B4001A1121B8F6A443A643e40951"
+    },
+    "manager": {
+      "address": "0x8366a39CC670B4001A1121B8F6A443A643e40951",
+      "codeHash": "0xbd3881180b547f5fe817545743cfb4343e96b1bc6640dcd70c106b0066e95626"
+    },
+    "factory": {
+      "address": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+      "codeHash": "0x6ed5348d51a5e51a5def01a8254bf0aaa2050749f4d2493692f18d1a5966404e",
+      "strategies": [
+        "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+        "0x72aBbC490A18B5c0c61A9BeA4Ed091a74Eef991F",
+        "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+        "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+        "0xD7d7284FF95BAaD76167D331E803847DF0470577"
+      ],
+      "curves": "0x2C27b7Fb50D85567760487010A827039711D2A66"
+    },
+    "treasury": {
+      "address": "0x72aBbC490A18B5c0c61A9BeA4Ed091a74Eef991F",
+      "codeHash": "0x989be5bbe3dfbd6f855916d4ed5edf1cd5ed389c0d30b9fac9cb9718d06742a4",
+      "poolKey": [
+        "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+        "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+        2000,
+        60,
+        "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC"
+      ]
+    },
+    "hook": {
+      "address": "0xb5bAbc5609de876D56662d066a0B5f63eF90a8CC",
+      "codeHash": "0x0905d4cc5af8b1872eaf6a0a11536f2111acff07fbef7270c7f498f77cb5d8fc",
+      "version": "3"
+    },
+    "spcxBeacon": {
+      "address": "0xe10b6f6B275de231345c20D14Ab812db62151b00",
+      "codeHash": "0x8b465c0b53a2ba499566e9b4ca67d8c90ed6131743df806a570d156956a7e90e"
+    },
+    "spcxImplementation": {
+      "address": "0xb35490d6f9163DE4F80d88dc75c3516eb64C5aE2",
+      "codeHash": "0xdc07e86ee482f99641bdafb9a0d772846b167401e094d90a666b94dbdcd1eec7"
+    },
+    "lincoln": {
+      "address": "0x2796cdF7328916e0A6c04C296A72C5C6d70B3AEE",
+      "codeHash": "0x47ac9e2d06060f8967967485194b8107706bcab075cc3398674b1130353e7e21"
+    },
+    "spcx": {
+      "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+      "codeHash": "0x6c1fdd40002dcb440c7fff6a84171404d279ccb057803b65826f7546acd65630"
+    },
+    "vault": {
+      "address": "0xA6dF493aC0FCF58aa1acFB60FA2aB96a01c17E30",
+      "codeHash": "0x5e68c4ba1332801c07f06868ff8dd5fabbeeeac2f6bfe6454780de4eccc4fcbb"
+    },
+    "curve": {
+      "address": "0x2C27b7Fb50D85567760487010A827039711D2A66",
+      "codeHash": "0x12a949972b29415743b0dfa6a99c046f1ff4aefa1312f4db282090b8e8f3178c"
+    },
+    "treasuryImplementation": {
+      "address": "0xfF608632AF7621AA0c84607385056bBA9B547616",
+      "codeHash": "0x26aa03ccdba2d1d73af4bf20d71ef46e82493d101e265279d77ce49805ceebd8"
+    },
+    "treasuryUpgradeController": {
+      "address": "0xEdAb12AB7B673648d2D2c79d37565032E1a23Bbf",
+      "codeHash": "0x128cce51e35ac1c4d26e0445dc321252632925dd695f37197be9eeb7f49d04c9"
+    }
+  },
+  "curveStatus": 2,
+  "poolId": "0xec0d72f0c70983525d99f777303e92f82b3cbb2e89aede6d44c9f22f8abc3f55",
+  "strategyId": "2",
+  "sourceFiles": [
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "deploy/mainnet-v2-release.json",
+      "sha256": "f22df424e8f02c98e5371e71d49b00554030a1f9eac9c1d49534f28968c02abf"
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "deploy/mainnet-v2-core.candidate.json",
+      "sha256": "cead14d8942f66e49b8600b24b799f26afd28de72905cd4705407d1113fb68c9"
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/v2/HedgeFunV2TradeRouter.sol",
+      "sha256": "480c78582e61eaaf1951084ddab5b89408ebc80e21ac063c71f2d6330dfadd1f"
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/v2/HedgeFunV2UpgradeableTreasury.sol",
+      "sha256": "963cb907138761e5c76470486a52769d6f00b3cd5fe3d3761b121bf663578408"
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/v2/V2TreasuryUpgradeController.sol",
+      "sha256": "d3bdc847b4dad1a4ed7192d99965d51155bee50fe2818320814ff1c1b346b3a9"
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/hooks/HedgeFunV2Hook.sol",
+      "sha256": "68513de3f03ef7c64dea0c4b66f3168d360db2ad14a517612d9f62269d8e9940"
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "src/hooks/HedgeFunHook.sol",
+      "sha256": "9ec3c02c065d3e8bcbd0839d1c87dd4af5da87ffe10639544a3fe04a34e2f791"
+    },
+    {
+      "repository": "Hedgefun-trade/contractV2",
+      "path": "out/HedgeFunV2TradeRouter.sol/HedgeFunV2TradeRouter.json",
+      "sha256": "3346e725a7fb9b77c752fe6216f09b7eb72cde8ca53aa342884f46d6d1e6e86f"
+    }
+  ],
+  "routerRuntimeSourceMatch": {
+    "compiler": {
+      "version": "0.8.26+commit.8a97fa7a"
+    },
+    "localSourceMatchesArtifactMetadata": true,
+    "artifactMetadataSourceKeccak256": "0xaa5ec050ff8aa53dfa5861fdd629dbf583c1cd1eb97e3d0ac29671365c6d671c",
+    "patchedFoundryDeclaredImmutablesOnly": true,
+    "immutableValues": {
+      "140575": "0xC78b6A83d75C5612a1A7323702B56038254a6459",
+      "140578": "0x8366a39CC670B4001A1121B8F6A443A643e40951"
+    },
+    "immutableReferences": {
+      "140575": [
+        {
+          "start": 267,
+          "length": 32
+        },
+        {
+          "start": 2441,
+          "length": 32
+        },
+        {
+          "start": 2609,
+          "length": 32
+        },
+        {
+          "start": 3785,
+          "length": 32
+        }
+      ],
+      "140578": [
+        {
+          "start": 371,
+          "length": 32
+        },
+        {
+          "start": 806,
+          "length": 32
+        },
+        {
+          "start": 976,
+          "length": 32
+        },
+        {
+          "start": 1397,
+          "length": 32
+        },
+        {
+          "start": 1501,
+          "length": 32
+        },
+        {
+          "start": 1541,
+          "length": 32
+        },
+        {
+          "start": 1721,
+          "length": 32
+        },
+        {
+          "start": 5914,
+          "length": 32
+        }
+      ]
+    },
+    "expectedKeccak256": "0x6d11e519938778d5081784d8ee319dcbf5489a41e19dedfe005357c67550f17c",
+    "observedKeccak256": "0x6d11e519938778d5081784d8ee319dcbf5489a41e19dedfe005357c67550f17c",
+    "matchesEntireRuntimeIncludingMetadata": true,
+    "freshCompilationPerformed": false
+  },
+  "typedRouterReusable": true,
+  "requiresNewCallback": false,
+  "requiresNewPrivacyAdapter": true,
+  "routerLimitations": {
+    "customSqrtPriceLimit": false,
+    "adapterRequiresExactRouterExtremeLimit": true,
+    "arbitraryV3PathDisabled": true,
+    "curveBranchDisabled": true,
+    "partialFillDisabled": true,
+    "nativeAssetsDisabled": true
+  },
+  "hookSender": {
+    "actualSender": "0x5f3e9D177231527D56fB62aCc398f22cc8F2c328",
+    "treasuryExemption": false,
+    "rateGetterCalledByAdapter": true,
+    "buySenderIndependenceRequires": "Exact pinned hook v3, registered vault, snipeBps=0, snipeSeconds=0; non-treasury router. Candidate rejects changes.",
+    "flatTaxBps": 100,
+    "spikeBps": 0,
+    "spikeSeconds": 0
+  },
+  "issuerRisk": "SPCX issuer can freeze, blacklist, pause, mint, burn arbitrary holders and upgrade its beacon implementation. Pinning implementation detects upgrades; it does not prevent issuer actions or protect pool collateral from them.",
+  "blockers": [
+    "No tests, fork acceptance or audit performed; isolated candidate compilation succeeded",
+    "Final explicit deployment scope and gas budget approval pending",
+    "SPCX issuer-risk acceptance pending",
+    "No LINCOLN/SPCX privacy pools or V4 privacy adapters deployed",
+    "Distinct V4 quote/proof/route integration and both-direction acceptance pending"
+  ],
+  "externalRetrieval": {
+    "firecrawl": "Account credits exhausted; request was not executed. No retry.",
+    "explorerAPI": "Public smart-contract API returned HTTP403; previously preserved source snapshots and pinned public-RPC hashes plus local declared artifact comparison used instead."
+  },
+  "keysAccessed": false,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0,
+  "capProposal": {
+    "mode": "protocol-uint128-maximum-no-additional-business-cap",
+    "maxDeposit": "340282366920938463463374607431768211455",
+    "maxTotal": "340282366920938463463374607431768211455",
+    "appliesTo": [
+      "lincoln",
+      "spcx"
+    ],
+    "status": "prepared-from-latest-user-steering-final-deployment-approval-pending",
+    "superseded": [
+      "LINCOLN 48M/670M tokens",
+      "SPCX17/100 tokens"
+    ],
+    "existingThirteenPoolCapsChanged": false
+  },
+  "candidateBuild": {
+    "source": "contracts/adapters/HedgeFunV4Adapter.candidate.sol",
+    "sourceSHA256": "edc4de2de41e3daadb9d86b0d8d2fe026afcca1d624c3e6745fee3ca84cb8490",
+    "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+    "settings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": 10000
+      },
+      "viaIR": true,
+      "evmVersion": "cancun"
+    },
+    "sourceSetSHA256": "7a04ff3b861fb931c0b50cc1cc332e050cdb1473f44d1c27dc48d0fdb40509ef",
+    "creationBytes": 27246,
+    "runtimeBytes": 20033,
+    "compiled": true,
+    "tested": false,
+    "audited": false,
+    "deployed": false,
+    "runtimeCodeHash": null,
+    "file": "config/hedgefun-v4-candidate-build.json",
+    "sha256": "36fb4b20a05f8a67a85fa897b04f5a162b05b1bd5ad8a16b449c7e63592be3c1"
+  },
+  "genesisHash": "0xaad15f3d702aaea00caf3e9bb56395efe9127bc3b31b24921abf1eee3409305c",
+  "observation": {
+    "blockNumber": "90855909",
+    "blockHash": "0x80148d026b26b30a086fcefe3f2da78c8f55e0e3acb8f017d7d2447f6415c8a6",
+    "blockTimestamp": "1792232882",
+    "observedAt": "2026-10-17T10:37:36.320Z"
+  },
+  "safeBindings": {
+    "singleton": "0xedd160febbd92e350d4d398fb636302fccd67c7e",
+    "singletonRuntimeCodeHash": "0x180193227186ccb85316c94db1f0d156ed932b14712cfaac78901899178572dc",
+    "ownerSetHash": "0x793c28b343a41f2376fc69f42937812bcdcd926831a4b6dd152d62f6751adcd7",
+    "threshold": 2,
+    "ownerCount": 3
+  }
+}

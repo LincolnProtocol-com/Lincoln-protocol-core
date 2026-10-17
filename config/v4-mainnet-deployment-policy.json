@@ -1,0 +1,21 @@
+{
+  "schema": "lincoln-mainnet-typed-v4-policy/v1",
+  "status": "proposal-not-approved",
+  "approval": null,
+  "chainId": 4663,
+  "account": "lincoln-deployer",
+  "deployer": "0x555998Ba2B2723C97d91FB20Da0ddb896749797e",
+  "scope": "two-lincoln-spcx-pools-and-two-fixed-typed-v4-adapters-only",
+  "capsMode": "protocol-uint128-maximum-no-additional-business-cap",
+  "maxDeposit": "340282366920938463463374607431768211455",
+  "maxTotal": "340282366920938463463374607431768211455",
+  "poolGasLimit": "5500000",
+  "adapterGasLimit": "5500000",
+  "scopeBudgetWei": "2200000000000000",
+  "newTransactionPriceCapWei": "100000000",
+  "reserveWei": "3000000000000000",
+  "feeBps": 30,
+  "treasury": "0x9CF17a6E3c75D200f58283A165C442a8A3994555",
+  "signingEnabled": false,
+  "executionEnabled": false
+}

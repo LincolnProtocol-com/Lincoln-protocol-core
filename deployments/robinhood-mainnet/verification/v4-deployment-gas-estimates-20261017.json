@@ -1,0 +1,66 @@
+{
+  "schema": "lincoln-v4-read-only-pool-gas-estimates/v1",
+  "chainId": 4663,
+  "observation": {
+    "blockNumber": "90864411",
+    "blockHash": "0xf9eddab2f72ca64120960de6300304113e6474d653a4c10b7b184d88e1e48982",
+    "blockTimestamp": "1792233751",
+    "recordedAt": "2026-10-17T10:42:31.806Z"
+  },
+  "planId": "90fcfc6b9c1a6fd86dbd349e2ae1158550b7e4cff5a32969746556b041d7741e",
+  "from": "0x555998Ba2B2723C97d91FB20Da0ddb896749797e",
+  "to": null,
+  "value": "0",
+  "nonceObservation": {
+    "latest": "42",
+    "pending": "42",
+    "reserved": false
+  },
+  "frozenPoolBuild": {
+    "path": "releases/rc3/artifacts/phase2-mainnet/contracts.json",
+    "sha256": "26ccf2f48a1ec45673091e2c4276c8e4d657da59cdbc3a7585fcd2358c45f747"
+  },
+  "candidateBuild": {
+    "path": "config/hedgefun-v4-candidate-build.json",
+    "sha256": "36fb4b20a05f8a67a85fa897b04f5a162b05b1bd5ad8a16b449c7e63592be3c1",
+    "abi": {
+      "path": "config/hedgefun-v4-candidate-abi.json",
+      "sha256": "0f4f2799e661d62cbbbf8985e3cce5c3dce430c0634eb912d5b19476d20c29ad"
+    },
+    "sourceSHA256": "edc4de2de41e3daadb9d86b0d8d2fe026afcca1d624c3e6745fee3ca84cb8490",
+    "sourceSetSHA256": "7a04ff3b861fb931c0b50cc1cc332e050cdb1473f44d1c27dc48d0fdb40509ef"
+  },
+  "estimates": [
+    {
+      "id": "pool:lincoln",
+      "creationDataSHA256": "779d9435bfcf4b8a1d1b7f78758bf8e864ac614c62895ea3838372f6d6a97134",
+      "creationDataKeccak256": "0x9053809b7f79de3fe8cd709da59d8da8595041900e7c391122f480566d827701",
+      "creationDataBytes": 16450,
+      "estimateGas": "4633576",
+      "configuredGasCap": "5500000",
+      "withinCap": true
+    },
+    {
+      "id": "pool:spcx",
+      "creationDataSHA256": "73113cf476500a82f3244e2c40b956079e7c9bd0a8211a817677e45781db1f84",
+      "creationDataKeccak256": "0xf2cbcadf6d5bec14a8d0fb3b030c32928467938800ab71f9d16c7c018695825c",
+      "creationDataBytes": 16450,
+      "estimateGas": "4633576",
+      "configuredGasCap": "5500000",
+      "withinCap": true
+    }
+  ],
+  "adapters": {
+    "estimated": false,
+    "creationBytes": 27246,
+    "creationBytecodeSHA256": "fc6cfd06c8d8ebdda8bd64b3eea29d3bdce14341687bb2103b0262b90cbb8523",
+    "configuredGasCap": "5500000",
+    "reason": "Both future privacy-pool addresses must exist for adapter constructor validation. Each signer.prepare requires live eth_estimateGas <= gas cap before reservation."
+  },
+  "scopeBudgetWei": "2200000000000000",
+  "scopeApproved": false,
+  "previous4000000PoolLimitRejected": true,
+  "walletsRead": false,
+  "transactionsSigned": 0,
+  "transactionsBroadcast": 0
+}

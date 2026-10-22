@@ -1,5 +1,7 @@
 # RelayStakeRegistry
 
+**Deployed on Robinhood Chain mainnet (4663):** [`0x1429f7BAA41baee9d6C7989DBdDc4C6344c8204B`](https://robinhoodchain.blockscout.com/address/0x1429f7BAA41baee9d6C7989DBdDc4C6344c8204B), block 94808942, tx [`0x032c95c5…8923`](https://robinhoodchain.blockscout.com/tx/0x032c95c5c46a5e7f75407c7676ba31ef707956236b2de6618cb7f0ddaa0c8923), by `lincoln-deployer` on 2026-10-22. Record: [`deployments/robinhood-mainnet/relay-stake-registry.json`](../deployments/robinhood-mainnet/relay-stake-registry.json). Post-deploy checks: the four constructor values read back on chain, and the runtime code matches this build (immutable slots and metadata blanked).
+
 Permissionless registry of relay operators backed by a LINCOLN stake: 5,000,000 LINCOLN minimum, 14-day unbonding, no slashing. The guardian Safe can only suspend a relay (it leaves the active set and can still unbond and withdraw everything). Clients and the points program read it to find relays; it never touches pool funds.
 
 | | |
